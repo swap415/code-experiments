@@ -1,0 +1,9 @@
+{
+  "exact_order_and_input_checks": 588,
+  "signed_gain_checks": 16,
+  "status": "PASS",
+  "source_sha256": {
+    "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+    "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+  }
+}

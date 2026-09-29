@@ -1,0 +1,6 @@
+# started on Tue Sep 29 22:42:52 2026
+
+42275438858;;cpu_core/cycles:u/;8000792215;100.00;;
+186533804692;;cpu_core/instructions:u/;8000792215;100.00;4.41;insn per cycle
+7223448383;;cpu_core/branches:u/;8000792215;100.00;;
+6943053;;cpu_core/branch-misses:u/;8000792215;100.00;0.10;of all branches

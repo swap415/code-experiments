@@ -1,0 +1,13 @@
+ Percent |	Source code & Disassembly of jitted-920309-5.so for cpu_core/cycles/u (1162 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <NRT_incref>:
+    4.74 :   80:     endbr64
+    0.00 :   84:     test   %rdi,%rdi
+    0.00 :   87:     je     8d <NRT_incref+0xd>
+    0.00 :   89:     lock incq (%rdi)
+   95.26 :   8d:     ret

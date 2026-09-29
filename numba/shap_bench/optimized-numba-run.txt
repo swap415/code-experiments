@@ -1,0 +1,126 @@
+Standalone optimized boolean-mask kernel verification
+=====================================================
+
+Hypothesis: compute the four Hamming distances in one scalar-indexed pass,
+without XOR temporaries or row views. Preserve iteration/reversal order.
+No custom compiler passes, parfor switches, forced inlining, or fastmath.
+
+Command run from <numba-checkout>:
+set -o pipefail
+PYTHONPATH=.:issues/shap_bench shap/.venv/bin/python -u /tmp/shap-optimized-check.LyiJK6/check.py | tee issues/shap_bench/optimized-numba-run.txt
+
+All exact-output checks passed. Native scoring LLVM contains no NRT allocation
+or reference-count calls. Timings exclude JIT compilation. Trials alternate
+variant order and check full output outside timing. Std is sample std; speedup
+uses medians. These are new Mac timings, not the earlier Linux perf recording.
+
+Captured output:
+
+Python 3.13.12 | macOS-26.6.2-arm64-arm-64bit-Mach-O
+NumPy 2.4.6 | Numba 0.67.0dev1+9.g63b756580b | llvmlite 0.49.0 | LLVM (22, 1, 0)
+Numba: <numba-checkout>/numba/__init__.py
+Original SHA256: 2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea
+PASS: 588 exact-order/input-preservation cases + 16 signed-gain cases
+PASS: scoring native LLVM has no NRT allocations/refcount calls (3 signatures)
+features=8, masks=256, n=10, milliseconds
+original: mean=3.2881, std=0.0418, median=3.2952
+original raw: [3.20025, 3.244833, 3.273541, 3.277708, 3.297875, 3.312625, 3.308417, 3.292541, 3.3405, 3.332292]
+optimized: mean=0.2415, std=0.0048, median=0.2402
+optimized raw: [0.241208, 0.243042, 0.238166, 0.236917, 0.252834, 0.23925, 0.245167, 0.23925, 0.236792, 0.24275]
+median speedup: 13.72x
+features=13, masks=8192, n=10, milliseconds
+original: mean=149.7737, std=2.4079, median=149.6764
+original raw: [149.101792, 149.910875, 154.752, 145.093833, 148.744583, 149.765417, 150.712291, 149.587459, 151.241958, 148.826833]
+optimized: mean=12.7864, std=0.2698, median=12.8253
+optimized raw: [13.062042, 13.0895, 12.524291, 12.713, 12.985666, 13.02325, 12.685417, 12.517458, 12.937542, 12.325709]
+median speedup: 11.67x
+
+Exact verification/benchmark script (retained here for reproducibility):
+
+from itertools import product
+import platform
+import statistics
+import time
+
+import llvmlite
+from llvmlite import binding as llvm
+import numba
+import numpy as np
+
+from bench_compiler_fusion import load_kernels, SOURCE_SHA256
+from optimized_numba import _delta_minimization_order as optimized
+from optimized_numba import _reverse_window_score_gain as score
+
+
+assert not numba.config.ENABLE_PROFILING
+assert not numba.config.DEBUGINFO_DEFAULT
+originals = load_kernels()
+original = originals['_delta_minimization_order']
+print(f'Python {platform.python_version()} | {platform.platform()}')
+print(f'NumPy {np.__version__} | Numba {numba.__version__} | '
+      f'llvmlite {llvmlite.__version__} | LLVM {llvm.llvm_version_info}')
+print(f'Numba: {numba.__file__}')
+print(f'Original SHA256: {SOURCE_SHA256}')
+
+gains = set()
+for bits in product((False, True), repeat=4):
+    masks = np.array(bits, dtype=np.bool_).reshape(4, 1)
+    order = np.arange(4)
+    expected = originals['_reverse_window_score_gain'](masks, order, 1, 2)
+    assert score(masks, order, 1, 2) == expected
+    assert score.py_func(masks, order, 1, 2) == expected
+    gains.add(expected)
+assert gains == {-2, 0, 2}
+
+rng = np.random.default_rng(51)
+cases = 0
+for shape in ((0, 0), (1, 0), (3, 0), (4, 1), (5, 3), (16, 5), (256, 8)):
+    for base in (np.zeros(shape, dtype=np.bool_), np.ones(shape, dtype=np.bool_),
+                 rng.integers(0, 2, shape).astype(np.bool_)):
+        for masks in (base, base[:, ::-1], base[::2], np.asfortranarray(base)):
+            unchanged = masks.copy()
+            for window, passes in ((0, 0), (2, 2), (3, 1), (9, 2),
+                                   (100, 2), (-2, 1), (100, -1)):
+                expected = original(masks, window, passes)
+                result = optimized(masks, window, passes)
+                np.testing.assert_array_equal(result, expected)
+                np.testing.assert_array_equal(np.sort(result), np.arange(len(masks)))
+                np.testing.assert_array_equal(masks, unchanged)
+                cases += 1
+print(f'PASS: {cases} exact-order/input-preservation cases + 16 signed-gain cases')
+
+for signature in score.signatures:
+    module = llvm.parse_assembly(score.inspect_llvm(signature))
+    native = str(module.get_function(score.overloads[signature].fndesc.mangled_name))
+    assert 'NRT_MemInfo_alloc' not in native
+    assert 'NRT_incref' not in native and 'NRT_decref' not in native
+print(f'PASS: scoring native LLVM has no NRT allocations/refcount calls '
+      f'({len(score.signatures)} signatures)')
+
+for features in (8, 13):
+    masks = np.random.default_rng(0).integers(
+        0, 2, (2**features, features)).astype(np.bool_)
+    expected = original(masks)
+    functions = {'original': original, 'optimized': optimized}
+    for function in functions.values():
+        for _ in range(2):
+            np.testing.assert_array_equal(function(masks), expected)
+    samples = {name: [] for name in functions}
+    for repeat in range(10):
+        names = list(functions)
+        if repeat % 2:
+            names.reverse()
+        for name in names:
+            start = time.perf_counter_ns()
+            result = functions[name](masks)
+            elapsed = (time.perf_counter_ns() - start) / 1e6
+            samples[name].append(elapsed)
+            np.testing.assert_array_equal(result, expected)
+    print(f'features={features}, masks={len(masks)}, n=10, milliseconds')
+    for name, values in samples.items():
+        print(f'{name}: mean={statistics.mean(values):.4f}, '
+              f'std={statistics.stdev(values):.4f}, '
+              f'median={statistics.median(values):.4f}')
+        print(f'{name} raw: {values}')
+    print(f'median speedup: '
+          f'{statistics.median(samples["original"]) / statistics.median(samples["optimized"]):.2f}x')

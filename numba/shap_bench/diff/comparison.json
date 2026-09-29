@@ -1,0 +1,379 @@
+{
+  "timings": {
+    "8": {
+      "n": 10,
+      "seed": 0,
+      "shape": [
+        256,
+        8
+      ],
+      "output_sha256": "8f9734227eeaff8e6ea60f93b06aa0f6a463de2ca3ff9beb66ca4aa029015180",
+      "source_sha256": {
+        "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+        "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+      },
+      "timings": {
+        "original": {
+          "raw_ms": [
+            7.260514,
+            7.252976,
+            7.237909,
+            7.240293,
+            7.231449,
+            7.278073,
+            7.247812,
+            7.242428,
+            7.258956,
+            7.231323
+          ],
+          "mean_ms": 7.2481733,
+          "std_ms": 0.014719021314461008,
+          "median_ms": 7.24512
+        },
+        "optimized": {
+          "raw_ms": [
+            0.243191,
+            0.238159,
+            0.235348,
+            0.23271,
+            0.235984,
+            0.23484,
+            0.234765,
+            0.232874,
+            0.233596,
+            0.232696
+          ],
+          "mean_ms": 0.23541629999999997,
+          "std_ms": 0.0032240846780305123,
+          "median_ms": 0.2348025
+        }
+      },
+      "mean_speedup": 30.788748697520102,
+      "median_speedup": 30.856230236049445
+    },
+    "13": {
+      "n": 10,
+      "seed": 0,
+      "shape": [
+        8192,
+        13
+      ],
+      "output_sha256": "04886fe5b350e70278c71567d15f9171b3a851bbb040ae69834305dd1a7cd164",
+      "source_sha256": {
+        "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+        "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+      },
+      "timings": {
+        "original": {
+          "raw_ms": [
+            299.787129,
+            299.872782,
+            299.835456,
+            299.741888,
+            299.894502,
+            299.806418,
+            299.875835,
+            299.868401,
+            299.822128,
+            299.766211
+          ],
+          "mean_ms": 299.827075,
+          "std_ms": 0.051423369151468244,
+          "median_ms": 299.828792
+        },
+        "optimized": {
+          "raw_ms": [
+            17.852908,
+            17.813429,
+            17.826583,
+            17.800377,
+            17.816409,
+            17.802411,
+            17.846822,
+            17.83502,
+            17.820736,
+            17.844477
+          ],
+          "mean_ms": 17.8259172,
+          "std_ms": 0.018473204244707116,
+          "median_ms": 17.823659499999998
+        }
+      },
+      "mean_speedup": 16.8197277949883,
+      "median_speedup": 16.821954660882074
+    }
+  },
+  "profiles": {
+    "original": {
+      "samples": 4051,
+      "lost_samples": 0,
+      "cycle_period_weight": 42801962666,
+      "workload": {
+        "variant": "original",
+        "elapsed_seconds": 8.11033643479459,
+        "iterations": 27,
+        "checksum": 221157,
+        "output_sha256": "04886fe5b350e70278c71567d15f9171b3a851bbb040ae69834305dd1a7cd164",
+        "source_sha256": {
+          "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+          "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+        },
+        "mean_ms_per_call": 300.3828309183181,
+        "note": "Profiled throughput, not a repeated-trial benchmark."
+      },
+      "unresolved_leaf_percent": 0.0,
+      "unresolved_ancestor_percent": 5.806495282456307,
+      "nrt_refcount_leaf_percent": 63.391246919508724,
+      "top_leaves": [
+        {
+          "symbol": "NRT_decref",
+          "percent": 33.38156157112331
+        },
+        {
+          "symbol": "NRT_incref",
+          "percent": 30.00968534838542
+        },
+        {
+          "symbol": "_mask_delta_score",
+          "percent": 12.257754021564148
+        },
+        {
+          "symbol": "NRT_MemInfo_alloc_aligned",
+          "percent": 8.326718271802719
+        },
+        {
+          "symbol": "_reverse_window_score_gain",
+          "percent": 4.496973409887512
+        },
+        {
+          "symbol": "_int_free",
+          "percent": 1.581356269294775
+        },
+        {
+          "symbol": "PyMem_RawMalloc",
+          "percent": 1.1118671723388862
+        },
+        {
+          "symbol": "__GI___libc_malloc",
+          "percent": 1.0871595997387153
+        },
+        {
+          "symbol": "tcache_put",
+          "percent": 1.0377218924888822
+        },
+        {
+          "symbol": "__GI___libc_free",
+          "percent": 0.9636361823371158
+        },
+        {
+          "symbol": "NRT_MemInfo_init",
+          "percent": 0.6918507483191402
+        },
+        {
+          "symbol": "NRT_dealloc",
+          "percent": 0.6670942293653558
+        }
+      ],
+      "estimated_sampled_cycles_per_call": 1585257876.5185184
+    },
+    "optimized": {
+      "samples": 3998,
+      "lost_samples": 0,
+      "cycle_period_weight": 42242220779,
+      "workload": {
+        "variant": "optimized",
+        "elapsed_seconds": 8.005283647915348,
+        "iterations": 448,
+        "checksum": 3669568,
+        "output_sha256": "04886fe5b350e70278c71567d15f9171b3a851bbb040ae69834305dd1a7cd164",
+        "source_sha256": {
+          "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+          "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+        },
+        "mean_ms_per_call": 17.86893671409676,
+        "note": "Profiled throughput, not a repeated-trial benchmark."
+      },
+      "unresolved_leaf_percent": 0.025034744397854424,
+      "unresolved_ancestor_percent": 0.0,
+      "nrt_refcount_leaf_percent": 0.0,
+      "top_leaves": [
+        {
+          "symbol": "_delta_minimization_order",
+          "percent": 99.3991671405539
+        },
+        {
+          "symbol": "_reverse_window",
+          "percent": 0.4506218979250035
+        },
+        {
+          "symbol": "_PyEval_EvalFrameDefault",
+          "percent": 0.050071645405809356
+        },
+        {
+          "symbol": "_PyUnicode_EQ",
+          "percent": 0.02503675423536851
+        },
+        {
+          "symbol": "Py_DECREF",
+          "percent": 0.025035722092663987
+        },
+        {
+          "symbol": "[unknown]",
+          "percent": 0.025034744397854424
+        },
+        {
+          "symbol": "do_richcompare",
+          "percent": 0.02503209538939946
+        }
+      ],
+      "estimated_sampled_cycles_per_call": 94290671.38169643
+    }
+  },
+  "counters": {
+    "original": {
+      "events": {
+        "cycles": {
+          "total": 42901764275.0,
+          "per_call": 1588954232.4074075,
+          "counter_running_percent": 100.0
+        },
+        "instructions": {
+          "total": 90377844132.0,
+          "per_call": 3347327560.4444447,
+          "counter_running_percent": 100.0
+        },
+        "branches": {
+          "total": 18313374538.0,
+          "per_call": 678273131.037037,
+          "counter_running_percent": 100.0
+        },
+        "branch-misses": {
+          "total": 394340.0,
+          "per_call": 14605.185185185184,
+          "counter_running_percent": 100.0
+        }
+      },
+      "workload": {
+        "variant": "original",
+        "elapsed_seconds": 8.119241103064269,
+        "iterations": 27,
+        "checksum": 221157,
+        "output_sha256": "04886fe5b350e70278c71567d15f9171b3a851bbb040ae69834305dd1a7cd164",
+        "source_sha256": {
+          "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+          "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+        },
+        "mean_ms_per_call": 300.7126334468248,
+        "note": "Profiled throughput, not a repeated-trial benchmark."
+      },
+      "ipc": 2.1066230179411427
+    },
+    "optimized": {
+      "events": {
+        "cycles": {
+          "total": 42275438858.0,
+          "per_call": 94364818.87946428,
+          "counter_running_percent": 100.0
+        },
+        "instructions": {
+          "total": 186533804692.0,
+          "per_call": 416370099.7589286,
+          "counter_running_percent": 100.0
+        },
+        "branches": {
+          "total": 7223448383.0,
+          "per_call": 16123768.71205357,
+          "counter_running_percent": 100.0
+        },
+        "branch-misses": {
+          "total": 6943053.0,
+          "per_call": 15497.886160714286,
+          "counter_running_percent": 100.0
+        }
+      },
+      "workload": {
+        "variant": "optimized",
+        "elapsed_seconds": 8.001121809938923,
+        "iterations": 448,
+        "checksum": 3669568,
+        "output_sha256": "04886fe5b350e70278c71567d15f9171b3a851bbb040ae69834305dd1a7cd164",
+        "source_sha256": {
+          "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+          "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+        },
+        "mean_ms_per_call": 17.859646897185094,
+        "note": "Profiled throughput, not a repeated-trial benchmark."
+      },
+      "ipc": 4.4123446079070385
+    }
+  },
+  "source_sha256": {
+    "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+    "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+  },
+  "native_inspection": {
+    "original": {
+      "original_kernel._mask_delta_score.0": {
+        "signature": "(Array(bool, 1, 'C', False, aligned=True), Array(bool, 1, 'C', False, aligned=True))",
+        "native_symbol": "_ZN15original_kernel17_mask_delta_scoreB2v9B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi1E1C7mutable7alignedE5ArrayIbLi1E1C7mutable7alignedE",
+        "native_nrt_calls": [
+          "incref",
+          "incref",
+          "MemInfo_alloc_aligned",
+          "decref",
+          "decref",
+          "decref"
+        ]
+      },
+      "original_kernel._reverse_window.0": {
+        "signature": "(Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+        "native_symbol": "_ZN15original_kernel15_reverse_windowB3v14B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIxLi1E1C7mutable7alignedExx",
+        "native_nrt_calls": []
+      },
+      "original_kernel._reverse_window_score_gain.0": {
+        "signature": "(Array(bool, 2, 'C', False, aligned=True), Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+        "native_symbol": "_ZN15original_kernel26_reverse_window_score_gainB2v8B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE5ArrayIxLi1E1C7mutable7alignedExx",
+        "native_nrt_calls": [
+          "incref",
+          "incref",
+          "incref",
+          "incref",
+          "decref",
+          "decref",
+          "decref",
+          "decref"
+        ]
+      },
+      "original_kernel._delta_minimization_order.0": {
+        "signature": "(Array(bool, 2, 'C', False, aligned=True), omitted(default=100), omitted(default=2))",
+        "native_symbol": "_ZN15original_kernel25_delta_minimization_orderB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE26omitted_28default_3d100_2924omitted_28default_3d2_29",
+        "native_nrt_calls": [
+          "incref",
+          "MemInfo_alloc_aligned",
+          "decref"
+        ]
+      }
+    },
+    "optimized": {
+      "optimized_kernel._reverse_window.0": {
+        "signature": "(Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+        "native_symbol": "_ZN16optimized_kernel15_reverse_windowB3v18B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIxLi1E1C7mutable7alignedExx",
+        "native_nrt_calls": []
+      },
+      "optimized_kernel._reverse_window_score_gain.0": {
+        "signature": "(Array(bool, 2, 'C', False, aligned=True), Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+        "native_symbol": "_ZN16optimized_kernel26_reverse_window_score_gainB3v16B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE5ArrayIxLi1E1C7mutable7alignedExx",
+        "native_nrt_calls": []
+      },
+      "optimized_kernel._delta_minimization_order.0": {
+        "signature": "(Array(bool, 2, 'C', False, aligned=True), omitted(default=100), omitted(default=2))",
+        "native_symbol": "_ZN16optimized_kernel25_delta_minimization_orderB3v15B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE26omitted_28default_3d100_2924omitted_28default_3d2_29",
+        "native_nrt_calls": [
+          "incref",
+          "MemInfo_alloc_aligned",
+          "decref"
+        ]
+      }
+    }
+  }
+}

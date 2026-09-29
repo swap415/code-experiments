@@ -1,0 +1,80 @@
+++ dirname -- run.sh
++ cd -- .
++ root=/tmp/shap-perf-diff.lIhrzu
++ python=/tmp/shap-bench-venv/bin/python
++ flamegraph=/tmp/FlameGraph
++ export PYTHONPATH=/tmp/shap-perf-jit.o4UxQr/llvmlite
++ PYTHONPATH=/tmp/shap-perf-jit.o4UxQr/llvmlite
++ export NUMBA_ENABLE_PROFILING=1 NUMBA_DEBUGINFO=0 LC_ALL=C
++ NUMBA_ENABLE_PROFILING=1
++ NUMBA_DEBUGINFO=0
++ LC_ALL=C
++ sha256sum -c sources.sha256
+original_numba_debug.py: OK
+optimized_numba.py: OK
++ date -u
++ uname -a
++ perf version
++ lscpu
++ cat /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
++ git -C /tmp/shap-perf-jit.o4UxQr/llvmlite rev-parse HEAD
++ git -C /tmp/FlameGraph rev-parse HEAD
++ /tmp/shap-bench-venv/bin/python -c 'from llvmlite import binding as llvm; print(llvm.llvm_version_info, llvm.has_perf_jit_events); assert llvm.has_perf_jit_events'
++ diff -u original_numba_debug.py optimized_numba.py
++ test 1 -eq 1
++ mkdir verification
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/verification
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/verification
++ taskset -c 2 /tmp/shap-bench-venv/bin/python -u verify.py
++ for features in 8 13
++ mkdir timing-8
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/timing-8
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/timing-8
++ taskset -c 2 /tmp/shap-bench-venv/bin/python -u compare.py benchmark --features 8 --repeats 10 --output timing-8
++ for features in 8 13
++ mkdir timing-13
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/timing-13
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/timing-13
++ taskset -c 2 /tmp/shap-bench-venv/bin/python -u compare.py benchmark --features 13 --repeats 10 --output timing-13
++ for variant in original optimized
++ mkdir original
++ cd original
++ mkdir jitdump
++ mkfifo control ack
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/original/jitdump
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/original/jitdump
++ timeout 120 perf record -k 1 -F 499 -e cycles:u -m 64M --call-graph dwarf,16384 --delay=-1 --control=fifo:control,ack -o perf.data -- taskset -c 2 /tmp/shap-bench-venv/bin/python -u /tmp/shap-perf-diff.lIhrzu/compare.py profile --variant original --features 13 --seconds 8 --output . --control control --ack ack
++ perf inject --jit -i perf.data -o perf.jit.data
++ perf report -i perf.jit.data --stdio --no-children -g none --percent-limit 0
++ perf script -i perf.jit.data
++ /tmp/FlameGraph/stackcollapse-perf.pl --all
++ /tmp/FlameGraph/flamegraph.pl --title 'SHAP original | optimized code | jitdump' --countname 'cycle-event weight' stacks.folded
++ perf annotate -i perf.jit.data --stdio
++ mkdir original-stat
++ cd original-stat
++ mkdir jitdump
++ mkfifo control ack
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/original-stat/jitdump
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/original-stat/jitdump
++ timeout 120 perf stat --cputype core -x ';' --no-big-num -e cycles:u,instructions:u,branches:u,branch-misses:u --delay=-1 --control=fifo:control,ack -o counters.csv -- taskset -c 2 /tmp/shap-bench-venv/bin/python -u /tmp/shap-perf-diff.lIhrzu/compare.py profile --variant original --features 13 --seconds 8 --output . --control control --ack ack
++ for variant in original optimized
++ mkdir optimized
++ cd optimized
++ mkdir jitdump
++ mkfifo control ack
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/optimized/jitdump
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/optimized/jitdump
++ timeout 120 perf record -k 1 -F 499 -e cycles:u -m 64M --call-graph dwarf,16384 --delay=-1 --control=fifo:control,ack -o perf.data -- taskset -c 2 /tmp/shap-bench-venv/bin/python -u /tmp/shap-perf-diff.lIhrzu/compare.py profile --variant optimized --features 13 --seconds 8 --output . --control control --ack ack
++ perf inject --jit -i perf.data -o perf.jit.data
++ perf report -i perf.jit.data --stdio --no-children -g none --percent-limit 0
++ perf script -i perf.jit.data
++ /tmp/FlameGraph/stackcollapse-perf.pl --all
++ /tmp/FlameGraph/flamegraph.pl --title 'SHAP optimized | optimized code | jitdump' --countname 'cycle-event weight' stacks.folded
++ perf annotate -i perf.jit.data --stdio
++ mkdir optimized-stat
++ cd optimized-stat
++ mkdir jitdump
++ mkfifo control ack
++ export JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/optimized-stat/jitdump
++ JITDUMPDIR=/tmp/shap-perf-diff.lIhrzu/optimized-stat/jitdump
++ timeout 120 perf stat --cputype core -x ';' --no-big-num -e cycles:u,instructions:u,branches:u,branch-misses:u --delay=-1 --control=fifo:control,ack -o counters.csv -- taskset -c 2 /tmp/shap-bench-venv/bin/python -u /tmp/shap-perf-diff.lIhrzu/compare.py profile --variant optimized --features 13 --seconds 8 --output . --control control --ack ack

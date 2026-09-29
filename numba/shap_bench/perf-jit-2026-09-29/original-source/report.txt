@@ -1,0 +1,33 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 4K of event 'cpu_core/cycles/u'
+# Event count (approx.): 44691434045
+#
+# Overhead  Command  Shared Object                                Symbol                                                                                                                                                                                                                                   
+# ........  .......  ...........................................  .........................................................................................................................................................................................................................................
+#
+    33.16%  python   jitted-920379-6.so                           [.] NRT_decref
+    29.02%  python   jitted-920379-5.so                           [.] NRT_incref
+    11.60%  python   jitted-920379-28.so                          [.] shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)
+     6.54%  python   jitted-920379-25.so                          [.] _3cdynamic_3e::__numba_array_expr_0x773204d0ede0[abi:v11][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsmjfC9LThggeGLFtVQlYhUhSSAmlJgEkUQ0zUB](bool, bool)
+     6.07%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_MemInfo_alloc_aligned
+     3.92%  python   jitted-920379-36.so                          [.] shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)
+     2.20%  python   jitted-920379-27.so                          [.] numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)
+     1.30%  python   libc.so.6                                    [.] malloc
+     1.27%  python   libc.so.6                                    [.] _int_free
+     1.02%  python   libc.so.6                                    [.] cfree@GLIBC_2.2.5
+     0.92%  python   jitted-920379-12.so                          [.] numba::np::arrayobj::_ol_array_allocate::_3clocals_3e::impl[abi:v7][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](typeref_5b_3cclass_20_27numba::core::types::npytypes::Array_27_3e_5d, long long, unsigned int)
+     0.80%  python   python3.12                                   [.] PyMem_RawMalloc
+     0.78%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_MemInfo_call_dtor
+     0.50%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_dealloc
+     0.47%  python   jitted-920379-49.so                          [.] shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)
+     0.33%  python   python3.12                                   [.] PyMem_RawFree
+     0.12%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_dealloc@plt
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

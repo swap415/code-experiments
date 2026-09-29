@@ -1,0 +1,1778 @@
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-6.so
+----------------------------------------------
+
+   89.59 jitted-920379-6.so[8d]
+    5.98 jitted-920379-6.so[80]
+    3.50 jitted-920379-6.so[8f]
+    0.93 jitted-920379-6.so[90]
+ Percent |	Source code & Disassembly of jitted-920379-6.so for cpu_core/cycles/u (1406 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <NRT_decref>:
+    5.98 :   80:     endbr64 // jitted-920379-6.so[80]
+    0.00 :   84:     test   %rdi,%rdi
+    0.00 :   87:     je     8f <NRT_decref+0xf>
+    0.00 :   89:     lock decq (%rdi)
+   89.59 :   8d:     je     90 <NRT_decref+0x10> // jitted-920379-6.so[8d]
+    3.50 :   8f:     ret // jitted-920379-6.so[8f]
+    0.93 :   90:     movabs $0x0,%rax // jitted-920379-6.so[90]
+    0.00 :   9a:     jmp    *%rax
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-5.so
+----------------------------------------------
+
+   96.01 jitted-920379-5.so[8d]
+    3.99 jitted-920379-5.so[80]
+ Percent |	Source code & Disassembly of jitted-920379-5.so for cpu_core/cycles/u (1230 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <NRT_incref>:
+    3.99 :   80:     endbr64 // jitted-920379-5.so[80]
+    0.00 :   84:     test   %rdi,%rdi
+    0.00 :   87:     je     8d <NRT_incref+0xd>
+    0.00 :   89:     lock incq (%rdi)
+   96.01 :   8d:     ret // jitted-920379-5.so[8d]
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-28.so
+----------------------------------------------
+
+   46.23 original_numba_debug.py:7
+   35.84 original_numba_debug.py:0
+    9.37 original_numba_debug.py:6
+    4.48 ??:0
+    2.24 npyimpl.py:366
+    1.63 arrayobj.py:4653
+ Percent |	Source code & Disassembly of jitted-920379-28.so for cpu_core/cycles/u (491 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)>:
+    1.63 :    80:     endbr64 // ??:0
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     sub    $0x58,%rsp
+    2.85 :    92:     mov    %rdx,%r13
+    0.00 :    95:     mov    %rsi,%r14
+    0.00 :    98:     mov    %rdi,0x48(%rsp)
+    0.00 :    9d:     mov    0xa8(%rsp),%rbp
+    0.00 :    a5:     mov    0x98(%rsp),%r15
+    0.00 :    ad:     mov    0xd0(%rsp),%r12
+    0.00 :    b5:     movabs $0x0,%rbx
+    0.00 :    bf:     mov    %rdx,%rdi
+         : 22  import numpy as np
+         : 23  from numba import njit
+         :
+         :
+         : 26  @njit
+         : 27  def _mask_delta_score(m1, m2):
+    2.45 :    c2:     call   *%rbx // original_numba_debug.py:6
+    3.06 :    c4:     mov    %rbp,%rdi
+    0.00 :    c7:     call   *%rbx
+    2.44 :    c9:     mov    %r12,%rbx
+    0.00 :    cc:     mov    %r15,%r12
+    0.00 :    cf:     mov    %rbx,%rbp
+    0.00 :    d2:     cmp    $0x1,%r15
+    0.00 :    d6:     je     103 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x83>
+    0.00 :    d8:     cmp    %r12,%rbx
+    0.00 :    db:     setne  %al
+    0.00 :    de:     cmp    $0x1,%rbx
+    0.00 :    e2:     setne  %cl
+    1.43 :    e5:     mov    %r12,%rbp
+    0.00 :    e8:     test   %al,%cl
+    0.00 :    ea:     je     103 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x83>
+    0.00 :    ec:     movabs $0x0,%rax
+    0.00 :    f6:     mov    %rax,(%r14)
+    0.00 :    f9:     mov    $0x1,%ebx
+    0.00 :    fe:     jmp    386 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x306>
+    0.00 :   103:    movq   $0x0,0x28(%rsp)
+    0.00 :   10c:    movq   $0x0,0x30(%rsp)
+         : 49  # If we have mutated the destination shape already,
+         : 50  # then the source axis size must either be one,
+         : 51  # or the destination axis size.
+         : 52  if src_dim_size != dest_dim_size and src_dim_size != 1:
+         : 53  return -(dest_index + 1)
+         : 54  elif src_dim_size != 1:
+    0.00 :   115:    movabs $0x0,%rax
+         : 56  if src_dim_size != dest_dim_size and src_dim_size != 1:
+    0.00 :   11f:    lea    0x30(%rsp),%rdi
+    0.00 :   124:    lea    0x28(%rsp),%rsi
+    0.00 :   129:    xor    %edx,%edx
+    2.24 :   12b:    mov    %rbp,%rcx // npyimpl.py:366
+         : 61  return (m1 ^ m2).sum()
+    0.00 :   12e:    mov    $0x20,%r8d
+    0.00 :   134:    call   *%rax
+    0.00 :   136:    test   %eax,%eax
+    0.00 :   138:    mov    0x30(%rsp),%rax
+    0.00 :   13d:    mov    0x28(%rsp),%rcx
+    0.00 :   142:    mov    %rcx,%rdx
+    0.00 :   145:    cmove  %rax,%rdx
+    1.43 :   149:    mov    %rdx,0x40(%rsp) // original_numba_debug.py:0
+         :
+         :
+         : 72  def _call_allocator(arrtype, size, align):
+         : 73  """Trampoline to call the intrinsic used for allocation
+         : 74  """
+         : 75  return arrtype._allocate(size, align)
+    0.00 :   14e:    jne    397 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x317>
+    0.00 :   154:    mov    %r13,0x38(%rsp)
+    0.00 :   159:    mov    %r14,0x18(%rsp)
+    0.00 :   15e:    mov    0x18(%rax),%r15
+    0.00 :   162:    test   %rbp,%rbp
+    0.00 :   165:    jle    2f7 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x277>
+    0.00 :   16b:    mov    0xc8(%rsp),%r13
+    0.00 :   173:    mov    0x90(%rsp),%r14
+    1.63 :   17b:    cmp    $0x2,%r12 // arrayobj.py:4653
+    0.00 :   17f:    jb     240 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1c0>
+    0.00 :   185:    xor    %r12d,%r12d
+    0.00 :   188:    cmp    $0x1,%rbx
+    0.00 :   18c:    ja     1a6 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x126>
+    0.00 :   18e:    jmp    206 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x186>
+    0.00 :   190:    cmpb   $0x0,0xf(%rsp)
+    0.00 :   195:    setne  (%r15,%r12,1)
+    0.20 :   19a:    inc    %r12
+    0.00 :   19d:    cmp    %r12,%rbp
+    0.00 :   1a0:    je     2f7 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x277>
+    0.00 :   1a6:    xor    %edx,%edx
+   27.90 :   1a8:    cmpb   $0x0,(%r14,%r12,1) // original_numba_debug.py:7
+    0.00 :   1ad:    setne  %dl
+    0.00 :   1b0:    xor    %ecx,%ecx
+    2.04 :   1b2:    cmpb   $0x0,0x0(%r13,%r12,1) // original_numba_debug.py:0
+    0.00 :   1b8:    setne  %cl
+    0.00 :   1bb:    lea    0xf(%rsp),%rdi
+   28.92 :   1c0:    lea    0x10(%rsp),%rsi
+    0.00 :   1c5:    movabs $0x0,%rax
+    0.00 :   1cf:    call   *%rax
+    0.00 :   1d1:    test   %eax,%eax
+    0.00 :   1d3:    je     190 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x110>
+    0.00 :   1d5:    mov    %eax,%ebx
+    0.00 :   1d7:    cmp    $0xfffffffe,%eax
+    0.00 :   1da:    je     190 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x110>
+    0.00 :   1dc:    jmp    2e6 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x266>
+    0.00 :   1e1:    data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   1f0:    cmpb   $0x0,0xf(%rsp)
+    0.00 :   1f5:    setne  (%r15,%r12,1)
+    0.00 :   1fa:    inc    %r12
+    0.00 :   1fd:    cmp    %r12,%rbp
+    0.00 :   200:    je     2f7 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x277>
+    0.00 :   206:    xor    %edx,%edx
+    0.00 :   208:    cmpb   $0x0,(%r14,%r12,1)
+    0.00 :   20d:    setne  %dl
+    0.00 :   210:    xor    %ecx,%ecx
+    0.00 :   212:    cmpb   $0x0,0x0(%r13)
+    0.00 :   217:    setne  %cl
+    0.00 :   21a:    lea    0xf(%rsp),%rdi
+    0.00 :   21f:    lea    0x10(%rsp),%rsi
+    0.00 :   224:    movabs $0x0,%rax
+    0.00 :   22e:    call   *%rax
+    0.00 :   230:    test   %eax,%eax
+    0.00 :   232:    je     1f0 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x170>
+    0.00 :   234:    mov    %eax,%ebx
+    0.00 :   236:    cmp    $0xfffffffe,%eax
+    0.00 :   239:    je     1f0 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x170>
+    0.00 :   23b:    jmp    2e6 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x266>
+    0.00 :   240:    xor    %r12d,%r12d
+    0.00 :   243:    cmp    $0x1,%rbx
+    0.00 :   247:    ja     266 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1e6>
+    0.00 :   249:    jmp    2b2 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x232>
+    0.00 :   24b:    nopl   0x0(%rax,%rax,1)
+    0.00 :   250:    cmpb   $0x0,0xf(%rsp)
+    0.00 :   255:    setne  (%r15,%r12,1)
+    0.00 :   25a:    inc    %r12
+    0.00 :   25d:    cmp    %r12,%rbp
+    0.00 :   260:    je     2f7 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x277>
+    0.00 :   266:    xor    %edx,%edx
+    0.00 :   268:    cmpb   $0x0,(%r14)
+    0.00 :   26c:    setne  %dl
+    0.00 :   26f:    xor    %ecx,%ecx
+    0.00 :   271:    cmpb   $0x0,0x0(%r13,%r12,1)
+    0.00 :   277:    setne  %cl
+    0.00 :   27a:    lea    0xf(%rsp),%rdi
+    0.00 :   27f:    lea    0x10(%rsp),%rsi
+    0.00 :   284:    movabs $0x0,%rax
+    0.00 :   28e:    call   *%rax
+    0.00 :   290:    test   %eax,%eax
+    0.00 :   292:    je     250 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1d0>
+    0.00 :   294:    mov    %eax,%ebx
+    0.00 :   296:    cmp    $0xfffffffe,%eax
+    0.00 :   299:    je     250 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1d0>
+    0.00 :   29b:    jmp    2e6 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x266>
+    0.00 :   29d:    nopl   (%rax)
+    0.00 :   2a0:    cmpb   $0x0,0xf(%rsp)
+    0.00 :   2a5:    setne  (%r15,%r12,1)
+    0.00 :   2aa:    inc    %r12
+    0.00 :   2ad:    cmp    %r12,%rbp
+    0.00 :   2b0:    je     2f7 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x277>
+    0.00 :   2b2:    xor    %edx,%edx
+    0.00 :   2b4:    cmpb   $0x0,(%r14)
+    0.00 :   2b8:    setne  %dl
+    0.00 :   2bb:    xor    %ecx,%ecx
+    0.00 :   2bd:    cmpb   $0x0,0x0(%r13)
+    0.00 :   2c2:    setne  %cl
+    0.00 :   2c5:    lea    0xf(%rsp),%rdi
+    0.00 :   2ca:    lea    0x10(%rsp),%rsi
+    0.00 :   2cf:    movabs $0x0,%rax
+    0.00 :   2d9:    call   *%rax
+    0.00 :   2db:    cmp    $0xfffffffe,%eax
+    0.00 :   2de:    je     2a0 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x220>
+    0.00 :   2e0:    mov    %eax,%ebx
+    0.00 :   2e2:    test   %eax,%eax
+    0.00 :   2e4:    je     2a0 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x220>
+    0.00 :   2e6:    mov    0x18(%rsp),%rax
+    0.00 :   2eb:    movq   $0x0,(%rax)
+    0.00 :   2f2:    jmp    386 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x306>
+    0.00 :   2f7:    mov    0x40(%rsp),%r12
+    2.03 :   2fc:    mov    %r12,%rdi // original_numba_debug.py:7
+    0.00 :   2ff:    movabs $0x0,%rax
+    0.00 :   309:    call   *%rax
+    1.43 :   30b:    movq   $0x0,0x20(%rsp)
+    0.00 :   314:    sub    $0x8,%rsp
+    0.00 :   318:    movabs $0x0,%rax
+    0.00 :   322:    xor    %ebx,%ebx
+    2.24 :   324:    lea    0x28(%rsp),%rdi
+    0.00 :   329:    lea    0x58(%rsp),%rsi
+    0.00 :   32e:    mov    $0x1,%r9d
+    0.00 :   334:    mov    %r12,%rdx
+    3.46 :   337:    xor    %ecx,%ecx // original_numba_debug.py:0
+    0.00 :   339:    mov    %rbp,%r8
+    0.00 :   33c:    push   $0x1
+    0.00 :   33e:    push   %rbp
+    1.22 :   33f:    push   %r15 // original_numba_debug.py:7
+    0.00 :   341:    call   *%rax
+    0.00 :   343:    add    $0x20,%rsp
+    0.00 :   347:    cmp    $0xfffffffe,%eax
+    0.00 :   34a:    je     350 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2d0>
+    0.00 :   34c:    test   %eax,%eax
+    0.00 :   34e:    jne    39f <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x31f>
+    0.00 :   350:    mov    0x20(%rsp),%r14
+    2.04 :   355:    movabs $0x0,%r15
+    0.00 :   35f:    mov    0xa8(%rsp),%rdi
+    0.00 :   367:    call   *%r15
+    2.24 :   36a:    mov    0x38(%rsp),%rdi
+    0.00 :   36f:    call   *%r15
+    2.65 :   372:    mov    %r12,%rdi
+    0.00 :   375:    call   *%r15
+    2.65 :   378:    mov    %r12,%rdi
+    0.00 :   37b:    call   *%r15
+    0.00 :   37e:    mov    0x48(%rsp),%rax
+    0.00 :   383:    mov    %r14,(%rax)
+    0.00 :   386:    mov    %ebx,%eax
+    0.00 :   388:    add    $0x58,%rsp
+    0.00 :   38c:    pop    %rbx
+    0.00 :   38d:    pop    %r12
+    0.00 :   38f:    pop    %r13
+    1.83 :   391:    pop    %r14
+    0.00 :   393:    pop    %r15
+    0.00 :   395:    pop    %rbp
+    0.00 :   396:    ret
+    0.00 :   397:    mov    %rcx,(%r14)
+    0.00 :   39a:    jmp    f9 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x79>
+    0.00 :   39f:    mov    0x18(%rsp),%rcx
+    0.00 :   3a4:    movq   $0x0,(%rcx)
+    0.00 :   3ab:    mov    %eax,%ebx
+    0.00 :   3ad:    jmp    386 <shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x306>
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-25.so
+----------------------------------------------
+
+  100.00 ??:0
+ Percent |	Source code & Disassembly of jitted-920379-25.so for cpu_core/cycles/u (277 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <_3cdynamic_3e::__numba_array_expr_0x773204d0ede0[abi:v11][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsmjfC9LThggeGLFtVQlYhUhSSAmlJgEkUQ0zUB](bool, bool)>:
+   52.30 :   80:     endbr64 // ??:0
+    0.00 :   84:     test   %dl,%dl
+    0.00 :   86:     setne  %al
+    0.00 :   89:     test   %cl,%cl
+    0.00 :   8b:     setne  %cl
+    0.00 :   8e:     xor    %al,%cl
+    0.00 :   90:     mov    %cl,(%rdi)
+    0.00 :   92:     xor    %eax,%eax
+   47.70 :   94:     ret
+
+Sorted summary for file /tmp/shap-bench-venv/lib/python3.12/site-packages/numba/core/runtime/_nrt_python.cpython-312-x86_64-linux-gnu.so
+----------------------------------------------
+
+   71.57 nrt.cpp:177
+   10.51 nrt.cpp:338
+    5.45 nrt.cpp:321
+    3.51 nrt.cpp:170
+    3.50 nrt.cpp:531
+    3.50 nrt.cpp:329
+    1.95 nrt.cpp:174
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (257 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000004200 <NRT_MemInfo_alloc_aligned>:
+    3.50 :   4200:   push   %rbp // nrt.cpp:329
+    0.00 :   4201:   mov    %rdi,%rbp
+    0.00 :   4204:   push   %rbx
+    0.00 :   4205:   mov    %esi,%ebx
+    0.00 :   4207:   lea    (%rbx,%rbx,1),%eax
+    0.00 :   420a:   lea    0x30(%rdi,%rax,1),%rdi
+    0.00 :   420f:   sub    $0x8,%rsp
+    0.00 :   4213:   call   *0x44d7(%rip)        # 86f0 <TheMSys+0x30>
+    0.00 :   4219:   cmpb   $0x0,0x44a8(%rip)        # 86c8 <TheMSys+0x8>
+    0.00 :   4220:   mov    %rax,%r8
+    3.50 :   4223:   jne    42a0 <NRT_MemInfo_alloc_aligned+0xa0> // nrt.cpp:531
+    0.00 :   4225:   test   %r8,%r8
+    0.00 :   4228:   je     428b <NRT_MemInfo_alloc_aligned+0x8b>
+    0.00 :   422a:   mov    %r8,%rcx
+    0.00 :   422d:   add    $0x30,%rcx
+    0.00 :   4231:   je     42b0 <NRT_MemInfo_alloc_aligned+0xb0>
+    0.00 :   4233:   lea    -0x1(%rbx),%edx
+    0.00 :   4236:   test   %edx,%ebx
+    0.00 :   4238:   je     4298 <NRT_MemInfo_alloc_aligned+0x98>
+    0.00 :   423a:   mov    %ebx,%esi
+    0.00 :   423c:   mov    %rcx,%rax
+    0.00 :   423f:   xor    %edx,%edx
+    0.00 :   4241:   div    %rsi
+    5.45 :   4244:   test   %rdx,%rdx // nrt.cpp:321
+    0.00 :   4247:   je     4251 <NRT_MemInfo_alloc_aligned+0x51>
+    0.00 :   4249:   sub    %rdx,%rbx
+    0.00 :   424c:   add    %rbx,%rcx
+    0.00 :   424f:   je     42b0 <NRT_MemInfo_alloc_aligned+0xb0>
+    0.00 :   4251:   mov    $0x1,%eax
+    0.00 :   4256:   xchg   %rax,(%r8)
+   71.57 :   4259:   cmpb   $0x0,0x4468(%rip)        # 86c8 <TheMSys+0x8> // nrt.cpp:177
+    3.51 :   4260:   movq   $0x0,0x8(%r8) // nrt.cpp:170
+    0.00 :   4268:   movq   $0x0,0x10(%r8)
+    0.00 :   4270:   mov    %rcx,0x18(%r8)
+    0.00 :   4274:   mov    %rbp,0x20(%r8)
+    1.95 :   4278:   movq   $0x0,0x28(%r8) // nrt.cpp:174
+    0.00 :   4280:   je     428b <NRT_MemInfo_alloc_aligned+0x8b>
+    0.00 :   4282:   lock addq $0x1,0x4455(%rip)        # 86e0 <TheMSys+0x20>
+    4.28 :   428b:   add    $0x8,%rsp // nrt.cpp:338
+    0.00 :   428f:   mov    %r8,%rax
+    0.00 :   4292:   pop    %rbx
+    0.00 :   4293:   pop    %rbp
+    6.23 :   4294:   ret
+    0.00 :   4295:   nopl   (%rax)
+    0.00 :   4298:   and    %ecx,%edx
+    0.00 :   429a:   jmp    4244 <NRT_MemInfo_alloc_aligned+0x44>
+    0.00 :   429c:   nopl   0x0(%rax)
+    0.00 :   42a0:   lock addq $0x1,0x4427(%rip)        # 86d0 <TheMSys+0x10>
+    0.00 :   42a9:   jmp    4225 <NRT_MemInfo_alloc_aligned+0x25>
+    0.00 :   42ae:   xchg   %ax,%ax
+    0.00 :   42b0:   xor    %r8d,%r8d
+    0.00 :   42b3:   jmp    428b <NRT_MemInfo_alloc_aligned+0x8b>
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-36.so
+----------------------------------------------
+
+   25.30 original_numba_debug.py:23
+   19.88 original_numba_debug.py:21
+   19.28 original_numba_debug.py:20
+    9.03 original_numba_debug.py:24
+    7.23 original_numba_debug.py:26
+    7.23 original_numba_debug.py:19
+    6.03 ??:0
+    6.02 original_numba_debug.py:0
+ Percent |	Source code & Disassembly of jitted-920379-36.so for cpu_core/cycles/u (166 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)>:
+    3.02 :    80:     endbr64 // ??:0
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     sub    $0x98,%rsp
+    2.41 :    95:     mov    %r9,0x10(%rsp)
+    0.00 :    9a:     mov    %rcx,0x18(%rsp)
+    0.00 :    9f:     mov    %rdx,%r14
+    0.00 :    a2:     mov    %rsi,0x8(%rsp)
+    0.00 :    a7:     mov    %rdi,0x80(%rsp)
+    0.00 :    af:     mov    0x130(%rsp),%r15
+    0.60 :    b7:     mov    0x118(%rsp),%rbp
+    0.00 :    bf:     mov    0xf8(%rsp),%r13
+         : 22  order[start + i] = order[start + length - i - 1]
+         : 23  order[start + length - i - 1] = tmp
+         :
+         :
+         : 26  @njit
+         : 27  def _reverse_window_score_gain(masks, order, start, length):
+    0.60 :    c7:     mov    0xe0(%rsp),%r12 // original_numba_debug.py:19
+    0.00 :    cf:     movq   $0x0,0x60(%rsp)
+    0.00 :    d8:     movq   $0x0,0x50(%rsp)
+    0.00 :    e1:     movq   $0x0,0x40(%rsp)
+    0.00 :    ea:     movq   $0x0,0x30(%rsp)
+    0.00 :    f3:     movabs $0x0,%rbx
+    0.00 :    fd:     mov    %rdx,%rdi
+    0.00 :   100:    call   *%rbx
+    1.21 :   102:    mov    %r13,%rdi
+    0.00 :   105:    call   *%rbx
+    1.80 :   107:    xor    %eax,%eax
+    0.00 :   109:    test   %r15,%r15
+    0.00 :   10c:    cmovle 0x120(%rsp),%rax
+    0.00 :   115:    lea    0x0(%rbp,%r15,8),%rbp
+    1.81 :   11a:    mov    %rax,0x90(%rsp)
+    0.00 :   122:    mov    -0x8(%rbp,%rax,8),%rax
+    0.00 :   127:    mov    %rax,%r13
+    0.00 :   12a:    sar    $0x3f,%r13
+    1.21 :   12e:    and    0xd8(%rsp),%r13
+    0.00 :   136:    add    %rax,%r13
+    0.00 :   139:    imul   %r12,%r13
+    0.00 :   13d:    add    0xd0(%rsp),%r13
+    0.60 :   145:    mov    %r14,%rdi
+    0.00 :   148:    call   *%rbx
+         : 52  forward_score = _mask_delta_score(masks[order[start - 1]], masks[order[start]]) + _mask_delta_score(
+    1.81 :   14a:    mov    %r15,%rax // original_numba_debug.py:20
+    0.00 :   14d:    sar    $0x3f,%rax
+    0.00 :   151:    and    0x120(%rsp),%rax
+    0.00 :   159:    mov    %rbp,0x28(%rsp)
+    0.00 :   15e:    mov    %rax,0x88(%rsp)
+    0.00 :   166:    mov    0x0(%rbp,%rax,8),%rax
+    0.00 :   16b:    mov    %rax,%rbp
+    0.00 :   16e:    sar    $0x3f,%rbp
+    1.81 :   172:    and    0xd8(%rsp),%rbp
+    0.00 :   17a:    add    %rax,%rbp
+    0.00 :   17d:    imul   %r12,%rbp
+    0.00 :   181:    add    0xd0(%rsp),%rbp
+    3.02 :   189:    mov    %r14,%rdi
+    0.00 :   18c:    call   *%rbx
+    0.60 :   18e:    movq   $0x0,0x68(%rsp)
+    0.00 :   197:    movabs $0x0,%rax
+    0.00 :   1a1:    lea    0x68(%rsp),%rdi
+    0.00 :   1a6:    lea    0x60(%rsp),%rsi
+    0.60 :   1ab:    mov    %r14,%rdx
+    0.00 :   1ae:    mov    0x18(%rsp),%rcx
+    0.00 :   1b3:    mov    %r12,%r8
+    0.00 :   1b6:    mov    0x10(%rsp),%r9
+    0.60 :   1bb:    mov    0xf0(%rsp),%r11
+    0.00 :   1c3:    push   %r11
+    0.00 :   1c5:    push   %r12
+    0.00 :   1c7:    push   %rbp
+    1.81 :   1c8:    push   %r9
+    0.00 :   1ca:    push   %r12
+    0.00 :   1cc:    push   %rcx
+    0.00 :   1cd:    push   %r14
+    0.00 :   1cf:    push   %r11
+    0.00 :   1d1:    push   %r12
+    0.00 :   1d3:    push   %r13
+    0.00 :   1d5:    call   *%rax
+    0.00 :   1d7:    add    $0x50,%rsp
+    0.00 :   1db:    test   %eax,%eax
+    0.00 :   1dd:    jne    4ef <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x46f>
+    0.00 :   1e3:    mov    0x68(%rsp),%rax
+    0.00 :   1e8:    mov    %rax,0x78(%rsp)
+    3.02 :   1ed:    add    0x138(%rsp),%r15
+    0.00 :   1f5:    xor    %r13d,%r13d
+    0.00 :   1f8:    test   %r15,%r15
+    0.00 :   1fb:    mov    0x120(%rsp),%rax
+    0.00 :   203:    cmovle %rax,%r13
+    0.00 :   207:    mov    0x118(%rsp),%rax
+    0.00 :   20f:    lea    (%rax,%r15,8),%rbx
+    0.00 :   213:    mov    -0x8(%rbx,%r13,8),%rax
+    1.81 :   218:    mov    %rax,%rbp
+    0.00 :   21b:    sar    $0x3f,%rbp
+    0.00 :   21f:    mov    0xd8(%rsp),%rcx
+    0.00 :   227:    and    %rcx,%rbp
+    0.00 :   22a:    add    %rax,%rbp
+         : 105 masks[order[start + length - 1]], masks[order[start + length]]
+    0.00 :   22d:    imul   %r12,%rbp
+    0.00 :   231:    mov    0xd0(%rsp),%rax
+    0.00 :   239:    add    %rax,%rbp
+    1.80 :   23c:    mov    %r14,%rdi // original_numba_debug.py:21
+    0.00 :   23f:    movabs $0x0,%r12
+    0.00 :   249:    call   *%r12
+    3.62 :   24c:    sar    $0x3f,%r15
+    0.00 :   250:    and    0x120(%rsp),%r15
+    0.00 :   258:    mov    %rbx,0x20(%rsp)
+    0.00 :   25d:    mov    (%rbx,%r15,8),%rax
+    1.81 :   261:    mov    %rax,%rbx
+    0.00 :   264:    sar    $0x3f,%rbx
+    0.00 :   268:    and    0xd8(%rsp),%rbx
+    0.00 :   270:    add    %rax,%rbx
+    1.21 :   273:    imul   0xe0(%rsp),%rbx
+    0.00 :   27c:    add    0xd0(%rsp),%rbx
+    0.00 :   284:    mov    %r14,%rdi
+    0.00 :   287:    call   *%r12
+    3.01 :   28a:    mov    0xe0(%rsp),%r12
+    0.00 :   292:    movq   $0x0,0x58(%rsp)
+    0.00 :   29b:    lea    0x58(%rsp),%rdi
+    0.00 :   2a0:    lea    0x50(%rsp),%rsi
+    1.21 :   2a5:    mov    %r14,%rdx
+    0.00 :   2a8:    mov    0x18(%rsp),%rcx
+    0.00 :   2ad:    mov    %r12,%r8
+    0.00 :   2b0:    mov    0x10(%rsp),%r9
+    2.41 :   2b5:    mov    0xf0(%rsp),%rax
+    0.00 :   2bd:    push   %rax
+    0.00 :   2be:    push   %r12
+    0.00 :   2c0:    push   %rbx
+    1.81 :   2c1:    push   %r9
+    0.00 :   2c3:    push   %r12
+    0.00 :   2c5:    push   %rcx
+    0.00 :   2c6:    push   %r14
+    3.01 :   2c8:    push   %rax
+    0.00 :   2c9:    push   %r12
+    0.00 :   2cb:    push   %rbp
+    0.00 :   2cc:    movabs $0x0,%rax
+         : 144 forward_score = _mask_delta_score(masks[order[start - 1]], masks[order[start]]) + _mask_delta_score(
+    0.00 :   2d6:    call   *%rax
+    0.00 :   2d8:    add    $0x50,%rsp
+    0.00 :   2dc:    test   %eax,%eax
+    0.00 :   2de:    jne    4f6 <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x476>
+    0.00 :   2e4:    mov    0x58(%rsp),%rax
+    0.00 :   2e9:    mov    %rax,0x70(%rsp)
+    3.01 :   2ee:    mov    0x90(%rsp),%rax // original_numba_debug.py:20
+    0.00 :   2f6:    mov    0x28(%rsp),%rcx
+    0.00 :   2fb:    mov    -0x8(%rcx,%rax,8),%rax
+    0.00 :   300:    mov    %rax,%rbp
+    0.00 :   303:    sar    $0x3f,%rbp
+    0.00 :   307:    mov    0xd8(%rsp),%rcx
+    0.00 :   30f:    and    %rcx,%rbp
+    0.00 :   312:    add    %rax,%rbp
+    1.20 :   315:    imul   %r12,%rbp
+    0.00 :   319:    mov    0xd0(%rsp),%rax
+    0.00 :   321:    add    %rax,%rbp
+    0.00 :   324:    mov    %r14,%rdi
+    0.00 :   327:    movabs $0x0,%rbx
+    0.00 :   331:    call   *%rbx
+    1.81 :   333:    mov    %rbx,%rcx // original_numba_debug.py:0
+    0.00 :   336:    mov    0x20(%rsp),%rax
+         : 167 )
+         : 168 reverse_score = _mask_delta_score(masks[order[start - 1]], masks[order[start + length - 1]]) + _mask_delta_score(
+    0.00 :   33b:    mov    -0x8(%rax,%r13,8),%rax
+    0.00 :   340:    mov    %rax,%rbx
+    1.81 :   343:    sar    $0x3f,%rbx // original_numba_debug.py:23
+    0.00 :   347:    and    0xd8(%rsp),%rbx
+    0.00 :   34f:    add    %rax,%rbx
+    0.00 :   352:    imul   %r12,%rbx
+    1.20 :   356:    add    0xd0(%rsp),%rbx
+    0.00 :   35e:    mov    %r14,%rdi
+    0.00 :   361:    call   *%rcx
+    0.60 :   363:    movq   $0x0,0x48(%rsp)
+    0.00 :   36c:    lea    0x48(%rsp),%rdi
+    0.00 :   371:    lea    0x40(%rsp),%rsi
+    0.00 :   376:    mov    %r14,%rdx
+    1.81 :   379:    mov    0x18(%rsp),%rcx
+    0.00 :   37e:    mov    %r12,%r8
+    0.00 :   381:    mov    0x10(%rsp),%r9
+    0.00 :   386:    mov    0xf0(%rsp),%rax
+    1.21 :   38e:    push   %rax
+    0.00 :   38f:    push   %r12
+    0.00 :   391:    push   %rbx
+    0.00 :   392:    push   %r9
+    3.61 :   394:    push   %r12
+    0.00 :   396:    push   %rcx
+    0.00 :   397:    push   %r14
+    0.00 :   399:    push   %rax
+    1.21 :   39a:    push   %r12
+    0.00 :   39c:    push   %rbp
+    0.00 :   39d:    movabs $0x0,%rax
+    0.00 :   3a7:    call   *%rax
+    0.00 :   3a9:    add    $0x50,%rsp
+    0.00 :   3ad:    test   %eax,%eax
+    0.00 :   3af:    jne    4fd <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x47d>
+    0.00 :   3b5:    mov    0x48(%rsp),%r13
+    0.00 :   3ba:    mov    0x88(%rsp),%rax
+    2.41 :   3c2:    mov    0x28(%rsp),%rcx
+    0.00 :   3c7:    mov    (%rcx,%rax,8),%rax
+    0.00 :   3cb:    mov    %rax,%rbx
+    0.00 :   3ce:    sar    $0x3f,%rbx
+    0.00 :   3d2:    mov    0xd8(%rsp),%rcx
+    0.00 :   3da:    and    %rcx,%rbx
+    0.00 :   3dd:    add    %rax,%rbx
+    0.00 :   3e0:    imul   %r12,%rbx
+    1.21 :   3e4:    mov    0xd0(%rsp),%rax
+    0.00 :   3ec:    add    %rax,%rbx
+    0.00 :   3ef:    mov    %r14,%rdi
+    0.00 :   3f2:    movabs $0x0,%rbp
+    0.00 :   3fc:    call   *%rbp
+    1.80 :   3fe:    mov    0x20(%rsp),%rax // original_numba_debug.py:0
+    0.00 :   403:    mov    (%rax,%r15,8),%rax
+         : 218 masks[order[start]], masks[order[start + length]]
+    0.00 :   407:    mov    %rax,%r15
+    0.00 :   40a:    sar    $0x3f,%r15
+    1.20 :   40e:    and    0xd8(%rsp),%r15 // original_numba_debug.py:24
+    0.00 :   416:    add    %rax,%r15
+    0.00 :   419:    imul   %r12,%r15
+    0.00 :   41d:    add    0xd0(%rsp),%r15
+    0.60 :   425:    mov    %r14,%rdi
+    0.00 :   428:    call   *%rbp
+    1.21 :   42a:    movq   $0x0,0x38(%rsp)
+    0.00 :   433:    lea    0x38(%rsp),%rdi
+    0.00 :   438:    lea    0x30(%rsp),%rsi
+    0.00 :   43d:    mov    %r14,%rdx
+    1.20 :   440:    mov    0x18(%rsp),%rcx
+    0.00 :   445:    mov    %r12,%r8
+    0.00 :   448:    mov    0x10(%rsp),%r9
+    0.00 :   44d:    mov    0xf0(%rsp),%rax
+    1.20 :   455:    push   %rax
+    0.00 :   456:    push   %r12
+    0.00 :   458:    push   %r15
+    0.00 :   45a:    push   %r9
+    1.21 :   45c:    push   %r12
+    0.00 :   45e:    push   %rcx
+    0.00 :   45f:    push   %r14
+    0.00 :   461:    push   %rax
+    2.41 :   462:    push   %r12
+    0.00 :   464:    push   %rbx
+    0.00 :   465:    movabs $0x0,%rax
+         : 246 reverse_score = _mask_delta_score(masks[order[start - 1]], masks[order[start + length - 1]]) + _mask_delta_score(
+    0.00 :   46f:    call   *%rax
+    0.00 :   471:    add    $0x50,%rsp
+    0.00 :   475:    test   %eax,%eax
+    0.00 :   477:    jne    504 <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x484>
+    0.00 :   47d:    mov    0x70(%rsp),%r15
+    0.00 :   482:    add    0x78(%rsp),%r15
+    1.20 :   487:    add    0x38(%rsp),%r13 // original_numba_debug.py:23
+    0.00 :   48c:    sub    %r13,%r15
+    0.00 :   48f:    movabs $0x0,%rbx
+    0.00 :   499:    mov    %r14,%rdi
+    0.00 :   49c:    call   *%rbx
+    1.81 :   49e:    mov    %r14,%rdi
+    0.00 :   4a1:    call   *%rbx
+    1.21 :   4a3:    mov    %r14,%rdi
+    0.00 :   4a6:    call   *%rbx
+    1.21 :   4a8:    mov    %r14,%rdi
+    0.00 :   4ab:    call   *%rbx
+    1.20 :   4ad:    mov    %r14,%rdi
+    0.00 :   4b0:    call   *%rbx
+    1.81 :   4b2:    mov    %r14,%rdi
+    0.00 :   4b5:    call   *%rbx
+    1.81 :   4b7:    mov    0xf8(%rsp),%rdi
+    0.00 :   4bf:    call   *%rbx
+    2.41 :   4c1:    mov    %r14,%rdi // original_numba_debug.py:0
+         : 271 )
+         : 272 return forward_score - reverse_score
+    0.00 :   4c4:    call   *%rbx
+    1.21 :   4c6:    mov    %r14,%rdi // original_numba_debug.py:26
+    0.00 :   4c9:    call   *%rbx
+    0.60 :   4cb:    mov    %r14,%rdi
+    0.00 :   4ce:    call   *%rbx
+    0.00 :   4d0:    mov    0x80(%rsp),%rax
+    0.00 :   4d8:    mov    %r15,(%rax)
+    0.00 :   4db:    xor    %eax,%eax
+    0.00 :   4dd:    add    $0x98,%rsp
+    0.60 :   4e4:    pop    %rbx
+    0.00 :   4e5:    pop    %r12
+    0.00 :   4e7:    pop    %r13
+    0.00 :   4e9:    pop    %r14
+    4.82 :   4eb:    pop    %r15
+    0.00 :   4ed:    pop    %rbp
+    0.00 :   4ee:    ret
+    0.00 :   4ef:    mov    0x60(%rsp),%rcx
+    0.00 :   4f4:    jmp    509 <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x489>
+    0.00 :   4f6:    mov    0x50(%rsp),%rcx
+    0.00 :   4fb:    jmp    509 <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x489>
+    0.00 :   4fd:    mov    0x40(%rsp),%rcx
+    0.00 :   502:    jmp    509 <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x489>
+    0.00 :   504:    mov    0x30(%rsp),%rcx
+    0.00 :   509:    mov    0x8(%rsp),%rdx
+    0.00 :   50e:    mov    %rcx,(%rdx)
+    0.00 :   511:    jmp    4dd <shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x45d>
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-27.so
+----------------------------------------------
+
+   76.35 arraymath.py:565
+   23.65 ??:0
+ Percent |	Source code & Disassembly of jitted-920379-27.so for cpu_core/cycles/u (93 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)>:
+   12.90 :    80:     endbr64 // ??:0
+    0.00 :    84:     mov    0x10(%rsp),%r8
+    0.00 :    89:     test   %r8,%r8
+    0.00 :    8c:     jle    141 <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)+0xc1>
+    0.00 :    92:     mov    0x18(%rsp),%rax
+    0.00 :    97:     mov    0x8(%rsp),%rsi
+    0.00 :    9c:     mov    %r8d,%ecx
+    0.00 :    9f:     and    $0x7,%ecx
+    0.00 :    a2:     cmp    $0x8,%r8
+    0.00 :    a6:     jb     13d <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)+0xbd>
+   10.74 :    ac:     movabs $0x7ffffffffffffff8,%rdx
+    0.00 :    b6:     and    %rdx,%r8
+    0.00 :    b9:     xor    %edx,%edx
+    0.00 :    bb:     lea    (%rax,%rax,1),%r9
+    0.00 :    bf:     nop
+         : 21  "NumPy sum only suppports integer axis value"
+         : 22  )
+         : 23  if isinstance(a, types.Array):
+         : 24  axis_length = 1
+         : 25  if is_nonelike(axis) or a.ndim == axis_length:
+         : 26  def array_sum_impl(a, axis=None, dtype=None):
+    0.00 :    c0:     cmpb   $0x1,(%rsi)
+    0.00 :    c3:     sbb    $0xffffffffffffffff,%rdx
+    0.00 :    c7:     lea    (%rsi,%rax,1),%r10
+         : 30  if axis is not None and (axis < -a.ndim or axis >= a.ndim):
+         : 31  raise ValueError(
+         : 32  f"axis {axis} is out of bounds for "
+         : 33  f"array of dimension {a.ndim}"
+         : 34  )
+         : 35  return _numpy_sum(a, axis, dtype)
+   13.98 :    cb:     cmpb   $0x1,(%rsi,%rax,1) // arraymath.py:565
+    0.00 :    cf:     sbb    $0xffffffffffffffff,%rdx
+    0.00 :    d3:     lea    (%r10,%rax,1),%rsi
+    0.00 :    d7:     cmpb   $0x1,(%rax,%r10,1)
+    0.00 :    dc:     sbb    $0xffffffffffffffff,%rdx
+    0.00 :    e0:     lea    (%rsi,%rax,1),%r10
+    9.68 :    e4:     cmpb   $0x1,(%rax,%rsi,1)
+    0.00 :    e8:     sbb    $0xffffffffffffffff,%rdx
+    0.00 :    ec:     lea    (%r10,%rax,1),%rsi
+    0.00 :    f0:     cmpb   $0x1,(%rax,%r10,1)
+    0.00 :    f5:     sbb    $0xffffffffffffffff,%rdx
+    0.00 :    f9:     lea    (%rsi,%rax,1),%r10
+   13.99 :    fd:     cmpb   $0x1,(%rax,%rsi,1)
+    0.00 :   101:    sbb    $0xffffffffffffffff,%rdx
+    0.00 :   105:    lea    (%r10,%rax,1),%rsi
+    0.00 :   109:    cmpb   $0x1,(%rax,%r10,1)
+    0.00 :   10e:    sbb    $0xffffffffffffffff,%rdx
+    0.00 :   112:    cmpb   $0x1,(%rax,%rsi,1)
+   12.90 :   116:    sbb    $0xffffffffffffffff,%rdx
+    0.00 :   11a:    add    %r9,%rsi
+    0.00 :   11d:    add    $0xfffffffffffffff8,%r8
+    0.00 :   121:    jne    c0 <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)+0x40>
+    0.00 :   123:    test   %rcx,%rcx
+    0.00 :   126:    je     137 <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)+0xb7>
+    0.00 :   128:    cmpb   $0x1,(%rsi)
+    0.00 :   12b:    sbb    $0xffffffffffffffff,%rdx
+    0.00 :   12f:    add    %rax,%rsi
+   25.80 :   132:    dec    %rcx
+    0.00 :   135:    jne    128 <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)+0xa8>
+    0.00 :   137:    mov    %rdx,(%rdi)
+    0.00 :   13a:    xor    %eax,%eax
+    0.00 :   13c:    ret
+    0.00 :   13d:    xor    %edx,%edx
+    0.00 :   13f:    jmp    128 <numba::np::arraymath::array_sum::_3clocals_3e::array_sum_impl[abi:v13][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](Array<bool, 1, C, mutable, aligned>, omitted_28default_3dNone_29, omitted_28default_3dNone_29)+0xa8>
+    0.00 :   141:    xor    %edx,%edx
+    0.00 :   143:    mov    %rdx,(%rdi)
+    0.00 :   146:    xor    %eax,%eax
+    0.00 :   148:    ret
+
+Sorted summary for file /usr/lib/x86_64-linux-gnu/libc.so.6
+----------------------------------------------
+
+   27.28 malloc.c:3316
+   21.81 malloc.c:1345
+   20.00 malloc.c:3294
+   19.99 malloc.c:3354
+   10.92 malloc.c:3186
+ Percent |	Source code & Disassembly of libc.so.6 for cpu_core/cycles/u (55 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ad750 <__libc_malloc>:
+    0.00 :   ad750:  endbr64
+    0.00 :   ad754:  push   %rbp
+    0.00 :   ad755:  mov    %rsp,%rbp
+    0.00 :   ad758:  push   %r13
+    0.00 :   ad75a:  push   %r12
+   20.00 :   ad75c:  push   %rbx // malloc.c:3294
+    0.00 :   ad75d:  mov    %rdi,%rbx
+    0.00 :   ad760:  sub    $0x18,%rsp
+    0.00 :   ad764:  cmpb   $0x0,0x15da1d(%rip)        # 20b188 <__malloc_initialized>
+    0.00 :   ad76b:  je     ad960 <__libc_malloc+0x210>
+    0.00 :   ad771:  test   %rbx,%rbx
+    0.00 :   ad774:  js     ad96e <__libc_malloc+0x21e>
+    0.00 :   ad77a:  lea    0x17(%rbx),%rax
+   21.81 :   ad77e:  xor    %r12d,%r12d // malloc.c:1345
+    0.00 :   ad781:  cmp    $0x1f,%rax
+    0.00 :   ad785:  jbe    ad793 <__libc_malloc+0x43>
+    0.00 :   ad787:  and    $0xfffffffffffffff0,%rax
+    0.00 :   ad78b:  lea    -0x11(%rax),%r12
+    0.00 :   ad78f:  shr    $0x4,%r12
+    0.00 :   ad793:  mov    0x1565fe(%rip),%r13        # 203d98 <_GLOBAL_OFFSET_TABLE_+0x218>
+    0.00 :   ad79a:  mov    %fs:0x0(%r13),%rdx
+    0.00 :   ad79f:  test   %rdx,%rdx
+    0.00 :   ad7a2:  je     ad860 <__libc_malloc+0x110>
+   27.28 :   ad7a8:  cmp    0x156a39(%rip),%r12        # 2041e8 <mp_+0x68> // malloc.c:3316
+    0.00 :   ad7af:  jb     ad898 <__libc_malloc+0x148>
+    0.00 :   ad7b5:  cmpb   $0x0,0x15e884(%rip)        # 20c040 <__libc_single_threaded>
+    0.00 :   ad7bc:  jne    ad8e0 <__libc_malloc+0x190>
+    0.00 :   ad7c2:  mov    0x1565c7(%rip),%rax        # 203d90 <_GLOBAL_OFFSET_TABLE_+0x210>
+    0.00 :   ad7c9:  mov    %fs:(%rax),%r12
+    0.00 :   ad7cd:  test   %r12,%r12
+    0.00 :   ad7d0:  je     ad990 <__libc_malloc+0x240>
+    0.00 :   ad7d6:  xor    %eax,%eax
+    0.00 :   ad7d8:  mov    $0x1,%edx
+    0.00 :   ad7dd:  lock cmpxchg %edx,(%r12)
+    0.00 :   ad7e3:  jne    ada18 <__libc_malloc+0x2c8>
+    0.00 :   ad7e9:  mov    %rbx,%rsi
+    0.00 :   ad7ec:  mov    %r12,%rdi
+    0.00 :   ad7ef:  call   ab650 <_int_malloc>
+    0.00 :   ad7f4:  test   %rax,%rax
+    0.00 :   ad7f7:  je     ad9c8 <__libc_malloc+0x278>
+    0.00 :   ad7fd:  xor    %edx,%edx
+    0.00 :   ad7ff:  xchg   %edx,(%r12)
+    0.00 :   ad803:  cmp    $0x1,%edx
+    0.00 :   ad806:  jg     ada28 <__libc_malloc+0x2d8>
+    0.00 :   ad80c:  mov    -0x8(%rax),%rdx
+    0.00 :   ad810:  test   $0x2,%dl
+    0.00 :   ad813:  jne    ad854 <__libc_malloc+0x104>
+    0.00 :   ad815:  and    $0x4,%edx
+    0.00 :   ad818:  lea    0x1572a1(%rip),%rcx        # 204ac0 <main_arena>
+    0.00 :   ad81f:  je     ad84b <__libc_malloc+0xfb>
+    0.00 :   ad821:  mov    0x156988(%rip),%rcx        # 2041b0 <mp_+0x30>
+    0.00 :   ad828:  lea    0x0(,%rcx,4),%rdx
+    0.00 :   ad830:  neg    %rdx
+    0.00 :   ad833:  test   %rcx,%rcx
+    0.00 :   ad836:  mov    $0xfffffffffc000000,%rcx
+    0.00 :   ad83d:  cmove  %rcx,%rdx
+    0.00 :   ad841:  lea    -0x10(%rax),%rcx
+    0.00 :   ad845:  and    %rcx,%rdx
+    0.00 :   ad848:  mov    (%rdx),%rcx
+    0.00 :   ad84b:  cmp    %r12,%rcx
+    0.00 :   ad84e:  jne    ad9f4 <__libc_malloc+0x2a4>
+    0.00 :   ad854:  add    $0x18,%rsp
+    0.00 :   ad858:  pop    %rbx
+    0.00 :   ad859:  pop    %r12
+    0.00 :   ad85b:  pop    %r13
+    0.00 :   ad85d:  pop    %rbp
+    0.00 :   ad85e:  ret
+    0.00 :   ad85f:  nop
+    0.00 :   ad860:  mov    0x156539(%rip),%rax        # 203da0 <_GLOBAL_OFFSET_TABLE_+0x220>
+    0.00 :   ad867:  cmpb   $0x0,%fs:(%rax)
+    0.00 :   ad86b:  jne    ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad871:  call   acef0 <tcache_init.part.0>
+    0.00 :   ad876:  cmp    0x15696b(%rip),%r12        # 2041e8 <mp_+0x68>
+    0.00 :   ad87d:  jae    ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad883:  mov    %fs:0x0(%r13),%rdx
+    0.00 :   ad888:  test   %rdx,%rdx
+    0.00 :   ad88b:  je     ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad891:  nopl   0x0(%rax)
+    0.00 :   ad898:  movzwl (%rdx,%r12,2),%ecx
+    0.00 :   ad89d:  test   %cx,%cx
+    0.00 :   ad8a0:  je     ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad8a6:  lea    0x10(%r12),%rdi
+    0.00 :   ad8ab:  mov    (%rdx,%rdi,8),%rax
+    0.00 :   ad8af:  test   $0xf,%al
+    0.00 :   ad8b1:  jne    ada40 <__libc_malloc+0x2f0>
+   10.92 :   ad8b7:  mov    %rax,%rsi // malloc.c:3186
+    0.00 :   ad8ba:  sub    $0x1,%ecx
+    0.00 :   ad8bd:  shr    $0xc,%rsi
+    0.00 :   ad8c1:  xor    (%rax),%rsi
+    0.00 :   ad8c4:  mov    %rsi,(%rdx,%rdi,8)
+    0.00 :   ad8c8:  mov    %cx,(%rdx,%r12,2)
+    0.00 :   ad8cd:  movq   $0x0,0x8(%rax)
+    0.00 :   ad8d5:  add    $0x18,%rsp
+   19.99 :   ad8d9:  pop    %rbx // malloc.c:3354
+    0.00 :   ad8da:  pop    %r12
+    0.00 :   ad8dc:  pop    %r13
+    0.00 :   ad8de:  pop    %rbp
+    0.00 :   ad8df:  ret
+    0.00 :   ad8e0:  mov    %rbx,%rsi
+    0.00 :   ad8e3:  lea    0x1571d6(%rip),%rbx        # 204ac0 <main_arena>
+    0.00 :   ad8ea:  mov    %rbx,%rdi
+    0.00 :   ad8ed:  call   ab650 <_int_malloc>
+    0.00 :   ad8f2:  test   %rax,%rax
+    0.00 :   ad8f5:  je     ad97c <__libc_malloc+0x22c>
+    0.00 :   ad8fb:  mov    -0x8(%rax),%rdx
+    0.00 :   ad8ff:  test   $0x2,%dl
+    0.00 :   ad902:  jne    ad854 <__libc_malloc+0x104>
+    0.00 :   ad908:  and    $0x4,%edx
+    0.00 :   ad90b:  je     ad854 <__libc_malloc+0x104>
+    0.00 :   ad911:  mov    0x156898(%rip),%rcx        # 2041b0 <mp_+0x30>
+    0.00 :   ad918:  lea    0x0(,%rcx,4),%rdx
+    0.00 :   ad920:  neg    %rdx
+    0.00 :   ad923:  test   %rcx,%rcx
+    0.00 :   ad926:  mov    $0xfffffffffc000000,%rcx
+    0.00 :   ad92d:  cmove  %rcx,%rdx
+    0.00 :   ad931:  lea    -0x10(%rax),%rcx
+    0.00 :   ad935:  and    %rcx,%rdx
+    0.00 :   ad938:  cmp    %rbx,(%rdx)
+    0.00 :   ad93b:  je     ad854 <__libc_malloc+0x104>
+    0.00 :   ad941:  lea    0x125be8(%rip),%rcx        # 1d3530 <__PRETTY_FUNCTION__.1>
+    0.00 :   ad948:  mov    $0xd01,%edx
+    0.00 :   ad94d:  lea    0x11fc55(%rip),%rsi        # 1cd5a9 <null+0xeae>
+    0.00 :   ad954:  lea    0x1257fd(%rip),%rdi        # 1d3158 <__PRETTY_FUNCTION__.1+0xce8>
+    0.00 :   ad95b:  call   3b2f0 <__libc_assert_fail>
+    0.00 :   ad960:  call   a9e50 <ptmalloc_init.part.0>
+    0.00 :   ad965:  test   %rbx,%rbx
+    0.00 :   ad968:  jns    ad77a <__libc_malloc+0x2a>
+    0.00 :   ad96e:  mov    0x156483(%rip),%rax        # 203df8 <_GLOBAL_OFFSET_TABLE_+0x278>
+    0.00 :   ad975:  movl   $0xc,%fs:(%rax)
+    0.00 :   ad97c:  xor    %eax,%eax
+    0.00 :   ad97e:  add    $0x18,%rsp
+    0.00 :   ad982:  pop    %rbx
+    0.00 :   ad983:  pop    %r12
+    0.00 :   ad985:  pop    %r13
+    0.00 :   ad987:  pop    %rbp
+    0.00 :   ad988:  ret
+    0.00 :   ad989:  nopl   0x0(%rax)
+    0.00 :   ad990:  call   a9380 <get_free_list>
+    0.00 :   ad995:  mov    %rax,%r12
+    0.00 :   ad998:  test   %rax,%rax
+    0.00 :   ad99b:  jne    ad7e9 <__libc_malloc+0x99>
+    0.00 :   ad9a1:  xor    %esi,%esi
+    0.00 :   ad9a3:  mov    %rbx,%rdi
+    0.00 :   ad9a6:  call   aa3e0 <arena_get2.part.0>
+    0.00 :   ad9ab:  mov    %rbx,%rsi
+    0.00 :   ad9ae:  mov    %rax,%rdi
+    0.00 :   ad9b1:  mov    %rax,%r12
+    0.00 :   ad9b4:  call   ab650 <_int_malloc>
+    0.00 :   ad9b9:  test   %rax,%rax
+    0.00 :   ad9bc:  jne    ad9e2 <__libc_malloc+0x292>
+    0.00 :   ad9be:  test   %r12,%r12
+    0.00 :   ad9c1:  je     ad9e7 <__libc_malloc+0x297>
+    0.00 :   ad9c3:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ad9c8:  nop
+    0.00 :   ad9c9:  mov    %r12,%rdi
+    0.00 :   ad9cc:  mov    %rbx,%rsi
+    0.00 :   ad9cf:  call   aa8e0 <arena_get_retry>
+    0.00 :   ad9d4:  mov    %rbx,%rsi
+    0.00 :   ad9d7:  mov    %rax,%rdi
+    0.00 :   ad9da:  mov    %rax,%r12
+    0.00 :   ad9dd:  call   ab650 <_int_malloc>
+    0.00 :   ad9e2:  test   %r12,%r12
+    0.00 :   ad9e5:  jne    ada4c <__libc_malloc+0x2fc>
+    0.00 :   ad9e7:  test   %rax,%rax
+    0.00 :   ad9ea:  jne    ad80c <__libc_malloc+0xbc>
+    0.00 :   ad9f0:  xor    %eax,%eax
+    0.00 :   ad9f2:  jmp    ad97e <__libc_malloc+0x22e>
+    0.00 :   ad9f4:  lea    0x125b35(%rip),%rcx        # 1d3530 <__PRETTY_FUNCTION__.1>
+    0.00 :   ad9fb:  mov    $0xd17,%edx
+    0.00 :   ada00:  lea    0x11fba2(%rip),%rsi        # 1cd5a9 <null+0xeae>
+    0.00 :   ada07:  lea    0x1257b2(%rip),%rdi        # 1d31c0 <__PRETTY_FUNCTION__.1+0xd50>
+    0.00 :   ada0e:  call   3b2f0 <__libc_assert_fail>
+    0.00 :   ada13:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ada18:  mov    %r12,%rdi
+    0.00 :   ada1b:  call   98fc0 <__lll_lock_wait_private>
+    0.00 :   ada20:  jmp    ad7e9 <__libc_malloc+0x99>
+    0.00 :   ada25:  nopl   (%rax)
+    0.00 :   ada28:  mov    %r12,%rdi
+    0.00 :   ada2b:  mov    %rax,-0x28(%rbp)
+    0.00 :   ada2f:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ada34:  mov    -0x28(%rbp),%rax
+    0.00 :   ada38:  jmp    ad80c <__libc_malloc+0xbc>
+    0.00 :   ada3d:  nopl   (%rax)
+    0.00 :   ada40:  lea    0x125491(%rip),%rdi        # 1d2ed8 <__PRETTY_FUNCTION__.1+0xa68>
+    0.00 :   ada47:  call   a90c0 <malloc_printerr>
+    0.00 :   ada4c:  xor    %edx,%edx
+    0.00 :   ada4e:  xchg   %edx,(%r12)
+    0.00 :   ada52:  sub    $0x1,%edx
+    0.00 :   ada55:  jle    ad9e7 <__libc_malloc+0x297>
+    0.00 :   ada57:  mov    %r12,%rdi
+    0.00 :   ada5a:  mov    %rax,-0x28(%rbp)
+    0.00 :   ada5e:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ada63:  mov    -0x28(%rbp),%rax
+    0.00 :   ada67:  jmp    ad9e7 <__libc_malloc+0x297>
+
+Sorted summary for file /usr/lib/x86_64-linux-gnu/libc.so.6
+----------------------------------------------
+
+   22.23 malloc.c:3167
+   18.53 malloc.c:4518
+   18.49 malloc.c:3163
+   16.68 malloc.c:4499
+   12.95 malloc.c:4510
+   11.12 malloc.c:4495
+ Percent |	Source code & Disassembly of libc.so.6 for cpu_core/cycles/u (54 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ab250 <_int_free>:
+   11.12 :   ab250:  push   %rbp // malloc.c:4495
+    0.00 :   ab251:  mov    %rsp,%rbp
+    0.00 :   ab254:  push   %r13
+    0.00 :   ab256:  push   %r12
+    0.00 :   ab258:  mov    %edx,%r12d
+    0.00 :   ab25b:  push   %rbx
+    0.00 :   ab25c:  sub    $0x28,%rsp
+    0.00 :   ab260:  mov    0x8(%rsi),%rcx
+   16.68 :   ab264:  mov    %rcx,%rdx // malloc.c:4499
+    0.00 :   ab267:  and    $0xfffffffffffffff8,%rdx
+    0.00 :   ab26b:  mov    %rdx,%rax
+    0.00 :   ab26e:  neg    %rax
+    0.00 :   ab271:  cmp    %rsi,%rax
+    0.00 :   ab274:  jb     ab460 <_int_free+0x210>
+    0.00 :   ab27a:  test   $0xf,%sil
+    0.00 :   ab27e:  jne    ab460 <_int_free+0x210>
+    0.00 :   ab284:  cmp    $0x1f,%rdx
+    0.00 :   ab288:  jbe    ab470 <_int_free+0x220>
+    0.00 :   ab28e:  and    $0x8,%ecx
+    0.00 :   ab291:  jne    ab470 <_int_free+0x220>
+   12.95 :   ab297:  mov    %rdi,%rbx // malloc.c:4510
+    0.00 :   ab29a:  mov    0x158af7(%rip),%rdi        # 203d98 <_GLOBAL_OFFSET_TABLE_+0x218>
+    0.00 :   ab2a1:  mov    %fs:(%rdi),%r8
+    0.00 :   ab2a5:  test   %r8,%r8
+    0.00 :   ab2a8:  je     ab2e8 <_int_free+0x98>
+    0.00 :   ab2aa:  lea    -0x11(%rdx),%rax
+    0.00 :   ab2ae:  shr    $0x4,%rax
+    0.00 :   ab2b2:  cmp    0x158f2f(%rip),%rax        # 2041e8 <mp_+0x68>
+   18.53 :   ab2b9:  jae    ab2e8 <_int_free+0x98> // malloc.c:4518
+    0.00 :   ab2bb:  mov    0x158f36(%rip),%r9        # 2041f8 <mp_+0x78>
+    0.00 :   ab2c2:  mov    0x15feaf(%rip),%r11        # 20b178 <tcache_key>
+    0.00 :   ab2c9:  lea    0x10(%rsi),%r10
+    0.00 :   ab2cd:  cmp    %r11,0x18(%rsi)
+    0.00 :   ab2d1:  je     ab580 <_int_free+0x330>
+    0.00 :   ab2d7:  movzwl (%r8,%rax,2),%edi
+    0.00 :   ab2dc:  mov    %rdi,%rcx
+    0.00 :   ab2df:  cmp    %r9,%rdi
+    0.00 :   ab2e2:  jb     ab428 <_int_free+0x1d8>
+    0.00 :   ab2e8:  movzbl 0x15feb1(%rip),%eax        # 20b1a0 <global_max_fast>
+    0.00 :   ab2ef:  cmp    %rdx,%rax
+    0.00 :   ab2f2:  jb     ab390 <_int_free+0x140>
+    0.00 :   ab2f8:  lea    (%rsi,%rdx,1),%r13
+    0.00 :   ab2fc:  mov    0x8(%r13),%rax
+    0.00 :   ab300:  cmp    $0x10,%rax
+    0.00 :   ab304:  jbe    ab480 <_int_free+0x230>
+    0.00 :   ab30a:  and    $0xfffffffffffffff8,%rax
+    0.00 :   ab30e:  cmp    0x888(%rbx),%rax
+    0.00 :   ab315:  jae    ab480 <_int_free+0x230>
+    0.00 :   ab31b:  mov    0x15fe7b(%rip),%eax        # 20b19c <perturb_byte>
+    0.00 :   ab321:  lea    0x10(%rsi),%r8
+    0.00 :   ab325:  test   %eax,%eax
+    0.00 :   ab327:  jne    ab540 <_int_free+0x2f0>
+    0.00 :   ab32d:  movl   $0x1,0x8(%rbx)
+    0.00 :   ab334:  shr    $0x4,%edx
+    0.00 :   ab337:  lea    -0x2(%rdx),%eax
+    0.00 :   ab33a:  add    $0x2,%rax
+    0.00 :   ab33e:  cmpb   $0x0,0x160cfb(%rip)        # 20c040 <__libc_single_threaded>
+    0.00 :   ab345:  mov    (%rbx,%rax,8),%rcx
+    0.00 :   ab349:  je     ab3c0 <_int_free+0x170>
+    0.00 :   ab34b:  cmp    %rcx,%rsi
+    0.00 :   ab34e:  je     ab3fe <_int_free+0x1ae>
+    0.00 :   ab354:  shr    $0xc,%r8
+    0.00 :   ab358:  xor    %rcx,%r8
+    0.00 :   ab35b:  mov    %r8,0x10(%rsi)
+    0.00 :   ab35f:  mov    %rsi,(%rbx,%rax,8)
+    0.00 :   ab363:  test   %rcx,%rcx
+    0.00 :   ab366:  je     ab37d <_int_free+0x12d>
+    0.00 :   ab368:  and    $0x1,%r12d
+    0.00 :   ab36c:  je     ab37d <_int_free+0x12d>
+    0.00 :   ab36e:  mov    0x8(%rcx),%rax
+    0.00 :   ab372:  shr    $0x4,%eax
+    0.00 :   ab375:  cmp    %eax,%edx
+    0.00 :   ab377:  jne    ab5dd <_int_free+0x38d>
+    0.00 :   ab37d:  add    $0x28,%rsp
+    0.00 :   ab381:  pop    %rbx
+    0.00 :   ab382:  pop    %r12
+    0.00 :   ab384:  pop    %r13
+    0.00 :   ab386:  pop    %rbp
+    0.00 :   ab387:  ret
+    0.00 :   ab388:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ab390:  testb  $0x2,0x8(%rsi)
+    0.00 :   ab394:  jne    ab410 <_int_free+0x1c0>
+    0.00 :   ab396:  cmpb   $0x0,0x160ca3(%rip)        # 20c040 <__libc_single_threaded>
+    0.00 :   ab39d:  jne    ab3a8 <_int_free+0x158>
+    0.00 :   ab39f:  test   %r12d,%r12d
+    0.00 :   ab3a2:  je     ab500 <_int_free+0x2b0>
+    0.00 :   ab3a8:  add    $0x28,%rsp
+    0.00 :   ab3ac:  mov    %rbx,%rdi
+    0.00 :   ab3af:  pop    %rbx
+    0.00 :   ab3b0:  pop    %r12
+    0.00 :   ab3b2:  pop    %r13
+    0.00 :   ab3b4:  pop    %rbp
+    0.00 :   ab3b5:  jmp    ab070 <_int_free_merge_chunk>
+    0.00 :   ab3ba:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ab3c0:  mov    %edx,%eax
+    0.00 :   ab3c2:  shr    $0xc,%r8
+    0.00 :   ab3c6:  lea    (%rbx,%rax,8),%rdi
+    0.00 :   ab3ca:  jmp    ab3f9 <_int_free+0x1a9>
+    0.00 :   ab3cc:  nopl   0x0(%rax)
+    0.00 :   ab3d0:  mov    %rcx,%rax
+    0.00 :   ab3d3:  xor    %r8,%rax
+    0.00 :   ab3d6:  mov    %rax,0x10(%rsi)
+    0.00 :   ab3da:  mov    %rcx,%rax
+    0.00 :   ab3dd:  cmpl   $0x0,%fs:0x18
+    0.00 :   ab3e6:  je     ab3e9 <_int_free+0x199>
+    0.00 :   ab3e8:  lock cmpxchg %rsi,(%rdi)
+    0.00 :   ab3ed:  cmp    %rax,%rcx
+    0.00 :   ab3f0:  je     ab363 <_int_free+0x113>
+    0.00 :   ab3f6:  mov    %rax,%rcx
+    0.00 :   ab3f9:  cmp    %rsi,%rcx
+    0.00 :   ab3fc:  jne    ab3d0 <_int_free+0x180>
+    0.00 :   ab3fe:  lea    0x127863(%rip),%rdi        # 1d2c68 <__PRETTY_FUNCTION__.1+0x7f8>
+    0.00 :   ab405:  call   a90c0 <malloc_printerr>
+    0.00 :   ab40a:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ab410:  add    $0x28,%rsp
+    0.00 :   ab414:  mov    %rsi,%rdi
+    0.00 :   ab417:  pop    %rbx
+    0.00 :   ab418:  pop    %r12
+    0.00 :   ab41a:  pop    %r13
+    0.00 :   ab41c:  pop    %rbp
+    0.00 :   ab41d:  jmp    a94e0 <munmap_chunk>
+    0.00 :   ab422:  nopw   0x0(%rax,%rax,1)
+   18.49 :   ab428:  mov    0x15fd49(%rip),%rdx        # 20b178 <tcache_key> // malloc.c:3163
+    0.00 :   ab42f:  add    $0x1,%ecx
+    0.00 :   ab432:  mov    %rdx,0x18(%rsi)
+    0.00 :   ab436:  mov    %r10,%rdx
+    0.00 :   ab439:  shr    $0xc,%rdx
+    0.00 :   ab43d:  xor    0x80(%r8,%rax,8),%rdx
+    0.00 :   ab445:  mov    %rdx,0x10(%rsi)
+    0.00 :   ab449:  mov    %r10,0x80(%r8,%rax,8)
+   22.23 :   ab451:  mov    %cx,(%r8,%rax,2) // malloc.c:3167
+    0.00 :   ab456:  jmp    ab37d <_int_free+0x12d>
+    0.00 :   ab45b:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ab460:  lea    0x12220b(%rip),%rdi        # 1cd672 <null+0xf77>
+    0.00 :   ab467:  call   a90c0 <malloc_printerr>
+    0.00 :   ab46c:  nopl   0x0(%rax)
+    0.00 :   ab470:  lea    0x122213(%rip),%rdi        # 1cd68a <null+0xf8f>
+    0.00 :   ab477:  call   a90c0 <malloc_printerr>
+    0.00 :   ab47c:  nopl   0x0(%rax)
+    0.00 :   ab480:  test   %r12d,%r12d
+    0.00 :   ab483:  jne    ab4c0 <_int_free+0x270>
+    0.00 :   ab485:  mov    $0x1,%ecx
+    0.00 :   ab48a:  mov    %r12d,%eax
+    0.00 :   ab48d:  lock cmpxchg %ecx,(%rbx)
+    0.00 :   ab491:  jne    ab4e3 <_int_free+0x293>
+    0.00 :   ab493:  mov    0x8(%r13),%rax
+    0.00 :   ab497:  cmp    $0x10,%rax
+    0.00 :   ab49b:  jbe    ab4d0 <_int_free+0x280>
+    0.00 :   ab49d:  mov    0x888(%rbx),%r13
+    0.00 :   ab4a4:  and    $0xfffffffffffffff8,%rax
+    0.00 :   ab4a8:  xor    %ecx,%ecx
+    0.00 :   ab4aa:  xchg   %ecx,(%rbx)
+    0.00 :   ab4ac:  cmp    $0x1,%ecx
+    0.00 :   ab4af:  jg     ab60e <_int_free+0x3be>
+    0.00 :   ab4b5:  cmp    %r13,%rax
+    0.00 :   ab4b8:  jb     ab31b <_int_free+0xcb>
+    0.00 :   ab4be:  xchg   %ax,%ax
+    0.00 :   ab4c0:  lea    0x127779(%rip),%rdi        # 1d2c40 <__PRETTY_FUNCTION__.1+0x7d0>
+    0.00 :   ab4c7:  call   a90c0 <malloc_printerr>
+    0.00 :   ab4cc:  nopl   0x0(%rax)
+    0.00 :   ab4d0:  xor    %eax,%eax
+    0.00 :   ab4d2:  xchg   %eax,(%rbx)
+    0.00 :   ab4d4:  cmp    $0x1,%eax
+    0.00 :   ab4d7:  jle    ab4c0 <_int_free+0x270>
+    0.00 :   ab4d9:  mov    %rbx,%rdi
+    0.00 :   ab4dc:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ab4e1:  jmp    ab4c0 <_int_free+0x270>
+    0.00 :   ab4e3:  mov    %rbx,%rdi
+    0.00 :   ab4e6:  mov    %rsi,-0x30(%rbp)
+    0.00 :   ab4ea:  mov    %rdx,-0x28(%rbp)
+    0.00 :   ab4ee:  call   98fc0 <__lll_lock_wait_private>
+    0.00 :   ab4f3:  mov    -0x30(%rbp),%rsi
+    0.00 :   ab4f7:  mov    -0x28(%rbp),%rdx
+    0.00 :   ab4fb:  jmp    ab493 <_int_free+0x243>
+    0.00 :   ab4fd:  nopl   (%rax)
+    0.00 :   ab500:  mov    $0x1,%ecx
+    0.00 :   ab505:  mov    %r12d,%eax
+    0.00 :   ab508:  lock cmpxchg %ecx,(%rbx)
+    0.00 :   ab50c:  jne    ab5e9 <_int_free+0x399>
+    0.00 :   ab512:  mov    %rbx,%rdi
+    0.00 :   ab515:  call   ab070 <_int_free_merge_chunk>
+    0.00 :   ab51a:  xor    %eax,%eax
+    0.00 :   ab51c:  xchg   %eax,(%rbx)
+    0.00 :   ab51e:  cmp    $0x1,%eax
+    0.00 :   ab521:  jle    ab37d <_int_free+0x12d>
+    0.00 :   ab527:  add    $0x28,%rsp
+    0.00 :   ab52b:  mov    %rbx,%rdi
+    0.00 :   ab52e:  pop    %rbx
+    0.00 :   ab52f:  pop    %r12
+    0.00 :   ab531:  pop    %r13
+    0.00 :   ab533:  pop    %rbp
+    0.00 :   ab534:  jmp    99080 <__lll_lock_wake_private>
+    0.00 :   ab539:  nopl   0x0(%rax)
+    0.00 :   ab540:  movabs $0x101010101010101,%rdi
+    0.00 :   ab54a:  movzbl %al,%eax
+    0.00 :   ab54d:  lea    -0x10(%rdx),%rcx
+    0.00 :   ab551:  mov    %r8,%r9
+    0.00 :   ab554:  imul   %rdi,%rax
+    0.00 :   ab558:  mov    %ecx,%edi
+    0.00 :   ab55a:  mov    %rax,0x10(%rsi)
+    0.00 :   ab55e:  mov    %rax,-0x8(%r8,%rdi,1)
+    0.00 :   ab563:  lea    0x18(%rsi),%rdi
+    0.00 :   ab567:  and    $0xfffffffffffffff8,%rdi
+    0.00 :   ab56b:  sub    %rdi,%r9
+    0.00 :   ab56e:  add    %r9d,%ecx
+    0.00 :   ab571:  shr    $0x3,%ecx
+    0.00 :   ab574:  rep stos %rax,%es:(%rdi)
+    0.00 :   ab577:  jmp    ab32d <_int_free+0xdd>
+    0.00 :   ab57c:  nopl   0x0(%rax)
+    0.00 :   ab580:  nop
+    0.00 :   ab581:  mov    %fs:(%rdi),%r8
+    0.00 :   ab585:  mov    0x158c6c(%rip),%r9        # 2041f8 <mp_+0x78>
+    0.00 :   ab58c:  mov    0x80(%r8,%rax,8),%rdi
+    0.00 :   ab594:  test   %rdi,%rdi
+    0.00 :   ab597:  jne    ab5c6 <_int_free+0x376>
+    0.00 :   ab599:  jmp    ab2d7 <_int_free+0x87>
+    0.00 :   ab59e:  xchg   %ax,%ax
+    0.00 :   ab5a0:  cmp    %r10,%rdi
+    0.00 :   ab5a3:  je     ab633 <_int_free+0x3e3>
+    0.00 :   ab5a9:  mov    %rdi,%r13
+    0.00 :   ab5ac:  mov    (%rdi),%r11
+    0.00 :   ab5af:  add    $0x1,%rcx
+    0.00 :   ab5b3:  shr    $0xc,%r13
+    0.00 :   ab5b7:  mov    %r13,%rdi
+    0.00 :   ab5ba:  xor    %r11,%rdi
+    0.00 :   ab5bd:  cmp    %r11,%r13
+    0.00 :   ab5c0:  je     ab2d7 <_int_free+0x87>
+    0.00 :   ab5c6:  cmp    %r9,%rcx
+    0.00 :   ab5c9:  je     ab63f <_int_free+0x3ef>
+    0.00 :   ab5cb:  test   $0xf,%dil
+    0.00 :   ab5cf:  je     ab5a0 <_int_free+0x350>
+    0.00 :   ab5d1:  lea    0x127608(%rip),%rdi        # 1d2be0 <__PRETTY_FUNCTION__.1+0x770>
+    0.00 :   ab5d8:  call   a90c0 <malloc_printerr>
+    0.00 :   ab5dd:  lea    0x1220bb(%rip),%rdi        # 1cd69f <null+0xfa4>
+    0.00 :   ab5e4:  call   a90c0 <malloc_printerr>
+    0.00 :   ab5e9:  mov    %rbx,%rdi
+    0.00 :   ab5ec:  mov    %rsi,-0x30(%rbp)
+    0.00 :   ab5f0:  mov    %rdx,-0x28(%rbp)
+    0.00 :   ab5f4:  call   98fc0 <__lll_lock_wait_private>
+    0.00 :   ab5f9:  mov    -0x28(%rbp),%rdx
+    0.00 :   ab5fd:  mov    -0x30(%rbp),%rsi
+    0.00 :   ab601:  mov    %rbx,%rdi
+    0.00 :   ab604:  call   ab070 <_int_free_merge_chunk>
+    0.00 :   ab609:  jmp    ab51a <_int_free+0x2ca>
+    0.00 :   ab60e:  mov    %rbx,%rdi
+    0.00 :   ab611:  mov    %rsi,-0x38(%rbp)
+    0.00 :   ab615:  mov    %rdx,-0x30(%rbp)
+    0.00 :   ab619:  mov    %rax,-0x28(%rbp)
+    0.00 :   ab61d:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ab622:  mov    -0x38(%rbp),%rsi
+    0.00 :   ab626:  mov    -0x30(%rbp),%rdx
+    0.00 :   ab62a:  mov    -0x28(%rbp),%rax
+    0.00 :   ab62e:  jmp    ab4b5 <_int_free+0x265>
+    0.00 :   ab633:  lea    0x1275d6(%rip),%rdi        # 1d2c10 <__PRETTY_FUNCTION__.1+0x7a0>
+    0.00 :   ab63a:  call   a90c0 <malloc_printerr>
+    0.00 :   ab63f:  lea    0x12756a(%rip),%rdi        # 1d2bb0 <__PRETTY_FUNCTION__.1+0x740>
+    0.00 :   ab646:  call   a90c0 <malloc_printerr>
+
+Sorted summary for file /usr/lib/x86_64-linux-gnu/libc.so.6
+----------------------------------------------
+
+   32.58 malloc.c:3371
+   32.55 malloc.c:3363
+   18.61 arena.c:153
+   16.26 malloc.c:3401
+ Percent |	Source code & Disassembly of libc.so.6 for cpu_core/cycles/u (43 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ade30 <__libc_free>:
+    0.00 :   ade30:  endbr64
+   32.55 :   ade34:  test   %rdi,%rdi // malloc.c:3363
+    0.00 :   ade37:  je     adf10 <__libc_free+0xe0>
+    0.00 :   ade3d:  push   %rbp
+    0.00 :   ade3e:  mov    %rsp,%rbp
+    0.00 :   ade41:  push   %r13
+    0.00 :   ade43:  lea    -0x10(%rdi),%r13
+    0.00 :   ade47:  push   %r12
+    0.00 :   ade49:  push   %rbx
+    0.00 :   ade4a:  sub    $0x18,%rsp
+   32.58 :   ade4e:  mov    0x155fa3(%rip),%rbx        # 203df8 <_GLOBAL_OFFSET_TABLE_+0x278> // malloc.c:3371
+    0.00 :   ade55:  mov    -0x8(%rdi),%rax
+    0.00 :   ade59:  mov    %fs:(%rbx),%r12d
+    0.00 :   ade5d:  test   $0x2,%al
+    0.00 :   ade5f:  jne    adec0 <__libc_free+0x90>
+    0.00 :   ade61:  mov    0x155f30(%rip),%rdx        # 203d98 <_GLOBAL_OFFSET_TABLE_+0x218>
+    0.00 :   ade68:  cmpq   $0x0,%fs:(%rdx)
+    0.00 :   ade6d:  je     adf18 <__libc_free+0xe8>
+    0.00 :   ade73:  lea    0x156c46(%rip),%rdi        # 204ac0 <main_arena>
+   18.61 :   ade7a:  test   $0x4,%al // arena.c:153
+    0.00 :   ade7c:  je     adea4 <__libc_free+0x74>
+    0.00 :   ade7e:  mov    0x15632b(%rip),%rdx        # 2041b0 <mp_+0x30>
+    0.00 :   ade85:  lea    0x0(,%rdx,4),%rax
+    0.00 :   ade8d:  neg    %rax
+    0.00 :   ade90:  test   %rdx,%rdx
+    0.00 :   ade93:  mov    $0xfffffffffc000000,%rdx
+    0.00 :   ade9a:  cmove  %rdx,%rax
+    0.00 :   ade9e:  and    %r13,%rax
+    0.00 :   adea1:  mov    (%rax),%rdi
+    0.00 :   adea4:  mov    %r13,%rsi
+    0.00 :   adea7:  xor    %edx,%edx
+    0.00 :   adea9:  call   ab250 <_int_free>
+   16.26 :   adeae:  mov    %r12d,%fs:(%rbx) // malloc.c:3401
+    0.00 :   adeb2:  add    $0x18,%rsp
+    0.00 :   adeb6:  pop    %rbx
+    0.00 :   adeb7:  pop    %r12
+    0.00 :   adeb9:  pop    %r13
+    0.00 :   adebb:  pop    %rbp
+    0.00 :   adebc:  ret
+    0.00 :   adebd:  nopl   (%rax)
+    0.00 :   adec0:  mov    0x156302(%rip),%edx        # 2041c8 <mp_+0x48>
+    0.00 :   adec6:  test   %edx,%edx
+    0.00 :   adec8:  jne    adef2 <__libc_free+0xc2>
+    0.00 :   adeca:  cmp    %rax,0x1562bf(%rip)        # 204190 <mp_+0x10>
+    0.00 :   aded1:  jae    adef2 <__libc_free+0xc2>
+    0.00 :   aded3:  cmp    $0x2000000,%rax
+    0.00 :   aded9:  ja     adef2 <__libc_free+0xc2>
+    0.00 :   adedb:  and    $0xfffffffffffffff8,%rax
+    0.00 :   adedf:  lea    (%rax,%rax,1),%rdx
+    0.00 :   adee3:  mov    %rax,0x1562a6(%rip)        # 204190 <mp_+0x10>
+    0.00 :   adeea:  mov    %rdx,0x15628f(%rip)        # 204180 <mp_>
+    0.00 :   adef1:  nop
+    0.00 :   adef2:  mov    %r13,%rdi
+    0.00 :   adef5:  call   a94e0 <munmap_chunk>
+    0.00 :   adefa:  mov    %r12d,%fs:(%rbx)
+    0.00 :   adefe:  add    $0x18,%rsp
+    0.00 :   adf02:  pop    %rbx
+    0.00 :   adf03:  pop    %r12
+    0.00 :   adf05:  pop    %r13
+    0.00 :   adf07:  pop    %rbp
+    0.00 :   adf08:  ret
+    0.00 :   adf09:  nopl   0x0(%rax)
+    0.00 :   adf10:  ret
+    0.00 :   adf11:  nopl   0x0(%rax)
+    0.00 :   adf18:  mov    0x155e81(%rip),%rdx        # 203da0 <_GLOBAL_OFFSET_TABLE_+0x220>
+    0.00 :   adf1f:  mov    %rdi,-0x28(%rbp)
+    0.00 :   adf23:  cmpb   $0x0,%fs:(%rdx)
+    0.00 :   adf27:  jne    ade73 <__libc_free+0x43>
+    0.00 :   adf2d:  call   acef0 <tcache_init.part.0>
+    0.00 :   adf32:  mov    -0x28(%rbp),%rdi
+    0.00 :   adf36:  mov    -0x8(%rdi),%rax
+    0.00 :   adf3a:  jmp    ade73 <__libc_free+0x43>
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-12.so
+----------------------------------------------
+
+  100.00 ??:0
+ Percent |	Source code & Disassembly of jitted-920379-12.so for cpu_core/cycles/u (39 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <numba::np::arrayobj::_ol_array_allocate::_3clocals_3e::impl[abi:v7][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](typeref_5b_3cclass_20_27numba::core::types::npytypes::Array_27_3e_5d, long long, unsigned int)>:
+   23.10 :   80:     endbr64 // ??:0
+    0.00 :   84:     push   %r14
+    0.00 :   86:     push   %rbx
+    0.00 :   87:     push   %rax
+    0.00 :   88:     mov    %rsi,%rbx
+    0.00 :   8b:     mov    %rdi,%r14
+    0.00 :   8e:     movabs $0x0,%rax
+    0.00 :   98:     mov    %rcx,%rdi
+   20.52 :   9b:     mov    %r8d,%esi
+    0.00 :   9e:     call   *%rax
+   30.76 :   a0:     test   %rax,%rax
+    0.00 :   a3:     je     b2 <numba::np::arrayobj::_ol_array_allocate::_3clocals_3e::impl[abi:v7][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqjRndMIkiiBJNAA_3d_3d](typeref_5b_3cclass_20_27numba::core::types::npytypes::Array_27_3e_5d, long long, unsigned int)+0x32>
+    0.00 :   a5:     mov    %rax,(%r14)
+    0.00 :   a8:     xor    %eax,%eax
+    0.00 :   aa:     add    $0x8,%rsp
+   25.62 :   ae:     pop    %rbx
+    0.00 :   af:     pop    %r14
+    0.00 :   b1:     ret
+    0.00 :   b2:     movabs $0x0,%rax
+    0.00 :   bc:     mov    %rax,(%rbx)
+    0.00 :   bf:     mov    $0x1,%eax
+         : 27 @overload_classmethod(types.Array, "_allocate", target="CPU")
+         : 28 def _ol_array_allocate(cls, allocsize, align):
+         : 29 """Implements a Numba-only default target (cpu) classmethod on the array
+         : 30 type.
+         : 31 """
+         : 32 def impl(cls, allocsize, align):
+    0.00 :   c4:     add    $0x8,%rsp
+    0.00 :   c8:     pop    %rbx
+    0.00 :   c9:     pop    %r14
+    0.00 :   cb:     ret
+
+Sorted summary for file /usr/bin/python3.12
+----------------------------------------------
+
+   64.68 obmalloc.c:653
+   35.32 obmalloc.c:45
+ Percent |	Source code & Disassembly of python3.12 for cpu_core/cycles/u (34 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000586090 <PyMem_RawMalloc>:
+   64.68 :   586090: endbr64 // obmalloc.c:653
+    0.00 :   586094: test   %rdi,%rdi
+    0.00 :   586097: js     45f036 <PyMem_RawMalloc.cold>
+    0.00 :   58609d: mov    0x5b0384(%rip),%rax        # b36428 <_PyRuntime+0x68>
+    0.00 :   5860a4: mov    0x5b0375(%rip),%rdx        # b36420 <_PyRuntime+0x60>
+    0.00 :   5860ab: cmp    $0x5860d0,%rax
+    0.00 :   5860b1: jne    5860c8 <PyMem_RawMalloc+0x38>
+    0.00 :   5860b3: test   %rdi,%rdi
+    0.00 :   5860b6: mov    $0x1,%eax
+    0.00 :   5860bb: cmove  %rax,%rdi
+   35.32 :   5860bf: jmp    420620 <malloc@plt> // obmalloc.c:45
+    0.00 :   5860c4: nopl   0x0(%rax)
+    0.00 :   5860c8: mov    %rdi,%rsi
+    0.00 :   5860cb: mov    %rdx,%rdi
+    0.00 :   5860ce: jmp    *%rax
+
+Sorted summary for file /tmp/shap-bench-venv/lib/python3.12/site-packages/numba/core/runtime/_nrt_python.cpython-312-x86_64-linux-gnu.so
+----------------------------------------------
+
+   60.62 nrt.cpp:404
+   21.22 nrt.cpp:383
+   18.16 nrt.cpp:397
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (33 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000045c0 <NRT_MemInfo_call_dtor>:
+   18.16 :   45c0:   push   %rbp // nrt.cpp:397
+    0.00 :   45c1:   mov    0x8(%rdi),%rax
+    0.00 :   45c5:   mov    %rdi,%rbp
+    0.00 :   45c8:   test   %rax,%rax
+    0.00 :   45cb:   je     45e5 <NRT_MemInfo_call_dtor+0x25>
+    0.00 :   45cd:   mov    0x40ed(%rip),%edx        # 86c0 <TheMSys>
+    0.00 :   45d3:   test   %edx,%edx
+    0.00 :   45d5:   jne    45e5 <NRT_MemInfo_call_dtor+0x25>
+    0.00 :   45d7:   mov    0x10(%rdi),%rdx
+    0.00 :   45db:   mov    0x20(%rdi),%rsi
+    0.00 :   45df:   mov    0x18(%rdi),%rdi
+    0.00 :   45e3:   call   *%rax
+   21.22 :   45e5:   mov    %rbp,%rdi // nrt.cpp:383
+    0.00 :   45e8:   call   2230 <NRT_dealloc@plt>
+    0.00 :   45ed:   cmpb   $0x0,0x40d4(%rip)        # 86c8 <TheMSys+0x8>
+    0.00 :   45f4:   jne    4600 <NRT_MemInfo_call_dtor+0x40>
+    0.00 :   45f6:   pop    %rbp
+   60.62 :   45f7:   ret // nrt.cpp:404
+    0.00 :   45f8:   nopl   0x0(%rax,%rax,1)
+    0.00 :   4600:   lock addq $0x1,0x40df(%rip)        # 86e8 <TheMSys+0x28>
+    0.00 :   4609:   pop    %rbp
+    0.00 :   460a:   ret
+
+Sorted summary for file /tmp/shap-bench-venv/lib/python3.12/site-packages/numba/core/runtime/_nrt_python.cpython-312-x86_64-linux-gnu.so
+----------------------------------------------
+
+   52.42 nrt.cpp:548
+   47.58 nrt.cpp:369
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (21 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000044e0 <NRT_dealloc>:
+   47.58 :   44e0:   sub    $0x8,%rsp // nrt.cpp:369
+    0.00 :   44e4:   mov    0x28(%rdi),%rax
+    0.00 :   44e8:   test   %rax,%rax
+    0.00 :   44eb:   je     4508 <NRT_dealloc+0x28>
+    0.00 :   44ed:   mov    0x18(%rax),%rsi
+    0.00 :   44f1:   call   *0x10(%rax)
+    0.00 :   44f4:   cmpb   $0x0,0x41cd(%rip)        # 86c8 <TheMSys+0x8>
+    0.00 :   44fb:   jne    4517 <NRT_dealloc+0x37>
+    0.00 :   44fd:   add    $0x8,%rsp
+    0.00 :   4501:   ret
+    0.00 :   4502:   nopw   0x0(%rax,%rax,1)
+    0.00 :   4508:   call   *0x41f2(%rip)        # 8700 <TheMSys+0x40>
+    4.76 :   450e:   cmpb   $0x0,0x41b3(%rip)        # 86c8 <TheMSys+0x8> // nrt.cpp:548
+   47.65 :   4515:   je     44fd <NRT_dealloc+0x1d>
+    0.00 :   4517:   lock addq $0x1,0x41b8(%rip)        # 86d8 <TheMSys+0x18>
+    0.00 :   4520:   add    $0x8,%rsp
+    0.00 :   4524:   ret
+
+Sorted summary for file /tmp/shap-perf-jit.o4UxQr/original-source/jitdump/.debug/jit/llvm-IR-jit-20260929-e5a6c7/jitted-920379-49.so
+----------------------------------------------
+
+   39.99 original_numba_debug.py:35
+   25.01 original_numba_debug.py:34
+   19.99 original_numba_debug.py:0
+   15.01 original_numba_debug.py:33
+ Percent |	Source code & Disassembly of jitted-920379-49.so for cpu_core/cycles/u (20 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)>:
+    0.00 :    80:     endbr64
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     sub    $0xb8,%rsp
+    0.00 :    95:     mov    %r9,0x58(%rsp)
+    0.00 :    9a:     mov    %r8,0x50(%rsp)
+    0.00 :    9f:     mov    %rcx,0x48(%rsp)
+    0.00 :    a4:     mov    %rsi,%rbx
+    0.00 :    a7:     mov    %rdi,%r14
+    0.00 :    aa:     mov    0xf8(%rsp),%r15
+    0.00 :    b2:     movq   $0x0,0x60(%rsp)
+    0.00 :    bb:     movq   $0x0,0x38(%rsp)
+         : 22  )
+         : 23  return forward_score - reverse_score
+         :
+         :
+         : 26  @njit
+         : 27  def _delta_minimization_order(all_masks, max_swap_size=100, num_passes=2):
+    0.00 :    c4:     movabs $0x0,%rax
+    0.00 :    ce:     mov    %rdx,0x30(%rsp)
+    0.00 :    d3:     mov    %rdx,%rdi
+    0.00 :    d6:     call   *%rax
+    0.00 :    d8:     vxorps %xmm0,%xmm0,%xmm0
+    0.00 :    dc:     vmovups %ymm0,0x98(%rsp)
+    0.00 :    e5:     vmovups %ymm0,0x80(%rsp)
+    0.00 :    ee:     movabs $0x0,%rax
+    0.00 :    f8:     lea    0x80(%rsp),%rdi
+    0.00 :   100:    lea    0x60(%rsp),%rsi
+    0.00 :   105:    mov    %r15,%rdx
+    0.00 :   108:    vzeroupper
+    0.00 :   10b:    call   *%rax
+    0.00 :   10d:    test   %eax,%eax
+    0.00 :   10f:    jne    3f3 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x373>
+    0.00 :   115:    mov    %r14,0x68(%rsp)
+         : 44  order = np.arange(len(all_masks))
+    0.00 :   11a:    mov    %rbx,0x40(%rsp)
+    0.00 :   11f:    mov    0x80(%rsp),%rax
+    0.00 :   127:    mov    %rax,0x20(%rsp)
+    0.00 :   12c:    mov    0x88(%rsp),%r15
+    0.00 :   134:    mov    0x90(%rsp),%r12
+    0.00 :   13c:    mov    0x98(%rsp),%rax
+    0.00 :   144:    mov    %rax,0x18(%rsp)
+    0.00 :   149:    mov    0xa0(%rsp),%rax
+    0.00 :   151:    mov    %rax,0x10(%rsp)
+    0.00 :   156:    mov    0xa8(%rsp),%r13
+    0.00 :   15e:    mov    0xb0(%rsp),%rax
+    0.00 :   166:    mov    %rax,0x8(%rsp)
+    0.00 :   16b:    mov    $0x3,%ebp
+    0.00 :   170:    sub    %r13,%rbp
+    0.00 :   173:    mov    $0x2,%ebx
+    0.00 :   178:    jmp    190 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x110>
+    0.00 :   17a:    nopw   0x0(%rax,%rax,1)
+    0.00 :   180:    inc    %rbx
+    0.00 :   183:    inc    %rbp
+    0.00 :   186:    cmp    $0x64,%rbx
+    0.00 :   18a:    je     2a4 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x224>
+    0.00 :   190:    mov    %rbx,%rax
+    0.00 :   193:    sub    %r13,%rax
+    0.00 :   196:    cmp    $0xfffffffffffffffe,%rax
+    0.00 :   19a:    jg     180 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x100>
+    0.00 :   19c:    mov    $0x1,%r14d
+    0.00 :   1a2:    jmp    1bd <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x13d>
+    0.00 :   1a4:    data16 data16 cs nopw 0x0(%rax,%rax,1)
+         : 73  for _ in range(num_passes):
+         : 74  for length in range(2, max_swap_size):
+    0.00 :   1b0:    inc    %r14
+    0.00 :   1b3:    lea    (%r14,%rbp,1),%rax
+    0.00 :   1b7:    cmp    $0x1,%rax
+    0.00 :   1bb:    je     180 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x100>
+    0.00 :   1bd:    movq   $0x0,0x28(%rsp)
+    0.00 :   1c6:    lea    0x28(%rsp),%rdi
+    0.00 :   1cb:    lea    0x38(%rsp),%rsi
+         : 82  for i in range(1, len(order) - length):
+    0.00 :   1d0:    mov    0x30(%rsp),%rdx
+    0.00 :   1d5:    mov    0x48(%rsp),%rcx
+    0.00 :   1da:    mov    0x50(%rsp),%r8
+    0.00 :   1df:    mov    0x58(%rsp),%r9
+    0.00 :   1e4:    push   %rbx
+    0.00 :   1e5:    push   %r14
+    5.01 :   1e7:    push   0x18(%rsp) // original_numba_debug.py:0
+    0.00 :   1eb:    push   %r13
+    0.00 :   1ed:    push   0x30(%rsp)
+    0.00 :   1f1:    push   0x40(%rsp)
+    0.00 :   1f5:    push   %r12
+   15.00 :   1f7:    push   %r15 // original_numba_debug.py:34
+    0.00 :   1f9:    push   0x60(%rsp)
+         : 96  if _reverse_window_score_gain(all_masks, order, i, length) > 0:
+    0.00 :   1fd:    push   0x158(%rsp)
+    0.00 :   204:    push   0x158(%rsp)
+    0.00 :   20b:    push   0x158(%rsp)
+    9.98 :   212:    push   0x158(%rsp) // original_numba_debug.py:35
+    0.00 :   219:    push   0x158(%rsp)
+    0.00 :   220:    movabs $0x0,%rax
+    0.00 :   22a:    call   *%rax
+    5.00 :   22c:    add    $0x70,%rsp
+    0.00 :   230:    test   %eax,%eax
+    0.00 :   232:    jne    3d4 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x354>
+    0.00 :   238:    cmpq   $0x0,0x28(%rsp)
+    0.00 :   23e:    jle    1b0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x130>
+    0.00 :   244:    sub    $0x8,%rsp
+    0.00 :   248:    lea    0x80(%rsp),%rdi
+    0.00 :   250:    lea    0x78(%rsp),%rsi
+    0.00 :   255:    mov    0x28(%rsp),%rdx
+    0.00 :   25a:    mov    %r15,%rcx
+    0.00 :   25d:    mov    %r12,%r8
+    0.00 :   260:    mov    0x20(%rsp),%r9
+    0.00 :   265:    push   %rbx
+    0.00 :   266:    push   %r14
+    0.00 :   268:    push   0x20(%rsp)
+    0.00 :   26c:    push   %r13
+    0.00 :   26e:    push   0x38(%rsp)
+    0.00 :   272:    movabs $0x0,%rax
+    0.00 :   27c:    call   *%rax
+    0.00 :   27e:    add    $0x30,%rsp
+    0.00 :   282:    test   %eax,%eax
+         : 125 _reverse_window(order, i, length)
+    0.00 :   284:    je     1b0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x130>
+    0.00 :   28a:    cmp    $0xfffffffe,%eax
+    0.00 :   28d:    je     1b0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x130>
+    0.00 :   293:    mov    0x40(%rsp),%rcx
+    0.00 :   298:    movq   $0x0,(%rcx)
+    0.00 :   29f:    jmp    3e1 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x361>
+    0.00 :   2a4:    mov    $0x3,%ebp
+    0.00 :   2a9:    sub    %r13,%rbp
+    0.00 :   2ac:    mov    $0x2,%ebx
+    0.00 :   2b1:    jmp    2d0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x250>
+    0.00 :   2b3:    data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   2c0:    inc    %rbx
+    0.00 :   2c3:    inc    %rbp
+    0.00 :   2c6:    cmp    $0x64,%rbx
+    0.00 :   2ca:    je     3fd <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x37d>
+    0.00 :   2d0:    mov    %rbx,%rax
+    0.00 :   2d3:    sub    %r13,%rax
+    0.00 :   2d6:    cmp    $0xfffffffffffffffe,%rax
+    0.00 :   2da:    jg     2c0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x240>
+    0.00 :   2dc:    mov    $0x1,%r14d
+    0.00 :   2e2:    jmp    2fd <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x27d>
+    0.00 :   2e4:    data16 data16 cs nopw 0x0(%rax,%rax,1)
+         : 148 for i in range(1, len(order) - length):
+    0.00 :   2f0:    inc    %r14
+    0.00 :   2f3:    lea    (%r14,%rbp,1),%rax
+    0.00 :   2f7:    cmp    $0x1,%rax
+    0.00 :   2fb:    je     2c0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x240>
+    0.00 :   2fd:    movq   $0x0,0x28(%rsp)
+         : 154 for length in range(2, max_swap_size):
+   15.01 :   306:    lea    0x28(%rsp),%rdi // original_numba_debug.py:33
+    0.00 :   30b:    lea    0x38(%rsp),%rsi
+         : 157 for i in range(1, len(order) - length):
+    0.00 :   310:    mov    0x30(%rsp),%rdx
+    0.00 :   315:    mov    0x48(%rsp),%rcx
+    0.00 :   31a:    mov    0x50(%rsp),%r8
+    0.00 :   31f:    mov    0x58(%rsp),%r9
+    0.00 :   324:    push   %rbx
+    0.00 :   325:    push   %r14
+   14.99 :   327:    push   0x18(%rsp) // original_numba_debug.py:0
+    0.00 :   32b:    push   %r13
+    0.00 :   32d:    push   0x30(%rsp)
+    0.00 :   331:    push   0x40(%rsp)
+    0.00 :   335:    push   %r12
+   10.00 :   337:    push   %r15 // original_numba_debug.py:34
+    0.00 :   339:    push   0x60(%rsp)
+         : 171 if _reverse_window_score_gain(all_masks, order, i, length) > 0:
+    0.00 :   33d:    push   0x158(%rsp)
+    0.00 :   344:    push   0x158(%rsp)
+    0.00 :   34b:    push   0x158(%rsp)
+   20.00 :   352:    push   0x158(%rsp) // original_numba_debug.py:35
+    0.00 :   359:    push   0x158(%rsp)
+    0.00 :   360:    movabs $0x0,%rax
+    0.00 :   36a:    call   *%rax
+    5.01 :   36c:    add    $0x70,%rsp
+    0.00 :   370:    test   %eax,%eax
+    0.00 :   372:    jne    3d4 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x354>
+    0.00 :   374:    cmpq   $0x0,0x28(%rsp)
+    0.00 :   37a:    jle    2f0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x270>
+    0.00 :   380:    sub    $0x8,%rsp
+    0.00 :   384:    lea    0x80(%rsp),%rdi
+    0.00 :   38c:    lea    0x78(%rsp),%rsi
+    0.00 :   391:    mov    0x28(%rsp),%rdx
+    0.00 :   396:    mov    %r15,%rcx
+    0.00 :   399:    mov    %r12,%r8
+    0.00 :   39c:    mov    0x20(%rsp),%r9
+    0.00 :   3a1:    push   %rbx
+    0.00 :   3a2:    push   %r14
+    0.00 :   3a4:    push   0x20(%rsp)
+    0.00 :   3a8:    push   %r13
+    0.00 :   3aa:    push   0x38(%rsp)
+    0.00 :   3ae:    movabs $0x0,%rax
+    0.00 :   3b8:    call   *%rax
+    0.00 :   3ba:    add    $0x30,%rsp
+    0.00 :   3be:    test   %eax,%eax
+         : 200 _reverse_window(order, i, length)
+    0.00 :   3c0:    je     2f0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x270>
+    0.00 :   3c6:    cmp    $0xfffffffe,%eax
+    0.00 :   3c9:    je     2f0 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x270>
+    0.00 :   3cf:    jmp    293 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x213>
+    0.00 :   3d4:    mov    0x38(%rsp),%rcx
+    0.00 :   3d9:    mov    0x40(%rsp),%rdx
+    0.00 :   3de:    mov    %rcx,(%rdx)
+    0.00 :   3e1:    add    $0xb8,%rsp
+    0.00 :   3e8:    pop    %rbx
+    0.00 :   3e9:    pop    %r12
+    0.00 :   3eb:    pop    %r13
+    0.00 :   3ed:    pop    %r14
+    0.00 :   3ef:    pop    %r15
+    0.00 :   3f1:    pop    %rbp
+    0.00 :   3f2:    ret
+    0.00 :   3f3:    mov    0x60(%rsp),%rcx
+    0.00 :   3f8:    mov    %rcx,(%rbx)
+    0.00 :   3fb:    jmp    3e1 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x361>
+    0.00 :   3fd:    mov    0x68(%rsp),%rax
+    0.00 :   402:    mov    0x20(%rsp),%rcx
+    0.00 :   407:    mov    %rcx,(%rax)
+    0.00 :   40a:    mov    %r15,0x8(%rax)
+    0.00 :   40e:    mov    %r12,0x10(%rax)
+    0.00 :   412:    mov    0x18(%rsp),%rcx
+         : 225 if _reverse_window_score_gain(all_masks, order, i, length) > 0:
+    0.00 :   417:    mov    %rcx,0x18(%rax)
+    0.00 :   41b:    mov    0x10(%rsp),%rcx
+    0.00 :   420:    mov    %rcx,0x20(%rax)
+    0.00 :   424:    mov    %r13,0x28(%rax)
+    0.00 :   428:    mov    0x8(%rsp),%rcx
+    0.00 :   42d:    mov    %rcx,0x30(%rax)
+    0.00 :   431:    movabs $0x0,%rax
+         : 233 order = np.arange(len(all_masks))
+    0.00 :   43b:    mov    0x30(%rsp),%rdi
+    0.00 :   440:    call   *%rax
+    0.00 :   442:    xor    %eax,%eax
+    0.00 :   444:    jmp    3e1 <shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTC_2fWwGaMLSgd6CjA4xXKR0tsqKIYSQsqDQwVMEsTAA_3d_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x361>
+
+Sorted summary for file /usr/bin/python3.12
+----------------------------------------------
+
+  100.00 obmalloc.c:684
+ Percent |	Source code & Disassembly of python3.12 for cpu_core/cycles/u (14 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000586150 <PyMem_RawFree>:
+  100.00 :   586150: endbr64 // obmalloc.c:684
+    0.00 :   586154: mov    0x5b02e5(%rip),%rax        # b36440 <_PyRuntime+0x80>
+    0.00 :   58615b: mov    0x5b02be(%rip),%rdx        # b36420 <_PyRuntime+0x60>
+    0.00 :   586162: cmp    $0x586180,%rax
+    0.00 :   586168: jne    586170 <PyMem_RawFree+0x20>
+    0.00 :   58616a: jmp    420ab0 <free@plt>
+    0.00 :   58616f: nop
+    0.00 :   586170: mov    %rdi,%rsi
+    0.00 :   586173: mov    %rdx,%rdi
+    0.00 :   586176: jmp    *%rax
+
+Sorted summary for file /tmp/shap-bench-venv/lib/python3.12/site-packages/numba/core/runtime/_nrt_python.cpython-312-x86_64-linux-gnu.so
+----------------------------------------------
+
+  100.00 _nrt_python.cpython-312-x86_64-linux-gnu.so[2230]
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (5 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .plt:
+         :
+         : 5    0000000000002230 <NRT_dealloc@plt>:
+  100.00 :   2230:   jmp    *0x5ee2(%rip)        # 8118 <NRT_dealloc@@Base+0x3c38> // _nrt_python.cpython-312-x86_64-linux-gnu.so[2230]
+    0.00 :   2236:   push   $0x20
+    0.00 :   223b:   jmp    2020 <.plt>

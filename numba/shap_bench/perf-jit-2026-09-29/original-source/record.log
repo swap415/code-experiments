@@ -1,0 +1,7 @@
+Events disabled
+/tmp/shap-perf-jit.o4UxQr/original_numba_debug.py:35: NumbaDebugInfoWarning: Could not find source for function: <function __numba_array_expr_0x773204d0ede0 at 0x773204cdc040>. Debug line information may be inaccurate.
+  if _reverse_window_score_gain(all_masks, order, i, length) > 0:
+Events enabled
+Events disabled
+[ perf record: Woken up 5 times to write data ]
+[ perf record: Captured and wrote 69.219 MB perf.data (4238 samples) ]

@@ -1,0 +1,6 @@
++ timeout 90 perf record -k 1 -F 499 -e cycles:u -m 64M --call-graph dwarf,16384 --delay=-1 --control=fifo:control,ack -o perf.data -- taskset -c 2 /tmp/shap-bench-venv/bin/python -u /tmp/shap-perf-jit.o4UxQr/perf_jit_driver.py original --features 13 --seconds 8 --control control --ack ack
++ perf inject --jit -i perf.data -o perf.jit.data
++ perf report -i perf.jit.data --stdio --no-children -g none --percent-limit 0
++ perf script -i perf.jit.data
++ /tmp/FlameGraph/stackcollapse-perf.pl --all
++ /tmp/FlameGraph/flamegraph.pl --title 'SHAP original | debug=0 | jitdump' --countname 'cycle-event weight' stacks.folded

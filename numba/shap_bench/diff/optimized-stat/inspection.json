@@ -1,0 +1,21 @@
+{
+  "optimized_kernel._reverse_window.0": {
+    "signature": "(Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+    "native_symbol": "_ZN16optimized_kernel15_reverse_windowB3v18B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIxLi1E1C7mutable7alignedExx",
+    "native_nrt_calls": []
+  },
+  "optimized_kernel._reverse_window_score_gain.0": {
+    "signature": "(Array(bool, 2, 'C', False, aligned=True), Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+    "native_symbol": "_ZN16optimized_kernel26_reverse_window_score_gainB3v16B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE5ArrayIxLi1E1C7mutable7alignedExx",
+    "native_nrt_calls": []
+  },
+  "optimized_kernel._delta_minimization_order.0": {
+    "signature": "(Array(bool, 2, 'C', False, aligned=True), omitted(default=100), omitted(default=2))",
+    "native_symbol": "_ZN16optimized_kernel25_delta_minimization_orderB3v15B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE26omitted_28default_3d100_2924omitted_28default_3d2_29",
+    "native_nrt_calls": [
+      "incref",
+      "MemInfo_alloc_aligned",
+      "decref"
+    ]
+  }
+}

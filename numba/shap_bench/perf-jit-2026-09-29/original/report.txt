@@ -1,0 +1,31 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 4K of event 'cpu_core/cycles/u'
+# Event count (approx.): 42859572411
+#
+# Overhead  Command  Shared Object                                Symbol                                                                                                                                                                                                      
+# ........  .......  ...........................................  ............................................................................................................................................................................................................
+#
+    34.97%  python   jitted-920309-6.so                           [.] NRT_decref
+    28.61%  python   jitted-920309-5.so                           [.] NRT_incref
+    12.58%  python   jitted-920309-22.so                          [.] shap_original_repro::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)
+     8.73%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_MemInfo_alloc_aligned
+     4.61%  python   jitted-920309-27.so                          [.] shap_original_repro::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)
+     2.89%  python   libc.so.6                                    [.] _int_free
+     1.97%  python   libc.so.6                                    [.] malloc
+     1.33%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_MemInfo_call_dtor
+     1.31%  python   libc.so.6                                    [.] cfree@GLIBC_2.2.5
+     1.09%  python   python3.12                                   [.] PyMem_RawMalloc
+     0.72%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_dealloc
+     0.49%  python   jitted-920309-37.so                          [.] shap_original_repro::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)
+     0.39%  python   python3.12                                   [.] PyMem_RawFree
+     0.27%  python   _nrt_python.cpython-312-x86_64-linux-gnu.so  [.] NRT_dealloc@plt
+     0.02%  python   jitted-920309-33.so                          [.] shap_original_repro::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

@@ -1,0 +1,42 @@
+{
+  "original_kernel._mask_delta_score.0": {
+    "signature": "(Array(bool, 1, 'C', False, aligned=True), Array(bool, 1, 'C', False, aligned=True))",
+    "native_symbol": "_ZN15original_kernel17_mask_delta_scoreB2v9B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi1E1C7mutable7alignedE5ArrayIbLi1E1C7mutable7alignedE",
+    "native_nrt_calls": [
+      "incref",
+      "incref",
+      "MemInfo_alloc_aligned",
+      "decref",
+      "decref",
+      "decref"
+    ]
+  },
+  "original_kernel._reverse_window.0": {
+    "signature": "(Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+    "native_symbol": "_ZN15original_kernel15_reverse_windowB3v14B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIxLi1E1C7mutable7alignedExx",
+    "native_nrt_calls": []
+  },
+  "original_kernel._reverse_window_score_gain.0": {
+    "signature": "(Array(bool, 2, 'C', False, aligned=True), Array(int64, 1, 'C', False, aligned=True), int64, int64)",
+    "native_symbol": "_ZN15original_kernel26_reverse_window_score_gainB2v8B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE5ArrayIxLi1E1C7mutable7alignedExx",
+    "native_nrt_calls": [
+      "incref",
+      "incref",
+      "incref",
+      "incref",
+      "decref",
+      "decref",
+      "decref",
+      "decref"
+    ]
+  },
+  "original_kernel._delta_minimization_order.0": {
+    "signature": "(Array(bool, 2, 'C', False, aligned=True), omitted(default=100), omitted(default=2))",
+    "native_symbol": "_ZN15original_kernel25_delta_minimization_orderB2v1B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIbLi2E1C7mutable7alignedE26omitted_28default_3d100_2924omitted_28default_3d2_29",
+    "native_nrt_calls": [
+      "incref",
+      "MemInfo_alloc_aligned",
+      "decref"
+    ]
+  }
+}

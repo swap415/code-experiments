@@ -1,0 +1,461 @@
+diff --git a/issues/shap_bench/probe_fusion_calls.py b/issues/shap_bench/probe_fusion_calls.py
+new file mode 100644
+index 000000000..f0c9b3705
+--- /dev/null
++++ b/issues/shap_bench/probe_fusion_calls.py
+@@ -0,0 +1,43 @@
++"""Isolate helper inlining after sum fusion; this is not a compiler change."""
++
++import statistics
++import time
++
++from numba import njit
++import numpy as np
++
++from bench_compiler_fusion import load_kernels
++
++
++def main():
++    variants = {name: load_kernels() for name in ('fused', 'inline_score')}
++    kernels = variants['inline_score']
++    kernels['_mask_delta_score'] = njit(inline='always')(
++        kernels['_mask_delta_score'].py_func)
++    masks = np.random.default_rng(0).integers(0, 2, (8192, 13)).astype(np.bool_)
++    expected = variants['fused']['_delta_minimization_order'](masks)
++    for name, kernels in variants.items():
++        for _ in range(2):
++            np.testing.assert_array_equal(
++                kernels['_delta_minimization_order'](masks), expected)
++        gain = kernels['_reverse_window_score_gain']
++        llvm = gain.inspect_llvm(gain.signatures[0])
++        native = llvm[llvm.index('\ndefine '):].split('\n}\n', 1)[0]
++        references = sum('call void @NRT_' in line
++                         for line in native.splitlines())
++        print(f'{name}: score_gain native NRT calls={references}')
++    timings = {name: [] for name in variants}
++    for repetition in range(10):
++        for name in list(variants)[::(-1 if repetition % 2 else 1)]:
++            start = time.perf_counter_ns()
++            result = variants[name]['_delta_minimization_order'](masks)
++            timings[name].append((time.perf_counter_ns() - start) / 1e6)
++            np.testing.assert_array_equal(result, expected)
++    for name, samples in timings.items():
++        print(f'{name}: mean={statistics.mean(samples):.4f} ms, '
++              f'std={statistics.stdev(samples):.4f} ms, '
++              f'median={statistics.median(samples):.4f} ms, n=10')
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/numba/np/npyimpl.py b/numba/np/npyimpl.py
+index 4459844d4d..2377695f6f 100644
+--- a/numba/np/npyimpl.py
++++ b/numba/np/npyimpl.py
+@@ -372,29 +372,21 @@ def _broadcast_onto(src_ndim, src_shape, dest_ndim, dest_shape):
+             dest_index += 1
+     return dest_index
+ 
+-def _build_array(context, builder, array_ty, input_types, inputs):
+-    """Utility function to handle allocation of an implicit output array
+-    given the target context, builder, output array type, and a list of
+-    _ArrayHelper instances.
+-    """
+-    # First, strip optional types, ufunc loops are typed on concrete types
+-    input_types = [x.type if isinstance(x, types.Optional) else x
+-                   for x in input_types]
+-
++def _broadcast_shape(context, builder, ndim, inputs):
++    """Validate broadcasting and return the common shape, without allocating."""
+     intp_ty = context.get_value_type(types.intp)
+     def make_intp_const(val):
+         return context.get_constant(types.intp, val)
+ 
+-    ZERO = make_intp_const(0)
+     ONE = make_intp_const(1)
+ 
+-    src_shape = cgutils.alloca_once(builder, intp_ty, array_ty.ndim,
++    src_shape = cgutils.alloca_once(builder, intp_ty, ndim,
+                                     "src_shape")
+-    dest_ndim = make_intp_const(array_ty.ndim)
+-    dest_shape = cgutils.alloca_once(builder, intp_ty, array_ty.ndim,
++    dest_ndim = make_intp_const(ndim)
++    dest_shape = cgutils.alloca_once(builder, intp_ty, ndim,
+                                      "dest_shape")
+     dest_shape_addrs = tuple(cgutils.gep_inbounds(builder, dest_shape, index)
+-                             for index in range(array_ty.ndim))
++                             for index in range(ndim))
+ 
+     # Initialize the destination shape with all ones.
+     for dest_shape_addr in dest_shape_addrs:
+@@ -424,10 +416,16 @@ def _build_array(context, builder, array_ty, input_types, inputs):
+ 
+             context.call_conv.return_user_exc(builder, ValueError, (msg,))
+ 
+-    real_array_ty = array_ty.as_array
++    return tuple(builder.load(addr) for addr in dest_shape_addrs)
++
++
++def _build_array(context, builder, array_ty, input_types, inputs):
++    """Allocate an implicit ufunc output with the broadcast input shape."""
++    input_types = [x.type if isinstance(x, types.Optional) else x
++                   for x in input_types]
++    dest_shape_tup = _broadcast_shape(context, builder, array_ty.ndim, inputs)
+ 
+-    dest_shape_tup = tuple(builder.load(dest_shape_addr)
+-                           for dest_shape_addr in dest_shape_addrs)
++    real_array_ty = array_ty.as_array
+     array_val = arrayobj._empty_nd_impl(context, builder, real_array_ty,
+                                         dest_shape_tup)
+ 
+@@ -558,6 +556,29 @@ def numpy_ufunc_kernel(context, builder, sig, args, ufunc, kernel_class):
+     return impl_ret_new_ref(context, builder, sig.return_type, out)
+ 
+ 
++def numpy_arrayexpr_sum(context, builder, sig, args, sum_ty, kernel_class):
++    """Reduce integer expression elements without materializing an array."""
++    inputs = [_prepare_argument(context, builder, arg, ty)
++              for arg, ty in zip(args, sig.args)]
++    shape = _broadcast_shape(context, builder, sig.return_type.ndim, inputs)
++    element_ty = sig.return_type.dtype
++    kernel_sig = element_ty(*(arg.base_type for arg in inputs))
++    kernel = kernel_class(context, builder, kernel_sig)
++    indices = [arg.create_iter_indices() for arg in inputs]
++    acc = cgutils.alloca_once_value(builder, context.get_constant(sum_ty, 0))
++    intp = context.get_value_type(types.intp)
++    with cgutils.loop_nest(builder, shape, intp=intp) as loop_indices:
++        values = []
++        for i, (index, arg) in enumerate(zip(indices, inputs)):
++            index.update_indices(loop_indices, i)
++            values.append(arg.load_data(index.as_values()))
++        # The kernel narrows to the expression dtype before sum promotion.
++        value = kernel.generate(*values)
++        value = context.cast(builder, value, element_ty, sum_ty)
++        builder.store(builder.add(builder.load(acc), value), acc)
++    return builder.load(acc)
++
++
+ def numpy_gufunc_kernel(context, builder, sig, args, ufunc, kernel_class):
+     arguments = []
+     expected_ndims = kernel_class.dufunc.expected_ndims()
+diff --git a/numba/np/ufunc/array_exprs.py b/numba/np/ufunc/array_exprs.py
+index 91fceaacf4..3194c7fc45 100644
+--- a/numba/np/ufunc/array_exprs.py
++++ b/numba/np/ufunc/array_exprs.py
+@@ -231,6 +231,112 @@ class RewriteArrayExprs(rewrites.Rewrite):
+         return result
+ 
+ 
++@rewrites.register_rewrite('after-inference')
++class RewriteArrayExprSums(rewrites.Rewrite):
++    """Fuse a single-use integer array expression with its scalar sum."""
++
++    def __init__(self, state):
++        self.enabled = not state.flags.auto_parallel.enabled
++        state.targetctx.special_ops['arrayexpr_sum'] = _lower_array_expr
++
++    def match(self, func_ir, block, typemap, calltypes):
++        if not self.enabled:
++            return False
++        assignments = {inst.target.name: inst
++                       for inst in block.find_insts(ir.Assign)}
++        producers = {name: inst for name, inst in assignments.items()
++                     if isinstance(inst.value, ir.Expr)
++                     and inst.value.op == 'arrayexpr'}
++        if not producers:
++            return False
++
++        uses = defaultdict(int)
++        definitions = defaultdict(int)
++        for other in func_ir.blocks.values():
++            for inst in other.body:
++                if isinstance(inst, ir.Del):
++                    continue
++                if isinstance(inst, ir.Assign):
++                    definitions[inst.target.name] += 1
++                    variables = inst._rec_list_vars(inst.value)
++                else:
++                    variables = inst.list_vars()
++                for var in variables:
++                    uses[var.name] += 1
++
++        for reduction in assignments.values():
++            call = reduction.value
++            if (not isinstance(call, ir.Expr) or call.op != 'call'
++                    or call.kws or call.vararg is not None
++                    or call.varkwarg is not None):
++                continue
++            sum_ty = typemap[reduction.target.name]
++            if not isinstance(sum_ty, types.Integer):
++                continue
++            func_ty = typemap.get(call.func.name)
++            method = None
++            if (isinstance(func_ty, types.BoundFunction)
++                    and func_ty.typing_key == 'array.sum' and not call.args):
++                method = assignments.get(call.func.name)
++                if (method is None or not isinstance(method.value, ir.Expr)
++                        or method.value.op != 'getattr'
++                        or method.value.attr != 'sum'
++                        or uses[call.func.name] != 1):
++                    continue
++                array = method.value.value
++            elif (isinstance(func_ty, types.Function)
++                    and func_ty.typing_key is np.sum and len(call.args) == 1):
++                array = call.args[0]
++            else:
++                continue
++            producer = producers.get(array.name)
++            if producer is None or uses[array.name] != 1:
++                continue
++            expr = producer.value
++            if (type(expr.ty) is not types.Array or expr.ty.ndim != 1
++                    or not isinstance(expr.ty.dtype,
++                                      (types.Boolean, types.Integer))
++                    or not self._integer_leaves(expr.expr, typemap)):
++                continue
++            removed = [producer, reduction]
++            if method is not None:
++                removed.append(method)
++            if any(definitions[inst.target.name] != 1 for inst in removed):
++                continue
++            # Reduce at the producer: intervening code may mutate its inputs.
++            fused = ir.Expr('arrayexpr_sum', expr.loc, expr=expr.expr,
++                            ty=expr.ty, sum_ty=sum_ty)
++            self.replacement = ir.Assign(fused, reduction.target, producer.loc)
++            self.producer = producer
++            self.removed = set(removed)
++            self.dead = {inst.target.name for inst in removed
++                         if inst is not reduction}
++            self.block = block
++            return True
++        return False
++
++    def _integer_leaves(self, expr, typemap):
++        if isinstance(expr, tuple):
++            return all(self._integer_leaves(arg, typemap) for arg in expr[1])
++        if isinstance(expr, ir.Const):
++            return isinstance(expr.value, (int, np.integer, np.bool_))
++        if not isinstance(expr, ir.Var):
++            return False
++        ty = typemap[expr.name]
++        if type(ty) is types.Array and ty.ndim == 1:
++            ty = ty.dtype
++        return isinstance(ty, (types.Boolean, types.Integer))
++
++    def apply(self):
++        result = self.block.copy()
++        result.body = [self.replacement if inst is self.producer else inst
++                       for inst in self.block.body
++                       if (inst is self.producer or inst not in self.removed)
++                       and not (isinstance(inst, ir.Del)
++                                and inst.value in self.dead)]
++        return result
++
++
+ _unaryops = {
+     operator.pos: ast.UAdd,
+     operator.neg: ast.USub,
+@@ -419,10 +525,14 @@ def _lower_array_expr(lowerer, expr):
+             return self.cast(result, inner_sig.return_type,
+                              self.outer_sig.return_type)
+ 
++    args = [lowerer.loadvar(name) for name in expr_args]
++    if expr.op == 'arrayexpr_sum':
++        return npyimpl.numpy_arrayexpr_sum(
++            context, builder, outer_sig, args, expr.sum_ty, ExprKernel)
++
+     # create a fake ufunc object which is enough to trick numpy_ufunc_kernel
+     ufunc = SimpleNamespace(nin=len(expr_args), nout=1, __name__=expr_name)
+     ufunc.nargs = ufunc.nin + ufunc.nout
+ 
+-    args = [lowerer.loadvar(name) for name in expr_args]
+     return npyimpl.numpy_ufunc_kernel(
+         context, builder, outer_sig, args, ufunc, ExprKernel)
+diff --git a/numba/tests/test_array_expr_sum.py b/numba/tests/test_array_expr_sum.py
+new file mode 100644
+index 000000000..de6f72d73
+--- /dev/null
++++ b/numba/tests/test_array_expr_sum.py
+@@ -0,0 +1,183 @@
++import unittest
++
++import numpy as np
++
++from numba import njit
++from numba.tests.support import MemoryLeakMixin, TestCase
++
++
++class TestArrayExprSum(MemoryLeakMixin, TestCase):
++    def compile(self, pyfunc):
++        return njit(pyfunc), njit(no_rewrites=True)(pyfunc)
++
++    def check(self, functions, *args):
++        compiled, baseline = functions
++        expected = compiled.py_func(*args)
++        self.assertPreciseEqual(compiled(*args), expected)
++        self.assertPreciseEqual(baseline(*args), expected)
++
++    def assert_allocation(self, compiled, expected):
++        llvm = compiled.inspect_llvm(compiled.signatures[-1])
++        self.assertEqual('NRT_MemInfo_alloc_aligned' in llvm, expected)
++
++    def test_boolean_xor(self):
++        def kernel(a, b):
++            return (a ^ b).sum()
++
++        functions = self.compile(kernel)
++        for size in (0, 1, 13, 257):
++            with self.subTest(size=size):
++                a = np.arange(size) % 2 == 0
++                b = np.arange(size) % 3 == 0
++                self.check(functions, a, b)
++        self.assert_allocation(functions[0], False)
++        self.assert_allocation(functions[1], True)
++
++    def test_other_expressions(self):
++        def global_sum(a, b):
++            return np.sum(a + b)
++
++        def comparison(a, b):
++            return (a < b).sum()
++
++        def nested(a, b):
++            return ((a ^ b) & (a + 1)).sum()
++
++        def scalar(a, b):
++            return (a * 3).sum()
++
++        a = np.arange(17, dtype=np.int64)
++        b = a[::-1].copy()
++        for kernel in (global_sum, comparison, nested, scalar):
++            with self.subTest(kernel=kernel.__name__):
++                functions = self.compile(kernel)
++                self.check(functions, a, b)
++                self.assert_allocation(functions[0], False)
++
++    def test_integer_dtypes(self):
++        def kernel(a, b):
++            return (a + b).sum()
++
++        functions = self.compile(kernel)
++        for dtype in (np.int8, np.uint8, np.int32, np.uint32,
++                      np.int64, np.uint64):
++            with self.subTest(dtype=dtype):
++                a = np.array([np.iinfo(dtype).max, 1], dtype=dtype)
++                b = np.array([1, 2], dtype=dtype)
++                self.check(functions, a, b)
++                self.assert_allocation(functions[0], False)
++                signature = functions[0].signatures[-1]
++                self.assertEqual(
++                    functions[0].overloads[signature].signature.return_type,
++                    functions[1].overloads[signature].signature.return_type,
++                )
++
++    def test_broadcast(self):
++        def kernel(a, b):
++            return (a + b).sum()
++
++        functions = self.compile(kernel)
++        singleton = np.array([7], dtype=np.int64)
++        for size in (0, 1, 13):
++            a = np.arange(size, dtype=np.int64)
++            self.check(functions, a, singleton)
++            self.check(functions, singleton, a)
++        self.assert_allocation(functions[0], False)
++        for sizes in ((2, 3), (0, 2)):
++            args = tuple(np.arange(size) for size in sizes)
++            for kernel in (functions[0].py_func, functions[0]):
++                with self.assertRaises(ValueError):
++                    kernel(*args)
++
++    def test_array_views(self):
++        def kernel(a, b):
++            return (a ^ b).sum()
++
++        functions = self.compile(kernel)
++        a = np.arange(33, dtype=np.int32)
++        for view in (a[::2], a[::-1]):
++            self.check(functions, view, view[::-1])
++            self.assert_allocation(functions[0], False)
++        a.flags.writeable = False
++        self.check(functions, a, a)
++        self.assert_allocation(functions[0], False)
++
++    def test_multiple_uses(self):
++        def escape(a, b):
++            value = a + b
++            return value.sum(), value
++
++        def multiple_consumers(a, b):
++            value = a + b
++            return value.sum() + value[0]
++
++        def shared_method(a, b):
++            reduce = (a + b).sum
++            return reduce(), reduce()
++
++        a = np.arange(5)
++        for kernel in (escape, multiple_consumers, shared_method):
++            with self.subTest(kernel=kernel.__name__):
++                functions = self.compile(kernel)
++                self.check(functions, a, a)
++                self.assert_allocation(functions[0], True)
++
++    def test_evaluation_before_mutation(self):
++        def kernel(a, b):
++            value = a + b
++            a[0] = 99
++            return value.sum()
++
++        @njit(inline='never')
++        def mutate(a):
++            a[0] = 99
++
++        def opaque_call(a, b):
++            value = a + b
++            mutate(a)
++            return value.sum()
++
++        a = np.arange(5)
++        for pyfunc in (kernel, opaque_call):
++            functions = self.compile(pyfunc)
++            expected = pyfunc(a.copy(), a.copy())
++            for compiled in functions:
++                self.assertPreciseEqual(
++                    compiled(a.copy(), a.copy()), expected)
++            self.assert_allocation(functions[0], False)
++
++    def test_unsupported_reductions(self):
++        def axis(a, b):
++            return (a + b).sum(axis=0)
++
++        def dtype(a, b):
++            return (a + b).sum(dtype=np.int32)
++
++        def plain(a, b):
++            return (a + b).sum()
++
++        a = np.arange(6)
++        cases = ((axis, a), (dtype, a), (plain, a.astype(np.float64)),
++                 (plain, a.reshape(2, 3)))
++        for kernel, a in cases:
++            with self.subTest(kernel=kernel.__name__, dtype=a.dtype,
++                              ndim=a.ndim):
++                functions = self.compile(kernel)
++                self.check(functions, a, a)
++                self.assert_allocation(functions[0], True)
++
++    def test_parallel_fallback(self):
++        @njit(parallel=True)
++        def kernel(a, b):
++            return (a + b).sum()
++
++        a = np.arange(100)
++        self.assertPreciseEqual(kernel(a, a), kernel.py_func(a, a))
++        result = kernel.overloads[kernel.signatures[0]]
++        self.assertNotIn('arrayexpr_sum', str(result.type_annotation))
++        self.assertEqual(result.metadata['parfor_diagnostics'].count_parfors(),
++                         1)
++
++
++if __name__ == '__main__':
++    unittest.main()

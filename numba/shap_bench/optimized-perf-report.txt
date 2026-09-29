@@ -1,0 +1,126 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+Warning:
+Kernel address maps (/proc/{kallsyms,modules}) were restricted.
+
+Check /proc/sys/kernel/kptr_restrict before running 'perf record'.
+
+As no suitable kallsyms nor vmlinux was found, kernel samples
+can't be resolved.
+
+Samples in kernel modules can't be resolved as well.
+
+#
+# Total Lost Samples: 0
+#
+# Samples: 4K of event 'cpu_core/cycles/P'
+# Event count (approx.): 42514740819
+#
+# Overhead  Symbol                          Shared Object     IPC   [IPC Coverage]
+# ........  ..............................  ................  ....................
+#
+     1.69%  [.] 0x00007de06829a871          [JIT] tid 895318  -      -            
+     1.59%  [.] 0x00007de06829b508          [JIT] tid 895318  -      -            
+     1.57%  [.] 0x00007de06829af28          [JIT] tid 895318  -      -            
+     1.49%  [.] 0x00007de06829b501          [JIT] tid 895318  -      -            
+     1.49%  [.] 0x00007de06829b4f0          [JIT] tid 895318  -      -            
+     1.47%  [.] 0x00007de06829a2df          [JIT] tid 895318  -      -            
+     1.45%  [.] 0x00007de06829a440          [JIT] tid 895318  -      -            
+     1.42%  [.] 0x00007de06829b347          [JIT] tid 895318  -      -            
+     1.40%  [.] 0x00007de06829a878          [JIT] tid 895318  -      -            
+     1.39%  [.] 0x00007de06829b15f          [JIT] tid 895318  -      -            
+     1.35%  [.] 0x00007de06829a860          [JIT] tid 895318  -      -            
+     1.27%  [.] 0x00007de06829af21          [JIT] tid 895318  -      -            
+     1.27%  [.] 0x00007de06829abc0          [JIT] tid 895318  -      -            
+     1.25%  [.] 0x00007de06829a6a8          [JIT] tid 895318  -      -            
+     1.17%  [.] 0x00007de06829b340          [JIT] tid 895318  -      -            
+     1.15%  [.] 0x00007de06829a2cd          [JIT] tid 895318  -      -            
+     1.10%  [.] 0x00007de06829a26c          [JIT] tid 895318  -      -            
+     1.10%  [.] 0x00007de06829b3d7          [JIT] tid 895318  -      -            
+     1.10%  [.] 0x00007de06829abaf          [JIT] tid 895318  -      -            
+     1.07%  [.] 0x00007de06829adb0          [JIT] tid 895318  -      -            
+     1.05%  [.] 0x00007de06829b32f          [JIT] tid 895318  -      -            
+     1.05%  [.] 0x00007de06829abef          [JIT] tid 895318  -      -            
+     1.05%  [.] 0x00007de06829b4e0          [JIT] tid 895318  -      -            
+     1.05%  [.] 0x00007de06829a288          [JIT] tid 895318  -      -            
+     1.02%  [.] 0x00007de06829abc7          [JIT] tid 895318  -      -            
+     1.00%  [.] 0x00007de06829a8a5          [JIT] tid 895318  -      -            
+     1.00%  [.] 0x00007de06829a30a          [JIT] tid 895318  -      -            
+     0.97%  [.] 0x00007de06829b3a8          [JIT] tid 895318  -      -            
+     0.97%  [.] 0x00007de06829b4f4          [JIT] tid 895318  -      -            
+     0.97%  [.] 0x00007de06829a2ac          [JIT] tid 895318  -      -            
+     0.95%  [.] 0x00007de06829a72c          [JIT] tid 895318  -      -            
+     0.95%  [.] 0x00007de06829af00          [JIT] tid 895318  -      -            
+     0.95%  [.] 0x00007de06829a8b1          [JIT] tid 895318  -      -            
+     0.95%  [.] 0x00007de06829ad82          [JIT] tid 895318  -      -            
+     0.95%  [.] 0x00007de06829b535          [JIT] tid 895318  -      -            
+     0.92%  [.] 0x00007de06829ada2          [JIT] tid 895318  -      -            
+     0.92%  [.] 0x00007de06829b57d          [JIT] tid 895318  -      -            
+     0.92%  [.] 0x00007de06829a8e6          [JIT] tid 895318  -      -            
+     0.92%  [.] 0x00007de06829ad6b          [JIT] tid 895318  -      -            
+     0.90%  [.] 0x00007de06829a690          [JIT] tid 895318  -      -            
+     0.90%  [.] 0x00007de06829b55f          [JIT] tid 895318  -      -            
+     0.90%  [.] 0x00007de06829b541          [JIT] tid 895318  -      -            
+     0.90%  [.] 0x00007de06829b525          [JIT] tid 895318  -      -            
+     0.87%  [.] 0x00007de06829b574          [JIT] tid 895318  -      -            
+     0.87%  [.] 0x00007de06829a864          [JIT] tid 895318  -      -            
+     0.85%  [.] 0x00007de06829a29f          [JIT] tid 895318  -      -            
+     0.85%  [.] 0x00007de06829b38d          [JIT] tid 895318  -      -            
+     0.85%  [.] 0x00007de06829a447          [JIT] tid 895318  -      -            
+     0.85%  [.] 0x00007de06829b353          [JIT] tid 895318  -      -            
+     0.85%  [.] 0x00007de06829a8bf          [JIT] tid 895318  -      -            
+     0.82%  [.] 0x00007de06829a8cf          [JIT] tid 895318  -      -            
+     0.82%  [.] 0x00007de06829afdf          [JIT] tid 895318  -      -            
+     0.80%  [.] 0x00007de06829a6d7          [JIT] tid 895318  -      -            
+     0.80%  [.] 0x00007de06829abe4          [JIT] tid 895318  -      -            
+     0.80%  [.] 0x00007de06829b1b0          [JIT] tid 895318  -      -            
+     0.80%  [.] 0x00007de06829a895          [JIT] tid 895318  -      -            
+     0.80%  [.] 0x00007de06829af9d          [JIT] tid 895318  -      -            
+     0.77%  [.] 0x00007de06829ad54          [JIT] tid 895318  -      -            
+     0.77%  [.] 0x00007de06829a271          [JIT] tid 895318  -      -            
+     0.77%  [.] 0x00007de06829af79          [JIT] tid 895318  -      -            
+     0.77%  [.] 0x00007de06829a4ae          [JIT] tid 895318  -      -            
+     0.75%  [.] 0x00007de06829ad8f          [JIT] tid 895318  -      -            
+     0.75%  [.] 0x00007de06829a2bf          [JIT] tid 895318  -      -            
+     0.75%  [.] 0x00007de06829b514          [JIT] tid 895318  -      -            
+     0.72%  [.] 0x00007de06829abd3          [JIT] tid 895318  -      -            
+     0.72%  [.] 0x00007de06829b54f          [JIT] tid 895318  -      -            
+     0.70%  [.] 0x00007de06829b320          [JIT] tid 895318  -      -            
+     0.70%  [.] 0x00007de06829b1cd          [JIT] tid 895318  -      -            
+     0.70%  [.] 0x00007de06829ad4f          [JIT] tid 895318  -      -            
+     0.70%  [.] 0x00007de06829a71b          [JIT] tid 895318  -      -            
+     0.70%  [.] 0x00007de06829a464          [JIT] tid 895318  -      -            
+     0.67%  [.] 0x00007de06829b150          [JIT] tid 895318  -      -            
+     0.65%  [.] 0x00007de06829a42f          [JIT] tid 895318  -      -            
+     0.65%  [.] 0x00007de06829afbe          [JIT] tid 895318  -      -            
+     0.65%  [.] 0x00007de06829a884          [JIT] tid 895318  -      -            
+     0.65%  [.] 0x00007de06829b170          [JIT] tid 895318  -      -            
+     0.63%  [.] 0x00007de06829a6e4          [JIT] tid 895318  -      -            
+     0.63%  [.] 0x00007de06829a850          [JIT] tid 895318  -      -            
+     0.62%  [.] 0x00007de06829b364          [JIT] tid 895318  -      -            
+     0.62%  [.] 0x00007de06829b380          [JIT] tid 895318  -      -            
+     0.62%  [.] 0x00007de06829aa59          [JIT] tid 895318  -      -            
+     0.60%  [.] 0x00007de06829a48e          [JIT] tid 895318  -      -            
+     0.60%  [.] 0x00007de06829a4bf          [JIT] tid 895318  -      -            
+     0.57%  [.] 0x00007de06829b1fa          [JIT] tid 895318  -      -            
+     0.57%  [.] 0x00007de06829aa38          [JIT] tid 895318  -      -            
+     0.57%  [.] 0x00007de06829a4e0          [JIT] tid 895318  -      -            
+     0.57%  [.] 0x00007de06829a6f7          [JIT] tid 895318  -      -            
+     0.56%  [.] 0x00007de06829a50a          [JIT] tid 895318  -      -            
+     0.55%  [.] 0x00007de06829aa46          [JIT] tid 895318  -      -            
+     0.55%  [.] 0x00007de06829aff8          [JIT] tid 895318  -      -            
+     0.55%  [.] 0x00007de06829a680          [JIT] tid 895318  -      -            
+     0.55%  [.] 0x00007de06829b3cb          [JIT] tid 895318  -      -            
+     0.55%  [.] 0x00007de06829a55a          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829a6a1          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829abb3          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829b333          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829af60          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829adbd          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829aba0          [JIT] tid 895318  -      -            
+     0.52%  [.] 0x00007de06829aa53          [JIT] tid 895318  -      -            
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

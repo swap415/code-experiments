@@ -1,0 +1,102 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+Warning:
+Kernel address maps (/proc/{kallsyms,modules}) were restricted.
+
+Check /proc/sys/kernel/kptr_restrict before running 'perf record'.
+
+As no suitable kallsyms nor vmlinux was found, kernel samples
+can't be resolved.
+
+Samples in kernel modules can't be resolved as well.
+
+#
+# Total Lost Samples: 0
+#
+# Samples: 4K of event 'cpu_core/cycles/P'
+# Event count (approx.): 44609024343
+#
+# Overhead  Symbol                          Shared Object                                IPC   [IPC Coverage]
+# ........  ..............................  ...........................................  ....................
+#
+    24.69%  [.] 0x0000758369c14055          [JIT] tid 895270                             -      -            
+    20.90%  [.] 0x0000758369c14065          [JIT] tid 895270                             -      -            
+     6.97%  [.] NRT_MemInfo_alloc_aligned   _nrt_python.cpython-312-x86_64-linux-gnu.so  -      -            
+            |          
+            |--4.38%--std::__atomic_base<unsigned long>::store(unsigned long, std::memory_order) (inlined)
+            |          std::__atomic_base<unsigned long>::operator=(unsigned long) (inlined)
+            |          NRT_MemInfo_init (inlined)
+            |          NRT_MemInfo_alloc_aligned
+            |          0x7583693b901b
+            |          
+            |--1.07%--NRT_MemInfo_alloc_aligned
+            |          |          
+            |           --0.59%--0x7583693b8fff
+            |          
+             --0.59%--NRT_MemInfo_init (inlined)
+                       NRT_MemInfo_alloc_aligned
+                       0x7583693b901b
+
+     3.06%  [.] 0x00007583666f214f          [JIT] tid 895270                             -      -            
+     2.70%  [.] 0x00007583666f2153          [JIT] tid 895270                             -      -            
+     2.68%  [.] 0x00007583666f6010          [JIT] tid 895270                             -      -            
+     2.54%  [.] 0x00007583666f211a          [JIT] tid 895270                             -      -            
+     2.47%  [.] 0x00007583666f2132          [JIT] tid 895270                             -      -            
+     2.39%  [.] 0x00007583666f2145          [JIT] tid 895270                             -      -            
+     2.35%  [.] malloc                      libc.so.6                                    -      -            
+            |          
+            |--1.30%--__GI___libc_malloc (inlined)
+            |          |          
+            |           --0.97%--NRT_MemInfo_alloc_aligned
+            |                     nrt_allocate_meminfo_and_data (inlined)
+            |                     nrt_allocate_meminfo_and_data_align (inlined)
+            |                     NRT_MemInfo_alloc_aligned
+            |                     |          
+            |                      --0.55%--0x397bf1f
+            |          
+             --0.76%--tcache_get_n (inlined)
+                       tcache_get (inlined)
+                       __GI___libc_malloc (inlined)
+                       NRT_MemInfo_alloc_aligned
+                       nrt_allocate_meminfo_and_data (inlined)
+                       nrt_allocate_meminfo_and_data_align (inlined)
+                       NRT_MemInfo_alloc_aligned
+                       0x397bf1f
+
+     2.32%  [.] 0x00007583666f2128          [JIT] tid 895270                             -      -            
+     2.23%  [.] 0x00007583666f6007          [JIT] tid 895270                             -      -            
+     1.87%  [.] _int_free                   libc.so.6                                    -      -            
+            |          
+             --1.64%--_int_free
+                       __GI___libc_free (inlined)
+                       NRT_dealloc
+                       NRT_dealloc
+                       |          
+                        --1.21%--0xffffffffffffff77
+
+     1.45%  [.] cfree@GLIBC_2.2.5           libc.so.6                                    -      -            
+            |          
+             --1.21%--__GI___libc_free (inlined)
+                       NRT_dealloc
+                       NRT_dealloc
+
+     1.16%  [.] 0x0000758369c1406b          [JIT] tid 895270                             -      -            
+     1.07%  [.] 0x0000758369c14059          [JIT] tid 895270                             -      -            
+     1.07%  [.] NRT_dealloc                 _nrt_python.cpython-312-x86_64-linux-gnu.so  -      -            
+            |          
+             --0.62%--NRT_Free (inlined)
+                       NRT_dealloc
+
+     0.90%  [.] NRT_MemInfo_call_dtor       _nrt_python.cpython-312-x86_64-linux-gnu.so  -      -            
+            |          
+             --0.55%--NRT_MemInfo_call_dtor
+
+     0.73%  [.] 0x0000758369c14069          [JIT] tid 895270                             -      -            
+     0.64%  [.] 0x00007583666f203e          [JIT] tid 895270                             -      -            
+     0.55%  [.] PyMem_RawFree               python3.12                                   -      -            
+     0.52%  [.] 0x00007583666f2289          [JIT] tid 895270                             -      -            
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

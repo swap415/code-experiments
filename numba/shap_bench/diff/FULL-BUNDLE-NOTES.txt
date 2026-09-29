@@ -1,0 +1,104 @@
+Historical notes for the original full local bundle. This Git copy omits raw
+perf captures and JIT binaries; the full-bundle checksum manifest only
+passes when checked against the original archive. Host identifiers were
+redacted for publication. See README.md for the curated result.
+
+Original SHAP vs standalone optimized Numba: Linux evidence, 2026-09-29
+
+Start with comparison.txt, then diff-before.svg (blue = less cost per call).
+This compares the original with the standalone scalar-loop rewrite, NOT the
+earlier existing-serial-fusion experiment. No compiler transform was added.
+The supported input here is a two-dimensional boolean mask array.
+
+Evidence map
+  original_numba_debug.py / optimized_numba.py: exact source snapshots
+  source.diff / sources.sha256: kernel changes and source identities
+  compare.py: shared warmed benchmark, profiler workload, LLVM/assembly export
+  verify.py / verification/checks.json: 588 equality cases + 16 gain cases
+  timing-8/ / timing-13/: ten alternating timing trials, raw times, environment
+  original/ / optimized/: perf.data, perf.jit.data, report.txt, annotation.txt,
+      stacks.perf, stacks.folded, flamegraph.svg, LLVM (.ll), assembly (.s),
+      inspection.json, workload.json, env.json, and diagnostic logs
+  original-stat/ / optimized-stat/: separate gated counters.csv and workloads
+  */jitdump/: retained JIT dumps and synthetic ELF objects, including hidden
+      .debug directories; perf data refers to their original Linux paths
+  comparison.txt / comparison.json: human-readable and machine-readable results
+  diff-before.svg / diff-after.svg: differential graphs with before/after widths
+  *.folded / */per-call.folded: differential input weights, sampled cycles/call
+  commands.log / report-commands.log: actual commands and shell output
+  host.txt / */env.json: host, versions, flags, affinity, hashes and arguments
+  FULL-BUNDLE-SHA256SUMS: complete file-content manifest (excludes itself and Python caches)
+
+Method and interpretation
+  Both kernels compile and run twice before timing or enabling perf. Both use
+  the same seed-0 input and return exactly the same order. Timing runs alternate
+  variants and have no perf sampler; mean +/- sample standard deviation, n=10.
+  CPU affinity is 2. NUMBA_ENABLE_PROFILING=1, NUMBA_DEBUGINFO=0 for both.
+  Compilation is outside the perf event window, using FIFO enable/disable ACKs.
+  Profiling includes small Python loop/time/checksum and output-lifetime costs.
+  Each variant has a separate eight-second cycles recording and counter run.
+  Divide counters by that counter run's completed calls, not the sample run's.
+  The powersave governor was left unchanged; clock frequency was not fixed.
+
+  Main result (8192 x 13): 299.8271 +/- 0.0514 ms before;
+                          17.8259 +/- 0.0185 ms after; 16.822x median speedup.
+  Small example (256 x 8): 7.2482 +/- 0.0147 -> 0.2354 +/- 0.0032 ms.
+  Original NRT_incref/decref account for 63.3912% of sampled cycle weight.
+  None were sampled as leaves in the optimized run. LLVM independently shows
+  no NRT calls in the optimized scoring helper; the entry point still allocates
+  its output array. This is not proof of zero reference counting everywhere.
+
+  Ordinary flamegraph widths are shares within each recording. Differential
+  weights are estimated sampled cycles per call, NOT equal-total percentages.
+  Before-width view preserves removed costs; after-width view emphasizes what
+  remains. Blue is reduced attributed cost; red can also reflect inlining into
+  a caller. Widths auto-scale separately. Folded stacks include inline frames,
+  so their leaf shares need not equal flat perf report self percentages.
+  Zero lost samples; unresolved leaf weight is 0% original / 0.0250% optimized.
+  Symbol resolution does not repair missing caller unwind information. Cycles
+  samples can skid; annotated percentages are not instruction latency measures.
+  Hardware counters have one run per variant; branch misses per call increased
+  slightly even though cycles, instructions and branches decreased.
+
+Reproduction
+  Original Linux directory: /tmp/shap-perf-diff.lIhrzu on user@profiling-host
+  Python: /tmp/shap-bench-venv/bin/python
+  Perf-enabled llvmlite: /tmp/shap-perf-jit.o4UxQr/llvmlite
+  llvmlite SHA: aecbe8f79dd56bb2752b0f55b02791b285ef8e97
+  FlameGraph: /tmp/FlameGraph
+  FlameGraph SHA: 41fee1f99f9276008b7cd112fca19dc3ea84ac32
+  LLVM: 22.1.0, built with perf JIT events enabled
+
+  On Linux, copy the two source files, sources.sha256, compare.py, verify.py,
+  run.sh, analyze.py and report.sh into a NEW directory, then run:
+
+    bash run.sh > commands.log 2>&1
+    bash report.sh > report-commands.log 2>&1
+
+  run.sh refuses to replace existing run directories. Set SHAP_PERF_PYTHON,
+  SHAP_PERF_LLVMLITE and SHAP_FLAMEGRAPH if dependencies live elsewhere.
+  CPU 2 and perf --cputype core are specific to this hybrid Intel host.
+  run.sh checks the LLVM perf capability before recording. Full flags and
+  perf inject/report/script/annotate commands are in run.sh and commands.log.
+  These scripts reuse dependencies; they do not build LLVM or install packages.
+
+  SVGs and text reports are portable. Reprocessing raw perf on another Linux
+  host requires matching binary/source paths (or appropriate remapping), JIT
+  objects and native binaries. This bundle does not copy the entire Linux
+  installation. The original host retains those native libraries and sources.
+  control/ack FIFOs and Python caches are intentionally not copied.
+
+  Verify this copy from its directory on macOS:
+
+    shasum -a 256 -c FULL-BUNDLE-SHA256SUMS --status
+
+Experiment log
+  1. Froze source snapshots and verified hashes against the requested files.
+  2. Passed exact-order, permutation, input-preservation and signed-gain checks.
+  3. Measured warmed timing trials, then gated samples and hardware counters.
+  4. Exported native LLVM/assembly, symbolized samples and generated reports.
+  5. Independently audited timing arithmetic, source/output hashes, counter
+     normalization, sample loss, unresolved weights and native NRT call sites.
+     No measurement rerun was needed; documented inline-attribution differences.
+  6. Copied the bundle to <original-local-bundle>;
+     kept older experiments unchanged. Final SHA256 verification covers files.

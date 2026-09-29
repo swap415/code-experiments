@@ -1,0 +1,58 @@
+--- original_numba_debug.py	2026-09-29 22:42:09.053106601 +0000
++++ optimized_numba.py	2026-09-29 22:42:09.081107335 +0000
+@@ -1,13 +1,10 @@
++"""SHAP delta minimization for 2-D boolean masks, without scoring temporaries."""
++
+ import numpy as np
+ from numba import njit
+ 
+ 
+ @njit
+-def _mask_delta_score(m1, m2):
+-    return (m1 ^ m2).sum()
+-
+-
+-@njit
+ def _reverse_window(order, start, length):
+     for i in range(length // 2):
+         tmp = order[start + i]
+@@ -17,13 +14,19 @@
+ 
+ @njit
+ def _reverse_window_score_gain(masks, order, start, length):
+-    forward_score = _mask_delta_score(masks[order[start - 1]], masks[order[start]]) + _mask_delta_score(
+-        masks[order[start + length - 1]], masks[order[start + length]]
+-    )
+-    reverse_score = _mask_delta_score(masks[order[start - 1]], masks[order[start + length - 1]]) + _mask_delta_score(
+-        masks[order[start]], masks[order[start + length]]
+-    )
+-    return forward_score - reverse_score
++    left = order[start - 1]
++    first = order[start]
++    last = order[start + length - 1]
++    right = order[start + length]
++    gain = 0
++    # Four Hamming distances in one pass, with no row views or XOR arrays.
++    for j in range(masks.shape[1]):
++        a = masks[left, j]
++        b = masks[first, j]
++        c = masks[last, j]
++        d = masks[right, j]
++        gain += int(a ^ b) + int(c ^ d) - int(a ^ c) - int(b ^ d)
++    return gain
+ 
+ 
+ @njit
+@@ -37,7 +40,8 @@
+     return order
+ 
+ 
+-rng = np.random.default_rng(0)
+-masks = rng.integers(0, 2, (256, 8)).astype(np.bool_)
+-order = _delta_minimization_order(masks)
+-assert np.array_equal(np.sort(order), np.arange(len(masks)))
++if __name__ == "__main__":
++    rng = np.random.default_rng(0)
++    masks = rng.integers(0, 2, (256, 8)).astype(np.bool_)
++    order = _delta_minimization_order(masks)
++    assert np.array_equal(np.sort(order), np.arange(len(masks)))

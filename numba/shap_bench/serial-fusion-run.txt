@@ -1,0 +1,44 @@
+Command (from <numba-checkout>):
+$ PYTHONPATH=. MPLCONFIGDIR=/tmp/shap-bench-matplotlib shap/.venv/bin/python -u issues/shap_bench/bench_compiler_fusion.py --cpp
+
+Stdout:
+Python 3.13.12 | macOS-26.6.2-arm64-arm-64bit-Mach-O
+NumPy 2.4.6 | Numba 0.67.0dev1+9.g63b756580b | llvmlite 0.49.0 | LLVM (22, 1, 0)
+Numba source: <numba-checkout>/numba/__init__.py
+Original source SHA256: 2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea
+Only difference: the unchanged _mask_delta_score uses existing parallel=True fusion, compiled with sequential parfor lowering. All callers retain their original @njit configuration.
+baseline _mask_delta_score LLVM NRT allocation calls: 1
+baseline threading symbols across score and callers: 0
+serial_fusion _mask_delta_score LLVM NRT allocation calls: 0
+serial_fusion threading symbols across score and callers: 0
+Existing parfor fusion metadata: {0: [1]}
+C++ comparison: current SHAP 0.52.1.dev39, <numba-checkout>/shap/.venv/lib/python3.13/site-packages/shap/_cutils.abi3.so; not the historical PR 4654 build
+
+features=8, masks=256, n=10
+baseline: mean=3.6195 ms, std=0.0504 ms, median=3.6128 ms
+baseline raw samples (ms): [3.746667, 3.597708, 3.625667, 3.612334, 3.638833, 3.557041, 3.578416, 3.6135, 3.613167, 3.611958]
+serial_fusion: mean=0.3444 ms, std=0.0088 ms, median=0.3391 ms
+serial_fusion raw samples (ms): [0.35525, 0.338958, 0.3375, 0.3385, 0.35575, 0.350875, 0.355875, 0.3345, 0.337667, 0.339333]
+current_cpp: mean=0.5119 ms, std=0.0322 ms, median=0.5119 ms
+current_cpp raw samples (ms): [0.510041, 0.514958, 0.506334, 0.525333, 0.524792, 0.513792, 0.4695, 0.493875, 0.474833, 0.585708]
+median speedup: 10.65x
+
+features=13, masks=8192, n=10
+baseline: mean=157.9542 ms, std=0.6259 ms, median=157.9795 ms
+baseline raw samples (ms): [158.568416, 156.799667, 157.752666, 158.852916, 158.117334, 157.259875, 158.062417, 157.673959, 157.896541, 158.558167]
+serial_fusion: mean=22.9537 ms, std=0.1234 ms, median=22.9515 ms
+serial_fusion raw samples (ms): [23.050542, 22.895041, 23.05225, 23.03725, 22.902708, 22.779125, 22.945792, 22.765792, 22.957125, 23.151333]
+current_cpp: mean=30.8740 ms, std=0.4656 ms, median=30.9764 ms
+current_cpp raw samples (ms): [31.39825, 30.994792, 31.28875, 30.471209, 30.459333, 31.358667, 30.856375, 31.0245, 30.958083, 29.930334]
+median speedup: 6.88x
+
+Exit status: 0
+
+Separate pre-timing stderr note:
+Importing SHAP emitted repeated Fontconfig warnings before any timed samples:
+Fontconfig error: No writable cache directories
+    /opt/homebrew/var/cache/fontconfig
+    <local-home>/.cache/fontconfig
+    <local-home>/.fontconfig
+Matplotlib is building the font cache; this may take a moment.
+The import and cache-building completed before the C++ warm-up and timed comparisons.

@@ -1,0 +1,7 @@
+test_perf_jit_event_capability (llvmlite.tests.test_binding.TestMCJit.test_perf_jit_event_capability) ... ok
+test_perf_jitdump_contains_debug_info (llvmlite.tests.test_binding.TestMCJit.test_perf_jitdump_contains_debug_info) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.061s
+
+OK

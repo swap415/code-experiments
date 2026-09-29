@@ -1,0 +1,8 @@
+Python 3.12.3 | Linux-6.8.0-139-generic-x86_64-with-glibc2.39
+NumPy 2.5.3 | Numba 0.67.0 | llvmlite 0.49.0dev0-98-gaecbe8f7 | LLVM (22, 1, 0)
+Numba: /tmp/shap-bench-venv/lib/python3.12/site-packages/numba/__init__.py
+llvmlite: /tmp/shap-perf-jit.o4UxQr/llvmlite/llvmlite/__init__.py
+profiling=1 debuginfo=0 has_perf_jit_events=True
+Original source SHA256: 2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea
+warm/check complete: pid=920309 mode=original features=13 masks=8192
+mode=original elapsed=8.123s iterations=27 checksum=221157 mean=300.861ms (profiling throughput, not a repeated-trial benchmark)

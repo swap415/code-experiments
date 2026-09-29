@@ -1,0 +1,24 @@
+> shap/.venv/bin/python -m unittest numba.tests.test_array_expr_sum -q
+> PYTHONPATH=. shap/.venv/bin/python issues/shap_bench/bench_compiler_fusion.py
+
+----------------------------------------------------------------------
+Ran 9 tests in 2.994s
+
+OK
+Python 3.13.12 | macOS-26.6.2-arm64-arm-64bit-Mach-O
+NumPy 2.4.6 | Numba 0.67.0dev1+9.g63b756580b.dirty | llvmlite 0.49.0 | LLVM (22, 1, 0)
+Numba source: <numba-checkout>/numba/__init__.py
+Original source SHA256: 2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea
+Only difference: RewriteArrayExprSums disabled/enabled; all other rewrites remain enabled.
+baseline _mask_delta_score LLVM NRT allocation calls: 1
+patched _mask_delta_score LLVM NRT allocation calls: 0
+
+features=8, masks=256, n=10
+baseline: mean=3.6616 ms, std=0.0625 ms, median=3.6682 ms
+patched: mean=1.7663 ms, std=0.0190 ms, median=1.7625 ms
+median speedup: 2.08x
+
+features=13, masks=8192, n=10
+baseline: mean=159.4047 ms, std=0.9340 ms, median=159.4853 ms
+patched: mean=69.8438 ms, std=0.2655 ms, median=69.8225 ms
+median speedup: 2.28x

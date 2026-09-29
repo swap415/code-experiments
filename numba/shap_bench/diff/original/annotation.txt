@@ -1,0 +1,2078 @@
+ Percent |	Source code & Disassembly of jitted-931902-6.so for cpu_core/cycles/u (1352 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <NRT_decref>:
+    7.40 :   80:     endbr64
+    0.00 :   84:     test   %rdi,%rdi
+    0.00 :   87:     je     8f <NRT_decref+0xf>
+    0.00 :   89:     lock decq (%rdi)
+   87.35 :   8d:     je     90 <NRT_decref+0x10>
+    4.07 :   8f:     ret
+    1.18 :   90:     movabs $0x0,%rax
+    0.00 :   9a:     jmp    *%rax
+ Percent |	Source code & Disassembly of jitted-931902-5.so for cpu_core/cycles/u (1215 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3  Disassembly of section .text:
+         :
+         : 5  0000000000000080 <NRT_incref>:
+    4.94 :   80:     endbr64
+    0.00 :   84:     test   %rdi,%rdi
+    0.00 :   87:     je     8d <NRT_incref+0xd>
+    0.00 :   89:     lock incq (%rdi)
+   95.06 :   8d:     ret
+ Percent |	Source code & Disassembly of jitted-931902-22.so for cpu_core/cycles/u (497 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)>:
+    2.62 :    80:     endbr64
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     sub    $0x18,%rsp
+    3.83 :    92:     mov    %rsi,0x8(%rsp)
+    0.00 :    97:     mov    %rdi,%r13
+    0.00 :    9a:     mov    0x68(%rsp),%r14
+    0.00 :    9f:     mov    0x58(%rsp),%rbp
+    0.00 :    a4:     mov    0x90(%rsp),%r15
+    0.00 :    ac:     movabs $0x0,%rbx
+    0.00 :    b6:     mov    %rdx,%r12
+    0.00 :    b9:     mov    %rdx,%rdi
+    5.24 :    bc:     call   *%rbx
+    3.63 :    be:     mov    %r14,%rdi
+    0.00 :    c1:     call   *%rbx
+    4.66 :    c3:     mov    %r15,%rbx
+    0.00 :    c6:     cmp    $0x1,%rbp
+    0.00 :    ca:     je     fd <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x7d>
+    0.00 :    cc:     cmp    %rbp,%r15
+    0.00 :    cf:     setne  %al
+    0.20 :    d2:     cmp    $0x1,%r15
+    0.00 :    d6:     setne  %cl
+    0.00 :    d9:     mov    %rbp,%rbx
+    0.00 :    dc:     test   %al,%cl
+    0.00 :    de:     je     fd <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x7d>
+    0.00 :    e0:     movabs $0x0,%rax
+    0.00 :    ea:     mov    0x8(%rsp),%rcx
+    0.00 :    ef:     mov    %rax,(%rcx)
+    0.00 :    f2:     mov    $0x1,%r14d
+    0.00 :    f8:     jmp    5d9 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x559>
+    2.82 :    fd:     mov    %r13,0x10(%rsp)
+    0.00 :   102:    movabs $0x0,%rax
+    0.00 :   10c:    mov    %rbx,%rdi
+    0.00 :   10f:    mov    $0x20,%esi
+    0.00 :   114:    call   *%rax
+    3.83 :   116:    test   %rax,%rax
+    0.00 :   119:    je     b2d <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0xaad>
+    0.00 :   11f:    mov    %rax,%r13
+    0.00 :   122:    xor    %r14d,%r14d
+    0.00 :   125:    test   %rbx,%rbx
+    0.00 :   128:    jle    24b <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1cb>
+    5.04 :   12e:    mov    0x88(%rsp),%rdx
+    0.00 :   136:    mov    0x50(%rsp),%rsi
+    0.00 :   13b:    mov    0x18(%r13),%rax
+    0.00 :   13f:    movabs $0x7ffffffffffffff8,%rcx
+    0.00 :   149:    cmp    $0x2,%rbp
+    0.00 :   14d:    jb     258 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1d8>
+    0.00 :   153:    cmp    $0x1,%r15
+    0.00 :   157:    jbe    320 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2a0>
+    0.00 :   15d:    cmp    $0x8,%rbx
+    0.00 :   161:    jb     18e <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x10e>
+    0.00 :   163:    mov    %rax,%rdi
+    3.23 :   166:    sub    %rsi,%rdi
+    0.00 :   169:    cmp    $0x80,%rdi
+    0.00 :   170:    setb   %dil
+    0.00 :   174:    mov    %rax,%r8
+    0.20 :   177:    sub    %rdx,%r8
+    0.00 :   17a:    cmp    $0x80,%r8
+    0.00 :   181:    setb   %r8b
+    0.00 :   185:    or     %dil,%r8b
+    4.23 :   188:    je     6f8 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x678>
+    0.00 :   18e:    xor    %edi,%edi
+    2.02 :   190:    mov    %rbx,%r9
+    0.00 :   193:    mov    %rdi,%r8
+    0.00 :   196:    and    $0x3,%r9
+    0.00 :   19a:    je     1c1 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x141>
+    0.00 :   19c:    mov    %rdi,%r8
+    0.00 :   19f:    nop
+    0.00 :   1a0:    cmpb   $0x0,(%rsi,%r8,1)
+    0.00 :   1a5:    setne  %r10b
+    3.63 :   1a9:    cmpb   $0x0,(%rdx,%r8,1)
+    0.00 :   1ae:    setne  %r11b
+    0.00 :   1b2:    xor    %r10b,%r11b
+    0.00 :   1b5:    mov    %r11b,(%rax,%r8,1)
+    0.00 :   1b9:    inc    %r8
+    0.00 :   1bc:    dec    %r9
+    0.00 :   1bf:    jne    1a0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x120>
+    0.00 :   1c1:    sub    %rbx,%rdi
+    2.82 :   1c4:    cmp    $0xfffffffffffffffc,%rdi
+    0.00 :   1c8:    ja     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   1ce:    xchg   %ax,%ax
+    0.00 :   1d0:    cmpb   $0x0,(%rsi,%r8,1)
+    0.00 :   1d5:    setne  %dil
+    0.00 :   1d9:    cmpb   $0x0,(%rdx,%r8,1)
+    0.00 :   1de:    setne  %r9b
+    4.23 :   1e2:    xor    %dil,%r9b
+    0.00 :   1e5:    mov    %r9b,(%rax,%r8,1)
+    0.00 :   1e9:    cmpb   $0x0,0x1(%rsi,%r8,1)
+    0.00 :   1ef:    setne  %dil
+    0.00 :   1f3:    cmpb   $0x0,0x1(%rdx,%r8,1)
+    0.00 :   1f9:    setne  %r9b
+    2.22 :   1fd:    xor    %dil,%r9b
+    0.00 :   200:    mov    %r9b,0x1(%rax,%r8,1)
+    0.00 :   205:    cmpb   $0x0,0x2(%rsi,%r8,1)
+    0.00 :   20b:    setne  %dil
+    0.00 :   20f:    cmpb   $0x0,0x2(%rdx,%r8,1)
+    0.00 :   215:    setne  %r9b
+    3.63 :   219:    xor    %dil,%r9b
+    0.00 :   21c:    mov    %r9b,0x2(%rax,%r8,1)
+    0.00 :   221:    cmpb   $0x0,0x3(%rsi,%r8,1)
+    0.00 :   227:    setne  %dil
+    0.00 :   22b:    cmpb   $0x0,0x3(%rdx,%r8,1)
+    0.00 :   231:    setne  %r9b
+    2.82 :   235:    xor    %dil,%r9b
+    0.00 :   238:    mov    %r9b,0x3(%rax,%r8,1)
+    0.00 :   23d:    add    $0x4,%r8
+    0.00 :   241:    cmp    %r8,%rbx
+    0.00 :   244:    jne    1d0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x150>
+    0.00 :   246:    jmp    490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   24b:    xor    %r15d,%r15d
+    0.00 :   24e:    mov    0x68(%rsp),%rdi
+    0.00 :   253:    jmp    5b8 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x538>
+    0.00 :   258:    cmp    $0x1,%r15
+    0.00 :   25c:    jbe    3e0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x360>
+    0.00 :   262:    cmp    $0x8,%rbx
+    0.00 :   266:    jae    5eb <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x56b>
+    0.00 :   26c:    xor    %edi,%edi
+    0.00 :   26e:    mov    %rbx,%r9
+    0.00 :   271:    mov    %rdi,%r8
+    0.00 :   274:    and    $0x3,%r9
+    0.00 :   278:    je     29f <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x21f>
+    0.00 :   27a:    mov    %rdi,%r8
+    0.00 :   27d:    nopl   (%rax)
+    0.00 :   280:    cmpb   $0x0,(%rsi)
+    0.00 :   283:    setne  %r10b
+    0.00 :   287:    cmpb   $0x0,(%rdx,%r8,1)
+    0.00 :   28c:    setne  %r11b
+    0.00 :   290:    xor    %r10b,%r11b
+    0.00 :   293:    mov    %r11b,(%rax,%r8,1)
+    0.00 :   297:    inc    %r8
+    0.00 :   29a:    dec    %r9
+    0.00 :   29d:    jne    280 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x200>
+    0.00 :   29f:    sub    %rbx,%rdi
+    0.00 :   2a2:    cmp    $0xfffffffffffffffc,%rdi
+    0.00 :   2a6:    ja     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   2ac:    nopl   0x0(%rax)
+    0.00 :   2b0:    cmpb   $0x0,(%rsi)
+    0.00 :   2b3:    setne  %dil
+    0.00 :   2b7:    cmpb   $0x0,(%rdx,%r8,1)
+    0.00 :   2bc:    setne  %r9b
+    0.00 :   2c0:    xor    %dil,%r9b
+    0.00 :   2c3:    mov    %r9b,(%rax,%r8,1)
+    0.00 :   2c7:    cmpb   $0x0,(%rsi)
+    0.00 :   2ca:    setne  %dil
+    0.00 :   2ce:    cmpb   $0x0,0x1(%rdx,%r8,1)
+    0.00 :   2d4:    setne  %r9b
+    0.00 :   2d8:    xor    %dil,%r9b
+    0.00 :   2db:    mov    %r9b,0x1(%rax,%r8,1)
+    0.00 :   2e0:    cmpb   $0x0,(%rsi)
+    0.00 :   2e3:    setne  %dil
+    0.00 :   2e7:    cmpb   $0x0,0x2(%rdx,%r8,1)
+    0.00 :   2ed:    setne  %r9b
+    0.00 :   2f1:    xor    %dil,%r9b
+    0.00 :   2f4:    mov    %r9b,0x2(%rax,%r8,1)
+    0.00 :   2f9:    cmpb   $0x0,(%rsi)
+    0.00 :   2fc:    setne  %dil
+    0.00 :   300:    cmpb   $0x0,0x3(%rdx,%r8,1)
+    0.00 :   306:    setne  %r9b
+    0.00 :   30a:    xor    %dil,%r9b
+    0.00 :   30d:    mov    %r9b,0x3(%rax,%r8,1)
+    0.00 :   312:    add    $0x4,%r8
+    0.00 :   316:    cmp    %r8,%rbx
+    0.00 :   319:    jne    2b0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x230>
+    0.00 :   31b:    jmp    490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   320:    cmp    $0x8,%rbx
+    0.00 :   324:    jae    63b <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x5bb>
+    0.00 :   32a:    xor    %edi,%edi
+    0.00 :   32c:    mov    %rbx,%r9
+    0.00 :   32f:    mov    %rdi,%r8
+    0.00 :   332:    and    $0x3,%r9
+    0.00 :   336:    je     35f <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2df>
+    0.00 :   338:    mov    %rdi,%r8
+    0.00 :   33b:    nopl   0x0(%rax,%rax,1)
+    0.00 :   340:    cmpb   $0x0,(%rsi,%r8,1)
+    0.00 :   345:    setne  %r10b
+    0.00 :   349:    cmpb   $0x0,(%rdx)
+    0.00 :   34c:    setne  %r11b
+    0.00 :   350:    xor    %r10b,%r11b
+    0.00 :   353:    mov    %r11b,(%rax,%r8,1)
+    0.00 :   357:    inc    %r8
+    0.00 :   35a:    dec    %r9
+    0.00 :   35d:    jne    340 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2c0>
+    0.00 :   35f:    sub    %rbx,%rdi
+    0.00 :   362:    cmp    $0xfffffffffffffffc,%rdi
+    0.00 :   366:    ja     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   36c:    nopl   0x0(%rax)
+    0.00 :   370:    cmpb   $0x0,(%rsi,%r8,1)
+    0.00 :   375:    setne  %dil
+    0.00 :   379:    cmpb   $0x0,(%rdx)
+    0.00 :   37c:    setne  %r9b
+    0.00 :   380:    xor    %dil,%r9b
+    0.00 :   383:    mov    %r9b,(%rax,%r8,1)
+    0.00 :   387:    cmpb   $0x0,0x1(%rsi,%r8,1)
+    0.00 :   38d:    setne  %dil
+    0.00 :   391:    cmpb   $0x0,(%rdx)
+    0.00 :   394:    setne  %r9b
+    0.00 :   398:    xor    %dil,%r9b
+    0.00 :   39b:    mov    %r9b,0x1(%rax,%r8,1)
+    0.00 :   3a0:    cmpb   $0x0,0x2(%rsi,%r8,1)
+    0.00 :   3a6:    setne  %dil
+    0.00 :   3aa:    cmpb   $0x0,(%rdx)
+    0.00 :   3ad:    setne  %r9b
+    0.00 :   3b1:    xor    %dil,%r9b
+    0.00 :   3b4:    mov    %r9b,0x2(%rax,%r8,1)
+    0.00 :   3b9:    cmpb   $0x0,0x3(%rsi,%r8,1)
+    0.00 :   3bf:    setne  %dil
+    0.00 :   3c3:    cmpb   $0x0,(%rdx)
+    0.00 :   3c6:    setne  %r9b
+    0.00 :   3ca:    xor    %dil,%r9b
+    0.00 :   3cd:    mov    %r9b,0x3(%rax,%r8,1)
+    0.00 :   3d2:    add    $0x4,%r8
+    0.00 :   3d6:    cmp    %r8,%rbx
+    0.00 :   3d9:    jne    370 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2f0>
+    0.00 :   3db:    jmp    490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   3e0:    cmp    $0x8,%rbx
+    0.00 :   3e4:    jae    68b <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x60b>
+    0.00 :   3ea:    xor    %edi,%edi
+    0.00 :   3ec:    mov    %rbx,%r9
+    0.00 :   3ef:    mov    %rdi,%r8
+    0.00 :   3f2:    and    $0x3,%r9
+    0.00 :   3f6:    je     41d <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x39d>
+    0.00 :   3f8:    mov    %rdi,%r8
+    0.00 :   3fb:    nopl   0x0(%rax,%rax,1)
+    0.00 :   400:    cmpb   $0x0,(%rsi)
+    0.00 :   403:    setne  %r10b
+    0.00 :   407:    cmpb   $0x0,(%rdx)
+    0.00 :   40a:    setne  %r11b
+    0.00 :   40e:    xor    %r10b,%r11b
+    0.00 :   411:    mov    %r11b,(%rax,%r8,1)
+    0.00 :   415:    inc    %r8
+    0.00 :   418:    dec    %r9
+    0.00 :   41b:    jne    400 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x380>
+    0.00 :   41d:    sub    %rbx,%rdi
+    0.00 :   420:    cmp    $0xfffffffffffffffc,%rdi
+    0.00 :   424:    ja     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   426:    cs nopw 0x0(%rax,%rax,1)
+    0.00 :   430:    cmpb   $0x0,(%rsi)
+    0.00 :   433:    setne  %dil
+    0.00 :   437:    cmpb   $0x0,(%rdx)
+    0.00 :   43a:    setne  %r9b
+    0.00 :   43e:    xor    %dil,%r9b
+    0.00 :   441:    mov    %r9b,(%rax,%r8,1)
+    0.00 :   445:    cmpb   $0x0,(%rsi)
+    0.00 :   448:    setne  %dil
+    0.00 :   44c:    cmpb   $0x0,(%rdx)
+    0.00 :   44f:    setne  %r9b
+    0.00 :   453:    xor    %dil,%r9b
+    0.00 :   456:    mov    %r9b,0x1(%rax,%r8,1)
+    0.00 :   45b:    cmpb   $0x0,(%rsi)
+    0.00 :   45e:    setne  %dil
+    0.00 :   462:    cmpb   $0x0,(%rdx)
+    0.00 :   465:    setne  %r9b
+    0.00 :   469:    xor    %dil,%r9b
+    0.00 :   46c:    mov    %r9b,0x2(%rax,%r8,1)
+    0.00 :   471:    cmpb   $0x0,(%rsi)
+    0.00 :   474:    setne  %dil
+    0.00 :   478:    cmpb   $0x0,(%rdx)
+    0.00 :   47b:    setne  %r9b
+    0.00 :   47f:    xor    %dil,%r9b
+    0.00 :   482:    mov    %r9b,0x3(%rax,%r8,1)
+    0.00 :   487:    add    $0x4,%r8
+    0.00 :   48b:    cmp    %r8,%rbx
+    0.00 :   48e:    jne    430 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x3b0>
+    0.20 :   490:    mov    %ebx,%edx
+    0.00 :   492:    and    $0x7,%edx
+    0.00 :   495:    cmp    $0x8,%rbx
+    0.00 :   499:    jb     6f0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x670>
+    3.83 :   49f:    lea    -0x8(%rbx),%rdi
+    0.00 :   4a3:    shr    $0x3,%rdi
+    0.00 :   4a7:    je     6e5 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x665>
+    0.00 :   4ad:    inc    %rdi
+    0.00 :   4b0:    mov    %rdi,%r8
+    0.00 :   4b3:    and    $0xfffffffffffffffe,%r8
+    0.00 :   4b7:    xor    %r15d,%r15d
+    0.00 :   4ba:    mov    %rax,%rsi
+    0.00 :   4bd:    nopl   (%rax)
+    0.00 :   4c0:    cmpb   $0x1,(%rsi)
+    0.00 :   4c3:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4c7:    cmpb   $0x1,0x1(%rsi)
+    0.00 :   4cb:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4cf:    cmpb   $0x1,0x2(%rsi)
+    0.00 :   4d3:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4d7:    cmpb   $0x1,0x3(%rsi)
+    0.00 :   4db:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4df:    cmpb   $0x1,0x4(%rsi)
+    0.00 :   4e3:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4e7:    cmpb   $0x1,0x5(%rsi)
+    0.00 :   4eb:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4ef:    cmpb   $0x1,0x6(%rsi)
+    0.00 :   4f3:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4f7:    cmpb   $0x1,0x7(%rsi)
+    0.00 :   4fb:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   4ff:    cmpb   $0x1,0x8(%rsi)
+    0.00 :   503:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   507:    cmpb   $0x1,0x9(%rsi)
+    0.00 :   50b:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   50f:    cmpb   $0x1,0xa(%rsi)
+    0.00 :   513:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   517:    cmpb   $0x1,0xb(%rsi)
+    0.00 :   51b:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   51f:    cmpb   $0x1,0xc(%rsi)
+    0.00 :   523:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   527:    cmpb   $0x1,0xd(%rsi)
+    0.00 :   52b:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   52f:    cmpb   $0x1,0xe(%rsi)
+    0.00 :   533:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   537:    cmpb   $0x1,0xf(%rsi)
+    0.00 :   53b:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   53f:    add    $0x10,%rsi
+    0.00 :   543:    add    $0xfffffffffffffffe,%r8
+    0.00 :   547:    jne    4c0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x440>
+    0.00 :   54d:    test   $0x1,%dil
+    0.00 :   551:    je     592 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x512>
+    0.00 :   553:    cmpb   $0x1,(%rsi)
+    0.00 :   556:    sbb    $0xffffffffffffffff,%r15
+    3.23 :   55a:    cmpb   $0x1,0x1(%rsi)
+    0.00 :   55e:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   562:    cmpb   $0x1,0x2(%rsi)
+    0.00 :   566:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   56a:    cmpb   $0x1,0x3(%rsi)
+    0.00 :   56e:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   572:    cmpb   $0x1,0x4(%rsi)
+    0.00 :   576:    sbb    $0xffffffffffffffff,%r15
+    4.03 :   57a:    cmpb   $0x1,0x5(%rsi)
+    0.00 :   57e:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   582:    cmpb   $0x1,0x6(%rsi)
+    0.00 :   586:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   58a:    cmpb   $0x1,0x7(%rsi)
+    0.00 :   58e:    sbb    $0xffffffffffffffff,%r15
+    0.00 :   592:    test   %rdx,%rdx
+    0.00 :   595:    je     6db <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x65b>
+    0.00 :   59b:    and    %rcx,%rbx
+    2.42 :   59e:    add    %rbx,%rax
+    0.00 :   5a1:    mov    0x68(%rsp),%rdi
+    0.00 :   5a6:    xor    %ecx,%ecx
+    3.02 :   5a8:    cmpb   $0x1,(%rax,%rcx,1)
+    3.02 :   5ac:    sbb    $0xffffffffffffffff,%r15
+    2.02 :   5b0:    inc    %rcx
+    0.20 :   5b3:    cmp    %rcx,%rdx
+    0.00 :   5b6:    jne    5a8 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x528>
+    0.00 :   5b8:    movabs $0x0,%rbx
+    0.00 :   5c2:    vzeroupper
+    0.20 :   5c5:    call   *%rbx
+    3.02 :   5c7:    mov    %r12,%rdi
+    0.00 :   5ca:    call   *%rbx
+    2.82 :   5cc:    mov    %r13,%rdi
+    0.00 :   5cf:    call   *%rbx
+    0.00 :   5d1:    mov    0x10(%rsp),%rax
+    0.00 :   5d6:    mov    %r15,(%rax)
+    0.00 :   5d9:    mov    %r14d,%eax
+    0.00 :   5dc:    add    $0x18,%rsp
+    0.00 :   5e0:    pop    %rbx
+    0.00 :   5e1:    pop    %r12
+    0.00 :   5e3:    pop    %r13
+    4.43 :   5e5:    pop    %r14
+    0.00 :   5e7:    pop    %r15
+    0.00 :   5e9:    pop    %rbp
+    0.00 :   5ea:    ret
+    0.00 :   5eb:    lea    (%rax,%rbx,1),%rdi
+    0.00 :   5ef:    lea    0x1(%rsi),%r8
+    0.00 :   5f3:    lea    (%rdx,%rbx,1),%r9
+    0.00 :   5f7:    cmp    %r8,%rax
+    0.00 :   5fa:    setb   %r10b
+    0.00 :   5fe:    cmp    %rdi,%rsi
+    0.00 :   601:    setb   %r11b
+    0.00 :   605:    cmp    %r9,%rax
+    0.00 :   608:    setb   %r8b
+    0.00 :   60c:    cmp    %rdi,%rdx
+    0.00 :   60f:    setb   %r9b
+    0.00 :   613:    xor    %edi,%edi
+    0.00 :   615:    test   %r11b,%r10b
+    0.00 :   618:    jne    26e <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1ee>
+    0.00 :   61e:    and    %r9b,%r8b
+    0.00 :   621:    jne    26e <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1ee>
+    0.00 :   627:    cmp    $0x80,%rbx
+    0.00 :   62e:    jae    822 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x7a2>
+    0.00 :   634:    xor    %edi,%edi
+    0.00 :   636:    jmp    8c1 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x841>
+    0.00 :   63b:    lea    (%rax,%rbx,1),%rdi
+    0.00 :   63f:    lea    (%rsi,%rbx,1),%r8
+    0.00 :   643:    lea    0x1(%rdx),%r9
+    0.00 :   647:    cmp    %r8,%rax
+    0.00 :   64a:    setb   %r10b
+    0.00 :   64e:    cmp    %rdi,%rsi
+    0.00 :   651:    setb   %r11b
+    0.00 :   655:    cmp    %r9,%rax
+    0.00 :   658:    setb   %r8b
+    0.00 :   65c:    cmp    %rdi,%rdx
+    0.00 :   65f:    setb   %r9b
+    0.00 :   663:    xor    %edi,%edi
+    0.00 :   665:    test   %r11b,%r10b
+    0.00 :   668:    jne    32c <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2ac>
+    0.00 :   66e:    and    %r9b,%r8b
+    0.00 :   671:    jne    32c <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2ac>
+    0.00 :   677:    cmp    $0x80,%rbx
+    0.00 :   67e:    jae    93c <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x8bc>
+    0.00 :   684:    xor    %edi,%edi
+    0.00 :   686:    jmp    9e1 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x961>
+    0.00 :   68b:    lea    (%rax,%rbx,1),%rdi
+    0.00 :   68f:    lea    0x1(%rsi),%r8
+    0.00 :   693:    lea    0x1(%rdx),%r9
+    0.00 :   697:    cmp    %r8,%rax
+    0.00 :   69a:    setb   %r10b
+    0.00 :   69e:    cmp    %rdi,%rsi
+    0.00 :   6a1:    setb   %r11b
+    0.00 :   6a5:    cmp    %r9,%rax
+    0.00 :   6a8:    setb   %r8b
+    0.00 :   6ac:    cmp    %rdi,%rdx
+    0.00 :   6af:    setb   %r9b
+    0.00 :   6b3:    xor    %edi,%edi
+    0.00 :   6b5:    test   %r11b,%r10b
+    0.00 :   6b8:    jne    3ec <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x36c>
+    0.00 :   6be:    and    %r9b,%r8b
+    0.00 :   6c1:    jne    3ec <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x36c>
+    0.00 :   6c7:    cmp    $0x80,%rbx
+    0.00 :   6ce:    jae    a5c <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x9dc>
+    0.00 :   6d4:    xor    %edi,%edi
+    0.00 :   6d6:    jmp    ac6 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0xa46>
+    0.00 :   6db:    mov    0x68(%rsp),%rdi
+    0.00 :   6e0:    jmp    5b8 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x538>
+    0.20 :   6e5:    xor    %r15d,%r15d
+    0.00 :   6e8:    mov    %rax,%rsi
+    0.00 :   6eb:    jmp    553 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x4d3>
+    0.00 :   6f0:    xor    %r15d,%r15d
+    0.00 :   6f3:    jmp    5a1 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x521>
+    0.00 :   6f8:    cmp    $0x80,%rbx
+    0.00 :   6ff:    jae    708 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x688>
+    0.00 :   701:    xor    %edi,%edi
+    0.00 :   703:    jmp    7bc <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x73c>
+    0.00 :   708:    lea    -0x78(%rcx),%rdi
+    0.00 :   70c:    and    %rbx,%rdi
+    0.00 :   70f:    xor    %r8d,%r8d
+    0.00 :   712:    vpxor  %xmm0,%xmm0,%xmm0
+    0.00 :   716:    movabs $0x0,%r9
+    0.00 :   720:    vmovdqa (%r9),%ymm1
+    0.00 :   725:    data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   730:    vpcmpeqb (%rsi,%r8,1),%ymm0,%ymm2
+    0.00 :   736:    vpcmpeqb 0x20(%rsi,%r8,1),%ymm0,%ymm3
+    0.00 :   73d:    vpcmpeqb 0x40(%rsi,%r8,1),%ymm0,%ymm4
+    0.00 :   744:    vpcmpeqb 0x60(%rsi,%r8,1),%ymm0,%ymm5
+    0.00 :   74b:    vpcmpeqb (%rdx,%r8,1),%ymm0,%ymm6
+    0.00 :   751:    vpxor  %ymm2,%ymm6,%ymm2
+    0.00 :   755:    vpcmpeqb 0x20(%rdx,%r8,1),%ymm0,%ymm6
+    0.00 :   75c:    vpxor  %ymm3,%ymm6,%ymm3
+    0.00 :   760:    vpcmpeqb 0x40(%rdx,%r8,1),%ymm0,%ymm6
+    0.00 :   767:    vpxor  %ymm4,%ymm6,%ymm4
+    0.00 :   76b:    vpcmpeqb 0x60(%rdx,%r8,1),%ymm0,%ymm6
+    0.00 :   772:    vpxor  %ymm5,%ymm6,%ymm5
+    0.00 :   776:    vpand  %ymm1,%ymm2,%ymm2
+    0.00 :   77a:    vpand  %ymm1,%ymm3,%ymm3
+    0.00 :   77e:    vpand  %ymm1,%ymm4,%ymm4
+    0.00 :   782:    vpand  %ymm1,%ymm5,%ymm5
+    0.00 :   786:    vmovdqu %ymm2,(%rax,%r8,1)
+    0.00 :   78c:    vmovdqu %ymm3,0x20(%rax,%r8,1)
+    0.00 :   793:    vmovdqu %ymm4,0x40(%rax,%r8,1)
+    0.00 :   79a:    vmovdqu %ymm5,0x60(%rax,%r8,1)
+    0.00 :   7a1:    sub    $0xffffffffffffff80,%r8
+    0.00 :   7a5:    cmp    %r8,%rdi
+    0.00 :   7a8:    jne    730 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x6b0>
+    0.00 :   7aa:    cmp    %rdi,%rbx
+    0.00 :   7ad:    je     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   7b3:    test   $0x78,%bl
+    0.00 :   7b6:    je     190 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x110>
+    0.00 :   7bc:    mov    %rdi,%r8
+    0.00 :   7bf:    mov    %rbx,%rdi
+    0.00 :   7c2:    and    %rcx,%rdi
+    0.00 :   7c5:    vpxor  %xmm0,%xmm0,%xmm0
+    2.22 :   7c9:    movabs $0x0,%r9
+    0.00 :   7d3:    vmovdqa (%r9),%xmm1
+    0.00 :   7d8:    nopl   0x0(%rax,%rax,1)
+    0.00 :   7e0:    vmovq  (%rsi,%r8,1),%xmm2
+    0.00 :   7e6:    vpcmpeqb %xmm0,%xmm2,%xmm2
+    0.20 :   7ea:    vmovq  (%rdx,%r8,1),%xmm3
+    0.00 :   7f0:    vpcmpeqb %xmm0,%xmm3,%xmm3
+    0.00 :   7f4:    vpxor  %xmm2,%xmm3,%xmm2
+    3.83 :   7f8:    vpmovzxbw %xmm2,%xmm2
+    0.20 :   7fd:    vpand  %xmm1,%xmm2,%xmm2
+    0.00 :   801:    vpackuswb %xmm2,%xmm2,%xmm2
+    0.00 :   805:    vmovq  %xmm2,(%rax,%r8,1)
+    0.00 :   80b:    add    $0x8,%r8
+    0.00 :   80f:    cmp    %r8,%rdi
+    0.00 :   812:    jne    7e0 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x760>
+    0.00 :   814:    cmp    %rdi,%rbx
+    0.00 :   817:    je     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   81d:    jmp    190 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x110>
+    0.00 :   822:    lea    -0x78(%rcx),%rdi
+    0.00 :   826:    and    %rbx,%rdi
+    0.00 :   829:    cmpb   $0x0,(%rsi)
+    0.00 :   82c:    setne  %r8b
+    0.00 :   830:    vmovd  %r8d,%xmm0
+    0.00 :   835:    vpbroadcastb %xmm0,%ymm0
+    0.00 :   83a:    xor    %r8d,%r8d
+    0.00 :   83d:    vpxor  %xmm1,%xmm1,%xmm1
+    0.00 :   841:    movabs $0x0,%r9
+    0.00 :   84b:    vmovdqa (%r9),%ymm2
+    0.00 :   850:    vpcmpeqb (%rdx,%r8,1),%ymm1,%ymm3
+    0.00 :   856:    vpxor  %ymm0,%ymm3,%ymm3
+    0.00 :   85a:    vpcmpeqb 0x20(%rdx,%r8,1),%ymm1,%ymm4
+    0.00 :   861:    vpxor  %ymm0,%ymm4,%ymm4
+    0.00 :   865:    vpcmpeqb 0x40(%rdx,%r8,1),%ymm1,%ymm5
+    0.00 :   86c:    vpxor  %ymm0,%ymm5,%ymm5
+    0.00 :   870:    vpcmpeqb 0x60(%rdx,%r8,1),%ymm1,%ymm6
+    0.00 :   877:    vpxor  %ymm0,%ymm6,%ymm6
+    0.00 :   87b:    vpandn %ymm2,%ymm3,%ymm3
+    0.00 :   87f:    vpandn %ymm2,%ymm4,%ymm4
+    0.00 :   883:    vpandn %ymm2,%ymm5,%ymm5
+    0.00 :   887:    vpandn %ymm2,%ymm6,%ymm6
+    0.00 :   88b:    vmovdqu %ymm3,(%rax,%r8,1)
+    0.00 :   891:    vmovdqu %ymm4,0x20(%rax,%r8,1)
+    0.00 :   898:    vmovdqu %ymm5,0x40(%rax,%r8,1)
+    0.00 :   89f:    vmovdqu %ymm6,0x60(%rax,%r8,1)
+    0.00 :   8a6:    sub    $0xffffffffffffff80,%r8
+    0.00 :   8aa:    cmp    %r8,%rdi
+    0.00 :   8ad:    jne    850 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x7d0>
+    0.00 :   8af:    cmp    %rdi,%rbx
+    0.00 :   8b2:    je     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   8b8:    test   $0x78,%bl
+    0.00 :   8bb:    je     26e <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1ee>
+    0.00 :   8c1:    mov    %rdi,%r8
+    0.00 :   8c4:    mov    %rbx,%rdi
+    0.00 :   8c7:    and    %rcx,%rdi
+    0.00 :   8ca:    cmpb   $0x0,(%rsi)
+    0.00 :   8cd:    setne  %r9b
+    0.00 :   8d1:    vmovd  %r9d,%xmm0
+    0.00 :   8d6:    vpbroadcastb %xmm0,%xmm0
+    0.00 :   8db:    vpxor  %xmm1,%xmm1,%xmm1
+    0.00 :   8df:    vpcmpeqd %xmm2,%xmm2,%xmm2
+    0.00 :   8e3:    movabs $0x0,%r9
+    0.00 :   8ed:    vmovdqa (%r9),%xmm3
+    0.00 :   8f2:    data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   900:    vmovq  (%rdx,%r8,1),%xmm4
+    0.00 :   906:    vpcmpeqb %xmm1,%xmm4,%xmm4
+    0.00 :   90a:    vpxor  %xmm2,%xmm4,%xmm4
+    0.00 :   90e:    vpmovzxbw %xmm4,%xmm4
+    0.00 :   913:    vpxor  %xmm4,%xmm0,%xmm4
+    0.00 :   917:    vpand  %xmm3,%xmm4,%xmm4
+    0.00 :   91b:    vpackuswb %xmm4,%xmm4,%xmm4
+    0.00 :   91f:    vmovq  %xmm4,(%rax,%r8,1)
+    0.00 :   925:    add    $0x8,%r8
+    0.00 :   929:    cmp    %r8,%rdi
+    0.00 :   92c:    jne    900 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x880>
+    0.00 :   92e:    cmp    %rdi,%rbx
+    0.00 :   931:    jne    26e <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x1ee>
+    0.00 :   937:    jmp    490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   93c:    lea    -0x78(%rcx),%rdi
+    0.00 :   940:    and    %rbx,%rdi
+    0.00 :   943:    cmpb   $0x0,(%rdx)
+    0.00 :   946:    setne  %r8b
+    0.00 :   94a:    vmovd  %r8d,%xmm0
+    0.00 :   94f:    vpbroadcastb %xmm0,%ymm0
+    0.00 :   954:    xor    %r8d,%r8d
+    0.00 :   957:    vpxor  %xmm1,%xmm1,%xmm1
+    0.00 :   95b:    movabs $0x0,%r9
+    0.00 :   965:    vmovdqa (%r9),%ymm2
+    0.00 :   96a:    nopw   0x0(%rax,%rax,1)
+    0.00 :   970:    vpcmpeqb (%rsi,%r8,1),%ymm1,%ymm3
+    0.00 :   976:    vpxor  %ymm0,%ymm3,%ymm3
+    0.00 :   97a:    vpcmpeqb 0x20(%rsi,%r8,1),%ymm1,%ymm4
+    0.00 :   981:    vpxor  %ymm0,%ymm4,%ymm4
+    0.00 :   985:    vpcmpeqb 0x40(%rsi,%r8,1),%ymm1,%ymm5
+    0.00 :   98c:    vpxor  %ymm0,%ymm5,%ymm5
+    0.00 :   990:    vpcmpeqb 0x60(%rsi,%r8,1),%ymm1,%ymm6
+    0.00 :   997:    vpxor  %ymm0,%ymm6,%ymm6
+    0.00 :   99b:    vpandn %ymm2,%ymm3,%ymm3
+    0.00 :   99f:    vpandn %ymm2,%ymm4,%ymm4
+    0.00 :   9a3:    vpandn %ymm2,%ymm5,%ymm5
+    0.00 :   9a7:    vpandn %ymm2,%ymm6,%ymm6
+    0.00 :   9ab:    vmovdqu %ymm3,(%rax,%r8,1)
+    0.00 :   9b1:    vmovdqu %ymm4,0x20(%rax,%r8,1)
+    0.00 :   9b8:    vmovdqu %ymm5,0x40(%rax,%r8,1)
+    0.00 :   9bf:    vmovdqu %ymm6,0x60(%rax,%r8,1)
+    0.00 :   9c6:    sub    $0xffffffffffffff80,%r8
+    0.00 :   9ca:    cmp    %r8,%rdi
+    0.00 :   9cd:    jne    970 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x8f0>
+    0.00 :   9cf:    cmp    %rdi,%rbx
+    0.00 :   9d2:    je     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   9d8:    test   $0x78,%bl
+    0.00 :   9db:    je     32c <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2ac>
+    0.00 :   9e1:    mov    %rdi,%r8
+    0.00 :   9e4:    mov    %rbx,%rdi
+    0.00 :   9e7:    and    %rcx,%rdi
+    0.00 :   9ea:    cmpb   $0x0,(%rdx)
+    0.00 :   9ed:    setne  %r9b
+    0.00 :   9f1:    vmovd  %r9d,%xmm0
+    0.00 :   9f6:    vpbroadcastb %xmm0,%xmm0
+    0.00 :   9fb:    vpxor  %xmm1,%xmm1,%xmm1
+    0.00 :   9ff:    vpcmpeqd %xmm2,%xmm2,%xmm2
+    0.00 :   a03:    movabs $0x0,%r9
+    0.00 :   a0d:    vmovdqa (%r9),%xmm3
+    0.00 :   a12:    data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   a20:    vmovq  (%rsi,%r8,1),%xmm4
+    0.00 :   a26:    vpcmpeqb %xmm1,%xmm4,%xmm4
+    0.00 :   a2a:    vpxor  %xmm2,%xmm4,%xmm4
+    0.00 :   a2e:    vpmovzxbw %xmm4,%xmm4
+    0.00 :   a33:    vpxor  %xmm0,%xmm4,%xmm4
+    0.00 :   a37:    vpand  %xmm3,%xmm4,%xmm4
+    0.00 :   a3b:    vpackuswb %xmm4,%xmm4,%xmm4
+    0.00 :   a3f:    vmovq  %xmm4,(%rax,%r8,1)
+    0.00 :   a45:    add    $0x8,%r8
+    0.00 :   a49:    cmp    %r8,%rdi
+    0.00 :   a4c:    jne    a20 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x9a0>
+    0.00 :   a4e:    cmp    %rdi,%rbx
+    0.00 :   a51:    jne    32c <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x2ac>
+    0.00 :   a57:    jmp    490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   a5c:    lea    -0x78(%rcx),%rdi
+    0.00 :   a60:    and    %rbx,%rdi
+    0.00 :   a63:    cmpb   $0x0,(%rsi)
+    0.00 :   a66:    setne  %r8b
+    0.00 :   a6a:    cmpb   $0x0,(%rdx)
+    0.00 :   a6d:    setne  %r9b
+    0.00 :   a71:    xor    %r8b,%r9b
+    0.00 :   a74:    vmovd  %r9d,%xmm0
+    0.00 :   a79:    vpbroadcastb %xmm0,%ymm0
+    0.00 :   a7e:    xor    %r8d,%r8d
+    0.00 :   a81:    data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   a90:    vmovdqu %ymm0,(%rax,%r8,1)
+    0.00 :   a96:    vmovdqu %ymm0,0x20(%rax,%r8,1)
+    0.00 :   a9d:    vmovdqu %ymm0,0x40(%rax,%r8,1)
+    0.00 :   aa4:    vmovdqu %ymm0,0x60(%rax,%r8,1)
+    0.00 :   aab:    sub    $0xffffffffffffff80,%r8
+    0.00 :   aaf:    cmp    %r8,%rdi
+    0.00 :   ab2:    jne    a90 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0xa10>
+    0.00 :   ab4:    cmp    %rdi,%rbx
+    0.00 :   ab7:    je     490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   abd:    test   $0x78,%bl
+    0.00 :   ac0:    je     3ec <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x36c>
+    0.00 :   ac6:    mov    %rdi,%r8
+    0.00 :   ac9:    mov    %rbx,%rdi
+    0.00 :   acc:    and    %rcx,%rdi
+    0.00 :   acf:    cmpb   $0x0,(%rsi)
+    0.00 :   ad2:    setne  %r9b
+    0.00 :   ad6:    cmpb   $0x0,(%rdx)
+    0.00 :   ad9:    setne  %r10b
+    0.00 :   add:    xor    %r9b,%r10b
+    0.00 :   ae0:    vmovd  %r10d,%xmm0
+    0.00 :   ae5:    vpbroadcastb %xmm0,%ymm0
+    0.00 :   aea:    movabs $0x0,%r9
+    0.00 :   af4:    vpand  (%r9),%ymm0,%ymm0
+    0.00 :   af9:    vextracti128 $0x1,%ymm0,%xmm1
+    0.00 :   aff:    vpackuswb %xmm1,%xmm0,%xmm0
+    0.00 :   b03:    data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   b10:    vmovq  %xmm0,(%rax,%r8,1)
+    0.00 :   b16:    add    $0x8,%r8
+    0.00 :   b1a:    cmp    %r8,%rdi
+    0.00 :   b1d:    jne    b10 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0xa90>
+    0.00 :   b1f:    cmp    %rdi,%rbx
+    0.00 :   b22:    jne    3ec <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x36c>
+    0.00 :   b28:    jmp    490 <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x410>
+    0.00 :   b2d:    movabs $0x0,%rax
+    0.00 :   b37:    jmp    ea <original_kernel::_mask_delta_score[abi:v9][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 1, C, mutable, aligned>, Array<bool, 1, C, mutable, aligned>)+0x6a>
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (382 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    0000000000004200 <NRT_MemInfo_alloc_aligned>:
+    6.02 :   4200:   push   %rbp
+    0.00 :   4201:   mov    %rdi,%rbp
+    0.00 :   4204:   push   %rbx
+    0.00 :   4205:   mov    %esi,%ebx
+    0.00 :   4207:   lea    (%rbx,%rbx,1),%eax
+    0.00 :   420a:   lea    0x30(%rdi,%rax,1),%rdi
+    0.00 :   420f:   sub    $0x8,%rsp
+    0.00 :   4213:   call   *0x44d7(%rip)        # 86f0 <TheMSys+0x30>
+    0.00 :   4219:   cmpb   $0x0,0x44a8(%rip)        # 86c8 <TheMSys+0x8>
+    0.00 :   4220:   mov    %rax,%r8
+    4.45 :   4223:   jne    42a0 <NRT_MemInfo_alloc_aligned+0xa0>
+    0.00 :   4225:   test   %r8,%r8
+    0.00 :   4228:   je     428b <NRT_MemInfo_alloc_aligned+0x8b>
+    0.00 :   422a:   mov    %r8,%rcx
+    0.00 :   422d:   add    $0x30,%rcx
+    0.00 :   4231:   je     42b0 <NRT_MemInfo_alloc_aligned+0xb0>
+    0.00 :   4233:   lea    -0x1(%rbx),%edx
+    0.00 :   4236:   test   %edx,%ebx
+    0.00 :   4238:   je     4298 <NRT_MemInfo_alloc_aligned+0x98>
+    0.00 :   423a:   mov    %ebx,%esi
+    0.00 :   423c:   mov    %rcx,%rax
+    0.00 :   423f:   xor    %edx,%edx
+    0.00 :   4241:   div    %rsi
+    4.19 :   4244:   test   %rdx,%rdx
+    0.00 :   4247:   je     4251 <NRT_MemInfo_alloc_aligned+0x51>
+    0.00 :   4249:   sub    %rdx,%rbx
+    0.00 :   424c:   add    %rbx,%rcx
+    0.00 :   424f:   je     42b0 <NRT_MemInfo_alloc_aligned+0xb0>
+    0.00 :   4251:   mov    $0x1,%eax
+    0.00 :   4256:   xchg   %rax,(%r8)
+   67.54 :   4259:   cmpb   $0x0,0x4468(%rip)        # 86c8 <TheMSys+0x8>
+    2.09 :   4260:   movq   $0x0,0x8(%r8)
+    0.00 :   4268:   movq   $0x0,0x10(%r8)
+    0.00 :   4270:   mov    %rcx,0x18(%r8)
+    0.00 :   4274:   mov    %rbp,0x20(%r8)
+    5.24 :   4278:   movq   $0x0,0x28(%r8)
+    0.00 :   4280:   je     428b <NRT_MemInfo_alloc_aligned+0x8b>
+    0.00 :   4282:   lock addq $0x1,0x4455(%rip)        # 86e0 <TheMSys+0x20>
+    6.02 :   428b:   add    $0x8,%rsp
+    0.00 :   428f:   mov    %r8,%rax
+    0.00 :   4292:   pop    %rbx
+    0.00 :   4293:   pop    %rbp
+    4.45 :   4294:   ret
+    0.00 :   4295:   nopl   (%rax)
+    0.00 :   4298:   and    %ecx,%edx
+    0.00 :   429a:   jmp    4244 <NRT_MemInfo_alloc_aligned+0x44>
+    0.00 :   429c:   nopl   0x0(%rax)
+    0.00 :   42a0:   lock addq $0x1,0x4427(%rip)        # 86d0 <TheMSys+0x10>
+    0.00 :   42a9:   jmp    4225 <NRT_MemInfo_alloc_aligned+0x25>
+    0.00 :   42ae:   xchg   %ax,%ax
+    0.00 :   42b0:   xor    %r8d,%r8d
+    0.00 :   42b3:   jmp    428b <NRT_MemInfo_alloc_aligned+0x8b>
+ Percent |	Source code & Disassembly of jitted-931902-27.so for cpu_core/cycles/u (182 samples, percent: local period)
+---------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)>:
+    1.65 :    80:     endbr64
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     sub    $0x98,%rsp
+    2.75 :    95:     mov    %r9,%r13
+    0.00 :    98:     mov    %rcx,0x90(%rsp)
+    0.00 :    a0:     mov    %rdx,%r14
+    0.00 :    a3:     mov    %rsi,0x8(%rsp)
+    0.00 :    a8:     mov    %rdi,0x70(%rsp)
+    0.00 :    ad:     mov    0x130(%rsp),%r12
+    0.00 :    b5:     mov    0xf8(%rsp),%rbx
+    0.00 :    bd:     mov    0xe0(%rsp),%r15
+    0.55 :    c5:     movq   $0x0,0x50(%rsp)
+    0.00 :    ce:     movq   $0x0,0x40(%rsp)
+    0.00 :    d7:     movq   $0x0,0x30(%rsp)
+    0.00 :    e0:     movq   $0x0,0x20(%rsp)
+    0.00 :    e9:     movabs $0x0,%rbp
+    0.00 :    f3:     mov    %rdx,%rdi
+    0.00 :    f6:     call   *%rbp
+    2.75 :    f8:     mov    %rbx,%rdi
+    0.00 :    fb:     call   *%rbp
+    0.55 :    fd:     xor    %eax,%eax
+    0.00 :    ff:     test   %r12,%r12
+    0.00 :   102:    cmovle 0x120(%rsp),%rax
+    0.00 :   10b:    mov    0x118(%rsp),%rcx
+    3.30 :   113:    lea    (%rcx,%r12,8),%rbp
+    0.00 :   117:    mov    %rax,0x80(%rsp)
+    0.00 :   11f:    mov    -0x8(%rbp,%rax,8),%rax
+    0.00 :   124:    mov    %rax,%rbx
+    2.75 :   127:    sar    $0x3f,%rbx
+    0.00 :   12b:    and    0xd8(%rsp),%rbx
+    0.00 :   133:    add    %rax,%rbx
+    0.00 :   136:    imul   %r15,%rbx
+    1.10 :   13a:    add    0xd0(%rsp),%rbx
+    0.00 :   142:    mov    %r14,%rdi
+    0.00 :   145:    movabs $0x0,%rax
+    0.00 :   14f:    call   *%rax
+    3.85 :   151:    mov    %r12,%rax
+    0.00 :   154:    sar    $0x3f,%rax
+    0.00 :   158:    and    0x120(%rsp),%rax
+    0.00 :   160:    mov    %rbp,0x88(%rsp)
+    2.75 :   168:    mov    %rax,0x78(%rsp)
+    0.00 :   16d:    mov    0x0(%rbp,%rax,8),%rax
+    0.00 :   172:    mov    %rax,%rbp
+    0.00 :   175:    sar    $0x3f,%rbp
+    2.20 :   179:    and    0xd8(%rsp),%rbp
+    0.00 :   181:    add    %rax,%rbp
+    0.00 :   184:    imul   %r15,%rbp
+    0.00 :   188:    add    0xd0(%rsp),%rbp
+    1.65 :   190:    mov    %r14,%rdi
+    0.00 :   193:    movabs $0x0,%rax
+    0.00 :   19d:    call   *%rax
+    2.75 :   19f:    movq   $0x0,0x58(%rsp)
+    0.00 :   1a8:    movabs $0x0,%rax
+    0.00 :   1b2:    lea    0x58(%rsp),%rdi
+    0.00 :   1b7:    lea    0x50(%rsp),%rsi
+    3.30 :   1bc:    mov    %r14,%rdx
+    0.00 :   1bf:    mov    0x90(%rsp),%rcx
+    0.00 :   1c7:    mov    %r15,%r8
+    0.00 :   1ca:    mov    %r13,%r9
+    2.20 :   1cd:    mov    0xf0(%rsp),%r10
+    0.00 :   1d5:    push   %r10
+    0.00 :   1d7:    push   %r15
+    0.00 :   1d9:    push   %rbp
+    4.40 :   1da:    mov    %rcx,%rbp
+    0.00 :   1dd:    mov    %r13,0x28(%rsp)
+    0.00 :   1e2:    push   %r13
+    0.00 :   1e4:    push   %r15
+    2.20 :   1e6:    push   %rcx
+    0.00 :   1e7:    push   %r14
+    0.00 :   1e9:    push   %r10
+    0.00 :   1eb:    push   %r15
+    0.00 :   1ed:    push   %rbx
+    0.00 :   1ee:    call   *%rax
+    0.00 :   1f0:    add    $0x50,%rsp
+    0.00 :   1f4:    test   %eax,%eax
+    0.00 :   1f6:    jne    475 <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x3f5>
+    0.00 :   1fc:    mov    0x58(%rsp),%r13
+    0.00 :   201:    add    0x138(%rsp),%r12
+    0.55 :   209:    xor    %ebx,%ebx
+    0.00 :   20b:    test   %r12,%r12
+    0.00 :   20e:    mov    0x120(%rsp),%r8
+    0.00 :   216:    cmovle %r8,%rbx
+    0.00 :   21a:    mov    0x118(%rsp),%rax
+    0.00 :   222:    lea    (%rax,%r12,8),%rdi
+    0.00 :   226:    mov    -0x8(%rdi,%rbx,8),%rcx
+    0.00 :   22b:    mov    %rcx,%rax
+    3.85 :   22e:    sar    $0x3f,%rax
+    0.00 :   232:    mov    0xd8(%rsp),%rsi
+    0.00 :   23a:    and    %rsi,%rax
+    0.00 :   23d:    add    %rcx,%rax
+    0.00 :   240:    imul   %r15,%rax
+    0.00 :   244:    mov    0xd0(%rsp),%rdx
+    0.00 :   24c:    add    %rdx,%rax
+    0.00 :   24f:    sar    $0x3f,%r12
+    1.10 :   253:    and    %r8,%r12
+    0.00 :   256:    mov    %rdi,0x18(%rsp)
+    0.00 :   25b:    mov    (%rdi,%r12,8),%rcx
+    0.00 :   25f:    mov    %rcx,%r10
+    0.00 :   262:    sar    $0x3f,%r10
+    0.00 :   266:    and    %rsi,%r10
+    0.00 :   269:    add    %rcx,%r10
+    0.00 :   26c:    imul   %r15,%r10
+    3.85 :   270:    add    %rdx,%r10
+    0.00 :   273:    movq   $0x0,0x48(%rsp)
+    0.00 :   27c:    lea    0x48(%rsp),%rdi
+    0.00 :   281:    lea    0x40(%rsp),%rsi
+    0.00 :   286:    mov    %r14,%rdx
+    0.00 :   289:    mov    %rbp,%rcx
+    0.00 :   28c:    mov    %r15,%r8
+    0.00 :   28f:    mov    0x10(%rsp),%r9
+    2.20 :   294:    mov    0xf0(%rsp),%r11
+    0.00 :   29c:    push   %r11
+    0.00 :   29e:    push   %r15
+    0.00 :   2a0:    push   %r10
+    0.00 :   2a2:    push   %r9
+    0.00 :   2a4:    push   %r15
+    0.00 :   2a6:    push   %rbp
+    0.00 :   2a7:    push   %r14
+    1.10 :   2a9:    push   %r11
+    0.00 :   2ab:    push   %r15
+    0.00 :   2ad:    push   %rax
+    0.00 :   2ae:    movabs $0x0,%rax
+    0.00 :   2b8:    call   *%rax
+    0.00 :   2ba:    add    $0x50,%rsp
+    0.00 :   2be:    test   %eax,%eax
+    0.00 :   2c0:    jne    47c <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x3fc>
+    0.00 :   2c6:    mov    %r13,0x68(%rsp)
+    2.75 :   2cb:    mov    0x48(%rsp),%rax
+    0.00 :   2d0:    mov    %rax,0x60(%rsp)
+    0.00 :   2d5:    mov    0x88(%rsp),%r13
+    0.00 :   2dd:    mov    0x80(%rsp),%rax
+    0.00 :   2e5:    mov    -0x8(%r13,%rax,8),%rcx
+    0.00 :   2ea:    mov    %rcx,%rax
+    0.00 :   2ed:    sar    $0x3f,%rax
+    0.00 :   2f1:    mov    0xd8(%rsp),%rsi
+    3.30 :   2f9:    and    %rsi,%rax
+    0.00 :   2fc:    add    %rcx,%rax
+    0.00 :   2ff:    imul   %r15,%rax
+    0.00 :   303:    mov    0xd0(%rsp),%rdx
+    0.00 :   30b:    add    %rdx,%rax
+    0.00 :   30e:    mov    0x18(%rsp),%rcx
+    0.00 :   313:    mov    -0x8(%rcx,%rbx,8),%rcx
+    0.00 :   318:    mov    %rcx,%r10
+    3.30 :   31b:    sar    $0x3f,%r10
+    0.00 :   31f:    and    %rsi,%r10
+    0.00 :   322:    add    %rcx,%r10
+    0.00 :   325:    imul   %r15,%r10
+    0.00 :   329:    add    %rdx,%r10
+    0.00 :   32c:    movq   $0x0,0x38(%rsp)
+    0.00 :   335:    lea    0x38(%rsp),%rdi
+    0.00 :   33a:    lea    0x30(%rsp),%rsi
+    2.20 :   33f:    mov    %r14,%rdx
+    0.00 :   342:    mov    %rbp,%rcx
+    0.00 :   345:    mov    %r15,%r8
+    0.00 :   348:    mov    0x10(%rsp),%r9
+    0.00 :   34d:    mov    0xf0(%rsp),%r11
+    0.00 :   355:    push   %r11
+    0.00 :   357:    push   %r15
+    0.00 :   359:    push   %r10
+    1.65 :   35b:    push   %r9
+    0.00 :   35d:    push   %r15
+    0.00 :   35f:    push   %rbp
+    0.00 :   360:    push   %r14
+    0.00 :   362:    push   %r11
+    0.00 :   364:    push   %r15
+    0.00 :   366:    push   %rax
+    0.00 :   367:    movabs $0x0,%rax
+    2.75 :   371:    call   *%rax
+    0.00 :   373:    add    $0x50,%rsp
+    0.00 :   377:    test   %eax,%eax
+    0.00 :   379:    jne    483 <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x403>
+    0.00 :   37f:    mov    0x38(%rsp),%rbx
+    0.00 :   384:    mov    0x78(%rsp),%rax
+    2.75 :   389:    mov    0x0(%r13,%rax,8),%rcx
+    0.00 :   38e:    mov    %rcx,%rax
+    0.00 :   391:    sar    $0x3f,%rax
+    0.00 :   395:    mov    0xd8(%rsp),%rsi
+    0.00 :   39d:    and    %rsi,%rax
+    0.00 :   3a0:    add    %rcx,%rax
+    0.00 :   3a3:    imul   %r15,%rax
+    0.00 :   3a7:    mov    0xd0(%rsp),%rdx
+    1.65 :   3af:    add    %rdx,%rax
+    0.00 :   3b2:    mov    0x18(%rsp),%rcx
+    0.00 :   3b7:    mov    (%rcx,%r12,8),%rcx
+    0.00 :   3bb:    mov    %rcx,%r10
+    0.00 :   3be:    sar    $0x3f,%r10
+    0.00 :   3c2:    and    %rsi,%r10
+    0.00 :   3c5:    add    %rcx,%r10
+    0.00 :   3c8:    imul   %r15,%r10
+    1.65 :   3cc:    add    %rdx,%r10
+    0.00 :   3cf:    movq   $0x0,0x28(%rsp)
+    0.00 :   3d8:    lea    0x28(%rsp),%rdi
+    0.00 :   3dd:    lea    0x20(%rsp),%rsi
+    0.00 :   3e2:    mov    %r14,%rdx
+    0.00 :   3e5:    mov    %rbp,%rcx
+    0.00 :   3e8:    mov    %r15,%r8
+    0.00 :   3eb:    mov    0x10(%rsp),%r9
+    0.00 :   3f0:    mov    0xf0(%rsp),%r11
+    0.00 :   3f8:    push   %r11
+    0.00 :   3fa:    push   %r15
+    0.00 :   3fc:    push   %r10
+    0.00 :   3fe:    push   %r9
+    0.00 :   400:    push   %r15
+    0.00 :   402:    push   %rbp
+    0.00 :   403:    push   %r14
+    4.39 :   405:    push   %r11
+    0.00 :   407:    push   %r15
+    0.00 :   409:    push   %rax
+    0.00 :   40a:    movabs $0x0,%rax
+    0.00 :   414:    call   *%rax
+    0.00 :   416:    add    $0x50,%rsp
+    0.00 :   41a:    mov    %eax,%ebp
+    0.00 :   41c:    movabs $0x0,%r15
+    0.00 :   426:    mov    0xf8(%rsp),%rdi
+    1.65 :   42e:    call   *%r15
+    3.30 :   431:    mov    %r14,%rdi
+    0.00 :   434:    call   *%r15
+    1.65 :   437:    test   %ebp,%ebp
+    0.00 :   439:    jne    48a <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x40a>
+    0.00 :   43b:    add    0x28(%rsp),%rbx
+    0.00 :   440:    mov    %r14,%rdi
+    0.00 :   443:    call   *%r15
+    4.40 :   446:    mov    %r14,%rdi
+    0.00 :   449:    call   *%r15
+    1.65 :   44c:    mov    0x60(%rsp),%rcx
+    0.00 :   451:    add    0x68(%rsp),%rcx
+    0.00 :   456:    sub    %rbx,%rcx
+    0.00 :   459:    mov    0x70(%rsp),%rax
+    2.20 :   45e:    mov    %rcx,(%rax)
+    0.00 :   461:    xor    %eax,%eax
+    0.00 :   463:    add    $0x98,%rsp
+    0.00 :   46a:    pop    %rbx
+    2.75 :   46b:    pop    %r12
+    0.00 :   46d:    pop    %r13
+    0.00 :   46f:    pop    %r14
+    0.00 :   471:    pop    %r15
+    2.75 :   473:    pop    %rbp
+    0.00 :   474:    ret
+    0.00 :   475:    mov    0x50(%rsp),%rax
+    0.00 :   47a:    jmp    48f <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x40f>
+    0.00 :   47c:    mov    0x40(%rsp),%rax
+    0.00 :   481:    jmp    48f <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x40f>
+    0.00 :   483:    mov    0x30(%rsp),%rax
+    0.00 :   488:    jmp    48f <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x40f>
+    0.00 :   48a:    mov    0x20(%rsp),%rax
+    0.00 :   48f:    mov    0x8(%rsp),%rcx
+    0.00 :   494:    mov    %rax,(%rcx)
+    0.00 :   497:    mov    $0x1,%eax
+    0.00 :   49c:    jmp    463 <original_kernel::_reverse_window_score_gain[abi:v8][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)+0x3e3>
+ Percent |	Source code & Disassembly of libc.so.6 for cpu_core/cycles/u (106 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ab250 <_int_free>:
+   18.87 :   ab250:  push   %rbp
+    0.00 :   ab251:  mov    %rsp,%rbp
+    0.00 :   ab254:  push   %r13
+    0.00 :   ab256:  push   %r12
+    0.00 :   ab258:  mov    %edx,%r12d
+    0.00 :   ab25b:  push   %rbx
+    0.00 :   ab25c:  sub    $0x28,%rsp
+    0.00 :   ab260:  mov    0x8(%rsi),%rcx
+   13.21 :   ab264:  mov    %rcx,%rdx
+    0.00 :   ab267:  and    $0xfffffffffffffff8,%rdx
+    0.00 :   ab26b:  mov    %rdx,%rax
+    0.00 :   ab26e:  neg    %rax
+    0.00 :   ab271:  cmp    %rsi,%rax
+    0.00 :   ab274:  jb     ab460 <_int_free+0x210>
+    0.00 :   ab27a:  test   $0xf,%sil
+    0.00 :   ab27e:  jne    ab460 <_int_free+0x210>
+    0.00 :   ab284:  cmp    $0x1f,%rdx
+    0.00 :   ab288:  jbe    ab470 <_int_free+0x220>
+    0.00 :   ab28e:  and    $0x8,%ecx
+    0.00 :   ab291:  jne    ab470 <_int_free+0x220>
+   22.64 :   ab297:  mov    %rdi,%rbx
+    0.00 :   ab29a:  mov    0x158af7(%rip),%rdi        # 203d98 <_GLOBAL_OFFSET_TABLE_+0x218>
+    0.00 :   ab2a1:  mov    %fs:(%rdi),%r8
+    0.00 :   ab2a5:  test   %r8,%r8
+    0.00 :   ab2a8:  je     ab2e8 <_int_free+0x98>
+    0.00 :   ab2aa:  lea    -0x11(%rdx),%rax
+    0.00 :   ab2ae:  shr    $0x4,%rax
+    0.00 :   ab2b2:  cmp    0x158f2f(%rip),%rax        # 2041e8 <mp_+0x68>
+    5.66 :   ab2b9:  jae    ab2e8 <_int_free+0x98>
+    0.00 :   ab2bb:  mov    0x158f36(%rip),%r9        # 2041f8 <mp_+0x78>
+    0.00 :   ab2c2:  mov    0x15feaf(%rip),%r11        # 20b178 <tcache_key>
+    0.00 :   ab2c9:  lea    0x10(%rsi),%r10
+    0.00 :   ab2cd:  cmp    %r11,0x18(%rsi)
+    0.00 :   ab2d1:  je     ab580 <_int_free+0x330>
+    0.00 :   ab2d7:  movzwl (%r8,%rax,2),%edi
+    0.00 :   ab2dc:  mov    %rdi,%rcx
+    0.00 :   ab2df:  cmp    %r9,%rdi
+    0.00 :   ab2e2:  jb     ab428 <_int_free+0x1d8>
+    0.00 :   ab2e8:  movzbl 0x15feb1(%rip),%eax        # 20b1a0 <global_max_fast>
+    0.00 :   ab2ef:  cmp    %rdx,%rax
+    0.00 :   ab2f2:  jb     ab390 <_int_free+0x140>
+    0.00 :   ab2f8:  lea    (%rsi,%rdx,1),%r13
+    0.00 :   ab2fc:  mov    0x8(%r13),%rax
+    0.00 :   ab300:  cmp    $0x10,%rax
+    0.00 :   ab304:  jbe    ab480 <_int_free+0x230>
+    0.00 :   ab30a:  and    $0xfffffffffffffff8,%rax
+    0.00 :   ab30e:  cmp    0x888(%rbx),%rax
+    0.00 :   ab315:  jae    ab480 <_int_free+0x230>
+    0.00 :   ab31b:  mov    0x15fe7b(%rip),%eax        # 20b19c <perturb_byte>
+    0.00 :   ab321:  lea    0x10(%rsi),%r8
+    0.00 :   ab325:  test   %eax,%eax
+    0.00 :   ab327:  jne    ab540 <_int_free+0x2f0>
+    0.00 :   ab32d:  movl   $0x1,0x8(%rbx)
+    0.00 :   ab334:  shr    $0x4,%edx
+    0.00 :   ab337:  lea    -0x2(%rdx),%eax
+    0.00 :   ab33a:  add    $0x2,%rax
+    0.00 :   ab33e:  cmpb   $0x0,0x160cfb(%rip)        # 20c040 <__libc_single_threaded>
+    0.00 :   ab345:  mov    (%rbx,%rax,8),%rcx
+    0.00 :   ab349:  je     ab3c0 <_int_free+0x170>
+    0.00 :   ab34b:  cmp    %rcx,%rsi
+    0.00 :   ab34e:  je     ab3fe <_int_free+0x1ae>
+    0.00 :   ab354:  shr    $0xc,%r8
+    0.00 :   ab358:  xor    %rcx,%r8
+    0.00 :   ab35b:  mov    %r8,0x10(%rsi)
+    0.00 :   ab35f:  mov    %rsi,(%rbx,%rax,8)
+    0.00 :   ab363:  test   %rcx,%rcx
+    0.00 :   ab366:  je     ab37d <_int_free+0x12d>
+    0.00 :   ab368:  and    $0x1,%r12d
+    0.00 :   ab36c:  je     ab37d <_int_free+0x12d>
+    0.00 :   ab36e:  mov    0x8(%rcx),%rax
+    0.00 :   ab372:  shr    $0x4,%eax
+    0.00 :   ab375:  cmp    %eax,%edx
+    0.00 :   ab377:  jne    ab5dd <_int_free+0x38d>
+    0.00 :   ab37d:  add    $0x28,%rsp
+    0.00 :   ab381:  pop    %rbx
+    0.00 :   ab382:  pop    %r12
+    0.00 :   ab384:  pop    %r13
+    0.00 :   ab386:  pop    %rbp
+    0.00 :   ab387:  ret
+    0.00 :   ab388:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ab390:  testb  $0x2,0x8(%rsi)
+    0.00 :   ab394:  jne    ab410 <_int_free+0x1c0>
+    0.00 :   ab396:  cmpb   $0x0,0x160ca3(%rip)        # 20c040 <__libc_single_threaded>
+    0.00 :   ab39d:  jne    ab3a8 <_int_free+0x158>
+    0.00 :   ab39f:  test   %r12d,%r12d
+    0.00 :   ab3a2:  je     ab500 <_int_free+0x2b0>
+    0.00 :   ab3a8:  add    $0x28,%rsp
+    0.00 :   ab3ac:  mov    %rbx,%rdi
+    0.00 :   ab3af:  pop    %rbx
+    0.00 :   ab3b0:  pop    %r12
+    0.00 :   ab3b2:  pop    %r13
+    0.00 :   ab3b4:  pop    %rbp
+    0.00 :   ab3b5:  jmp    ab070 <_int_free_merge_chunk>
+    0.00 :   ab3ba:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ab3c0:  mov    %edx,%eax
+    0.00 :   ab3c2:  shr    $0xc,%r8
+    0.00 :   ab3c6:  lea    (%rbx,%rax,8),%rdi
+    0.00 :   ab3ca:  jmp    ab3f9 <_int_free+0x1a9>
+    0.00 :   ab3cc:  nopl   0x0(%rax)
+    0.00 :   ab3d0:  mov    %rcx,%rax
+    0.00 :   ab3d3:  xor    %r8,%rax
+    0.00 :   ab3d6:  mov    %rax,0x10(%rsi)
+    0.00 :   ab3da:  mov    %rcx,%rax
+    0.00 :   ab3dd:  cmpl   $0x0,%fs:0x18
+    0.00 :   ab3e6:  je     ab3e9 <_int_free+0x199>
+    0.00 :   ab3e8:  lock cmpxchg %rsi,(%rdi)
+    0.00 :   ab3ed:  cmp    %rax,%rcx
+    0.00 :   ab3f0:  je     ab363 <_int_free+0x113>
+    0.00 :   ab3f6:  mov    %rax,%rcx
+    0.00 :   ab3f9:  cmp    %rsi,%rcx
+    0.00 :   ab3fc:  jne    ab3d0 <_int_free+0x180>
+    0.00 :   ab3fe:  lea    0x127863(%rip),%rdi        # 1d2c68 <__PRETTY_FUNCTION__.1+0x7f8>
+    0.00 :   ab405:  call   a90c0 <malloc_printerr>
+    0.00 :   ab40a:  nopw   0x0(%rax,%rax,1)
+    0.00 :   ab410:  add    $0x28,%rsp
+    0.00 :   ab414:  mov    %rsi,%rdi
+    0.00 :   ab417:  pop    %rbx
+    0.00 :   ab418:  pop    %r12
+    0.00 :   ab41a:  pop    %r13
+    0.00 :   ab41c:  pop    %rbp
+    0.00 :   ab41d:  jmp    a94e0 <munmap_chunk>
+    0.00 :   ab422:  nopw   0x0(%rax,%rax,1)
+   16.98 :   ab428:  mov    0x15fd49(%rip),%rdx        # 20b178 <tcache_key>
+    0.00 :   ab42f:  add    $0x1,%ecx
+    0.00 :   ab432:  mov    %rdx,0x18(%rsi)
+    0.00 :   ab436:  mov    %r10,%rdx
+    0.00 :   ab439:  shr    $0xc,%rdx
+    0.00 :   ab43d:  xor    0x80(%r8,%rax,8),%rdx
+    0.00 :   ab445:  mov    %rdx,0x10(%rsi)
+    0.00 :   ab449:  mov    %r10,0x80(%r8,%rax,8)
+   22.64 :   ab451:  mov    %cx,(%r8,%rax,2)
+    0.00 :   ab456:  jmp    ab37d <_int_free+0x12d>
+    0.00 :   ab45b:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ab460:  lea    0x12220b(%rip),%rdi        # 1cd672 <null+0xf77>
+    0.00 :   ab467:  call   a90c0 <malloc_printerr>
+    0.00 :   ab46c:  nopl   0x0(%rax)
+    0.00 :   ab470:  lea    0x122213(%rip),%rdi        # 1cd68a <null+0xf8f>
+    0.00 :   ab477:  call   a90c0 <malloc_printerr>
+    0.00 :   ab47c:  nopl   0x0(%rax)
+    0.00 :   ab480:  test   %r12d,%r12d
+    0.00 :   ab483:  jne    ab4c0 <_int_free+0x270>
+    0.00 :   ab485:  mov    $0x1,%ecx
+    0.00 :   ab48a:  mov    %r12d,%eax
+    0.00 :   ab48d:  lock cmpxchg %ecx,(%rbx)
+    0.00 :   ab491:  jne    ab4e3 <_int_free+0x293>
+    0.00 :   ab493:  mov    0x8(%r13),%rax
+    0.00 :   ab497:  cmp    $0x10,%rax
+    0.00 :   ab49b:  jbe    ab4d0 <_int_free+0x280>
+    0.00 :   ab49d:  mov    0x888(%rbx),%r13
+    0.00 :   ab4a4:  and    $0xfffffffffffffff8,%rax
+    0.00 :   ab4a8:  xor    %ecx,%ecx
+    0.00 :   ab4aa:  xchg   %ecx,(%rbx)
+    0.00 :   ab4ac:  cmp    $0x1,%ecx
+    0.00 :   ab4af:  jg     ab60e <_int_free+0x3be>
+    0.00 :   ab4b5:  cmp    %r13,%rax
+    0.00 :   ab4b8:  jb     ab31b <_int_free+0xcb>
+    0.00 :   ab4be:  xchg   %ax,%ax
+    0.00 :   ab4c0:  lea    0x127779(%rip),%rdi        # 1d2c40 <__PRETTY_FUNCTION__.1+0x7d0>
+    0.00 :   ab4c7:  call   a90c0 <malloc_printerr>
+    0.00 :   ab4cc:  nopl   0x0(%rax)
+    0.00 :   ab4d0:  xor    %eax,%eax
+    0.00 :   ab4d2:  xchg   %eax,(%rbx)
+    0.00 :   ab4d4:  cmp    $0x1,%eax
+    0.00 :   ab4d7:  jle    ab4c0 <_int_free+0x270>
+    0.00 :   ab4d9:  mov    %rbx,%rdi
+    0.00 :   ab4dc:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ab4e1:  jmp    ab4c0 <_int_free+0x270>
+    0.00 :   ab4e3:  mov    %rbx,%rdi
+    0.00 :   ab4e6:  mov    %rsi,-0x30(%rbp)
+    0.00 :   ab4ea:  mov    %rdx,-0x28(%rbp)
+    0.00 :   ab4ee:  call   98fc0 <__lll_lock_wait_private>
+    0.00 :   ab4f3:  mov    -0x30(%rbp),%rsi
+    0.00 :   ab4f7:  mov    -0x28(%rbp),%rdx
+    0.00 :   ab4fb:  jmp    ab493 <_int_free+0x243>
+    0.00 :   ab4fd:  nopl   (%rax)
+    0.00 :   ab500:  mov    $0x1,%ecx
+    0.00 :   ab505:  mov    %r12d,%eax
+    0.00 :   ab508:  lock cmpxchg %ecx,(%rbx)
+    0.00 :   ab50c:  jne    ab5e9 <_int_free+0x399>
+    0.00 :   ab512:  mov    %rbx,%rdi
+    0.00 :   ab515:  call   ab070 <_int_free_merge_chunk>
+    0.00 :   ab51a:  xor    %eax,%eax
+    0.00 :   ab51c:  xchg   %eax,(%rbx)
+    0.00 :   ab51e:  cmp    $0x1,%eax
+    0.00 :   ab521:  jle    ab37d <_int_free+0x12d>
+    0.00 :   ab527:  add    $0x28,%rsp
+    0.00 :   ab52b:  mov    %rbx,%rdi
+    0.00 :   ab52e:  pop    %rbx
+    0.00 :   ab52f:  pop    %r12
+    0.00 :   ab531:  pop    %r13
+    0.00 :   ab533:  pop    %rbp
+    0.00 :   ab534:  jmp    99080 <__lll_lock_wake_private>
+    0.00 :   ab539:  nopl   0x0(%rax)
+    0.00 :   ab540:  movabs $0x101010101010101,%rdi
+    0.00 :   ab54a:  movzbl %al,%eax
+    0.00 :   ab54d:  lea    -0x10(%rdx),%rcx
+    0.00 :   ab551:  mov    %r8,%r9
+    0.00 :   ab554:  imul   %rdi,%rax
+    0.00 :   ab558:  mov    %ecx,%edi
+    0.00 :   ab55a:  mov    %rax,0x10(%rsi)
+    0.00 :   ab55e:  mov    %rax,-0x8(%r8,%rdi,1)
+    0.00 :   ab563:  lea    0x18(%rsi),%rdi
+    0.00 :   ab567:  and    $0xfffffffffffffff8,%rdi
+    0.00 :   ab56b:  sub    %rdi,%r9
+    0.00 :   ab56e:  add    %r9d,%ecx
+    0.00 :   ab571:  shr    $0x3,%ecx
+    0.00 :   ab574:  rep stos %rax,%es:(%rdi)
+    0.00 :   ab577:  jmp    ab32d <_int_free+0xdd>
+    0.00 :   ab57c:  nopl   0x0(%rax)
+    0.00 :   ab580:  nop
+    0.00 :   ab581:  mov    %fs:(%rdi),%r8
+    0.00 :   ab585:  mov    0x158c6c(%rip),%r9        # 2041f8 <mp_+0x78>
+    0.00 :   ab58c:  mov    0x80(%r8,%rax,8),%rdi
+    0.00 :   ab594:  test   %rdi,%rdi
+    0.00 :   ab597:  jne    ab5c6 <_int_free+0x376>
+    0.00 :   ab599:  jmp    ab2d7 <_int_free+0x87>
+    0.00 :   ab59e:  xchg   %ax,%ax
+    0.00 :   ab5a0:  cmp    %r10,%rdi
+    0.00 :   ab5a3:  je     ab633 <_int_free+0x3e3>
+    0.00 :   ab5a9:  mov    %rdi,%r13
+    0.00 :   ab5ac:  mov    (%rdi),%r11
+    0.00 :   ab5af:  add    $0x1,%rcx
+    0.00 :   ab5b3:  shr    $0xc,%r13
+    0.00 :   ab5b7:  mov    %r13,%rdi
+    0.00 :   ab5ba:  xor    %r11,%rdi
+    0.00 :   ab5bd:  cmp    %r11,%r13
+    0.00 :   ab5c0:  je     ab2d7 <_int_free+0x87>
+    0.00 :   ab5c6:  cmp    %r9,%rcx
+    0.00 :   ab5c9:  je     ab63f <_int_free+0x3ef>
+    0.00 :   ab5cb:  test   $0xf,%dil
+    0.00 :   ab5cf:  je     ab5a0 <_int_free+0x350>
+    0.00 :   ab5d1:  lea    0x127608(%rip),%rdi        # 1d2be0 <__PRETTY_FUNCTION__.1+0x770>
+    0.00 :   ab5d8:  call   a90c0 <malloc_printerr>
+    0.00 :   ab5dd:  lea    0x1220bb(%rip),%rdi        # 1cd69f <null+0xfa4>
+    0.00 :   ab5e4:  call   a90c0 <malloc_printerr>
+    0.00 :   ab5e9:  mov    %rbx,%rdi
+    0.00 :   ab5ec:  mov    %rsi,-0x30(%rbp)
+    0.00 :   ab5f0:  mov    %rdx,-0x28(%rbp)
+    0.00 :   ab5f4:  call   98fc0 <__lll_lock_wait_private>
+    0.00 :   ab5f9:  mov    -0x28(%rbp),%rdx
+    0.00 :   ab5fd:  mov    -0x30(%rbp),%rsi
+    0.00 :   ab601:  mov    %rbx,%rdi
+    0.00 :   ab604:  call   ab070 <_int_free_merge_chunk>
+    0.00 :   ab609:  jmp    ab51a <_int_free+0x2ca>
+    0.00 :   ab60e:  mov    %rbx,%rdi
+    0.00 :   ab611:  mov    %rsi,-0x38(%rbp)
+    0.00 :   ab615:  mov    %rdx,-0x30(%rbp)
+    0.00 :   ab619:  mov    %rax,-0x28(%rbp)
+    0.00 :   ab61d:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ab622:  mov    -0x38(%rbp),%rsi
+    0.00 :   ab626:  mov    -0x30(%rbp),%rdx
+    0.00 :   ab62a:  mov    -0x28(%rbp),%rax
+    0.00 :   ab62e:  jmp    ab4b5 <_int_free+0x265>
+    0.00 :   ab633:  lea    0x1275d6(%rip),%rdi        # 1d2c10 <__PRETTY_FUNCTION__.1+0x7a0>
+    0.00 :   ab63a:  call   a90c0 <malloc_printerr>
+    0.00 :   ab63f:  lea    0x12756a(%rip),%rdi        # 1d2bb0 <__PRETTY_FUNCTION__.1+0x740>
+    0.00 :   ab646:  call   a90c0 <malloc_printerr>
+ Percent |	Source code & Disassembly of libc.so.6 for cpu_core/cycles/u (80 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ad750 <__libc_malloc>:
+    0.00 :   ad750:  endbr64
+    0.00 :   ad754:  push   %rbp
+    0.00 :   ad755:  mov    %rsp,%rbp
+    0.00 :   ad758:  push   %r13
+    0.00 :   ad75a:  push   %r12
+   20.00 :   ad75c:  push   %rbx
+    0.00 :   ad75d:  mov    %rdi,%rbx
+    0.00 :   ad760:  sub    $0x18,%rsp
+    0.00 :   ad764:  cmpb   $0x0,0x15da1d(%rip)        # 20b188 <__malloc_initialized>
+    0.00 :   ad76b:  je     ad960 <__libc_malloc+0x210>
+    0.00 :   ad771:  test   %rbx,%rbx
+    0.00 :   ad774:  js     ad96e <__libc_malloc+0x21e>
+    0.00 :   ad77a:  lea    0x17(%rbx),%rax
+   18.75 :   ad77e:  xor    %r12d,%r12d
+    0.00 :   ad781:  cmp    $0x1f,%rax
+    0.00 :   ad785:  jbe    ad793 <__libc_malloc+0x43>
+    0.00 :   ad787:  and    $0xfffffffffffffff0,%rax
+    0.00 :   ad78b:  lea    -0x11(%rax),%r12
+    0.00 :   ad78f:  shr    $0x4,%r12
+    0.00 :   ad793:  mov    0x1565fe(%rip),%r13        # 203d98 <_GLOBAL_OFFSET_TABLE_+0x218>
+    0.00 :   ad79a:  mov    %fs:0x0(%r13),%rdx
+    0.00 :   ad79f:  test   %rdx,%rdx
+    0.00 :   ad7a2:  je     ad860 <__libc_malloc+0x110>
+   20.00 :   ad7a8:  cmp    0x156a39(%rip),%r12        # 2041e8 <mp_+0x68>
+    0.00 :   ad7af:  jb     ad898 <__libc_malloc+0x148>
+    0.00 :   ad7b5:  cmpb   $0x0,0x15e884(%rip)        # 20c040 <__libc_single_threaded>
+    0.00 :   ad7bc:  jne    ad8e0 <__libc_malloc+0x190>
+    0.00 :   ad7c2:  mov    0x1565c7(%rip),%rax        # 203d90 <_GLOBAL_OFFSET_TABLE_+0x210>
+    0.00 :   ad7c9:  mov    %fs:(%rax),%r12
+    0.00 :   ad7cd:  test   %r12,%r12
+    0.00 :   ad7d0:  je     ad990 <__libc_malloc+0x240>
+    0.00 :   ad7d6:  xor    %eax,%eax
+    0.00 :   ad7d8:  mov    $0x1,%edx
+    0.00 :   ad7dd:  lock cmpxchg %edx,(%r12)
+    0.00 :   ad7e3:  jne    ada18 <__libc_malloc+0x2c8>
+    0.00 :   ad7e9:  mov    %rbx,%rsi
+    0.00 :   ad7ec:  mov    %r12,%rdi
+    0.00 :   ad7ef:  call   ab650 <_int_malloc>
+    0.00 :   ad7f4:  test   %rax,%rax
+    0.00 :   ad7f7:  je     ad9c8 <__libc_malloc+0x278>
+    0.00 :   ad7fd:  xor    %edx,%edx
+    0.00 :   ad7ff:  xchg   %edx,(%r12)
+    0.00 :   ad803:  cmp    $0x1,%edx
+    0.00 :   ad806:  jg     ada28 <__libc_malloc+0x2d8>
+    0.00 :   ad80c:  mov    -0x8(%rax),%rdx
+    0.00 :   ad810:  test   $0x2,%dl
+    0.00 :   ad813:  jne    ad854 <__libc_malloc+0x104>
+    0.00 :   ad815:  and    $0x4,%edx
+    0.00 :   ad818:  lea    0x1572a1(%rip),%rcx        # 204ac0 <main_arena>
+    0.00 :   ad81f:  je     ad84b <__libc_malloc+0xfb>
+    0.00 :   ad821:  mov    0x156988(%rip),%rcx        # 2041b0 <mp_+0x30>
+    0.00 :   ad828:  lea    0x0(,%rcx,4),%rdx
+    0.00 :   ad830:  neg    %rdx
+    0.00 :   ad833:  test   %rcx,%rcx
+    0.00 :   ad836:  mov    $0xfffffffffc000000,%rcx
+    0.00 :   ad83d:  cmove  %rcx,%rdx
+    0.00 :   ad841:  lea    -0x10(%rax),%rcx
+    0.00 :   ad845:  and    %rcx,%rdx
+    0.00 :   ad848:  mov    (%rdx),%rcx
+    0.00 :   ad84b:  cmp    %r12,%rcx
+    0.00 :   ad84e:  jne    ad9f4 <__libc_malloc+0x2a4>
+    0.00 :   ad854:  add    $0x18,%rsp
+    0.00 :   ad858:  pop    %rbx
+    0.00 :   ad859:  pop    %r12
+    0.00 :   ad85b:  pop    %r13
+    0.00 :   ad85d:  pop    %rbp
+    0.00 :   ad85e:  ret
+    0.00 :   ad85f:  nop
+    0.00 :   ad860:  mov    0x156539(%rip),%rax        # 203da0 <_GLOBAL_OFFSET_TABLE_+0x220>
+    0.00 :   ad867:  cmpb   $0x0,%fs:(%rax)
+    0.00 :   ad86b:  jne    ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad871:  call   acef0 <tcache_init.part.0>
+    0.00 :   ad876:  cmp    0x15696b(%rip),%r12        # 2041e8 <mp_+0x68>
+    0.00 :   ad87d:  jae    ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad883:  mov    %fs:0x0(%r13),%rdx
+    0.00 :   ad888:  test   %rdx,%rdx
+    0.00 :   ad88b:  je     ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad891:  nopl   0x0(%rax)
+    0.00 :   ad898:  movzwl (%rdx,%r12,2),%ecx
+    0.00 :   ad89d:  test   %cx,%cx
+    0.00 :   ad8a0:  je     ad7b5 <__libc_malloc+0x65>
+    0.00 :   ad8a6:  lea    0x10(%r12),%rdi
+    0.00 :   ad8ab:  mov    (%rdx,%rdi,8),%rax
+    0.00 :   ad8af:  test   $0xf,%al
+    0.00 :   ad8b1:  jne    ada40 <__libc_malloc+0x2f0>
+   26.25 :   ad8b7:  mov    %rax,%rsi
+    0.00 :   ad8ba:  sub    $0x1,%ecx
+    0.00 :   ad8bd:  shr    $0xc,%rsi
+    0.00 :   ad8c1:  xor    (%rax),%rsi
+    0.00 :   ad8c4:  mov    %rsi,(%rdx,%rdi,8)
+    0.00 :   ad8c8:  mov    %cx,(%rdx,%r12,2)
+    0.00 :   ad8cd:  movq   $0x0,0x8(%rax)
+    0.00 :   ad8d5:  add    $0x18,%rsp
+   15.00 :   ad8d9:  pop    %rbx
+    0.00 :   ad8da:  pop    %r12
+    0.00 :   ad8dc:  pop    %r13
+    0.00 :   ad8de:  pop    %rbp
+    0.00 :   ad8df:  ret
+    0.00 :   ad8e0:  mov    %rbx,%rsi
+    0.00 :   ad8e3:  lea    0x1571d6(%rip),%rbx        # 204ac0 <main_arena>
+    0.00 :   ad8ea:  mov    %rbx,%rdi
+    0.00 :   ad8ed:  call   ab650 <_int_malloc>
+    0.00 :   ad8f2:  test   %rax,%rax
+    0.00 :   ad8f5:  je     ad97c <__libc_malloc+0x22c>
+    0.00 :   ad8fb:  mov    -0x8(%rax),%rdx
+    0.00 :   ad8ff:  test   $0x2,%dl
+    0.00 :   ad902:  jne    ad854 <__libc_malloc+0x104>
+    0.00 :   ad908:  and    $0x4,%edx
+    0.00 :   ad90b:  je     ad854 <__libc_malloc+0x104>
+    0.00 :   ad911:  mov    0x156898(%rip),%rcx        # 2041b0 <mp_+0x30>
+    0.00 :   ad918:  lea    0x0(,%rcx,4),%rdx
+    0.00 :   ad920:  neg    %rdx
+    0.00 :   ad923:  test   %rcx,%rcx
+    0.00 :   ad926:  mov    $0xfffffffffc000000,%rcx
+    0.00 :   ad92d:  cmove  %rcx,%rdx
+    0.00 :   ad931:  lea    -0x10(%rax),%rcx
+    0.00 :   ad935:  and    %rcx,%rdx
+    0.00 :   ad938:  cmp    %rbx,(%rdx)
+    0.00 :   ad93b:  je     ad854 <__libc_malloc+0x104>
+    0.00 :   ad941:  lea    0x125be8(%rip),%rcx        # 1d3530 <__PRETTY_FUNCTION__.1>
+    0.00 :   ad948:  mov    $0xd01,%edx
+    0.00 :   ad94d:  lea    0x11fc55(%rip),%rsi        # 1cd5a9 <null+0xeae>
+    0.00 :   ad954:  lea    0x1257fd(%rip),%rdi        # 1d3158 <__PRETTY_FUNCTION__.1+0xce8>
+    0.00 :   ad95b:  call   3b2f0 <__libc_assert_fail>
+    0.00 :   ad960:  call   a9e50 <ptmalloc_init.part.0>
+    0.00 :   ad965:  test   %rbx,%rbx
+    0.00 :   ad968:  jns    ad77a <__libc_malloc+0x2a>
+    0.00 :   ad96e:  mov    0x156483(%rip),%rax        # 203df8 <_GLOBAL_OFFSET_TABLE_+0x278>
+    0.00 :   ad975:  movl   $0xc,%fs:(%rax)
+    0.00 :   ad97c:  xor    %eax,%eax
+    0.00 :   ad97e:  add    $0x18,%rsp
+    0.00 :   ad982:  pop    %rbx
+    0.00 :   ad983:  pop    %r12
+    0.00 :   ad985:  pop    %r13
+    0.00 :   ad987:  pop    %rbp
+    0.00 :   ad988:  ret
+    0.00 :   ad989:  nopl   0x0(%rax)
+    0.00 :   ad990:  call   a9380 <get_free_list>
+    0.00 :   ad995:  mov    %rax,%r12
+    0.00 :   ad998:  test   %rax,%rax
+    0.00 :   ad99b:  jne    ad7e9 <__libc_malloc+0x99>
+    0.00 :   ad9a1:  xor    %esi,%esi
+    0.00 :   ad9a3:  mov    %rbx,%rdi
+    0.00 :   ad9a6:  call   aa3e0 <arena_get2.part.0>
+    0.00 :   ad9ab:  mov    %rbx,%rsi
+    0.00 :   ad9ae:  mov    %rax,%rdi
+    0.00 :   ad9b1:  mov    %rax,%r12
+    0.00 :   ad9b4:  call   ab650 <_int_malloc>
+    0.00 :   ad9b9:  test   %rax,%rax
+    0.00 :   ad9bc:  jne    ad9e2 <__libc_malloc+0x292>
+    0.00 :   ad9be:  test   %r12,%r12
+    0.00 :   ad9c1:  je     ad9e7 <__libc_malloc+0x297>
+    0.00 :   ad9c3:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ad9c8:  nop
+    0.00 :   ad9c9:  mov    %r12,%rdi
+    0.00 :   ad9cc:  mov    %rbx,%rsi
+    0.00 :   ad9cf:  call   aa8e0 <arena_get_retry>
+    0.00 :   ad9d4:  mov    %rbx,%rsi
+    0.00 :   ad9d7:  mov    %rax,%rdi
+    0.00 :   ad9da:  mov    %rax,%r12
+    0.00 :   ad9dd:  call   ab650 <_int_malloc>
+    0.00 :   ad9e2:  test   %r12,%r12
+    0.00 :   ad9e5:  jne    ada4c <__libc_malloc+0x2fc>
+    0.00 :   ad9e7:  test   %rax,%rax
+    0.00 :   ad9ea:  jne    ad80c <__libc_malloc+0xbc>
+    0.00 :   ad9f0:  xor    %eax,%eax
+    0.00 :   ad9f2:  jmp    ad97e <__libc_malloc+0x22e>
+    0.00 :   ad9f4:  lea    0x125b35(%rip),%rcx        # 1d3530 <__PRETTY_FUNCTION__.1>
+    0.00 :   ad9fb:  mov    $0xd17,%edx
+    0.00 :   ada00:  lea    0x11fba2(%rip),%rsi        # 1cd5a9 <null+0xeae>
+    0.00 :   ada07:  lea    0x1257b2(%rip),%rdi        # 1d31c0 <__PRETTY_FUNCTION__.1+0xd50>
+    0.00 :   ada0e:  call   3b2f0 <__libc_assert_fail>
+    0.00 :   ada13:  nopl   0x0(%rax,%rax,1)
+    0.00 :   ada18:  mov    %r12,%rdi
+    0.00 :   ada1b:  call   98fc0 <__lll_lock_wait_private>
+    0.00 :   ada20:  jmp    ad7e9 <__libc_malloc+0x99>
+    0.00 :   ada25:  nopl   (%rax)
+    0.00 :   ada28:  mov    %r12,%rdi
+    0.00 :   ada2b:  mov    %rax,-0x28(%rbp)
+    0.00 :   ada2f:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ada34:  mov    -0x28(%rbp),%rax
+    0.00 :   ada38:  jmp    ad80c <__libc_malloc+0xbc>
+    0.00 :   ada3d:  nopl   (%rax)
+    0.00 :   ada40:  lea    0x125491(%rip),%rdi        # 1d2ed8 <__PRETTY_FUNCTION__.1+0xa68>
+    0.00 :   ada47:  call   a90c0 <malloc_printerr>
+    0.00 :   ada4c:  xor    %edx,%edx
+    0.00 :   ada4e:  xchg   %edx,(%r12)
+    0.00 :   ada52:  sub    $0x1,%edx
+    0.00 :   ada55:  jle    ad9e7 <__libc_malloc+0x297>
+    0.00 :   ada57:  mov    %r12,%rdi
+    0.00 :   ada5a:  mov    %rax,-0x28(%rbp)
+    0.00 :   ada5e:  call   99080 <__lll_lock_wake_private>
+    0.00 :   ada63:  mov    -0x28(%rbp),%rax
+    0.00 :   ada67:  jmp    ad9e7 <__libc_malloc+0x297>
+ Percent |	Source code & Disassembly of python3.12 for cpu_core/cycles/u (61 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000586090 <PyMem_RawMalloc>:
+   74.45 :   586090: endbr64
+    0.00 :   586094: test   %rdi,%rdi
+    0.00 :   586097: js     45f036 <PyMem_RawMalloc.cold>
+    0.00 :   58609d: mov    0x5b0384(%rip),%rax        # b36428 <_PyRuntime+0x68>
+    0.00 :   5860a4: mov    0x5b0375(%rip),%rdx        # b36420 <_PyRuntime+0x60>
+    0.00 :   5860ab: cmp    $0x5860d0,%rax
+    0.00 :   5860b1: jne    5860c8 <PyMem_RawMalloc+0x38>
+    0.00 :   5860b3: test   %rdi,%rdi
+    0.00 :   5860b6: mov    $0x1,%eax
+    0.00 :   5860bb: cmove  %rax,%rdi
+   25.55 :   5860bf: jmp    420620 <malloc@plt>
+    0.00 :   5860c4: nopl   0x0(%rax)
+    0.00 :   5860c8: mov    %rdi,%rsi
+    0.00 :   5860cb: mov    %rdx,%rdi
+    0.00 :   5860ce: jmp    *%rax
+ Percent |	Source code & Disassembly of libc.so.6 for cpu_core/cycles/u (59 samples, percent: local period)
+----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3     Disassembly of section .text:
+         :
+         : 5     00000000000ade30 <__libc_free>:
+    0.00 :   ade30:  endbr64
+   16.95 :   ade34:  test   %rdi,%rdi
+    0.00 :   ade37:  je     adf10 <__libc_free+0xe0>
+    0.00 :   ade3d:  push   %rbp
+    0.00 :   ade3e:  mov    %rsp,%rbp
+    0.00 :   ade41:  push   %r13
+    0.00 :   ade43:  lea    -0x10(%rdi),%r13
+    0.00 :   ade47:  push   %r12
+    0.00 :   ade49:  push   %rbx
+    0.00 :   ade4a:  sub    $0x18,%rsp
+   23.73 :   ade4e:  mov    0x155fa3(%rip),%rbx        # 203df8 <_GLOBAL_OFFSET_TABLE_+0x278>
+    0.00 :   ade55:  mov    -0x8(%rdi),%rax
+    0.00 :   ade59:  mov    %fs:(%rbx),%r12d
+    0.00 :   ade5d:  test   $0x2,%al
+    0.00 :   ade5f:  jne    adec0 <__libc_free+0x90>
+    0.00 :   ade61:  mov    0x155f30(%rip),%rdx        # 203d98 <_GLOBAL_OFFSET_TABLE_+0x218>
+    0.00 :   ade68:  cmpq   $0x0,%fs:(%rdx)
+    0.00 :   ade6d:  je     adf18 <__libc_free+0xe8>
+    0.00 :   ade73:  lea    0x156c46(%rip),%rdi        # 204ac0 <main_arena>
+   33.90 :   ade7a:  test   $0x4,%al
+    0.00 :   ade7c:  je     adea4 <__libc_free+0x74>
+    0.00 :   ade7e:  mov    0x15632b(%rip),%rdx        # 2041b0 <mp_+0x30>
+    0.00 :   ade85:  lea    0x0(,%rdx,4),%rax
+    0.00 :   ade8d:  neg    %rax
+    0.00 :   ade90:  test   %rdx,%rdx
+    0.00 :   ade93:  mov    $0xfffffffffc000000,%rdx
+    0.00 :   ade9a:  cmove  %rdx,%rax
+    0.00 :   ade9e:  and    %r13,%rax
+    0.00 :   adea1:  mov    (%rax),%rdi
+    0.00 :   adea4:  mov    %r13,%rsi
+    0.00 :   adea7:  xor    %edx,%edx
+    0.00 :   adea9:  call   ab250 <_int_free>
+   25.42 :   adeae:  mov    %r12d,%fs:(%rbx)
+    0.00 :   adeb2:  add    $0x18,%rsp
+    0.00 :   adeb6:  pop    %rbx
+    0.00 :   adeb7:  pop    %r12
+    0.00 :   adeb9:  pop    %r13
+    0.00 :   adebb:  pop    %rbp
+    0.00 :   adebc:  ret
+    0.00 :   adebd:  nopl   (%rax)
+    0.00 :   adec0:  mov    0x156302(%rip),%edx        # 2041c8 <mp_+0x48>
+    0.00 :   adec6:  test   %edx,%edx
+    0.00 :   adec8:  jne    adef2 <__libc_free+0xc2>
+    0.00 :   adeca:  cmp    %rax,0x1562bf(%rip)        # 204190 <mp_+0x10>
+    0.00 :   aded1:  jae    adef2 <__libc_free+0xc2>
+    0.00 :   aded3:  cmp    $0x2000000,%rax
+    0.00 :   aded9:  ja     adef2 <__libc_free+0xc2>
+    0.00 :   adedb:  and    $0xfffffffffffffff8,%rax
+    0.00 :   adedf:  lea    (%rax,%rax,1),%rdx
+    0.00 :   adee3:  mov    %rax,0x1562a6(%rip)        # 204190 <mp_+0x10>
+    0.00 :   adeea:  mov    %rdx,0x15628f(%rip)        # 204180 <mp_>
+    0.00 :   adef1:  nop
+    0.00 :   adef2:  mov    %r13,%rdi
+    0.00 :   adef5:  call   a94e0 <munmap_chunk>
+    0.00 :   adefa:  mov    %r12d,%fs:(%rbx)
+    0.00 :   adefe:  add    $0x18,%rsp
+    0.00 :   adf02:  pop    %rbx
+    0.00 :   adf03:  pop    %r12
+    0.00 :   adf05:  pop    %r13
+    0.00 :   adf07:  pop    %rbp
+    0.00 :   adf08:  ret
+    0.00 :   adf09:  nopl   0x0(%rax)
+    0.00 :   adf10:  ret
+    0.00 :   adf11:  nopl   0x0(%rax)
+    0.00 :   adf18:  mov    0x155e81(%rip),%rdx        # 203da0 <_GLOBAL_OFFSET_TABLE_+0x220>
+    0.00 :   adf1f:  mov    %rdi,-0x28(%rbp)
+    0.00 :   adf23:  cmpb   $0x0,%fs:(%rdx)
+    0.00 :   adf27:  jne    ade73 <__libc_free+0x43>
+    0.00 :   adf2d:  call   acef0 <tcache_init.part.0>
+    0.00 :   adf32:  mov    -0x28(%rbp),%rdi
+    0.00 :   adf36:  mov    -0x8(%rdi),%rax
+    0.00 :   adf3a:  jmp    ade73 <__libc_free+0x43>
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (43 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000045c0 <NRT_MemInfo_call_dtor>:
+   26.36 :   45c0:   push   %rbp
+    0.00 :   45c1:   mov    0x8(%rdi),%rax
+    0.00 :   45c5:   mov    %rdi,%rbp
+    0.00 :   45c8:   test   %rax,%rax
+    0.00 :   45cb:   je     45e5 <NRT_MemInfo_call_dtor+0x25>
+    0.00 :   45cd:   mov    0x40ed(%rip),%edx        # 86c0 <TheMSys>
+    0.00 :   45d3:   test   %edx,%edx
+    0.00 :   45d5:   jne    45e5 <NRT_MemInfo_call_dtor+0x25>
+    0.00 :   45d7:   mov    0x10(%rdi),%rdx
+    0.00 :   45db:   mov    0x20(%rdi),%rsi
+    0.00 :   45df:   mov    0x18(%rdi),%rdi
+    0.00 :   45e3:   call   *%rax
+   38.01 :   45e5:   mov    %rbp,%rdi
+    0.00 :   45e8:   call   2230 <NRT_dealloc@plt>
+    2.38 :   45ed:   cmpb   $0x0,0x40d4(%rip)        # 86c8 <TheMSys+0x8>
+    0.00 :   45f4:   jne    4600 <NRT_MemInfo_call_dtor+0x40>
+    0.00 :   45f6:   pop    %rbp
+   33.26 :   45f7:   ret
+    0.00 :   45f8:   nopl   0x0(%rax,%rax,1)
+    0.00 :   4600:   lock addq $0x1,0x40df(%rip)        # 86e8 <TheMSys+0x28>
+    0.00 :   4609:   pop    %rbp
+    0.00 :   460a:   ret
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (27 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .text:
+         :
+         : 5    00000000000044e0 <NRT_dealloc>:
+   44.45 :   44e0:   sub    $0x8,%rsp
+    0.00 :   44e4:   mov    0x28(%rdi),%rax
+    0.00 :   44e8:   test   %rax,%rax
+    0.00 :   44eb:   je     4508 <NRT_dealloc+0x28>
+    0.00 :   44ed:   mov    0x18(%rax),%rsi
+    0.00 :   44f1:   call   *0x10(%rax)
+    0.00 :   44f4:   cmpb   $0x0,0x41cd(%rip)        # 86c8 <TheMSys+0x8>
+    0.00 :   44fb:   jne    4517 <NRT_dealloc+0x37>
+    0.00 :   44fd:   add    $0x8,%rsp
+    0.00 :   4501:   ret
+    0.00 :   4502:   nopw   0x0(%rax,%rax,1)
+    0.00 :   4508:   call   *0x41f2(%rip)        # 8700 <TheMSys+0x40>
+    0.00 :   450e:   cmpb   $0x0,0x41b3(%rip)        # 86c8 <TheMSys+0x8>
+   55.55 :   4515:   je     44fd <NRT_dealloc+0x1d>
+    0.00 :   4517:   lock addq $0x1,0x41b8(%rip)        # 86d8 <TheMSys+0x18>
+    0.00 :   4520:   add    $0x8,%rsp
+    0.00 :   4524:   ret
+ Percent |	Source code & Disassembly of jitted-931902-37.so for cpu_core/cycles/u (17 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)>:
+    0.00 :    80:     endbr64
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     sub    $0x58,%rsp
+    0.00 :    92:     mov    %r9,0x38(%rsp)
+    0.00 :    97:     mov    %r8,0x30(%rsp)
+    0.00 :    9c:     mov    %rcx,0x28(%rsp)
+    0.00 :    a1:     mov    %rsi,%r14
+    0.00 :    a4:     mov    %rdi,%r13
+    0.00 :    a7:     movq   $0x0,0x18(%rsp)
+    0.00 :    b0:     movabs $0x0,%rax
+    0.00 :    ba:     mov    %rdx,0x10(%rsp)
+    0.00 :    bf:     mov    %rdx,%rdi
+    0.00 :    c2:     call   *%rax
+    0.00 :    c4:     vcvtsi2sdq 0x98(%rsp),%xmm15,%xmm0
+    0.00 :    ce:     vcvttsd2si %xmm0,%r12
+    0.00 :    d3:     movabs $0xfffffffffffffff,%rax
+    0.00 :    dd:     cmp    %rax,%r12
+    0.00 :    e0:     jg     4a6 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x426>
+    0.00 :    e6:     mov    %r12,%rax
+    0.00 :    e9:     sar    $0x3f,%rax
+    0.00 :    ed:     andn   %r12,%rax,%r15
+    0.00 :    f2:     lea    0x0(,%r15,8),%rdi
+    0.00 :    fa:     movabs $0x0,%rax
+    0.00 :   104:    mov    $0x20,%esi
+    0.00 :   109:    call   *%rax
+    0.00 :   10b:    test   %rax,%rax
+    0.00 :   10e:    je     4b5 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x435>
+    0.00 :   114:    mov    %rax,%rbx
+    0.00 :   117:    mov    0x18(%rax),%rbp
+    0.00 :   11b:    test   %r12,%r12
+    0.00 :   11e:    jle    22d <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1ad>
+    0.00 :   124:    cmp    $0x3,%r12
+    0.00 :   128:    ja     131 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0xb1>
+    0.00 :   12a:    xor    %eax,%eax
+    0.00 :   12c:    jmp    220 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1a0>
+    0.00 :   131:    movabs $0x7ffffffffffffff0,%rsi
+    0.00 :   13b:    movabs $0x0,%rcx
+    0.00 :   145:    movabs $0x0,%rdx
+    0.00 :   14f:    cmp    $0x10,%r12
+    0.00 :   153:    jae    15c <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0xdc>
+    0.00 :   155:    xor    %eax,%eax
+    0.00 :   157:    jmp    1dc <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x15c>
+    0.00 :   15c:    mov    %r12,%rax
+    0.00 :   15f:    and    %rsi,%rax
+    0.00 :   162:    vmovdqa (%rcx),%ymm0
+    0.00 :   166:    xor    %edi,%edi
+    0.00 :   168:    vpbroadcastq (%rdx),%ymm1
+    0.00 :   16d:    movabs $0x0,%r8
+    0.00 :   177:    vpbroadcastq (%r8),%ymm2
+    0.00 :   17c:    movabs $0x0,%r8
+    0.00 :   186:    vpbroadcastq (%r8),%ymm3
+    0.00 :   18b:    movabs $0x0,%r8
+    0.00 :   195:    vpbroadcastq (%r8),%ymm4
+    0.00 :   19a:    nopw   0x0(%rax,%rax,1)
+    0.00 :   1a0:    vpaddq %ymm1,%ymm0,%ymm5
+    0.00 :   1a4:    vpaddq %ymm2,%ymm0,%ymm6
+    0.00 :   1a8:    vmovdqu %ymm0,0x0(%rbp,%rdi,8)
+    0.00 :   1ae:    vmovdqu %ymm5,0x20(%rbp,%rdi,8)
+    0.00 :   1b4:    vmovdqu %ymm6,0x40(%rbp,%rdi,8)
+    0.00 :   1ba:    vpaddq %ymm3,%ymm0,%ymm5
+    0.00 :   1be:    vmovdqu %ymm5,0x60(%rbp,%rdi,8)
+    0.00 :   1c4:    add    $0x10,%rdi
+    0.00 :   1c8:    vpaddq %ymm4,%ymm0,%ymm0
+    0.00 :   1cc:    cmp    %rdi,%rax
+    0.00 :   1cf:    jne    1a0 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x120>
+    0.00 :   1d1:    cmp    %r12,%rax
+    0.00 :   1d4:    je     22d <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1ad>
+    0.00 :   1d6:    test   $0xc,%r12b
+    0.00 :   1da:    je     220 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1a0>
+    0.00 :   1dc:    mov    %rax,%rdi
+    0.00 :   1df:    add    $0xc,%rsi
+    0.00 :   1e3:    mov    %rsi,%rax
+    0.00 :   1e6:    and    %r12,%rax
+    0.00 :   1e9:    vmovq  %rdi,%xmm0
+    0.00 :   1ee:    vpbroadcastq %xmm0,%ymm0
+    0.00 :   1f3:    vpor   (%rcx),%ymm0,%ymm0
+    0.00 :   1f7:    vpbroadcastq (%rdx),%ymm1
+    0.00 :   1fc:    nopl   0x0(%rax)
+    0.00 :   200:    vmovdqu %ymm0,0x0(%rbp,%rdi,8)
+    0.00 :   206:    add    $0x4,%rdi
+    0.00 :   20a:    vpaddq %ymm1,%ymm0,%ymm0
+    0.00 :   20e:    cmp    %rdi,%rax
+    0.00 :   211:    jne    200 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x180>
+    0.00 :   213:    cmp    %r12,%rax
+    0.00 :   216:    je     22d <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1ad>
+    0.00 :   218:    nopl   0x0(%rax,%rax,1)
+    0.00 :   220:    mov    %rax,0x0(%rbp,%rax,8)
+    0.00 :   225:    inc    %rax
+    0.00 :   228:    cmp    %rax,%r12
+    0.00 :   22b:    jne    220 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1a0>
+    0.00 :   22d:    mov    %r13,0x40(%rsp)
+    0.00 :   232:    mov    %r14,0x20(%rsp)
+    0.00 :   237:    mov    $0x3,%r14d
+    0.00 :   23d:    sub    %r15,%r14
+    0.00 :   240:    mov    $0x2,%r12d
+    0.00 :   246:    jmp    260 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1e0>
+    0.00 :   248:    nopl   0x0(%rax,%rax,1)
+    0.00 :   250:    inc    %r12
+    0.00 :   253:    inc    %r14
+    0.00 :   256:    cmp    $0x64,%r12
+    0.00 :   25a:    je     365 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x2e5>
+    0.00 :   260:    lea    -0x2(%r15),%rax
+    0.00 :   264:    cmp    %rax,%r12
+    0.00 :   267:    jg     250 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1d0>
+    0.00 :   269:    mov    $0x1,%r13d
+    0.00 :   26f:    jmp    28d <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x20d>
+    0.00 :   271:    data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   280:    inc    %r13
+    0.00 :   283:    lea    (%r14,%r13,1),%rax
+   29.39 :   287:    cmp    $0x1,%rax
+    0.00 :   28b:    je     250 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x1d0>
+    0.00 :   28d:    movq   $0x0,0x8(%rsp)
+    0.00 :   296:    lea    0x8(%rsp),%rdi
+    0.00 :   29b:    lea    0x18(%rsp),%rsi
+    0.00 :   2a0:    mov    0x10(%rsp),%rdx
+    0.00 :   2a5:    mov    0x28(%rsp),%rcx
+    0.00 :   2aa:    mov    0x30(%rsp),%r8
+    0.00 :   2af:    mov    0x38(%rsp),%r9
+    5.88 :   2b4:    push   %r12
+    0.00 :   2b6:    push   %r13
+    0.00 :   2b8:    push   $0x8
+    0.00 :   2ba:    push   %r15
+    0.00 :   2bc:    push   %rbp
+    0.00 :   2bd:    push   $0x8
+    0.00 :   2bf:    push   %r15
+    0.00 :   2c1:    push   $0x0
+   11.77 :   2c3:    push   %rbx
+    0.00 :   2c4:    push   0xf8(%rsp)
+    0.00 :   2cb:    push   0xf8(%rsp)
+    0.00 :   2d2:    push   0xf8(%rsp)
+    0.00 :   2d9:    push   0xf8(%rsp)
+   17.65 :   2e0:    push   0xf8(%rsp)
+    0.00 :   2e7:    movabs $0x0,%rax
+    0.00 :   2f1:    vzeroupper
+    0.00 :   2f4:    call   *%rax
+    0.00 :   2f6:    add    $0x70,%rsp
+    0.00 :   2fa:    test   %eax,%eax
+    0.00 :   2fc:    jne    485 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x405>
+    0.00 :   302:    cmpq   $0x0,0x8(%rsp)
+    0.00 :   308:    jle    280 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x200>
+    0.00 :   30e:    sub    $0x8,%rsp
+    0.00 :   312:    mov    $0x8,%r9d
+    0.00 :   318:    lea    0x58(%rsp),%rdi
+    0.00 :   31d:    lea    0x50(%rsp),%rsi
+    0.00 :   322:    mov    %rbx,%rdx
+    0.00 :   325:    xor    %ecx,%ecx
+    0.00 :   327:    mov    %r15,%r8
+    0.00 :   32a:    push   %r12
+    0.00 :   32c:    push   %r13
+    0.00 :   32e:    push   $0x8
+    0.00 :   330:    push   %r15
+    0.00 :   332:    push   %rbp
+    0.00 :   333:    movabs $0x0,%rax
+    0.00 :   33d:    call   *%rax
+    0.00 :   33f:    add    $0x30,%rsp
+    0.00 :   343:    test   %eax,%eax
+    0.00 :   345:    je     280 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x200>
+    0.00 :   34b:    cmp    $0xfffffffe,%eax
+    0.00 :   34e:    je     280 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x200>
+    0.00 :   354:    mov    0x20(%rsp),%rcx
+    0.00 :   359:    movq   $0x0,(%rcx)
+    0.00 :   360:    jmp    497 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x417>
+    0.00 :   365:    mov    $0x3,%r14d
+    0.00 :   36b:    sub    %r15,%r14
+    0.00 :   36e:    mov    $0x2,%r12d
+    0.00 :   374:    jmp    390 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x310>
+    0.00 :   376:    cs nopw 0x0(%rax,%rax,1)
+    0.00 :   380:    inc    %r12
+    0.00 :   383:    inc    %r14
+    0.00 :   386:    cmp    $0x64,%r12
+    0.00 :   38a:    je     4c4 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x444>
+    0.00 :   390:    lea    -0x2(%r15),%rax
+    0.00 :   394:    cmp    %rax,%r12
+    0.00 :   397:    jg     380 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x300>
+    0.00 :   399:    mov    $0x1,%r13d
+    0.00 :   39f:    jmp    3bd <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x33d>
+    0.00 :   3a1:    data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   3b0:    inc    %r13
+    0.00 :   3b3:    lea    (%r14,%r13,1),%rax
+    0.00 :   3b7:    cmp    $0x1,%rax
+    0.00 :   3bb:    je     380 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x300>
+    0.00 :   3bd:    movq   $0x0,0x8(%rsp)
+    0.00 :   3c6:    lea    0x8(%rsp),%rdi
+    0.00 :   3cb:    lea    0x18(%rsp),%rsi
+    0.00 :   3d0:    mov    0x10(%rsp),%rdx
+    0.00 :   3d5:    mov    0x28(%rsp),%rcx
+    0.00 :   3da:    mov    0x30(%rsp),%r8
+    0.00 :   3df:    mov    0x38(%rsp),%r9
+    5.88 :   3e4:    push   %r12
+    0.00 :   3e6:    push   %r13
+    0.00 :   3e8:    push   $0x8
+    0.00 :   3ea:    push   %r15
+    0.00 :   3ec:    push   %rbp
+    0.00 :   3ed:    push   $0x8
+    0.00 :   3ef:    push   %r15
+    0.00 :   3f1:    push   $0x0
+   17.65 :   3f3:    push   %rbx
+    0.00 :   3f4:    push   0xf8(%rsp)
+    0.00 :   3fb:    push   0xf8(%rsp)
+    0.00 :   402:    push   0xf8(%rsp)
+    0.00 :   409:    push   0xf8(%rsp)
+   11.77 :   410:    push   0xf8(%rsp)
+    0.00 :   417:    movabs $0x0,%rax
+    0.00 :   421:    vzeroupper
+    0.00 :   424:    call   *%rax
+    0.00 :   426:    add    $0x70,%rsp
+    0.00 :   42a:    test   %eax,%eax
+    0.00 :   42c:    jne    485 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x405>
+    0.00 :   42e:    cmpq   $0x0,0x8(%rsp)
+    0.00 :   434:    jle    3b0 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x330>
+    0.00 :   43a:    sub    $0x8,%rsp
+    0.00 :   43e:    mov    $0x8,%r9d
+    0.00 :   444:    lea    0x58(%rsp),%rdi
+    0.00 :   449:    lea    0x50(%rsp),%rsi
+    0.00 :   44e:    mov    %rbx,%rdx
+    0.00 :   451:    xor    %ecx,%ecx
+    0.00 :   453:    mov    %r15,%r8
+    0.00 :   456:    push   %r12
+    0.00 :   458:    push   %r13
+    0.00 :   45a:    push   $0x8
+    0.00 :   45c:    push   %r15
+    0.00 :   45e:    push   %rbp
+    0.00 :   45f:    movabs $0x0,%rax
+    0.00 :   469:    call   *%rax
+    0.00 :   46b:    add    $0x30,%rsp
+    0.00 :   46f:    test   %eax,%eax
+    0.00 :   471:    je     3b0 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x330>
+    0.00 :   477:    cmp    $0xfffffffe,%eax
+    0.00 :   47a:    je     3b0 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x330>
+    0.00 :   480:    jmp    354 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x2d4>
+    0.00 :   485:    mov    0x18(%rsp),%rax
+    0.00 :   48a:    mov    0x20(%rsp),%rcx
+    0.00 :   48f:    mov    %rax,(%rcx)
+    0.00 :   492:    mov    $0x1,%eax
+    0.00 :   497:    add    $0x58,%rsp
+    0.00 :   49b:    pop    %rbx
+    0.00 :   49c:    pop    %r12
+    0.00 :   49e:    pop    %r13
+    0.00 :   4a0:    pop    %r14
+    0.00 :   4a2:    pop    %r15
+    0.00 :   4a4:    pop    %rbp
+    0.00 :   4a5:    ret
+    0.00 :   4a6:    movabs $0x0,%rax
+    0.00 :   4b0:    mov    %rax,(%r14)
+    0.00 :   4b3:    jmp    492 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x412>
+    0.00 :   4b5:    movabs $0x0,%rax
+    0.00 :   4bf:    mov    %rax,(%r14)
+    0.00 :   4c2:    jmp    492 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x412>
+    0.00 :   4c4:    mov    0x40(%rsp),%rax
+    0.00 :   4c9:    mov    %rbx,(%rax)
+    0.00 :   4cc:    movq   $0x0,0x8(%rax)
+    0.00 :   4d4:    mov    %r15,0x10(%rax)
+    0.00 :   4d8:    movq   $0x8,0x18(%rax)
+    0.00 :   4e0:    mov    %rbp,0x20(%rax)
+    0.00 :   4e4:    mov    %r15,0x28(%rax)
+    0.00 :   4e8:    movq   $0x8,0x30(%rax)
+    0.00 :   4f0:    movabs $0x0,%rax
+    0.00 :   4fa:    mov    0x10(%rsp),%rdi
+    0.00 :   4ff:    vzeroupper
+    0.00 :   502:    call   *%rax
+    0.00 :   504:    xor    %eax,%eax
+    0.00 :   506:    jmp    497 <original_kernel::_delta_minimization_order[abi:v1][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)+0x417>
+ Percent |	Source code & Disassembly of python3.12 for cpu_core/cycles/u (15 samples, percent: local period)
+-----------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3      Disassembly of section .text:
+         :
+         : 5      0000000000586150 <PyMem_RawFree>:
+  100.00 :   586150: endbr64
+    0.00 :   586154: mov    0x5b02e5(%rip),%rax        # b36440 <_PyRuntime+0x80>
+    0.00 :   58615b: mov    0x5b02be(%rip),%rdx        # b36420 <_PyRuntime+0x60>
+    0.00 :   586162: cmp    $0x586180,%rax
+    0.00 :   586168: jne    586170 <PyMem_RawFree+0x20>
+    0.00 :   58616a: jmp    420ab0 <free@plt>
+    0.00 :   58616f: nop
+    0.00 :   586170: mov    %rdi,%rsi
+    0.00 :   586173: mov    %rdx,%rdi
+    0.00 :   586176: jmp    *%rax
+ Percent |	Source code & Disassembly of _nrt_python.cpython-312-x86_64-linux-gnu.so for cpu_core/cycles/u (11 samples, percent: local period)
+--------------------------------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3    Disassembly of section .plt:
+         :
+         : 5    0000000000002230 <NRT_dealloc@plt>:
+  100.00 :   2230:   jmp    *0x5ee2(%rip)        # 8118 <NRT_dealloc@@Base+0x3c38>
+    0.00 :   2236:   push   $0x20
+    0.00 :   223b:   jmp    2020 <.plt>
+ Percent |	Source code & Disassembly of jitted-931902-33.so for cpu_core/cycles/u (4 samples, percent: local period)
+-------------------------------------------------------------------------------------------------------------------------
+         :
+         :
+         :
+         : 3   Disassembly of section .text:
+         :
+         : 5   0000000000000080 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)>:
+    0.00 :    80:     endbr64
+    0.00 :    84:     push   %rbp
+    0.00 :    85:     push   %r15
+    0.00 :    87:     push   %r14
+    0.00 :    89:     push   %r13
+    0.00 :    8b:     push   %r12
+    0.00 :    8d:     push   %rbx
+    0.00 :    8e:     mov    0x58(%rsp),%r9
+    0.00 :    93:     mov    %r9,%r10
+    0.00 :    96:     sar    $1,%r10
+    0.00 :    99:     test   %r10,%r10
+    0.00 :    9c:     jle    257 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)+0x1d7>
+    0.00 :    a2:     mov    0x50(%rsp),%rax
+    0.00 :    a7:     mov    0x40(%rsp),%rcx
+    0.00 :    ac:     mov    0x38(%rsp),%rdx
+    0.00 :    b1:     lea    (%r9,%rax,1),%r8
+    0.00 :    b5:     mov    %r10d,%esi
+    0.00 :    b8:     and    $0x3,%esi
+    0.00 :    bb:     cmp    $0x4,%r10
+    0.00 :    bf:     jae    c9 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)+0x49>
+    0.00 :    c1:     xor    %r15d,%r15d
+    0.00 :    c4:     jmp    207 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)+0x187>
+    0.00 :    c9:     mov    %rdi,-0x10(%rsp)
+    0.00 :    ce:     movabs $0x7ffffffffffffffc,%r11
+    0.00 :    d8:     and    %r11,%r10
+    0.00 :    db:     lea    (%rdx,%rax,8),%r11
+    0.00 :    df:     lea    (%r11,%r9,8),%rdi
+    0.00 :    e3:     mov    %rdi,-0x8(%rsp)
+    0.00 :    e8:     dec    %r9
+    0.00 :    eb:     xor    %r15d,%r15d
+    0.00 :    ee:     xor    %r14d,%r14d
+    0.00 :    f1:     data16 data16 data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   100:    lea    (%rax,%r15,1),%r12
+    0.00 :   104:    sar    $0x3f,%r12
+    0.00 :   108:    and    %rcx,%r12
+    0.00 :   10b:    lea    (%r11,%r12,8),%r12
+    0.00 :   10f:    mov    (%r12,%r15,8),%r13
+    0.00 :   113:    lea    (%rax,%r9,1),%rbp
+    0.00 :   117:    sar    $0x3f,%rbp
+    0.00 :   11b:    and    %rcx,%rbp
+   25.00 :   11e:    mov    -0x8(%rsp),%rdi
+    0.00 :   123:    lea    (%rdi,%rbp,8),%rbp
+    0.00 :   127:    mov    -0x8(%r14,%rbp,1),%rbx
+    0.00 :   12c:    mov    %rbx,(%r12,%r15,8)
+    0.00 :   130:    mov    %r13,-0x8(%r14,%rbp,1)
+    0.00 :   135:    lea    (%rax,%r15,1),%rbx
+    0.00 :   139:    inc    %rbx
+    0.00 :   13c:    sar    $0x3f,%rbx
+    0.00 :   140:    and    %rcx,%rbx
+    0.00 :   143:    lea    (%r11,%rbx,8),%rbx
+    0.00 :   147:    mov    0x8(%rbx,%r15,8),%r12
+    0.00 :   14c:    mov    %r15,%r13
+    0.00 :   14f:    xor    $0xfffffffffffffffe,%r13
+    0.00 :   153:    add    %r8,%r13
+    0.00 :   156:    lea    (%rdx,%r13,8),%rbp
+    0.00 :   15a:    sar    $0x3f,%r13
+    0.00 :   15e:    and    %rcx,%r13
+    0.00 :   161:    mov    0x0(%rbp,%r13,8),%rdi
+    0.00 :   166:    mov    %rdi,0x8(%rbx,%r15,8)
+    0.00 :   16b:    mov    %r12,0x0(%rbp,%r13,8)
+   25.00 :   170:    lea    (%rax,%r15,1),%rdi
+    0.00 :   174:    add    $0x2,%rdi
+    0.00 :   178:    sar    $0x3f,%rdi
+    0.00 :   17c:    and    %rcx,%rdi
+    0.00 :   17f:    lea    (%r11,%rdi,8),%rdi
+    0.00 :   183:    mov    0x10(%rdi,%r15,8),%rbx
+    0.00 :   188:    mov    %r15,%r12
+    0.00 :   18b:    xor    $0xfffffffffffffffd,%r12
+    0.00 :   18f:    add    %r8,%r12
+    0.00 :   192:    lea    (%rdx,%r12,8),%r13
+    0.00 :   196:    sar    $0x3f,%r12
+    0.00 :   19a:    and    %rcx,%r12
+    0.00 :   19d:    mov    0x0(%r13,%r12,8),%rbp
+    0.00 :   1a2:    mov    %rbp,0x10(%rdi,%r15,8)
+    0.00 :   1a7:    mov    %rbx,0x0(%r13,%r12,8)
+    0.00 :   1ac:    lea    (%rax,%r15,1),%rdi
+    0.00 :   1b0:    add    $0x3,%rdi
+    0.00 :   1b4:    sar    $0x3f,%rdi
+    0.00 :   1b8:    and    %rcx,%rdi
+    0.00 :   1bb:    lea    (%r11,%rdi,8),%rdi
+    0.00 :   1bf:    mov    0x18(%rdi,%r15,8),%rbx
+    0.00 :   1c4:    mov    %r15,%r12
+    0.00 :   1c7:    xor    $0xfffffffffffffffc,%r12
+    0.00 :   1cb:    add    %r8,%r12
+    0.00 :   1ce:    lea    (%rdx,%r12,8),%r13
+    0.00 :   1d2:    sar    $0x3f,%r12
+    0.00 :   1d6:    and    %rcx,%r12
+    0.00 :   1d9:    mov    0x0(%r13,%r12,8),%rbp
+    0.00 :   1de:    mov    %rbp,0x18(%rdi,%r15,8)
+    0.00 :   1e3:    mov    %rbx,0x0(%r13,%r12,8)
+    0.00 :   1e8:    add    $0x4,%r15
+    0.00 :   1ec:    add    $0xffffffffffffffe0,%r14
+    0.00 :   1f0:    add    $0xfffffffffffffffc,%r9
+    0.00 :   1f4:    cmp    %r15,%r10
+    0.00 :   1f7:    jne    100 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)+0x80>
+    0.00 :   1fd:    test   %rsi,%rsi
+    0.00 :   200:    mov    -0x10(%rsp),%rdi
+    0.00 :   205:    je     257 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)+0x1d7>
+    0.00 :   207:    mov    %r15,%r9
+    0.00 :   20a:    not    %r9
+    0.00 :   20d:    add    %r8,%r9
+    0.00 :   210:    add    %r15,%rax
+   25.00 :   213:    data16 data16 data16 cs nopw 0x0(%rax,%rax,1)
+    0.00 :   220:    mov    %rax,%r8
+    0.00 :   223:    sar    $0x3f,%r8
+   25.00 :   227:    and    %rcx,%r8
+    0.00 :   22a:    lea    (%rdx,%r8,8),%rbx
+    0.00 :   22e:    mov    (%rbx,%rax,8),%r8
+    0.00 :   232:    mov    %r9,%r10
+    0.00 :   235:    sar    $0x3f,%r10
+    0.00 :   239:    and    %rcx,%r10
+    0.00 :   23c:    lea    (%rdx,%r10,8),%r10
+    0.00 :   240:    mov    (%r10,%r9,8),%r11
+    0.00 :   244:    mov    %r11,(%rbx,%rax,8)
+    0.00 :   248:    mov    %r8,(%r10,%r9,8)
+    0.00 :   24c:    dec    %r9
+    0.00 :   24f:    inc    %rax
+    0.00 :   252:    dec    %rsi
+    0.00 :   255:    jne    220 <original_kernel::_reverse_window[abi:v14][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)+0x1a0>
+    0.00 :   257:    movq   $0x0,(%rdi)
+    0.00 :   25e:    xor    %eax,%eax
+    0.00 :   260:    pop    %rbx
+    0.00 :   261:    pop    %r12
+    0.00 :   263:    pop    %r13
+    0.00 :   265:    pop    %r14
+    0.00 :   267:    pop    %r15
+    0.00 :   269:    pop    %rbp
+    0.00 :   26a:    ret

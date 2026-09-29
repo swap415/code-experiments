@@ -1,0 +1,93 @@
+{
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "pid": 931885,
+  "numpy": "2.5.3",
+  "numba": "0.67.0",
+  "llvmlite": "0.49.0dev0-98-gaecbe8f7",
+  "llvm": [
+    22,
+    1,
+    0
+  ],
+  "numba_path": "/tmp/shap-bench-venv/lib/python3.12/site-packages/numba/__init__.py",
+  "llvmlite_path": "/tmp/shap-perf-jit.o4UxQr/llvmlite/llvmlite/__init__.py",
+  "source_sha256": {
+    "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+    "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+  },
+  "profiling": 1,
+  "debuginfo": 0,
+  "has_perf_jit_events": true,
+  "affinity": [
+    2
+  ],
+  "environment": {
+    "NUMBA_DEBUGINFO": "0",
+    "JITDUMPDIR": "/tmp/shap-perf-diff.lIhrzu/timing-8",
+    "NUMBA_ENABLE_PROFILING": "1",
+    "PYTHONPATH": "/tmp/shap-perf-jit.o4UxQr/llvmlite"
+  },
+  "arguments": {
+    "mode": "benchmark",
+    "output": "timing-8",
+    "features": 8,
+    "repeats": 10,
+    "variant": null,
+    "seconds": 8,
+    "control": null,
+    "ack": null
+  }
+}
+Warm-up/equality/input checks passed; output SHA256=8f9734227eeaff8e6ea60f93b06aa0f6a463de2ca3ff9beb66ca4aa029015180
+{
+  "n": 10,
+  "seed": 0,
+  "shape": [
+    256,
+    8
+  ],
+  "output_sha256": "8f9734227eeaff8e6ea60f93b06aa0f6a463de2ca3ff9beb66ca4aa029015180",
+  "source_sha256": {
+    "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+    "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+  },
+  "timings": {
+    "original": {
+      "raw_ms": [
+        7.260514,
+        7.252976,
+        7.237909,
+        7.240293,
+        7.231449,
+        7.278073,
+        7.247812,
+        7.242428,
+        7.258956,
+        7.231323
+      ],
+      "mean_ms": 7.2481733,
+      "std_ms": 0.014719021314461008,
+      "median_ms": 7.24512
+    },
+    "optimized": {
+      "raw_ms": [
+        0.243191,
+        0.238159,
+        0.235348,
+        0.23271,
+        0.235984,
+        0.23484,
+        0.234765,
+        0.232874,
+        0.233596,
+        0.232696
+      ],
+      "mean_ms": 0.23541629999999997,
+      "std_ms": 0.0032240846780305123,
+      "median_ms": 0.2348025
+    }
+  },
+  "mean_speedup": 30.788748697520102,
+  "median_speedup": 30.856230236049445
+}

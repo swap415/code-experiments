@@ -1,0 +1,13 @@
+{
+  "variant": "optimized",
+  "elapsed_seconds": 8.005283647915348,
+  "iterations": 448,
+  "checksum": 3669568,
+  "output_sha256": "04886fe5b350e70278c71567d15f9171b3a851bbb040ae69834305dd1a7cd164",
+  "source_sha256": {
+    "original": "2f9a86acc344e01748588698f356ed985af242d5ea6c20226acd5e56ce021eea",
+    "optimized": "279e4daf2ca5f708d90e5fe611f68e0500abb045f9afd3536e3d67f050f9385f"
+  },
+  "mean_ms_per_call": 17.86893671409676,
+  "note": "Profiled throughput, not a repeated-trial benchmark."
+}

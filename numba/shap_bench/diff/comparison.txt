@@ -1,0 +1,72 @@
+ORIGINAL SHAP vs STANDALONE OPTIMIZED NUMBA
+
+Fresh Linux i7-14700 runs, CPU 2, seed=0, boolean inputs; source.diff contains the only kernel changes.
+NUMBA_ENABLE_PROFILING=1, NUMBA_DEBUGINFO=0 throughout. No compiler patch or forced inlining.
+No sampling during timing trials. Warm-up/equality checks precede timing and perf enable acknowledgements.
+
+WALL TIME: mean +/- sample std; milliseconds; n=10, alternating variant order
+  256 masks x 8 features:
+    original   7.2482 +/- 0.0147; median 7.2451
+    optimized  0.2354 +/- 0.0032; median 0.2348
+    median speedup: 30.8562x
+  8192 masks x 13 features:
+    original   299.8271 +/- 0.0514; median 299.8288
+    optimized  17.8259 +/- 0.0185; median 17.8237
+    median speedup: 16.8220x
+
+HARDWARE COUNTERS PER CALL: separate 8-second gated perf stat runs
+  event                      original           optimized      original/optimized
+  cycles                1,588,954,232.41       94,364,818.88        16.8384x
+  instructions          3,347,327,560.44      416,370,099.76         8.0393x
+  branches                678,273,131.04       16,123,768.71        42.0667x
+  branch-misses                14,605.19           15,497.89         0.9424x
+  original: IPC=2.1066; calls=27; counter running percentages=[100.0, 100.0, 100.0, 100.0]
+  optimized: IPC=4.4123; calls=448; counter running percentages=[100.0, 100.0, 100.0, 100.0]
+
+RUNTIME SAMPLES: shares use cycle-event periods, not literal sample counts
+  original: samples=4051; lost=0; calls=27
+    unresolved leaf=0.0000%; unresolved ancestor=5.8065%
+    NRT_incref + NRT_decref leaf weight=63.3912%
+     33.3816% NRT_decref
+     30.0097% NRT_incref
+     12.2578% _mask_delta_score
+      8.3267% NRT_MemInfo_alloc_aligned
+      4.4970% _reverse_window_score_gain
+      1.5814% _int_free
+  optimized: samples=3998; lost=0; calls=448
+    unresolved leaf=0.0250%; unresolved ancestor=0.0000%
+    NRT_incref + NRT_decref leaf weight=0.0000%
+     99.3992% _delta_minimization_order
+      0.4506% _reverse_window
+      0.0501% _PyEval_EvalFrameDefault
+      0.0250% _PyUnicode_EQ
+      0.0250% Py_DECREF
+      0.0250% [unknown]
+
+NATIVE LLVM: static NRT call sites (not execution counts)
+  original_kernel._mask_delta_score.0: {'incref': 2, 'MemInfo_alloc_aligned': 1, 'decref': 3}
+  original_kernel._reverse_window.0: {}
+  original_kernel._reverse_window_score_gain.0: {'incref': 4, 'decref': 4}
+  original_kernel._delta_minimization_order.0: {'incref': 1, 'MemInfo_alloc_aligned': 1, 'decref': 1}
+  optimized_kernel._reverse_window.0: {}
+  optimized_kernel._reverse_window_score_gain.0: {}
+  optimized_kernel._delta_minimization_order.0: {'incref': 1, 'MemInfo_alloc_aligned': 1, 'decref': 1}
+
+CORRECTNESS: verification/checks.json; 588 exact-order/input cases + 16 signed-gain cases.
+All benchmark/profile/counter outputs match; source and output hashes are in JSON evidence.
+
+READING THE DIFFERENTIAL FLAMEGRAPHS
+Weights are estimated sampled cycles per completed call, rounded to integers; no total-share normalization.
+Only original_kernel/optimized_kernel prefixes and compiler ABI tags are stripped to align names.
+diff-before.svg uses original widths; diff-after.svg uses optimized widths. Blue=less, red=more attributed cost.
+Inlining changes attribution: red can mean work moved into a caller, not a regression. Widths auto-scale between files.
+Folded stacks expand inline frames; flat perf report may group that code under the enclosing symbol, so leaf shares can differ.
+
+LIMITATIONS
+JIT leaf symbols resolve well, but missing unwind records can truncate or corrupt caller chains.
+Zero unknown markers does not prove complete stacks. A tiny unresolved leaf is reported, not discarded.
+The optimized scoring helper has no native NRT calls; the entry point still allocates its output array.
+No sampled refcount leaves does not prove zero refcounts. Original refcounts need not all belong to XOR temporaries.
+Ordinary cycles sampling can skid; assembly percentages are not precise instruction latencies.
+Each hardware-counter result is one gated run, not a repeated-trial estimate. Governor remains powersave.
+Raw perf data requires Linux and matching binary/source paths; jitdump ELF files retain their original paths.

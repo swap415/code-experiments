@@ -1,0 +1,23 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 3K of event 'cpu_core/cycles/u'
+# Event count (approx.): 42233800959
+#
+# Overhead  Command  Shared Object        Symbol                                                                                                                                                                                                       
+# ........  .......  ...................  .............................................................................................................................................................................................................
+#
+    91.81%  python   jitted-920344-54.so  [.] shap_original_repro::_reverse_window_score_gain[abi:v22][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, Array<long long, 1, C, mutable, aligned>, long long, long long)
+     7.36%  python   jitted-920344-63.so  [.] shap_original_repro::_delta_minimization_order[abi:v21][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<bool, 2, C, mutable, aligned>, omitted_28default_3d100_29, omitted_28default_3d2_29)
+     0.70%  python   jitted-920344-59.so  [.] shap_original_repro::_reverse_window[abi:v23][abi:c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3d](Array<long long, 1, C, mutable, aligned>, long long, long long)
+     0.05%  python   python3.12           [.] _PyEval_EvalFrameDefault
+     0.03%  python   python3.12           [.] method_vectorcall_VARARGS_KEYWORDS
+     0.03%  python   python3.12           [.] _Py_type_getattro
+     0.03%  python   python3.12           [.] do_mktuple
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

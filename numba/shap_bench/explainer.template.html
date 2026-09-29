@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading the SHAP flamegraph</title>
+<link rel="icon" href="data:,">
+<style>
+  :root { color-scheme: light; --paper:#f8f7f3; --ink:#242a32; --muted:#626a75; --line:#dcdedc; --panel:#fff;
+    --orange:#d77738; --blue:#5276b5; --jit:#ddd1b8; --other:#ced3d6; --accent:#146951; --soft:#edf4ef; }
+  * { box-sizing:border-box; }
+  body { margin:0; color:var(--ink); background:var(--paper); font:15px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+  button,input { font:inherit; }
+  button,a,input { -webkit-tap-highlight-color:transparent; }
+  button { cursor:pointer; }
+  a { color:var(--accent); text-underline-offset:3px; }
+  button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #7cae9b; outline-offset:3px; }
+  main { max-width:1510px; padding:40px 48px 56px; margin:auto; }
+  .eyebrow { margin:0 0 10px; color:var(--accent); text-transform:uppercase; letter-spacing:.14em; font:600 11px/1.5 system-ui; }
+  h1 { font-size:clamp(30px,3.3vw,46px); line-height:1.12; letter-spacing:-.035em; font-weight:550; margin:0 0 14px; }
+  .intro { max-width:760px; color:var(--muted); font-size:17px; margin:0; }
+  .head { display:flex; justify-content:space-between; gap:24px; align-items:flex-start; }
+  .tag { flex-shrink:0; margin-top:6px; font:12px/1.7 ui-monospace,monospace; color:var(--muted); text-align:right; }
+  .steps { display:flex; gap:4px; margin:30px 0 0; padding:0; list-style:none; border-bottom:1px solid var(--line); }
+  .steps li { flex:1; }
+  .steps button { background:none; color:var(--muted); padding:15px 10px; border:0; border-bottom:3px solid transparent; width:100%; text-align:left; }
+  .steps button[aria-current="step"] { color:var(--ink); border-bottom-color:var(--accent); font-weight:600; }
+  .step-number { font:12px ui-monospace,monospace; margin-right:9px; color:var(--accent); }
+  .layout { display:grid; grid-template-columns:minmax(0,1fr) 315px; gap:32px; padding-top:27px; }
+  .workspace { min-width:0; }
+  .toolbar { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .segmented { display:flex; background:#e9eae5; padding:3px; border-radius:7px; }
+  .segmented button { border:0; border-radius:5px; padding:7px 13px; background:transparent; color:var(--muted); }
+  .segmented button[aria-pressed="true"] { background:var(--panel); color:var(--ink); box-shadow:0 1px 3px #00000012; }
+  .plain { background:transparent; border:1px solid var(--line); border-radius:6px; padding:6px 10px; color:var(--ink); }
+  .plain:disabled { cursor:default; opacity:.45; }
+  .search { flex:1; min-width:130px; display:flex; justify-content:flex-end; align-items:center; gap:8px; color:var(--muted); font-size:12px; }
+  .search input { width:160px; max-width:100%; border:1px solid var(--line); border-radius:5px; padding:7px 9px; background:var(--panel); color:var(--ink); font-size:13px; }
+  #search-results { display:flex; flex-wrap:wrap; gap:5px; padding-top:9px; }
+  #search-results:empty { display:none; }
+  #search-results button { max-width:100%; word-break:break-word; font-size:12px; }
+  .legend { display:flex; gap:18px; flex-wrap:wrap; color:var(--muted); font-size:12px; margin:18px 0 10px; }
+  .swatch { display:inline-block; width:9px; height:9px; margin-right:5px; border-radius:2px; }
+  .allocation { background:var(--orange); } .release { background:var(--blue); } .jit { background:var(--jit); } .other { background:var(--other); }
+  .graph-area { background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .graph-top { display:flex; gap:16px; justify-content:space-between; padding:12px 16px 0; color:var(--muted); font-size:12px; }
+  #graph { width:100%; display:block; }
+  #graph .frame { cursor:pointer; }
+  #graph .frame:hover rect,#graph .frame:focus-visible rect { stroke:var(--ink); stroke-width:1.5; }
+  #graph .frame:focus { outline:none; }
+  #graph .frame text { fill:#242a32; font:11px ui-monospace,SFMono-Regular,Consolas,monospace; pointer-events:none; }
+  #graph .axis-text { font:11px system-ui; fill:var(--muted); }
+  .graph-caption { font-size:12px; color:var(--muted); margin:10px 0 0; }
+  .selection { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:8px 20px; background:#eef0eb; border-radius:7px; padding:15px 17px; margin:20px 0 0; }
+  .selection .label { font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); }
+  #selected-name { display:block; font:13px/1.6 ui-monospace,monospace; overflow-wrap:anywhere; }
+  #selected-values { font:12px/1.8 ui-monospace,monospace; white-space:nowrap; text-align:right; }
+  #selected-description { grid-column:1/-1; margin:0; font-size:13px; color:var(--muted); }
+  #path { grid-column:1/-1; overflow-wrap:anywhere; font-size:11px; color:var(--muted); }
+  aside { border-left:1px solid var(--line); padding-left:27px; }
+  aside h2 { font-size:25px; line-height:1.18; letter-spacing:-.025em; font-weight:550; margin:9px 0 15px; }
+  aside p { font-size:14px; margin:0 0 14px; }
+  #lesson-detail { color:var(--muted); }
+  .evidence { margin-top:23px; padding-top:17px; border-top:1px solid var(--line); }
+  .evidence small { text-transform:uppercase; font-size:10px; letter-spacing:.1em; color:var(--accent); font-weight:600; }
+  #evidence-text { margin-top:7px; font-size:13px; }
+  #lesson-action { margin-top:1px; text-align:left; font-size:13px; }
+  .step-nav { display:flex; align-items:center; justify-content:space-between; margin-top:25px; gap:8px; }
+  #progress { font:12px ui-monospace,monospace; color:var(--muted); }
+  .primary { border:1px solid var(--accent); background:var(--accent); color:#fff; padding:8px 13px; border-radius:6px; }
+  .lower { margin-top:30px; border-top:1px solid var(--line); padding-top:24px; }
+  .lower h3 { margin:0 0 12px; font-size:18px; letter-spacing:-.015em; font-weight:600; }
+  .partition { display:flex; height:13px; border-radius:3px; overflow:hidden; margin:14px 0 10px; }
+  .partition button { border:0; padding:0; min-width:0; }
+  .partition-labels { display:flex; gap:18px; flex-wrap:wrap; font-size:13px; }
+  .partition-labels button { background:none; border:0; padding:0; color:var(--ink); font-size:13px; text-align:left; }
+  .partition-labels b { font-weight:600; font-variant-numeric:tabular-nums; }
+  .caption { color:var(--muted); font-size:13px; margin:12px 0 0; }
+  .code-pair { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+  pre { font:12px/1.75 ui-monospace,SFMono-Regular,Consolas,monospace; background:#eeeFE9; padding:15px; margin:0; border-radius:6px; overflow:auto; }
+  code { font: .91em ui-monospace,SFMono-Regular,Consolas,monospace; }
+  .code-label { font-size:12px; color:var(--muted); margin:0 0 7px; }
+  .mechanism { display:flex; align-items:center; gap:6px; margin-top:15px; flex-wrap:wrap; }
+  .mechanism span { padding:7px 10px; font-size:12px; background:var(--panel); border:1px solid var(--line); border-radius:5px; }
+  .mechanism i { color:var(--muted); font-style:normal; }
+  .mechanism span.active { border-color:var(--orange); background:#faeddf; }
+  .count { font:26px ui-monospace,monospace; color:var(--ink); margin:18px 0 4px; }
+  .count small { font:13px system-ui; color:var(--muted); }
+  .bars { display:grid; grid-template-columns:90px 1fr 115px; gap:13px 12px; align-items:center; margin:20px 0; font-size:13px; }
+  .bar-track { background:#ecece7; height:23px; border-radius:3px; overflow:hidden; }
+  .bar { height:100%; }
+  .number { font:13px ui-monospace,monospace; text-align:right; }
+  details { border-top:1px solid var(--line); padding-top:18px; margin-top:30px; font-size:13px; }
+  summary { cursor:pointer; color:var(--ink); font-weight:550; }
+  .provenance { max-width:970px; padding-top:5px; color:var(--muted); }
+  .provenance ul { padding-left:20px; }
+  .links { display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:20px; font-size:13px; }
+  [hidden] { display:none !important; }
+  @media (max-width:1060px) { main { padding:30px 25px; } .layout { grid-template-columns:minmax(0,1fr) 265px; gap:22px; } aside { padding-left:20px; } .step-number { display:block; } }
+  @media (max-width:760px) { main { padding:25px 16px; } .head { display:block; } .tag { text-align:left; margin-top:16px; } .steps { overflow-x:auto; } .steps li { min-width:98px; } .steps button { font-size:12px; padding:11px 7px; } .layout { display:flex; flex-direction:column-reverse; gap:24px; } aside { border-left:0; padding-left:0; } aside h2 { font-size:24px; } .evidence { margin-top:14px; } .step-nav { margin-top:15px; } .code-pair { grid-template-columns:1fr; } .selection { grid-template-columns:1fr; } #selected-values { text-align:left; } .search { justify-content:flex-start; } .bars { grid-template-columns:76px 1fr 95px; } }
+</style>
+</head>
+<body>
+<main id="shap-explainer">
+  <header class="head">
+    <div><p class="eyebrow">SHAP / runtime field notes</p><h1>What is this flamegraph telling us?</h1>
+      <p class="intro">Follow the original Numba kernel from sampled CPU cycles to a temporary array. Learn what the profile proves—and where the symbols run out.</p></div>
+    <div class="tag">i7-14700 · Linux perf<br>13 features · 8,192 masks<br>Recorded 2026-09-28 PDT</div>
+  </header>
+  <ol class="steps" aria-label="Guided walkthrough">
+    <li><button data-step="0" aria-current="step"><span class="step-number">01</span>Read the shape</button></li>
+    <li><button data-step="1"><span class="step-number">02</span>Follow allocation</button></li>
+    <li><button data-step="2"><span class="step-number">03</span>See the blind spot</button></li>
+    <li><button data-step="3"><span class="step-number">04</span>Connect to code</button></li>
+    <li><button data-step="4"><span class="step-number">05</span>Compare fairly</button></li>
+  </ol>
+  <div class="layout">
+    <section class="workspace" aria-label="Interactive flamegraph">
+      <div class="toolbar">
+        <div class="segmented" role="group" aria-label="Recorded profile">
+          <button data-profile="original" aria-pressed="true">Original</button><button data-profile="optimized" aria-pressed="false">Optimized</button>
+        </div>
+        <button class="plain" id="reset" disabled>Reset zoom</button>
+        <label class="search">Find frame <input id="search" type="search" placeholder="e.g. NRT" autocomplete="off"></label>
+      </div>
+      <div id="search-results" aria-live="polite"></div>
+      <div class="legend" aria-label="Color legend">
+        <span><i class="swatch allocation"></i>Allocation</span><span><i class="swatch release"></i>Release</span>
+        <span><i class="swatch jit"></i>Unresolved JIT / address</span><span><i class="swatch other"></i>Other frames</span>
+      </div>
+      <div class="graph-area">
+        <div class="graph-top"><span id="graph-status">Original · all recorded stacks</span><span>↑ Deeper calls</span></div>
+        <svg id="graph" role="group" aria-label="CPU flamegraph. Width is inclusive cycle share. Activate a frame to zoom."></svg>
+      </div>
+      <p class="graph-caption">Hover to inspect · click or press Enter to zoom · x-position groups stacks, not time. Sub-pixel frames appear as you zoom.</p>
+      <div class="selection" aria-live="polite">
+        <div><div class="label">Inspected frame</div><strong id="selected-name">python</strong></div>
+        <div id="selected-values"></div><p id="selected-description"></p><div id="path"></div>
+      </div>
+      <section class="lower" id="breakdown-panel">
+        <h3>Count each sampled stack once</h3>
+        <div class="partition" id="partition" aria-label="Disjoint shares of total cycle weight"></div>
+        <div class="partition-labels" id="partition-labels"></div>
+        <p class="caption">These categories partition the total. Adding all the rectangles in a flamegraph would count the same cycles repeatedly, once for every frame in their stack.</p>
+      </section>
+      <section class="lower" id="code-panel" hidden>
+        <h3>The expensive temporary is only 13 bytes</h3>
+        <div class="code-pair">
+          <div><p class="code-label">Original helper · array expression</p><pre><code>@njit
+def _mask_delta_score(m1, m2):
+    return (m1 ^ m2).sum()</code></pre></div>
+          <div><p class="code-label">Optimized helper · fused reduction</p><pre><code>@njit(inline="always")
+def _mask_delta_score(m1, m2):
+    score = 0
+    for i in range(len(m1)):
+        score += m1[i] ^ m2[i]
+    return score</code></pre></div>
+        </div>
+        <div class="mechanism" aria-label="Original helper lifecycle">
+          <span class="active">Allocate bool array</span><i>→</i><span>Write XOR results</span><i>→</i><span>Reload &amp; sum</span><i>→</i><span class="active">Release array</span>
+        </div>
+        <p class="count">6,382,152 <small>temporary arrays per outer call</small></p>
+        <p class="caption">2 passes × 797,769 candidate windows × 4 distances. Each array has 13 bool elements, plus allocation metadata. LLVM shows the temporary and separate reduction; the loop removes them. The output <code>order</code> array still needs one allocation.</p>
+      </section>
+      <section class="lower" id="compare-panel" hidden>
+        <h3>Compare milliseconds as well as percentages</h3>
+        <div class="bars" aria-label="Recorded mean call time on a shared scale">
+          <span>Original</span><div class="bar-track"><div class="bar allocation" style="width:100%"></div></div><span class="number">495.055 ms</span>
+          <span>Optimized</span><div class="bar-track"><div class="bar" style="width:3.119863%;background:var(--accent)"></div></div><span class="number">15.445 ms</span>
+        </div>
+        <p class="caption">32.05× in these recorded runs: 17 original calls vs 518 optimized calls. Both flamegraphs independently occupy 100% width. Equal full widths do not mean equal cost per call. These are profiled run means, not a repeated-trial benchmark with uncertainty.</p>
+      </section>
+    </section>
+    <aside aria-label="Flamegraph walkthrough">
+      <div class="eyebrow" id="lesson-kicker">How to read it</div><h2 id="lesson-title"></h2>
+      <p id="lesson-body"></p><p id="lesson-detail"></p>
+      <button id="lesson-action" class="plain"></button>
+      <div class="evidence"><small id="evidence-kind"></small><p id="evidence-text"></p></div>
+      <div class="step-nav"><button class="plain" id="previous" disabled>← Back</button><span id="progress">01 / 05</span><button class="primary" id="next">Next →</button></div>
+    </aside>
+  </div>
+  <details>
+    <summary>Evidence, capture limitations, and reproducibility</summary>
+    <div class="provenance">
+      <p>This view reconstructs the two existing flamegraphs from <code>original.folded</code> and <code>optimized.folded</code>. Stack paths and weights are unchanged. Colors are assigned by function family; unresolved labels are preserved.</p>
+      <ul>
+        <li><strong>Units:</strong> perf sampled <code>cpu_core/cycles/P</code> at 499 Hz. Folded values sum sampled event periods (cycle weights): 44,609,024,343 original and 42,514,740,819 optimized. The old SVG's “samples” unit was the renderer default, not a literal count of samples.</li>
+        <li><strong>Symbols:</strong> <code>[perf-895270.map]_[j]</code> is an unresolved JIT mapping, not a resolved function. Its flat report contains hot instruction addresses without function names. Some stack paths are incomplete or include suspicious heap/unknown frames. Zero lost samples does not guarantee correct unwinding or symbolization.</li>
+        <li><strong>Scope:</strong> delayed recording aimed to skip warm-up. The files still contain a small amount of interpreter shutdown and compiler-related activity; the recording window was not gated precisely around only warmed calls.</li>
+        <li><strong>Variants:</strong> <code>perf_driver.py</code> preserves the original XOR expression but forces score-gain/reversal helper inlining. It is not a byte-for-byte upstream baseline. Both captures enabled <code>NUMBA_ENABLE_PROFILING=1</code> and <code>NUMBA_DEBUGINFO=1</code>, which can affect generated code.</li>
+        <li><strong>Causality:</strong> allocation/free stacks are observed; the temporary array is confirmed independently in LLVM. This capture cannot assign the unnamed JIT cycles to XOR, sum, reference counts, or other instructions. It cannot by itself explain the entire 32× timing difference.</li>
+        <li><strong>Absence:</strong> no NRT allocation/free frames were sampled in the optimized capture. That does not mean the function performs no allocations: it still creates its output array.</li>
+      </ul>
+      <p>Host: Intel i7-14700, CPU 2; Linux 6.8.0-139-generic; Python 3.12.3; Numba 0.67.0; llvmlite 0.49.0; NumPy 2.5.3; perf 6.8.12. Both final captures reported zero lost samples. Raw data remains on the Linux host under <code>/tmp/shap_bench_codex/</code>.</p>
+      <p>A stronger next profile would resolve JIT symbols, gate sampling after warm-up and before shutdown, compare an exact upstream baseline, and measure runtime without profiling flags.</p>
+    </div>
+  </details>
+  <nav class="links" aria-label="Source artifacts">
+    <a href="original-flamegraph.svg" target="_blank" rel="noopener">Original raw flamegraph ↗</a><a href="optimized-flamegraph.svg" target="_blank" rel="noopener">Optimized raw flamegraph ↗</a>
+    <a href="original-perf-report.txt" target="_blank" rel="noopener">Flat perf report ↗</a><a href="perf_driver.py">Profiling driver</a><a href="README.md">Commands &amp; notes</a>
+  </nav>
+</main>
+<script id="profile-data" type="application/json">__PROFILE_DATA__</script>
+<script>
+(() => {
+  'use strict';
+  const raw = JSON.parse(document.getElementById('profile-data').textContent);
+  const $ = id => document.getElementById(id);
+  const ns = 'http://www.w3.org/2000/svg';
+  const allocation = name => /NRT_MemInfo_alloc_aligned|NRT_MemInfo_init|nrt_allocate|NRT_Allocate|malloc|tcache_get|checked_request2size|RawMalloc|atomic_base/.test(name);
+  const release = name => /NRT_dealloc|NRT_MemInfo_call_dtor|NRT_MemInfo_destroy|NRT_Free|RawFree|libc_free|^free@|^_int_free|^cfree|tcache_put/.test(name);
+  const unresolved = name => /\[perf-.*\.map\]|\[unknown\]|\[anon\]|\[\[heap\]\]|\[\[stack\]\]|^0x/.test(name);
+  const category = name => allocation(name) ? 'allocation' : release(name) ? 'release' : unresolved(name) ? 'jit' : 'other';
+  const categoryOfStack = frames => frames.some(name => name.includes('NRT_MemInfo_alloc_aligned')) ? 'allocation' : frames.some(name => /NRT_dealloc|NRT_MemInfo_call_dtor|NRT_Free/.test(name)) ? 'release' : unresolved(frames.at(-1)) ? 'jit' : 'other';
+  const color = {allocation:'var(--orange)',release:'var(--blue)',jit:'var(--jit)',other:'var(--other)'};
+  const label = {allocation:'NRT allocation paths',release:'NRT release paths',jit:'Unresolved leaves',other:'Other paths'};
+  const state = {profile:'original',step:0,focus:null,selected:null,highlight:null,query:''};
+  const profiles = {};
+  const percent = n => (100*n).toFixed(2)+'%';
+  const int = n => n.toLocaleString('en-US');
+
+  function build(rows) {
+    const root = {name:'all',value:0,self:0,children:new Map(),parent:null,depth:-1,path:[]};
+    const shares = {allocation:0,release:0,jit:0,other:0};
+    for (const {frames,weight} of rows) {
+      shares[categoryOfStack(frames)] += weight;
+      let node = root;
+      node.value += weight;
+      for (const name of frames) {
+        if (!node.children.has(name)) node.children.set(name,{name,value:0,self:0,children:new Map(),parent:node,depth:node.depth+1,path:[...node.path,name]});
+        node = node.children.get(name); node.value += weight;
+      }
+      node.self += weight;
+    }
+    const nodes = [];
+    function layout(node,start) {
+      node.start = start; nodes.push(node);
+      let x = start;
+      for (const child of [...node.children.values()].sort((a,b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0)) {
+        layout(child,x); x += child.value;
+      }
+    }
+    layout(root,0);
+    if (Object.values(shares).reduce((a,b)=>a+b,0)!==root.value) throw Error('Cycle weights do not partition the total');
+    return {root,nodes,shares};
+  }
+  for (const name of Object.keys(raw)) profiles[name] = build(raw[name]);
+  const active = () => profiles[state.profile];
+  const python = () => active().root.children.get('python');
+  function largest(test) { return active().nodes.filter(test).sort((a,b)=>b.value-a.value)[0]; }
+
+  const lessons = [
+    {kicker:'How to read it',title:'Width is cost. Height is the call stack.',
+      body:'Read from the broad python frame at the bottom upward into callees. A frame includes the cycles sampled in that function and anywhere above it.',
+      detail:'The x-axis groups similar stacks; it is not a timeline. A tall, narrow tower can be cheap. A wide, shallow plateau can be expensive. Colors identify families here, not temperature or severity.',
+      action:'Inspect the widest JIT frame',kind:'Interpretation',evidence:'Hover a frame to compare inclusive weight with leaf weight. “Leaf” means the recorded stack ended there; incomplete unwinding can hide a deeper callee.'},
+    {kicker:'Observed runtime evidence',title:'Tiny allocations, repeated millions of times.',
+      body:'The orange stacks contain NRT_MemInfo_alloc_aligned, Numba’s array allocator. Above it you can find malloc and metadata initialization. Blue paths release those arrays.',
+      detail:'The original’s NRT allocation paths account for 9.43% of cycle weight; release paths account for 6.42%. A child is already included in its parent: do not add malloc to the allocator’s inclusive share.',
+      action:'Zoom into the largest allocator branch',kind:'Measured in this capture',evidence:'Together, allocation and release paths cover 15.86% of recorded cycle weight. Each stack is counted once, even if the same symbol appears repeatedly.'},
+    {kicker:'The limit of this recording',title:'That wide plateau has no resolved function name.',
+      body:'[perf-895270.map]_[j] is a JIT mapping label. Most cycles end at this unnamed region. It is not a function called “perf”, and its width does not identify which kernel instruction is expensive.',
+      detail:'The raw flat report shows two anonymous JIT addresses at 24.69% and 20.90%. We cannot assign those cycles to XOR, sum, reference counting, or loop overhead from these files.',
+      action:'Inspect the unresolved JIT plateau',kind:'Unresolved attribution',evidence:'Zero lost samples means the recording buffer kept up. It does not mean the JIT names or caller stacks were recovered correctly.'},
+    {kicker:'Connect two independent clues',title:'The array expression creates work to throw away.',
+      body:'(m1 ^ m2).sum() first materializes the XOR array, then reduces it. The original LLVM contains NRT_MemInfo_alloc_aligned, stores to the temporary, and a later reload/reduction.',
+      detail:'The explicit loop exposes a single XOR-and-accumulate reduction. It removes the per-distance temporary. Both forms vectorize; vectorization alone does not remove allocation or fuse these passes.',
+      action:'Highlight allocation and release',kind:'Codegen evidence + runtime evidence',evidence:'The graph locates allocation/free overhead. LLVM establishes the temporary-array mechanism. The unnamed JIT portion still has no measured instruction-level breakdown.'},
+    {kicker:'Compare the two captures',title:'Two full-width graphs can have very different costs.',
+      body:'The original averaged 495.055 ms per call; the optimized averaged 15.445 ms in the recorded runs. Both flamegraphs normalize their own sampled cycles to 100%.',
+      detail:'Switch to Optimized: its allocation/free frames were not sampled. Its broad JIT frame covers fewer milliseconds per call. It still allocates the output order array, so “not sampled” does not mean “never happens”.',
+      action:'Switch to the optimized capture',kind:'Measured timing, limited attribution',evidence:'The 32.05× ratio is a result from these profiling runs. It is not fully explained by the visible 15.86% allocation/free share; helper inlining, debug codegen, and unresolved instructions need further isolation.'}
+  ];
+
+  function description(node) {
+    if (/\[perf-.*\.map\]/.test(node.name)) return 'Unresolved JIT mapping. Inclusive includes visible callees; leaf weight is the part where the recorded stack ends here. Neither identifies a particular SHAP function.';
+    if (node.name==='NRT_MemInfo_alloc_aligned') return 'Numba allocates array storage and memory-management metadata. This is one caller path; the 9.43% allocation total in the original includes all matching paths.';
+    if (node.name==='python'||node.name==='all') return 'The full captured process. Compiler/interpreter setup or shutdown can be present alongside the warmed workload. The width covers every recorded stack.';
+    if (category(node.name)==='allocation') return 'Allocation or initialization work. Its inclusive weight is already included in every ancestor in this stack.';
+    if (category(node.name)==='release') return 'Releasing memory or dispatching its destructor. Multiple visible frames describe the same sampled stack; their percentages must not be added.';
+    if (unresolved(node.name)) return 'The symbol or stack frame was not resolved reliably. Treat this as an attribution gap, not a named function or a verified caller.';
+    return 'A resolved frame on this call path. Inclusive weight includes descendants. A tall chain can still represent a very small share of total CPU cycles.';
+  }
+
+  function inspect(node) {
+    const total=active().root.value;
+    $('selected-name').textContent=node.name;
+    $('selected-values').textContent=`Inclusive ${percent(node.value/total)} · Leaf ${percent(node.self/total)}`;
+    $('selected-description').textContent=description(node);
+    $('path').textContent=`${node.path.join(' → ')} · ${int(node.value)} weighted cycles`;
+  }
+  function svgElement(tag,attributes={},text='') {
+    const element=document.createElementNS(ns,tag);
+    for(const [name,value] of Object.entries(attributes)) element.setAttribute(name,value);
+    if(text) element.textContent=text;
+    return element;
+  }
+  function matches(node) {
+    if(state.query) return node.name.toLowerCase().includes(state.query.toLowerCase());
+    if(!state.highlight) return true;
+    if(state.highlight==='memory') return ['allocation','release'].includes(category(node.name));
+    return category(node.name)===state.highlight;
+  }
+  function zoom(node) {
+    state.focus=node;state.selected=node; draw();inspect(node);
+  }
+  function draw() {
+    const {root,nodes}=active();
+    const focus=state.focus||python();
+    const width=Math.max(260,$('graph').getBoundingClientRect().width);
+    const pad=14, plotWidth=width-2*pad, row=24;
+    const ancestry=new Set();let ancestor=focus.parent;
+    while(ancestor&&ancestor.depth>=0){ancestry.add(ancestor);ancestor=ancestor.parent;}
+    const visible=nodes.filter(node => node.depth>=0 && (ancestry.has(node)||(
+      node.start>=focus.start && node.start+node.value<=focus.start+focus.value && node.depth>=focus.depth && node.value/focus.value*plotWidth>=1)));
+    const maxDepth=Math.max(...visible.map(node=>node.depth));
+    const height=(maxDepth+1)*row+50;
+    const svg=$('graph'); svg.replaceChildren();svg.setAttribute('viewBox',`0 0 ${width} ${height}`);svg.setAttribute('height',height);
+    for (let i=0;i<=4;i++) {
+      const x=pad+i*plotWidth/4;
+      svg.append(svgElement('text',{x,y:height-13,'text-anchor':i===0?'start':i===4?'end':'middle',class:'axis-text'},`${(i/4*focus.value/root.value*100).toFixed(1)}%`));
+    }
+    for(const node of visible) {
+      const isAncestor=ancestry.has(node);
+      const x=isAncestor?pad:pad+(node.start-focus.start)/focus.value*plotWidth;
+      const w=isAncestor?plotWidth:node.value/focus.value*plotWidth;
+      const y=(maxDepth-node.depth)*row+10;
+      const opacity=isAncestor?.45:matches(node)?1:.18;
+      const g=svgElement('g',{class:'frame',role:'button',tabindex:w>=20?'0':'-1','aria-label':`${node.name}: ${percent(node.value/root.value)} inclusive; activate to zoom`,'data-name':node.name});
+      g.append(svgElement('title',{},`${node.name}\n${int(node.value)} weighted cycles\n${percent(node.value/root.value)} inclusive; ${percent(node.self/root.value)} leaf`));
+      g.append(svgElement('rect',{x,y,width:Math.max(.5,w-.65),height:row-2,rx:2,fill:color[category(node.name)],opacity}));
+      if(w>44){const chars=Math.floor((w-10)/6.7);const text=node.name.length>chars?node.name.slice(0,Math.max(1,chars-1))+'…':node.name;
+        g.append(svgElement('text',{x:x+5,y:y+15,opacity},text));}
+      g.addEventListener('pointerenter',()=>inspect(node));
+      g.addEventListener('pointerleave',()=>inspect(state.selected||focus));
+      g.addEventListener('focus',()=>inspect(node));
+      g.addEventListener('click',()=>zoom(node));
+      g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();zoom(node);}});
+      svg.append(g);
+    }
+    const plateau=visible.find(node=>/\[perf-.*\.map\]/.test(node.name)&&node.self/node.value>.7&&!ancestry.has(node));
+    if(plateau&&!state.query&&(!state.highlight||state.highlight==='jit')) {
+      const leafWidth=plateau.self/focus.value*plotWidth;
+      if(leafWidth>270) {
+        const center=pad+(plateau.start+plateau.value-plateau.self/2-focus.start)/focus.value*plotWidth;
+        const y=(maxDepth-plateau.depth)*row+10;
+        svg.append(svgElement('text',{x:center,y:y-28,'text-anchor':'middle',class:'axis-text'},`${percent(plateau.self/root.value)} ends at this unnamed JIT mapping`));
+        svg.append(svgElement('line',{x1:center,x2:center,y1:y-20,y2:y-5,stroke:'var(--muted)','stroke-width':1,'pointer-events':'none'}));
+      }
+    }
+    $('reset').disabled=focus===python();
+    $('graph-status').textContent=`${state.profile==='original'?'Original':'Optimized'} · ${focus===python()?'all recorded stacks':percent(focus.value/root.value)+' of capture, zoomed'}`;
+    inspect(state.selected||focus);
+  }
+
+  function breakdown() {
+    const {shares,root}=active();$('partition').replaceChildren();$('partition-labels').replaceChildren();
+    for(const name of Object.keys(shares)) {
+      const ratio=shares[name]/root.value;
+      const segment=document.createElement('button');segment.className=name;segment.style.width=100*ratio+'%';
+      segment.setAttribute('aria-label',`${label[name]}: ${percent(ratio)}`);segment.title=segment.getAttribute('aria-label');
+      segment.onclick=()=>{state.highlight=name;draw();};$('partition').append(segment);
+      const item=document.createElement('button');item.innerHTML=`<i class="swatch ${name}"></i>${label[name]} <b>${percent(ratio)}</b>`;
+      item.onclick=segment.onclick;$('partition-labels').append(item);
+    }
+  }
+  function selectProfile(name) {
+    state.profile=name;state.focus=null;state.selected=null;state.query='';$('search').value='';$('search-results').replaceChildren();
+    document.querySelectorAll('[data-profile]').forEach(button=>button.setAttribute('aria-pressed',button.dataset.profile===name));
+    if(state.step===4) $('lesson-action').textContent=name==='original'?'Switch to the optimized capture':'Switch back to the original';
+    breakdown();draw();
+  }
+  function setStep(index) {
+    state.step=index;state.highlight=[null,'memory','jit','memory',null][index];
+    selectProfile('original');
+    document.querySelectorAll('[data-step]').forEach(button=>{if(Number(button.dataset.step)===index)button.setAttribute('aria-current','step');else button.removeAttribute('aria-current');});
+    const lesson=lessons[index];
+    for(const [id,key] of Object.entries({'lesson-kicker':'kicker','lesson-title':'title','lesson-body':'body','lesson-detail':'detail','lesson-action':'action','evidence-kind':'kind','evidence-text':'evidence'})) $(id).textContent=lesson[key];
+    $('previous').disabled=index===0;$('next').textContent=index===4?'Start again ↺':'Next →';$('progress').textContent=`0${index+1} / 05`;
+    $('breakdown-panel').hidden=index>2;$('code-panel').hidden=index!==3;$('compare-panel').hidden=index!==4;
+    if(index===2) {state.selected=largest(node=>/\[perf-.*\.map\]/.test(node.name));inspect(state.selected);}
+  }
+
+  document.querySelectorAll('[data-step]').forEach(button=>button.onclick=()=>setStep(Number(button.dataset.step)));
+  document.querySelectorAll('[data-profile]').forEach(button=>button.onclick=()=>selectProfile(button.dataset.profile));
+  $('next').onclick=()=>setStep((state.step+1)%5);$('previous').onclick=()=>setStep(Math.max(0,state.step-1));
+  $('reset').onclick=()=>zoom(python());
+  $('lesson-action').onclick=()=>{
+    if(state.step===4){selectProfile(state.profile==='original'?'optimized':'original');return;}
+    if(state.step===3){state.highlight='memory';state.query='';$('search').value='';$('search-results').replaceChildren();zoom(python());return;}
+    const node=largest(state.step===1?node=>node.name==='NRT_MemInfo_alloc_aligned':node=>/\[perf-.*\.map\]/.test(node.name));
+    if(node)zoom(node);
+  };
+  $('search').addEventListener('input',event=>{
+    state.query=event.target.value.trim();$('search-results').replaceChildren();
+    if(state.query){
+      const found=active().nodes.filter(node=>node.name.toLowerCase().includes(state.query.toLowerCase())).sort((a,b)=>b.value-a.value);
+      if(!found.length)$('search-results').textContent='No matching frame in this capture.';
+      for(const node of found.slice(0,5)){const button=document.createElement('button');button.className='plain';button.textContent=`${node.name} · ${percent(node.value/active().root.value)}`;button.onclick=()=>zoom(node);$('search-results').append(button);}
+    }draw();
+  });
+  new ResizeObserver(()=>draw()).observe($('graph').parentElement);
+  setStep(0);
+})();
+</script>
+</body>
+</html>
