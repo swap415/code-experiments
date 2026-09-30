@@ -1,4 +1,4 @@
-# Experiments
+# Scratchpad
 
 Small investigations grouped by upstream project. Each directory keeps the
 question, code, run instructions, and enough evidence to understand the result.
