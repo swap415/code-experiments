@@ -4,6 +4,9 @@ Runtime profiles of SHAP-derived original-expression and optimized Numba kernels
 The original clustering kernels are adapted from SHAP; see the repository's
 [third-party notices](../../THIRD_PARTY.md).
 
+For the original-versus-standalone scalar-loop rewrite, see the
+[differential profile](diff/README.md).
+
 **New: [symbolized Linux recordings (2026-09-29)](perf-jit-2026-09-29/README.md)**.
 On the same original capture, jitdump injection resolves leaf cycle weight from
 81.29% unknown to 0%. The old profiles and explainer below are preserved.
