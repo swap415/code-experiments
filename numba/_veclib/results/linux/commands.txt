@@ -1,0 +1,2 @@
+cd /home/USER/tmp/veclib-rerun-20260929
+env -u NUMBA_CPU_NAME -u NUMBA_CPU_FEATURES NUMBA_OPT=3 PYTHONPATH=/home/USER/tmp/veclib-meeting-20260930/llvmlite:/home/USER/tmp/veclib-meeting-20260930/numba /home/USER/venvs/t1/bin/python run_benchmarks.py --providers none libmvec --load-libmvec --cpu 2 --output /home/USER/tmp/veclib-rerun-20260929/results/linux

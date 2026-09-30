@@ -15,4 +15,3 @@ jitdump/
 .debug/
 .venv/
 venv/
-/numba/_veclib/results/

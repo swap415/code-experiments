@@ -1,0 +1,30 @@
+{
+  "collected_utc": "2026-09-30T06:49:40.922250+00:00",
+  "sources": {
+    "numba": {
+      "commit": "09483a43d3dc31ad19a0bcfca85297ade43f0416",
+      "branch": "vector-library-wiring",
+      "tracked_changes": [
+        "docs/source/developer/caching.rst",
+        "docs/source/reference/envvars.rst",
+        "numba/core/codegen.py",
+        "numba/core/config.py",
+        "numba/tests/cache_usecases.py",
+        "numba/tests/test_caching.py",
+        "numba/tests/test_codegen.py",
+        "numba/tests/test_vector_library.py"
+      ],
+      "diff_sha256": "a6231af2cf99702fe1e0fce158fbb6ba48993fee1b9c6030da53fe388711f7d2"
+    },
+    "llvmlite": {
+      "commit": "2352785c6244cfe095b54abe46d126c2545733fe",
+      "branch": "vector-library-wiring",
+      "tracked_changes": [],
+      "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scripts": {
+    "benchmark.py": "9723c29580fff29eb4d8d23f3e3411125e8cf4381e492a48b7070f6aea83aa0e",
+    "run_benchmarks.py": "7246e6079484017d553e311745cdc5e46a4d0348d32eb92fb1d10d0f3c431470"
+  }
+}

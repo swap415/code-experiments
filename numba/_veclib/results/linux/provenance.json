@@ -1,0 +1,48 @@
+{
+  "captured_utc": "2026-09-30T06:51:15.514656+00:00",
+  "host": "linux-host",
+  "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "cpu_model": "Intel(R) Core(TM) i7-14700",
+  "glibc_package": "libc6:amd64\t2.39-0ubuntu8.9",
+  "sources": {
+    "numba": {
+      "commit": "09483a43d3dc31ad19a0bcfca85297ade43f0416",
+      "status": "",
+      "remote": "https://github.com/swap415/numba.git"
+    },
+    "llvmlite": {
+      "commit": "2352785c6244cfe095b54abe46d126c2545733fe",
+      "status": "",
+      "remote": "https://github.com/swap415/llvmlite.git"
+    }
+  },
+  "python": "/home/USER/venvs/t1/bin/python",
+  "cpu_affinity": 2,
+  "cpu_core": 1,
+  "smt_sibling": 3,
+  "command": "env -u NUMBA_CPU_NAME -u NUMBA_CPU_FEATURES NUMBA_OPT=3 PYTHONPATH=/home/USER/tmp/veclib-meeting-20260930/llvmlite:/home/USER/tmp/veclib-meeting-20260930/numba /home/USER/venvs/t1/bin/python run_benchmarks.py --providers none libmvec --load-libmvec --cpu 2 --output /home/USER/tmp/veclib-rerun-20260929/results/linux",
+  "harness_sha256": {
+    "benchmark.py": "9723c29580fff29eb4d8d23f3e3411125e8cf4381e492a48b7070f6aea83aa0e",
+    "run_benchmarks.py": "7246e6079484017d553e311745cdc5e46a4d0348d32eb92fb1d10d0f3c431470"
+  },
+  "libraries": {
+    "mvec": "libmvec.so.1",
+    "sleefgnuabi": null,
+    "sleef": null,
+    "svml": null,
+    "amath": null,
+    "alm": null,
+    "massv": null
+  },
+  "runtime_loading": "Harness loads find_library(mvec) with llvm.load_library_permanently in libmvec processes.",
+  "source_difference": "Public branch HEADs match macOS HEADs. Linux excludes local uncommitted Numba loader/cache changes; benchmark does not use disk cache.",
+  "validation": {
+    "rows": 576,
+    "errors": 0,
+    "processes": 6,
+    "pilot_rows": 8,
+    "vector_symbols_owned_by_libmvec": true,
+    "sqrt_instruction_evidence_present": true
+  },
+  "symbol_resolution_note": "dladdr reports the LLVM lookup target. Scalar math targets are Numba _helperlib bridge wrappers forwarding to C math; glibc IFUNC resolved_symbol names may be absent."
+}

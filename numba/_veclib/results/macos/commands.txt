@@ -1,0 +1,2 @@
+cd /Users/USER/dev/numba/issues/_veclib
+env -u NUMBA_CPU_NAME -u NUMBA_CPU_FEATURES PYTHONPATH=/Users/USER/dev/llvmlite:/Users/USER/dev/numba NUMBA_OPT=3 /Users/USER/miniconda3/envs/numba-capstone/bin/python run_benchmarks.py --providers none accelerate darwin_libsystem_m --output results/macos > results/macos/run.log 2>&1

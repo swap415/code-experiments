@@ -7,7 +7,7 @@ their relative paths preserved. Host and local-user identifiers in retained
 transcripts were redacted; measurements were not changed.
 
 The source tree held 603 files at export time, about 904 MiB on disk. The
-Git candidate contains 215 files, about 4.1 MB. The excluded material was
+initial Git candidate contained 215 files, about 4.1 MB. The excluded material was
 generated: 14 `*.data` perf captures alone totaled
 931,228,644 bytes, with additional JIT ELF files, compiled extensions,
 bytecode caches, object files, and raw perf stacks. `caching/` and `numpy24/`
@@ -24,3 +24,12 @@ later analysis. They require matching Linux binaries, debug symbols, and
 paths; the compact reports in this repository are sufficient to read the
 recorded conclusions. Do not commit raw captures to Git history. GitHub warns
 above 50 MiB per file and blocks ordinary Git files above 100 MiB.
+
+## Vector math update (2026-09-30)
+
+The later `numba/_veclib` import adds the benchmark scripts, 15 full-run JSONL
+records, one pilot record, 480 LLVM IR and assembly files, provenance, and
+reports from macOS and Linux. Python bytecode was omitted. Local user paths and
+hostnames in saved records were replaced with placeholders; measurements and
+library basenames were preserved. The summary table heading was corrected to
+match the comparison its generator computes.

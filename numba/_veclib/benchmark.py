@@ -2,6 +2,7 @@
 
 import argparse
 import ctypes.util
+from datetime import datetime, timezone
 import json
 import math
 import os
@@ -34,6 +35,26 @@ if args.load_runtime:
     if runtime is None:
         raise RuntimeError(f'Runtime not found: {args.load_runtime}')
     llvm.load_library_permanently(runtime)
+
+
+class DlInfo(ctypes.Structure):
+    _fields_ = [('filename', ctypes.c_char_p), ('base', ctypes.c_void_p),
+                ('symbol', ctypes.c_char_p), ('address', ctypes.c_void_p)]
+
+
+dladdr = ctypes.CDLL(None).dladdr
+dladdr.argtypes = [ctypes.c_void_p, ctypes.POINTER(DlInfo)]
+dladdr.restype = ctypes.c_int
+
+
+def symbol_details(name, ir_calls, asm):
+    present = bool(re.search(r'(?<![\w.])_?' + re.escape(name) + r'(?![\w.])', asm))
+    address = llvm.address_of_symbol(name)
+    info = DlInfo()
+    found = bool(address and dladdr(address, ctypes.byref(info)))
+    return dict(name=name, ir_call=name in ir_calls, assembly=present,
+                library_path=info.filename.decode() if found else None,
+                resolved_symbol=info.symbol.decode() if found and info.symbol else None)
 
 
 def make_kernel(operation, fastmath, binary):
@@ -85,12 +106,17 @@ def inspect(kernel, root):
     for line in ir.splitlines():
         if 'call ' in line:
             match = re.search(r'@([^\s(]+)\(', line)
-            if match and root in match[1]:
+            if match and root in match[1] and not match[1].startswith('_ZN'):
                 callees.add(match[1])
     vector = sorted(s for s in callees if not s.startswith('llvm.') and
                     (s.startswith(('_ZGV', '_simd_', '__svml', 'Sleef')) or
                      s.startswith('v')))
-    return sorted(callees), vector, ir, asm
+    names = {s for s in callees if not s.startswith('llvm.')} | {root, root + 'f'}
+    symbols = [symbol_details(s, callees, asm) for s in sorted(names)]
+    symbols = [s for s in symbols if s['assembly']]
+    hardware = sorted(set(re.findall(
+        r'^\s*((?:fsqrt(?:\.\w+)?)|(?:v?sqrt(?:ps|pd|ss|sd)))\s', asm, re.MULTILINE)))
+    return sorted(callees), vector, symbols, hardware, ir, asm
 
 
 args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -99,6 +125,7 @@ if args.round == 0:
     artifact_dir.mkdir(parents=True, exist_ok=True)
 metadata = {
     'kind': 'metadata', 'provider': provider, 'round': args.round,
+    'started_utc': datetime.now(timezone.utc).isoformat(), 'hostname': platform.node(),
     'platform': platform.platform(), 'python': platform.python_version(),
     'cpu': str(llvm.get_host_cpu_name()), 'triple': llvm.get_process_triple(),
     'cpu_features': llvm.get_host_cpu_features().flatten(),
@@ -129,7 +156,7 @@ with args.output.open('w') as stream:
                         x, y, out, domain = inputs(name, dtype, size)
                         kernel(x, y, out)
                         root = 'pow' if name == 'power' else name
-                        calls, vector, ir, asm = inspect(kernel, root)
+                        calls, vector, symbols, hardware, ir, asm = inspect(kernel, root)
                         if args.round == 0 and size == args.sizes[0]:
                             stem = f'{name}_{np.dtype(dtype).name}_fastmath{int(fastmath)}'
                             (artifact_dir / f'{stem}.ll').write_text(ir)
@@ -147,6 +174,7 @@ with args.output.open('w') as stream:
                         ulps = error / np.abs(np.spacing(reference).astype(np.float64))
                         samples, iterations = measure(kernel, x, y, out)
                         row.update(status='ok', input_range=domain, calls=calls,
+                            math_symbols=symbols, hardware_sqrt=hardware,
                             vector_calls=vector, vector_symbol_in_asm=all(s in asm for s in vector),
                             samples_ms=samples, iterations_per_sample=iterations,
                             mean_ms=statistics.mean(samples), std_ms=statistics.stdev(samples),
