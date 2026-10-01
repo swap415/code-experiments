@@ -15,3 +15,5 @@ jitdump/
 .debug/
 .venv/
 venv/
+/numba/_veclib/*.npz
+/numba/_veclib/precision/**/*.npz

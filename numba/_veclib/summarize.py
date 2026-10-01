@@ -58,16 +58,21 @@ def main():
     root = Path(__file__).parent
     lines = ['# Vector math benchmark results', '',
              '262,144 elements · fastmath=False · 21 samples per row. '
-             'Speedup = mean time with `none` ÷ mean time with selection.', '']
+             'Speedup = mean time with `none` ÷ mean time with selection. '
+             '[ULP differences](PRECISION.md) compare outputs with `none` on identical inputs.', '']
     for machine in args.machines:
         metadata, results = read_results(root / 'results' / machine)
+        precision_path = root / 'precision' / machine / 'comparison.json'
+        precision = json.loads(precision_path.read_text())['rows'] if precision_path.exists() else []
+        errors = {(r['provider'], r['operation'], r['dtype']): r['max_ulp']
+                  for r in precision if r['profile'] == 'benchmark'}
         lines += [f'## {machine}: {metadata["cpu"]}', '',
                   f'{metadata["platform"]}; LLVM {".".join(map(str, metadata["llvm"]))}, '
                   f'Python {metadata["python"]}, NumPy {metadata["numpy"]}.', '']
         for dtype in ('float32', 'float64'):
             lines += [f'### {dtype}', '',
-                      '| Operation | Selection | Time ± std (ms) | Speedup | Emitted math symbol / instruction | Different from none? |',
-                      '|---|---|---:|---:|---|---|']
+                      '| Operation | Selection | Time ± std (ms) | Speedup | Max ULP | Emitted math symbol / instruction | Different from none? |',
+                      '|---|---|---:|---:|---:|---|---|']
             for operation in OPERATIONS:
                 baseline, _, baseline_symbols = results['none', operation, dtype]
                 for provider in PROVIDERS[machine]:
@@ -75,8 +80,9 @@ def main():
                     changed = str(emitted != baseline_symbols).lower()
                     names = ', '.join(f'`{name}`' for name in emitted)
                     speedup = '1.00× (baseline)' if provider == 'none' else f'{baseline / timing:.2f}×'
+                    error = 0 if provider == 'none' else errors.get((provider, operation, dtype), '—')
                     lines.append(f'| {operation} | `{provider}` | '
-                                 f'{timing:.4f} ± {deviation:.4f} | {speedup} | '
+                                 f'{timing:.4f} ± {deviation:.4f} | {speedup} | {error} | '
                                  f'{names} | {changed} |')
             lines.append('')
     (root / 'RESULTS.md').write_text('\n'.join(lines))

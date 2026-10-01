@@ -7,7 +7,7 @@ These are snapshots of experiments, not a package or a shared test suite.
 | Experiment | Question | Requirements |
 | --- | --- | --- |
 | [Numba #10605](numba/10605/README.md) | Does an inserted unit axis change an array reduction under JIT? | Numba, NumPy |
-| [Vector math](numba/_veclib/README.md) | Which vector math provider is called, and how fast is it? | Experimental Numba and llvmlite branches |
+| [Vector math](numba/_veclib/README.md) | Which provider runs, how fast, and how do outputs differ? | Experimental Numba and llvmlite branches |
 | [Monitoring events](numba/sysmon_events/README.md) | How does CPython's monitoring C API dispatch events? | CPython 3.13+, C compiler |
 | [SHAP profiling](numba/shap_bench/README.md) | Where does the delta-minimization kernel spend time? | Numba, NumPy, Linux perf for new captures |
 

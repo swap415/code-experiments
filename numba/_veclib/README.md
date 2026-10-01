@@ -3,14 +3,17 @@
 Benchmarks for the `vector-library-wiring` branches of Numba and llvmlite.
 
 - [Results](RESULTS.md): all 12 operations, split by machine and dtype, with
-  timing, speedup, emitted symbols/instructions and whether they differ from `none`.
+  timing, speedup, maximum ULP difference and emitted symbols/instructions.
+- [Precision](PRECISION.md): differences from `none` on benchmark, wider-range
+  and edge inputs. Compact comparisons, manifests, IR and assembly are under
+  `precision/`; raw output arrays remain outside Git.
 - Raw process records, LLVM IR, assembly and provenance: `results/macos/`
   and `results/linux/`.
 
 ## Local Mac setup
 
 From the scratchpad repository root, set `LLVMLITE_CHECKOUT` and
-`NUMBA_CHECKOUT` to the matching branch checkouts:
+`NUMBA_CHECKOUT` to matching branch checkouts:
 
 ```sh
 cd numba/_veclib
@@ -68,13 +71,67 @@ the mapping and declaration are present, but the vector loop calls
 use that hardware instruction. A declaration of `vsqrtf` is not a call to it.
 
 The resolved library paths and symbol names are retained in the raw JSON.
-Local usernames and hostnames in saved records are replaced with placeholders;
-numeric measurements and library basenames are unchanged.
+Local usernames and hostnames in published records are placeholders; numeric
+measurements and source hashes are unchanged.
 
 The rerun uses the same branch commits on both machines; macOS includes local
 loader/cache changes, while Linux loads libmvec explicitly in the harness.
 Disk compilation caching is not used. Each host is compared against its own
 `none` baseline.
+
+## Precision runs
+
+For a small example, `ulp_check/check_ulp.py` loops over all 12 functions in fp32/fp64
+and prints maximum ULP differences from NumPy:
+
+```sh
+NUMBA_VECTOR_MATH_LIBRARY=none python ulp_check/check_ulp.py
+NUMBA_VECTOR_MATH_LIBRARY=accelerate python ulp_check/check_ulp.py
+```
+
+Each invocation compares directly with NumPy; no saved baseline is needed.
+Inputs are in [0.125, 1], with power exponents in [-2, 2]. NumPy has no `erf`,
+so that row uses `math.erf` rounded to the tested dtype. Use the matching
+llvmlite environment below.
+
+The precision run uses the exact benchmark inputs, 65,536 wider-range samples,
+and deterministic edge cases repeated in full SIMD groups. All runs use
+fastmath=False. Each provider runs in a fresh process, then its saved output is
+compared with `none` on byte-identical inputs. P99 and maxima count finite
+representable steps; NaN/infinity and signed-zero differences are separate.
+Exact worst inputs and both outputs are saved in decimal and hexadecimal in
+each machine's `comparison.json`.
+
+The recorded Mac precision run used an isolated llvmlite
+`vector-library-wiring` checkout at commit `2352785c`. For a rerun:
+
+```sh
+export PYTHONPATH="$LLVMLITE_CHECKOUT:$NUMBA_CHECKOUT"
+python precision.py --output precision/macos --providers none accelerate darwin_libsystem_m
+```
+
+Linux, with the existing `vector-library-wiring` environments:
+
+```sh
+python precision.py --output precision/linux --providers none libmvec --load-libmvec
+```
+
+Use a new output directory for another run; existing provider directories are
+not overwritten. Regenerate the reports from the checked-in comparison
+JSON with:
+
+```sh
+python summarize_precision.py
+python summarize.py
+```
+
+`check_signed_zero.py` reproduces the observed macOS zero-sign differences:
+
+```sh
+NUMBA_VECTOR_MATH_LIBRARY=none python check_signed_zero.py
+NUMBA_VECTOR_MATH_LIBRARY=accelerate python check_signed_zero.py
+NUMBA_VECTOR_MATH_LIBRARY=darwin_libsystem_m python check_signed_zero.py
+```
 
 Prepared with Codex assistance. Review before sharing upstream and retain
 attribution under Numba's AI tools policy.

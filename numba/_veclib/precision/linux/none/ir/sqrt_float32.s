@@ -1,0 +1,326 @@
+	.file	"<string>"
+	.section	.ltext,"axl",@progbits
+	.globl	_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE
+	.p2align	4
+	.type	_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE,@function
+_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE:
+	testq	%r8, %r8
+	jle	.LBB0_17
+	movq	120(%rsp), %rax
+	cmpq	$4, %r8
+	setb	%dl
+	movq	8(%rsp), %rcx
+	movq	%rax, %rsi
+	subq	%rcx, %rsi
+	cmpq	$128, %rsi
+	setb	%sil
+	orb	%dl, %sil
+	je	.LBB0_3
+	xorl	%edx, %edx
+	jmp	.LBB0_12
+.LBB0_3:
+	movabsq	$9223372036854775776, %rsi
+	cmpq	$32, %r8
+	jae	.LBB0_5
+	xorl	%edx, %edx
+	jmp	.LBB0_9
+.LBB0_5:
+	movq	%r8, %rdx
+	andq	%rsi, %rdx
+	xorl	%r9d, %r9d
+	.p2align	4
+.LBB0_6:
+	vsqrtps	(%rcx,%r9,4), %ymm0
+	vsqrtps	32(%rcx,%r9,4), %ymm1
+	vsqrtps	64(%rcx,%r9,4), %ymm2
+	vsqrtps	96(%rcx,%r9,4), %ymm3
+	vmovups	%ymm0, (%rax,%r9,4)
+	vmovups	%ymm1, 32(%rax,%r9,4)
+	vmovups	%ymm2, 64(%rax,%r9,4)
+	vmovups	%ymm3, 96(%rax,%r9,4)
+	addq	$32, %r9
+	cmpq	%r9, %rdx
+	jne	.LBB0_6
+	cmpq	%rdx, %r8
+	je	.LBB0_17
+	testb	$28, %r8b
+	je	.LBB0_12
+.LBB0_9:
+	movq	%rdx, %r9
+	addq	$28, %rsi
+	movq	%rsi, %rdx
+	andq	%r8, %rdx
+	.p2align	4
+.LBB0_10:
+	vsqrtps	(%rcx,%r9,4), %xmm0
+	vmovups	%xmm0, (%rax,%r9,4)
+	addq	$4, %r9
+	cmpq	%r9, %rdx
+	jne	.LBB0_10
+	cmpq	%rdx, %r8
+	je	.LBB0_17
+.LBB0_12:
+	movl	%r8d, %r9d
+	subl	%edx, %r9d
+	movq	%rdx, %rsi
+	andl	$7, %r9d
+	je	.LBB0_15
+	movq	%rdx, %rsi
+	.p2align	4
+.LBB0_14:
+	vmovss	(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, (%rax,%rsi,4)
+	incq	%rsi
+	decq	%r9
+	jne	.LBB0_14
+.LBB0_15:
+	subq	%r8, %rdx
+	cmpq	$-8, %rdx
+	ja	.LBB0_17
+	.p2align	4
+.LBB0_16:
+	vmovss	(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, (%rax,%rsi,4)
+	vmovss	4(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 4(%rax,%rsi,4)
+	vmovss	8(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 8(%rax,%rsi,4)
+	vmovss	12(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 12(%rax,%rsi,4)
+	vmovss	16(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 16(%rax,%rsi,4)
+	vmovss	20(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 20(%rax,%rsi,4)
+	vmovss	24(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 24(%rax,%rsi,4)
+	vmovss	28(%rcx,%rsi,4), %xmm0
+	vsqrtss	%xmm0, %xmm0, %xmm0
+	vmovss	%xmm0, 28(%rax,%rsi,4)
+	addq	$8, %rsi
+	cmpq	%rsi, %r8
+	jne	.LBB0_16
+.LBB0_17:
+	movq	$0, (%rdi)
+	xorl	%eax, %eax
+	vzeroupper
+	retq
+.Lfunc_end0:
+	.size	_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, .Lfunc_end0-_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE
+
+	.globl	_ZN7cpython8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE
+	.p2align	4
+	.type	_ZN7cpython8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE,@function
+_ZN7cpython8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE:
+	.cfi_startproc
+	pushq	%r15
+	.cfi_def_cfa_offset 16
+	pushq	%r14
+	.cfi_def_cfa_offset 24
+	pushq	%r13
+	.cfi_def_cfa_offset 32
+	pushq	%r12
+	.cfi_def_cfa_offset 40
+	pushq	%rbx
+	.cfi_def_cfa_offset 48
+	subq	$352, %rsp
+	.cfi_def_cfa_offset 400
+	.cfi_offset %rbx, -48
+	.cfi_offset %r12, -40
+	.cfi_offset %r13, -32
+	.cfi_offset %r14, -24
+	.cfi_offset %r15, -16
+	movq	%rsi, %rdi
+	leaq	136(%rsp), %rax
+	movq	%rax, (%rsp)
+	movabsq	$".const.kernel_for.<locals>.kernel", %rsi
+	movabsq	$PyArg_UnpackTuple, %r10
+	xorl	%ebx, %ebx
+	leaq	152(%rsp), %r8
+	leaq	144(%rsp), %r9
+	movl	$3, %edx
+	movl	$3, %ecx
+	xorl	%eax, %eax
+	callq	*%r10
+	testl	%eax, %eax
+	je	.LBB1_15
+	movabsq	$_ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, %rax
+	cmpq	$0, (%rax)
+	je	.LBB1_2
+	movq	152(%rsp), %rdi
+	vxorps	%xmm0, %xmm0, %xmm0
+	vmovups	%ymm0, 160(%rsp)
+	vmovups	%ymm0, 184(%rsp)
+	movabsq	$NRT_adapt_ndarray_from_python, %r12
+	leaq	160(%rsp), %rsi
+	vzeroupper
+	callq	*%r12
+	testl	%eax, %eax
+	jne	.LBB1_6
+	cmpq	$4, 184(%rsp)
+	jne	.LBB1_6
+	movq	160(%rsp), %rbx
+	movq	176(%rsp), %r14
+	movq	192(%rsp), %r13
+	movq	144(%rsp), %rdi
+	vxorps	%xmm0, %xmm0, %xmm0
+	vmovups	%ymm0, 288(%rsp)
+	vmovups	%ymm0, 312(%rsp)
+	leaq	288(%rsp), %rsi
+	vzeroupper
+	callq	*%r12
+	testl	%eax, %eax
+	jne	.LBB1_9
+	cmpq	$4, 312(%rsp)
+	jne	.LBB1_9
+	movq	288(%rsp), %r15
+	movq	136(%rsp), %rdi
+	vxorps	%xmm0, %xmm0, %xmm0
+	vmovups	%ymm0, 224(%rsp)
+	vmovups	%ymm0, 248(%rsp)
+	leaq	224(%rsp), %rsi
+	vzeroupper
+	callq	*%r12
+	testl	%eax, %eax
+	jne	.LBB1_12
+	cmpq	$4, 248(%rsp)
+	jne	.LBB1_12
+	movq	224(%rsp), %r12
+	movq	256(%rsp), %rax
+	movq	%rax, 112(%rsp)
+	movq	%r13, (%rsp)
+	movabsq	$_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, %rax
+	leaq	216(%rsp), %rdi
+	movq	%r14, %r8
+	callq	*%rax
+	movabsq	$NRT_decref, %r14
+	movq	%rbx, %rdi
+	callq	*%r14
+	movq	%r15, %rdi
+	callq	*%r14
+	movq	%r12, %rdi
+	callq	*%r14
+	movabsq	$_Py_NoneStruct, %rbx
+	movabsq	$Py_IncRef, %rax
+	movq	%rbx, %rdi
+	callq	*%rax
+.LBB1_15:
+	movq	%rbx, %rax
+	addq	$352, %rsp
+	.cfi_def_cfa_offset 48
+	popq	%rbx
+	.cfi_def_cfa_offset 40
+	popq	%r12
+	.cfi_def_cfa_offset 32
+	popq	%r13
+	.cfi_def_cfa_offset 24
+	popq	%r14
+	.cfi_def_cfa_offset 16
+	popq	%r15
+	.cfi_def_cfa_offset 8
+	retq
+.LBB1_2:
+	.cfi_def_cfa_offset 400
+	movabsq	$PyExc_RuntimeError, %rdi
+	movabsq	$".const.missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE", %rsi
+	jmp	.LBB1_3
+.LBB1_6:
+	movabsq	$PyExc_TypeError, %rdi
+	movabsq	$".const.can't unbox array from PyObject into native value.  The object maybe of a different type", %rsi
+.LBB1_3:
+	movabsq	$PyErr_SetString, %rax
+	callq	*%rax
+	xorl	%ebx, %ebx
+	jmp	.LBB1_15
+.LBB1_9:
+	movabsq	$PyExc_TypeError, %rdi
+	movabsq	$".const.can't unbox array from PyObject into native value.  The object maybe of a different type", %rsi
+	movabsq	$PyErr_SetString, %rax
+	callq	*%rax
+	jmp	.LBB1_13
+.LBB1_12:
+	movabsq	$PyExc_TypeError, %rdi
+	movabsq	$".const.can't unbox array from PyObject into native value.  The object maybe of a different type", %rsi
+	movabsq	$PyErr_SetString, %rax
+	callq	*%rax
+	movabsq	$NRT_decref, %rax
+	movq	%r15, %rdi
+	callq	*%rax
+.LBB1_13:
+	movabsq	$NRT_decref, %rax
+	movq	%rbx, %rdi
+	callq	*%rax
+	xorl	%ebx, %ebx
+	jmp	.LBB1_15
+.Lfunc_end1:
+	.size	_ZN7cpython8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, .Lfunc_end1-_ZN7cpython8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE
+	.cfi_endproc
+
+	.globl	cfunc._ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE
+	.p2align	4
+	.type	cfunc._ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE,@function
+cfunc._ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE:
+	subq	$152, %rsp
+	movq	256(%rsp), %rax
+	movq	$0, 144(%rsp)
+	movq	%rax, 112(%rsp)
+	movq	%r8, (%rsp)
+	movabsq	$_ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, %rax
+	leaq	144(%rsp), %rdi
+	movq	%rdx, %r8
+	callq	*%rax
+	movq	144(%rsp), %rax
+	addq	$152, %rsp
+	retq
+.Lfunc_end2:
+	.size	cfunc._ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, .Lfunc_end2-cfunc._ZN8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE
+
+	.weak	NRT_decref
+	.p2align	4
+	.type	NRT_decref,@function
+NRT_decref:
+	.cfi_startproc
+	testq	%rdi, %rdi
+	je	.LBB3_2
+	#MEMBARRIER
+	lock		decq	(%rdi)
+	je	.LBB3_3
+.LBB3_2:
+	retq
+.LBB3_3:
+	#MEMBARRIER
+	movabsq	$NRT_MemInfo_call_dtor, %rax
+	jmpq	*%rax
+.Lfunc_end3:
+	.size	NRT_decref, .Lfunc_end3-NRT_decref
+	.cfi_endproc
+
+	.type	".const.kernel_for.<locals>.kernel",@object
+	.section	.lrodata,"al",@progbits
+	.p2align	4, 0x0
+".const.kernel_for.<locals>.kernel":
+	.asciz	"kernel_for.<locals>.kernel"
+	.size	".const.kernel_for.<locals>.kernel", 27
+
+	.type	_ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE,@object
+	.comm	_ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE,8,8
+	.type	".const.missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE",@object
+	.p2align	4, 0x0
+".const.missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE":
+	.asciz	"missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE"
+	.size	".const.missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB3v19B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE", 217
+
+	.type	".const.can't unbox array from PyObject into native value.  The object maybe of a different type",@object
+	.p2align	4, 0x0
+".const.can't unbox array from PyObject into native value.  The object maybe of a different type":
+	.asciz	"can't unbox array from PyObject into native value.  The object maybe of a different type"
+	.size	".const.can't unbox array from PyObject into native value.  The object maybe of a different type", 89
+
+	.section	".note.GNU-stack","",@progbits

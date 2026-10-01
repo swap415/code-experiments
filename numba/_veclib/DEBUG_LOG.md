@@ -61,3 +61,36 @@ checks and actual symbol owners in JSON and generated IR/assembly files.
   RESULTS.md for the existing large-array, fastmath=False tables.
 - Verified all 120 rows against the previous report: timings, speedups and
   symbols unchanged; 34 true and 86 false. No benchmark rerun.
+
+## Precision comparison — 30 September 2026
+
+- Previous ULP values used NumPy as reference. New runs compare saved provider
+  outputs directly with saved none outputs on identical, hashed input arrays.
+- ULP distance counts representable steps, with signed zeros merged for the
+  finite metric. NaN, infinity and signed-zero disagreements are counted
+  separately. Boundary tests cover both precisions and opposite maxfinite.
+- Inputs: the exact previous benchmark arrays; 65,536 broad-domain samples;
+  deterministic edge values repeated in full SIMD groups. All runs fastmath=False.
+- Initial Mac pilot failed before compilation: create_pass_builder() got an
+  unexpected keyword argument 'vector_library'. The user's llvmlite checkout
+  is now veclib_pto (71bb13fb), while Numba expects vector-library-wiring.
+- Left that checkout unchanged. Built an isolated `vector-library-wiring`
+  clone at `2352785c` with LLVM 22.1.0, Release, LTO off.
+- Isolated build and Mac edge pilot passed. Full collection completed:
+  144 Mac comparisons and 72 Linux comparisons, 23,765,760 output pairs.
+- Recomputed all 216 comparison rows from saved arrays and verified input
+  hashes. Every benchmark-profile output checksum matches the earlier timed
+  run. Maximum observed finite distance is 4 ULP; every case's P99 is at most 2.
+- Edge tests found -0 to +0 changes: Accelerate fp32 tan/log1p/expm1, Darwin
+  fp32/fp64 tan. check_signed_zero.py reproduced all five in fresh processes
+  with 64 identical negative-zero inputs. No NaN/infinity-class mismatches.
+- PRECISION.md contains all three input profiles. RESULTS.md adds the maximum
+  ULP difference for the matching benchmark inputs; timing and symbol-change
+  columns retain their previous values. No performance timings were rerun.
+
+## Simple NumPy comparison
+
+- check_ulp.py now loops over all 12 functions and fp32/fp64, comparing directly
+  with same-dtype NumPy outputs. erf uses math.erf, labelled explicitly.
+- Prints only function, dtype, maximum ULP and reference. Tested all 24 cases
+  with none, accelerate and darwin_libsystem_m; all three runs completed.

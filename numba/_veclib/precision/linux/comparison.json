@@ -1,0 +1,6794 @@
+{
+  "metadata": {
+    "none": {
+      "provider": "none",
+      "started_utc": "2026-10-01T05:07:57.295788+00:00",
+      "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+      "cpu": "raptorlake",
+      "llvm": [
+        22,
+        1,
+        0
+      ],
+      "numpy": "2.4.2",
+      "python": "3.12.3",
+      "numba": "0.69.0dev0+8097.g09483a43",
+      "llvmlite": "0.51.0dev0-6-g2352785",
+      "fastmath": false,
+      "sources": {
+        "numba": {
+          "path": "/home/USER/tmp/veclib-meeting-20260930/numba",
+          "commit": "09483a43d3dc31ad19a0bcfca85297ade43f0416",
+          "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "llvmlite": {
+          "path": "/home/USER/tmp/veclib-meeting-20260930/llvmlite",
+          "commit": "2352785c6244cfe095b54abe46d126c2545733fe",
+          "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    "libmvec": {
+      "provider": "libmvec",
+      "started_utc": "2026-10-01T05:08:01.984670+00:00",
+      "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+      "cpu": "raptorlake",
+      "llvm": [
+        22,
+        1,
+        0
+      ],
+      "numpy": "2.4.2",
+      "python": "3.12.3",
+      "numba": "0.69.0dev0+8097.g09483a43",
+      "llvmlite": "0.51.0dev0-6-g2352785",
+      "fastmath": false,
+      "sources": {
+        "numba": {
+          "path": "/home/USER/tmp/veclib-meeting-20260930/numba",
+          "commit": "09483a43d3dc31ad19a0bcfca85297ade43f0416",
+          "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "llvmlite": {
+          "path": "/home/USER/tmp/veclib-meeting-20260930/llvmlite",
+          "commit": "2352785c6244cfe095b54abe46d126c2545733fe",
+          "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  },
+  "rows": [
+    {
+      "provider": "libmvec",
+      "operation": "sin",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "sin_float32_benchmark.npz",
+      "symbols": [
+        "_ZGVbN4v_sinf",
+        "_ZGVdN8v_sinf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_sinf",
+        "_ZGVdN8v_sinf"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 38732,
+      "changed_percent": 14.77508544921875,
+      "p99_ulp": 1,
+      "max_ulp": 2,
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 223412,
+        "1": 38696,
+        "2": 36,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        3296,
+        5122,
+        17379,
+        46623,
+        47851
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "sinf"
+      ],
+      "worst": [
+        {
+          "index": 3296,
+          "x": {
+            "value": "-1.6416376",
+            "hex": "-0x1.a4425c0000000p+0"
+          },
+          "y": {
+            "value": "1.093858",
+            "hex": "0x1.1807140000000p+0"
+          },
+          "none": {
+            "value": "-0.99749184",
+            "hex": "-0x1.feb7400000000p-1"
+          },
+          "selected": {
+            "value": "-0.9974917",
+            "hex": "-0x1.feb73c0000000p-1"
+          }
+        },
+        {
+          "index": 5122,
+          "x": {
+            "value": "-1.5561417",
+            "hex": "-0x1.8e5f4e0000000p+0"
+          },
+          "y": {
+            "value": "-0.08883059",
+            "hex": "-0x1.6bd9a00000000p-4"
+          },
+          "none": {
+            "value": "-0.99989265",
+            "hex": "-0x1.fff1ee0000000p-1"
+          },
+          "selected": {
+            "value": "-0.99989253",
+            "hex": "-0x1.fff1ea0000000p-1"
+          }
+        },
+        {
+          "index": 17379,
+          "x": {
+            "value": "-1.5282363",
+            "hex": "-0x1.873a7e0000000p+0"
+          },
+          "y": {
+            "value": "1.1099756",
+            "hex": "0x1.1c275c0000000p+0"
+          },
+          "none": {
+            "value": "-0.9990945",
+            "hex": "-0x1.ff89500000000p-1"
+          },
+          "selected": {
+            "value": "-0.99909437",
+            "hex": "-0x1.ff894c0000000p-1"
+          }
+        },
+        {
+          "index": 46623,
+          "x": {
+            "value": "1.5385361",
+            "hex": "0x1.89dd800000000p+0"
+          },
+          "y": {
+            "value": "-1.9548721",
+            "hex": "-0x1.f472800000000p+0"
+          },
+          "none": {
+            "value": "0.9994797",
+            "hex": "0x1.ffbbce0000000p-1"
+          },
+          "selected": {
+            "value": "0.9994796",
+            "hex": "0x1.ffbbca0000000p-1"
+          }
+        },
+        {
+          "index": 47851,
+          "x": {
+            "value": "1.4856846",
+            "hex": "0x1.7c55d40000000p+0"
+          },
+          "y": {
+            "value": "0.17351864",
+            "hex": "0x1.635dbe0000000p-3"
+          },
+          "none": {
+            "value": "0.9963802",
+            "hex": "0x1.fe258c0000000p-1"
+          },
+          "selected": {
+            "value": "0.9963801",
+            "hex": "0x1.fe25880000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sin",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "15e39276411a57025c42b6370d74d7addd67073c6e9f3506f7e24b23f4d8a5d5",
+      "file": "sin_float32_wide.npz",
+      "symbols": [
+        "_ZGVbN4v_sinf",
+        "_ZGVdN8v_sinf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_sinf",
+        "_ZGVdN8v_sinf"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 8455,
+      "changed_percent": 12.90130615234375,
+      "p99_ulp": 1,
+      "max_ulp": 2,
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 57081,
+        "1": 8450,
+        "2": 5,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        438,
+        484,
+        7397,
+        9629,
+        29008
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "sinf"
+      ],
+      "worst": [
+        {
+          "index": 438,
+          "x": {
+            "value": "786.988",
+            "hex": "0x1.897e760000000p+9"
+          },
+          "y": {
+            "value": "-0.049199868",
+            "hex": "-0x1.930b9a0000000p-5"
+          },
+          "none": {
+            "value": "0.9998192",
+            "hex": "0x1.ffe84e0000000p-1"
+          },
+          "selected": {
+            "value": "0.9998191",
+            "hex": "0x1.ffe84a0000000p-1"
+          }
+        },
+        {
+          "index": 484,
+          "x": {
+            "value": "-26.789162",
+            "hex": "-0x1.aca0680000000p+4"
+          },
+          "y": {
+            "value": "-1.6570401",
+            "hex": "-0x1.a833c80000000p+0"
+          },
+          "none": {
+            "value": "-0.9963365",
+            "hex": "-0x1.fe1fd20000000p-1"
+          },
+          "selected": {
+            "value": "-0.9963364",
+            "hex": "-0x1.fe1fce0000000p-1"
+          }
+        },
+        {
+          "index": 7397,
+          "x": {
+            "value": "-859.0777",
+            "hex": "-0x1.ad89f20000000p+9"
+          },
+          "y": {
+            "value": "-1.5195497",
+            "hex": "-0x1.8501360000000p+0"
+          },
+          "none": {
+            "value": "0.98908377",
+            "hex": "0x1.fa69300000000p-1"
+          },
+          "selected": {
+            "value": "0.98908365",
+            "hex": "0x1.fa692c0000000p-1"
+          }
+        },
+        {
+          "index": 9629,
+          "x": {
+            "value": "-375.34814",
+            "hex": "-0x1.7759200000000p+8"
+          },
+          "y": {
+            "value": "1.7873797",
+            "hex": "0x1.c991b80000000p+0"
+          },
+          "none": {
+            "value": "0.99739635",
+            "hex": "0x1.feaabc0000000p-1"
+          },
+          "selected": {
+            "value": "0.99739623",
+            "hex": "0x1.feaab80000000p-1"
+          }
+        },
+        {
+          "index": 29008,
+          "x": {
+            "value": "453.99994",
+            "hex": "0x1.c5fffc0000000p+8"
+          },
+          "y": {
+            "value": "-1.6742526",
+            "hex": "-0x1.ac9bd20000000p+0"
+          },
+          "none": {
+            "value": "0.9992081",
+            "hex": "0x1.ff98340000000p-1"
+          },
+          "selected": {
+            "value": "0.999208",
+            "hex": "0x1.ff98300000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sin",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "d292c17e385f67dbe99295804746cdd8cbdb461f201d82d5c793517c12ee419d",
+      "file": "sin_float32_edges.npz",
+      "symbols": [
+        "_ZGVbN4v_sinf",
+        "_ZGVdN8v_sinf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_sinf",
+        "_ZGVdN8v_sinf"
+      ],
+      "finite_pairs": 3280,
+      "finite_changed": 224,
+      "changed_percent": 6.829268292682927,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 5.960464477539063e-08,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 3056,
+        "1": 224,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        240,
+        241,
+        242,
+        243,
+        244
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "sinf"
+      ],
+      "worst": [
+        {
+          "index": 240,
+          "x": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.8414711",
+            "hex": "0x1.aed54c0000000p-1"
+          },
+          "selected": {
+            "value": "0.841471",
+            "hex": "0x1.aed54a0000000p-1"
+          }
+        },
+        {
+          "index": 241,
+          "x": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.8414711",
+            "hex": "0x1.aed54c0000000p-1"
+          },
+          "selected": {
+            "value": "0.841471",
+            "hex": "0x1.aed54a0000000p-1"
+          }
+        },
+        {
+          "index": 242,
+          "x": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.8414711",
+            "hex": "0x1.aed54c0000000p-1"
+          },
+          "selected": {
+            "value": "0.841471",
+            "hex": "0x1.aed54a0000000p-1"
+          }
+        },
+        {
+          "index": 243,
+          "x": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.8414711",
+            "hex": "0x1.aed54c0000000p-1"
+          },
+          "selected": {
+            "value": "0.841471",
+            "hex": "0x1.aed54a0000000p-1"
+          }
+        },
+        {
+          "index": 244,
+          "x": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.8414711",
+            "hex": "0x1.aed54c0000000p-1"
+          },
+          "selected": {
+            "value": "0.841471",
+            "hex": "0x1.aed54a0000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sin",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "sin_float64_benchmark.npz",
+      "symbols": [
+        "_ZGVdN4v_sin"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_sin"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 168462,
+      "changed_percent": 64.26315307617188,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 3.3306690738754696e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 93682,
+        "1": 145574,
+        "2": 22484,
+        "3": 404,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        684,
+        1931,
+        2380,
+        2621,
+        4562
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "sin"
+      ],
+      "worst": [
+        {
+          "index": 684,
+          "x": {
+            "value": "-1.608705223863315",
+            "hex": "-0x1.9bd41b0565b54p+0"
+          },
+          "y": {
+            "value": "-0.11247551437507752",
+            "hex": "-0x1.ccb31ffd77c00p-4"
+          },
+          "none": {
+            "value": "-0.9992815438078975",
+            "hex": "-0x1.ffa1d49c4d78ap-1"
+          },
+          "selected": {
+            "value": "-0.9992815438078978",
+            "hex": "-0x1.ffa1d49c4d78dp-1"
+          }
+        },
+        {
+          "index": 1931,
+          "x": {
+            "value": "1.597752560234393",
+            "hex": "0x1.99064fd14e96cp+0"
+          },
+          "y": {
+            "value": "-0.5897715934321095",
+            "hex": "-0x1.2df68ad3cd2b0p-1"
+          },
+          "none": {
+            "value": "0.9996367027389923",
+            "hex": "0x1.ffd061c44a5dap-1"
+          },
+          "selected": {
+            "value": "0.9996367027389926",
+            "hex": "0x1.ffd061c44a5ddp-1"
+          }
+        },
+        {
+          "index": 2380,
+          "x": {
+            "value": "1.8464413227025278",
+            "hex": "0x1.d8b060e6fd86ep+0"
+          },
+          "y": {
+            "value": "1.823038596920758",
+            "hex": "0x1.d2b2a8511ed16p+0"
+          },
+          "none": {
+            "value": "0.9622498507833914",
+            "hex": "0x1.ecac032f641eap-1"
+          },
+          "selected": {
+            "value": "0.9622498507833918",
+            "hex": "0x1.ecac032f641edp-1"
+          }
+        },
+        {
+          "index": 2621,
+          "x": {
+            "value": "-1.592954496831425",
+            "hex": "-0x1.97cbddabe8382p+0"
+          },
+          "y": {
+            "value": "0.7607658956389325",
+            "hex": "0x1.85831b835cdbcp-1"
+          },
+          "none": {
+            "value": "-0.9997545177945591",
+            "hex": "-0x1.ffdfd2fbe9695p-1"
+          },
+          "selected": {
+            "value": "-0.9997545177945595",
+            "hex": "-0x1.ffdfd2fbe9698p-1"
+          }
+        },
+        {
+          "index": 4562,
+          "x": {
+            "value": "-1.5958256995787004",
+            "hex": "-0x1.98880875ce8d0p+0"
+          },
+          "y": {
+            "value": "-1.6487803338984999",
+            "hex": "-0x1.a61677cc61cbep+0"
+          },
+          "none": {
+            "value": "-0.9996867816013514",
+            "hex": "-0x1.ffd6f222714e1p-1"
+          },
+          "selected": {
+            "value": "-0.9996867816013517",
+            "hex": "-0x1.ffd6f222714e4p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sin",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "5232d9a62d4719d5ddef9b4b8af207e7fc851f5e6786551336138534e43bab0d",
+      "file": "sin_float64_wide.npz",
+      "symbols": [
+        "_ZGVdN4v_sin"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_sin"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 20831,
+      "changed_percent": 31.78558349609375,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 3.3306690738754696e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 44705,
+        "1": 18460,
+        "2": 2347,
+        "3": 24,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        930,
+        6224,
+        7540,
+        7684,
+        7921
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "sin"
+      ],
+      "worst": [
+        {
+          "index": 930,
+          "x": {
+            "value": "171.24624022903254",
+            "hex": "0x1.567e1333054f0p+7"
+          },
+          "y": {
+            "value": "0.8316046826013728",
+            "hex": "0x1.a9c816c5f25bcp-1"
+          },
+          "none": {
+            "value": "0.9995666565902175",
+            "hex": "0x1.ffc73368743f8p-1"
+          },
+          "selected": {
+            "value": "0.9995666565902178",
+            "hex": "0x1.ffc73368743fbp-1"
+          }
+        },
+        {
+          "index": 6224,
+          "x": {
+            "value": "-768.1457720222",
+            "hex": "-0x1.8012a8a85a02bp+9"
+          },
+          "y": {
+            "value": "1.0245543151803091",
+            "hex": "0x1.0649310cacd3ap+0"
+          },
+          "none": {
+            "value": "-0.9996523786422844",
+            "hex": "-0x1.ffd26fc34641cp-1"
+          },
+          "selected": {
+            "value": "-0.9996523786422847",
+            "hex": "-0x1.ffd26fc34641fp-1"
+          }
+        },
+        {
+          "index": 7540,
+          "x": {
+            "value": "689.6069371760507",
+            "hex": "0x1.58cdb01e0ceeap+9"
+          },
+          "y": {
+            "value": "0.4206413756117078",
+            "hex": "0x1.aebc9cde630f0p-2"
+          },
+          "none": {
+            "value": "-0.9996260199094279",
+            "hex": "-0x1.ffcefb4f7bb7fp-1"
+          },
+          "selected": {
+            "value": "-0.9996260199094282",
+            "hex": "-0x1.ffcefb4f7bb82p-1"
+          }
+        },
+        {
+          "index": 7684,
+          "x": {
+            "value": "10.971649318528307",
+            "hex": "0x1.5f17c04fc8500p+3"
+          },
+          "y": {
+            "value": "-1.4455259958714608",
+            "hex": "-0x1.720dfdddc9274p+0"
+          },
+          "none": {
+            "value": "-0.9997138115799911",
+            "hex": "-0x1.ffda7d1c30ee4p-1"
+          },
+          "selected": {
+            "value": "-0.9997138115799914",
+            "hex": "-0x1.ffda7d1c30ee7p-1"
+          }
+        },
+        {
+          "index": 7921,
+          "x": {
+            "value": "359.6784019799186",
+            "hex": "0x1.67adabc08d4acp+8"
+          },
+          "y": {
+            "value": "0.6334982296661003",
+            "hex": "0x1.4459e144fac6cp-1"
+          },
+          "none": {
+            "value": "0.9994235213579231",
+            "hex": "0x1.ffb470962bbe7p-1"
+          },
+          "selected": {
+            "value": "0.9994235213579235",
+            "hex": "0x1.ffb470962bbeap-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sin",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "bc76d3927fa8db147f70254e5acce757b847c3d5d2265869ddac87181782e4d9",
+      "file": "sin_float64_edges.npz",
+      "symbols": [
+        "_ZGVdN4v_sin"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_sin"
+      ],
+      "finite_pairs": 3280,
+      "finite_changed": 544,
+      "changed_percent": 16.585365853658537,
+      "p99_ulp": 2,
+      "max_ulp": 2,
+      "max_abs_error": 2.220446049250313e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2736,
+        "1": 448,
+        "2": 96,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        1024,
+        1025,
+        1026,
+        1027,
+        1028
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "sin"
+      ],
+      "worst": [
+        {
+          "index": 1024,
+          "x": {
+            "value": "-1.5707963267948972",
+            "hex": "-0x1.921fb54442d1bp+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.9999999999999998",
+            "hex": "-0x1.ffffffffffffep-1"
+          }
+        },
+        {
+          "index": 1025,
+          "x": {
+            "value": "-1.5707963267948972",
+            "hex": "-0x1.921fb54442d1bp+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.9999999999999998",
+            "hex": "-0x1.ffffffffffffep-1"
+          }
+        },
+        {
+          "index": 1026,
+          "x": {
+            "value": "-1.5707963267948972",
+            "hex": "-0x1.921fb54442d1bp+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.9999999999999998",
+            "hex": "-0x1.ffffffffffffep-1"
+          }
+        },
+        {
+          "index": 1027,
+          "x": {
+            "value": "-1.5707963267948972",
+            "hex": "-0x1.921fb54442d1bp+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.9999999999999998",
+            "hex": "-0x1.ffffffffffffep-1"
+          }
+        },
+        {
+          "index": 1028,
+          "x": {
+            "value": "-1.5707963267948972",
+            "hex": "-0x1.921fb54442d1bp+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.9999999999999998",
+            "hex": "-0x1.ffffffffffffep-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "cos",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "cos_float32_benchmark.npz",
+      "symbols": [
+        "_ZGVbN4v_cosf",
+        "_ZGVdN8v_cosf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_cosf",
+        "_ZGVdN8v_cosf"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 76373,
+      "changed_percent": 29.133987426757812,
+      "p99_ulp": 1,
+      "max_ulp": 2,
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 185771,
+        "1": 76318,
+        "2": 55,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        183,
+        4097,
+        6390,
+        6676,
+        10697
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "cosf"
+      ],
+      "worst": [
+        {
+          "index": 183,
+          "x": {
+            "value": "-0.027921628",
+            "hex": "-0x1.c977cc0000000p-6"
+          },
+          "y": {
+            "value": "0.6311547",
+            "hex": "0x1.4326b60000000p-1"
+          },
+          "none": {
+            "value": "0.99961025",
+            "hex": "0x1.ffccea0000000p-1"
+          },
+          "selected": {
+            "value": "0.9996101",
+            "hex": "0x1.ffcce60000000p-1"
+          }
+        },
+        {
+          "index": 4097,
+          "x": {
+            "value": "-0.22529843",
+            "hex": "-0x1.cd69440000000p-3"
+          },
+          "y": {
+            "value": "-0.83107",
+            "hex": "-0x1.a982020000000p-1"
+          },
+          "none": {
+            "value": "0.97472745",
+            "hex": "0x1.f30f7a0000000p-1"
+          },
+          "selected": {
+            "value": "0.9747276",
+            "hex": "0x1.f30f7e0000000p-1"
+          }
+        },
+        {
+          "index": 6390,
+          "x": {
+            "value": "0.50464886",
+            "hex": "0x1.0261560000000p-1"
+          },
+          "y": {
+            "value": "1.8477147",
+            "hex": "0x1.d903d40000000p+0"
+          },
+          "none": {
+            "value": "0.8753443",
+            "hex": "0x1.c02d200000000p-1"
+          },
+          "selected": {
+            "value": "0.8753444",
+            "hex": "0x1.c02d240000000p-1"
+          }
+        },
+        {
+          "index": 6676,
+          "x": {
+            "value": "-0.06690467",
+            "hex": "-0x1.120aa20000000p-4"
+          },
+          "y": {
+            "value": "0.7325152",
+            "hex": "0x1.770c3c0000000p-1"
+          },
+          "none": {
+            "value": "0.99776274",
+            "hex": "0x1.fedac20000000p-1"
+          },
+          "selected": {
+            "value": "0.9977626",
+            "hex": "0x1.fedabe0000000p-1"
+          }
+        },
+        {
+          "index": 10697,
+          "x": {
+            "value": "-0.4098875",
+            "hex": "-0x1.a3b98c0000000p-2"
+          },
+          "y": {
+            "value": "0.3906194",
+            "hex": "0x1.8ffe880000000p-2"
+          },
+          "none": {
+            "value": "0.91716564",
+            "hex": "0x1.d596bc0000000p-1"
+          },
+          "selected": {
+            "value": "0.91716576",
+            "hex": "0x1.d596c00000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "cos",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "15e39276411a57025c42b6370d74d7addd67073c6e9f3506f7e24b23f4d8a5d5",
+      "file": "cos_float32_wide.npz",
+      "symbols": [
+        "_ZGVbN4v_cosf",
+        "_ZGVdN8v_cosf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_cosf",
+        "_ZGVdN8v_cosf"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 9138,
+      "changed_percent": 13.9434814453125,
+      "p99_ulp": 1,
+      "max_ulp": 2,
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 56398,
+        "1": 9132,
+        "2": 6,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        4141,
+        24184,
+        29885,
+        31161,
+        50346
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "cosf"
+      ],
+      "worst": [
+        {
+          "index": 4141,
+          "x": {
+            "value": "-681.6883",
+            "hex": "-0x1.54d81a0000000p+9"
+          },
+          "y": {
+            "value": "-0.5171999",
+            "hex": "-0x1.08ce6c0000000p-1"
+          },
+          "none": {
+            "value": "-0.999304",
+            "hex": "-0x1.ffa4c60000000p-1"
+          },
+          "selected": {
+            "value": "-0.9993039",
+            "hex": "-0x1.ffa4c20000000p-1"
+          }
+        },
+        {
+          "index": 24184,
+          "x": {
+            "value": "794.9249",
+            "hex": "0x1.8d76640000000p+9"
+          },
+          "y": {
+            "value": "1.7717891",
+            "hex": "0x1.c593f80000000p+0"
+          },
+          "none": {
+            "value": "-0.994804",
+            "hex": "-0x1.fd56f40000000p-1"
+          },
+          "selected": {
+            "value": "-0.9948039",
+            "hex": "-0x1.fd56f00000000p-1"
+          }
+        },
+        {
+          "index": 29885,
+          "x": {
+            "value": "889.0547",
+            "hex": "0x1.bc87000000000p+9"
+          },
+          "y": {
+            "value": "1.7233967",
+            "hex": "0x1.b930860000000p+0"
+          },
+          "none": {
+            "value": "-0.9998715",
+            "hex": "-0x1.ffef280000000p-1"
+          },
+          "selected": {
+            "value": "-0.9998714",
+            "hex": "-0x1.ffef240000000p-1"
+          }
+        },
+        {
+          "index": 31161,
+          "x": {
+            "value": "-314.21228",
+            "hex": "-0x1.3a36580000000p+8"
+          },
+          "y": {
+            "value": "-1.4911109",
+            "hex": "-0x1.7db9720000000p+0"
+          },
+          "none": {
+            "value": "0.99859506",
+            "hex": "0x1.ff47da0000000p-1"
+          },
+          "selected": {
+            "value": "0.99859494",
+            "hex": "0x1.ff47d60000000p-1"
+          }
+        },
+        {
+          "index": 50346,
+          "x": {
+            "value": "0.0004248809",
+            "hex": "0x1.bd851a0000000p-12"
+          },
+          "y": {
+            "value": "-1.8920233",
+            "hex": "-0x1.e45ba40000000p+0"
+          },
+          "none": {
+            "value": "0.9999999",
+            "hex": "0x1.fffffc0000000p-1"
+          },
+          "selected": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "cos",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "d292c17e385f67dbe99295804746cdd8cbdb461f201d82d5c793517c12ee419d",
+      "file": "cos_float32_edges.npz",
+      "symbols": [
+        "_ZGVbN4v_cosf",
+        "_ZGVdN8v_cosf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_cosf",
+        "_ZGVdN8v_cosf"
+      ],
+      "finite_pairs": 3280,
+      "finite_changed": 256,
+      "changed_percent": 7.804878048780488,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 5.960464477539063e-08,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 3024,
+        "1": 256,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        1360,
+        1361,
+        1362,
+        1363,
+        1364
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "cosf"
+      ],
+      "worst": [
+        {
+          "index": 1360,
+          "x": {
+            "value": "-3.1415923",
+            "hex": "-0x1.921fb20000000p+1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.99999994",
+            "hex": "-0x1.fffffe0000000p-1"
+          }
+        },
+        {
+          "index": 1361,
+          "x": {
+            "value": "-3.1415923",
+            "hex": "-0x1.921fb20000000p+1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.99999994",
+            "hex": "-0x1.fffffe0000000p-1"
+          }
+        },
+        {
+          "index": 1362,
+          "x": {
+            "value": "-3.1415923",
+            "hex": "-0x1.921fb20000000p+1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.99999994",
+            "hex": "-0x1.fffffe0000000p-1"
+          }
+        },
+        {
+          "index": 1363,
+          "x": {
+            "value": "-3.1415923",
+            "hex": "-0x1.921fb20000000p+1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.99999994",
+            "hex": "-0x1.fffffe0000000p-1"
+          }
+        },
+        {
+          "index": 1364,
+          "x": {
+            "value": "-3.1415923",
+            "hex": "-0x1.921fb20000000p+1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.0",
+            "hex": "-0x1.0000000000000p+0"
+          },
+          "selected": {
+            "value": "-0.99999994",
+            "hex": "-0x1.fffffe0000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "cos",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "cos_float64_benchmark.npz",
+      "symbols": [
+        "_ZGVdN4v_cos"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_cos"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 163545,
+      "changed_percent": 62.38746643066406,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 3.3306690738754696e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 98599,
+        "1": 141735,
+        "2": 21473,
+        "3": 337,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        718,
+        3096,
+        3409,
+        4456,
+        4801
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "cos"
+      ],
+      "worst": [
+        {
+          "index": 718,
+          "x": {
+            "value": "0.013328044361604618",
+            "hex": "0x1.b4bbbd538ca00p-7"
+          },
+          "y": {
+            "value": "0.5901260330268183",
+            "hex": "0x1.2e24ffd8bc9f0p-1"
+          },
+          "none": {
+            "value": "0.9999111829315239",
+            "hex": "0x1.fff45bcb30ee6p-1"
+          },
+          "selected": {
+            "value": "0.9999111829315243",
+            "hex": "0x1.fff45bcb30ee9p-1"
+          }
+        },
+        {
+          "index": 3096,
+          "x": {
+            "value": "-0.017331941719212818",
+            "hex": "-0x1.1bf76eb70d780p-6"
+          },
+          "y": {
+            "value": "0.6712797930581291",
+            "hex": "0x1.57b1fc2b4cf5cp-1"
+          },
+          "none": {
+            "value": "0.9998498056579949",
+            "hex": "0x1.ffec50506d141p-1"
+          },
+          "selected": {
+            "value": "0.9998498056579952",
+            "hex": "0x1.ffec50506d144p-1"
+          }
+        },
+        {
+          "index": 3409,
+          "x": {
+            "value": "0.018795320330245335",
+            "hex": "0x1.33f14988b8480p-6"
+          },
+          "y": {
+            "value": "0.899234530358092",
+            "hex": "0x1.cc6877e6a4d34p-1"
+          },
+          "none": {
+            "value": "0.999823373166593",
+            "hex": "0x1.ffe8d9630dc89p-1"
+          },
+          "selected": {
+            "value": "0.9998233731665933",
+            "hex": "0x1.ffe8d9630dc8cp-1"
+          }
+        },
+        {
+          "index": 4456,
+          "x": {
+            "value": "-0.01507367950774352",
+            "hex": "-0x1.edef304211000p-7"
+          },
+          "y": {
+            "value": "1.6224508723513518",
+            "hex": "0x1.9f58f0bc1da04p+0"
+          },
+          "none": {
+            "value": "0.9998863942441587",
+            "hex": "0x1.fff11c05fcf0cp-1"
+          },
+          "selected": {
+            "value": "0.999886394244159",
+            "hex": "0x1.fff11c05fcf0fp-1"
+          }
+        },
+        {
+          "index": 4801,
+          "x": {
+            "value": "-0.023866729344473647",
+            "hex": "-0x1.8708517fced00p-6"
+          },
+          "y": {
+            "value": "1.9275808400862195",
+            "hex": "0x1.ed75f01c91076p+0"
+          },
+          "none": {
+            "value": "0.9997152031344346",
+            "hex": "0x1.ffdaabcd8d837p-1"
+          },
+          "selected": {
+            "value": "0.999715203134435",
+            "hex": "0x1.ffdaabcd8d83ap-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "cos",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "5232d9a62d4719d5ddef9b4b8af207e7fc851f5e6786551336138534e43bab0d",
+      "file": "cos_float64_wide.npz",
+      "symbols": [
+        "_ZGVdN4v_cos"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_cos"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 21547,
+      "changed_percent": 32.87811279296875,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 3.3306690738754696e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 43989,
+        "1": 18701,
+        "2": 2787,
+        "3": 59,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        1343,
+        1664,
+        1825,
+        2386,
+        2824
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "cos"
+      ],
+      "worst": [
+        {
+          "index": 1343,
+          "x": {
+            "value": "-697.402382139126",
+            "hex": "-0x1.5cb3814208053p+9"
+          },
+          "y": {
+            "value": "0.39410934104251094",
+            "hex": "0x1.9391662b4d830p-2"
+          },
+          "none": {
+            "value": "0.9995137262468085",
+            "hex": "0x1.ffc0435c442adp-1"
+          },
+          "selected": {
+            "value": "0.9995137262468088",
+            "hex": "0x1.ffc0435c442b0p-1"
+          }
+        },
+        {
+          "index": 1664,
+          "x": {
+            "value": "298.46585867262615",
+            "hex": "0x1.2a774283937ccp+8"
+          },
+          "y": {
+            "value": "-0.6679932773073292",
+            "hex": "-0x1.560336fff7368p-1"
+          },
+          "none": {
+            "value": "-0.9998940548369049",
+            "hex": "-0x1.fff21d11fa8a6p-1"
+          },
+          "selected": {
+            "value": "-0.9998940548369052",
+            "hex": "-0x1.fff21d11fa8a9p-1"
+          }
+        },
+        {
+          "index": 1825,
+          "x": {
+            "value": "213.65790640233968",
+            "hex": "0x1.ab50d91ba3c18p+7"
+          },
+          "y": {
+            "value": "-1.1211988984008503",
+            "hex": "-0x1.1f06e418f1608p+0"
+          },
+          "none": {
+            "value": "0.9995617756290385",
+            "hex": "0x1.ffc68fa1511b2p-1"
+          },
+          "selected": {
+            "value": "0.9995617756290388",
+            "hex": "0x1.ffc68fa1511b5p-1"
+          }
+        },
+        {
+          "index": 2386,
+          "x": {
+            "value": "914.2406203789374",
+            "hex": "0x1.c91ecca60924cp+9"
+          },
+          "y": {
+            "value": "1.5001198957254958",
+            "hex": "0x1.8007db84384dap+0"
+          },
+          "none": {
+            "value": "-0.9993097140998761",
+            "hex": "-0x1.ffa585d944a5ep-1"
+          },
+          "selected": {
+            "value": "-0.9993097140998765",
+            "hex": "-0x1.ffa585d944a61p-1"
+          }
+        },
+        {
+          "index": 2824,
+          "x": {
+            "value": "-549.7527517357111",
+            "hex": "-0x1.12e05a2b3b717p+9"
+          },
+          "y": {
+            "value": "1.8664688915710994",
+            "hex": "0x1.ddd0e7c04c9b2p+0"
+          },
+          "none": {
+            "value": "-0.9996629895281813",
+            "hex": "-0x1.ffd3d3ce171b3p-1"
+          },
+          "selected": {
+            "value": "-0.9996629895281817",
+            "hex": "-0x1.ffd3d3ce171b6p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "cos",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "bc76d3927fa8db147f70254e5acce757b847c3d5d2265869ddac87181782e4d9",
+      "file": "cos_float64_edges.npz",
+      "symbols": [
+        "_ZGVdN4v_cos"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_cos"
+      ],
+      "finite_pairs": 3280,
+      "finite_changed": 496,
+      "changed_percent": 15.121951219512194,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 1.1102230246251565e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2784,
+        "1": 496,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        160,
+        161,
+        162,
+        163,
+        164
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "cos"
+      ],
+      "worst": [
+        {
+          "index": 160,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.5403023058681398",
+            "hex": "0x1.14a280fb5068cp-1"
+          },
+          "selected": {
+            "value": "0.5403023058681397",
+            "hex": "0x1.14a280fb5068bp-1"
+          }
+        },
+        {
+          "index": 161,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.5403023058681398",
+            "hex": "0x1.14a280fb5068cp-1"
+          },
+          "selected": {
+            "value": "0.5403023058681397",
+            "hex": "0x1.14a280fb5068bp-1"
+          }
+        },
+        {
+          "index": 162,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.5403023058681398",
+            "hex": "0x1.14a280fb5068cp-1"
+          },
+          "selected": {
+            "value": "0.5403023058681397",
+            "hex": "0x1.14a280fb5068bp-1"
+          }
+        },
+        {
+          "index": 163,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.5403023058681398",
+            "hex": "0x1.14a280fb5068cp-1"
+          },
+          "selected": {
+            "value": "0.5403023058681397",
+            "hex": "0x1.14a280fb5068bp-1"
+          }
+        },
+        {
+          "index": 164,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.5403023058681398",
+            "hex": "0x1.14a280fb5068cp-1"
+          },
+          "selected": {
+            "value": "0.5403023058681397",
+            "hex": "0x1.14a280fb5068bp-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tan",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-1, 1], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "8eedeac1982d28576d3579740f2a0f4fc663ac99362fd4ca5fd7991f8f403c42",
+      "file": "tan_float32_benchmark.npz",
+      "symbols": [
+        "_ZGVbN4v_tanf",
+        "_ZGVdN8v_tanf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_tanf",
+        "_ZGVdN8v_tanf"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 103097,
+      "changed_percent": 39.32838439941406,
+      "p99_ulp": 1,
+      "max_ulp": 3,
+      "max_abs_error": 2.384185791015625e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 159047,
+        "1": 100616,
+        "2": 2480,
+        "3": 1,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        213309,
+        24,
+        177,
+        225,
+        236
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "tanf"
+      ],
+      "worst": [
+        {
+          "index": 213309,
+          "x": {
+            "value": "-0.70316327",
+            "hex": "-0x1.6805040000000p-1"
+          },
+          "y": {
+            "value": "-1.836171",
+            "hex": "-0x1.d60f4e0000000p+0"
+          },
+          "none": {
+            "value": "-0.84771025",
+            "hex": "-0x1.b207140000000p-1"
+          },
+          "selected": {
+            "value": "-0.84771043",
+            "hex": "-0x1.b2071a0000000p-1"
+          }
+        },
+        {
+          "index": 24,
+          "x": {
+            "value": "0.67579293",
+            "hex": "0x1.5a01880000000p-1"
+          },
+          "y": {
+            "value": "-1.1503643",
+            "hex": "-0x1.267e460000000p+0"
+          },
+          "none": {
+            "value": "0.8017267",
+            "hex": "0x1.9a7bec0000000p-1"
+          },
+          "selected": {
+            "value": "0.8017268",
+            "hex": "0x1.9a7bf00000000p-1"
+          }
+        },
+        {
+          "index": 177,
+          "x": {
+            "value": "-0.6244032",
+            "hex": "-0x1.3fb1c60000000p-1"
+          },
+          "y": {
+            "value": "-0.08521891",
+            "hex": "-0x1.5d0e800000000p-4"
+          },
+          "none": {
+            "value": "-0.72057736",
+            "hex": "-0x1.70ef840000000p-1"
+          },
+          "selected": {
+            "value": "-0.72057724",
+            "hex": "-0x1.70ef800000000p-1"
+          }
+        },
+        {
+          "index": 225,
+          "x": {
+            "value": "0.34865072",
+            "hex": "0x1.6504b20000000p-2"
+          },
+          "y": {
+            "value": "-1.9659871",
+            "hex": "-0x1.f74aee0000000p+0"
+          },
+          "none": {
+            "value": "0.36350018",
+            "hex": "0x1.7439640000000p-2"
+          },
+          "selected": {
+            "value": "0.36350024",
+            "hex": "0x1.7439680000000p-2"
+          }
+        },
+        {
+          "index": 236,
+          "x": {
+            "value": "0.9744686",
+            "hex": "0x1.f2ed8c0000000p-1"
+          },
+          "y": {
+            "value": "-0.4202259",
+            "hex": "-0x1.ae4fb20000000p-2"
+          },
+          "none": {
+            "value": "1.4732764",
+            "hex": "0x1.7928a40000000p+0"
+          },
+          "selected": {
+            "value": "1.4732766",
+            "hex": "0x1.7928a80000000p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tan",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "15e39276411a57025c42b6370d74d7addd67073c6e9f3506f7e24b23f4d8a5d5",
+      "file": "tan_float32_wide.npz",
+      "symbols": [
+        "_ZGVbN4v_tanf",
+        "_ZGVdN8v_tanf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_tanf",
+        "_ZGVdN8v_tanf"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 16900,
+      "changed_percent": 25.787353515625,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 0.0009765625,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 48636,
+        "1": 15883,
+        "2": 1005,
+        "3": 12,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        2482,
+        6838,
+        11609,
+        12055,
+        13075
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "tanf"
+      ],
+      "worst": [
+        {
+          "index": 2482,
+          "x": {
+            "value": "-892.8884",
+            "hex": "-0x1.be71b80000000p+9"
+          },
+          "y": {
+            "value": "-0.5896623",
+            "hex": "-0x1.2de8380000000p-1"
+          },
+          "none": {
+            "value": "-0.80225444",
+            "hex": "-0x1.9ac1180000000p-1"
+          },
+          "selected": {
+            "value": "-0.8022546",
+            "hex": "-0x1.9ac11e0000000p-1"
+          }
+        },
+        {
+          "index": 6838,
+          "x": {
+            "value": "-95.53617",
+            "hex": "-0x1.7e250a0000000p+6"
+          },
+          "y": {
+            "value": "-1.6009145",
+            "hex": "-0x1.99d5880000000p+0"
+          },
+          "none": {
+            "value": "-3.446375",
+            "hex": "-0x1.b922d00000000p+1"
+          },
+          "selected": {
+            "value": "-3.4463742",
+            "hex": "-0x1.b922ca0000000p+1"
+          }
+        },
+        {
+          "index": 11609,
+          "x": {
+            "value": "-293.86777",
+            "hex": "-0x1.25de260000000p+8"
+          },
+          "y": {
+            "value": "-1.6421517",
+            "hex": "-0x1.a4640e0000000p+0"
+          },
+          "none": {
+            "value": "7.717709",
+            "hex": "0x1.edeef20000000p+2"
+          },
+          "selected": {
+            "value": "7.7177076",
+            "hex": "0x1.edeeec0000000p+2"
+          }
+        },
+        {
+          "index": 12055,
+          "x": {
+            "value": "-403.1797",
+            "hex": "-0x1.932e000000000p+8"
+          },
+          "y": {
+            "value": "-1.3219994",
+            "hex": "-0x1.526e8e0000000p+0"
+          },
+          "none": {
+            "value": "-1.7670968",
+            "hex": "-0x1.c460740000000p+0"
+          },
+          "selected": {
+            "value": "-1.7670964",
+            "hex": "-0x1.c4606e0000000p+0"
+          }
+        },
+        {
+          "index": 13075,
+          "x": {
+            "value": "168.92596",
+            "hex": "0x1.51da180000000p+7"
+          },
+          "y": {
+            "value": "-1.6245326",
+            "hex": "-0x1.9fe15e0000000p+0"
+          },
+          "none": {
+            "value": "-0.87713677",
+            "hex": "-0x1.c118120000000p-1"
+          },
+          "selected": {
+            "value": "-0.87713695",
+            "hex": "-0x1.c118180000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tan",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "d292c17e385f67dbe99295804746cdd8cbdb461f201d82d5c793517c12ee419d",
+      "file": "tan_float32_edges.npz",
+      "symbols": [
+        "_ZGVbN4v_tanf",
+        "_ZGVdN8v_tanf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_tanf",
+        "_ZGVdN8v_tanf"
+      ],
+      "finite_pairs": 3280,
+      "finite_changed": 352,
+      "changed_percent": 10.731707317073171,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 1.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2928,
+        "1": 352,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        160,
+        161,
+        162,
+        163,
+        164
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "tanf"
+      ],
+      "worst": [
+        {
+          "index": 160,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077",
+            "hex": "0x1.8eb2460000000p+0"
+          },
+          "selected": {
+            "value": "1.5574079",
+            "hex": "0x1.8eb2480000000p+0"
+          }
+        },
+        {
+          "index": 161,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077",
+            "hex": "0x1.8eb2460000000p+0"
+          },
+          "selected": {
+            "value": "1.5574079",
+            "hex": "0x1.8eb2480000000p+0"
+          }
+        },
+        {
+          "index": 162,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077",
+            "hex": "0x1.8eb2460000000p+0"
+          },
+          "selected": {
+            "value": "1.5574079",
+            "hex": "0x1.8eb2480000000p+0"
+          }
+        },
+        {
+          "index": 163,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077",
+            "hex": "0x1.8eb2460000000p+0"
+          },
+          "selected": {
+            "value": "1.5574079",
+            "hex": "0x1.8eb2480000000p+0"
+          }
+        },
+        {
+          "index": 164,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077",
+            "hex": "0x1.8eb2460000000p+0"
+          },
+          "selected": {
+            "value": "1.5574079",
+            "hex": "0x1.8eb2480000000p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tan",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-1, 1], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "0fd76c6e426718b4826af9732c66c9017f998dc28420a868b735183421fd3681",
+      "file": "tan_float64_benchmark.npz",
+      "symbols": [
+        "_ZGVdN4v_tan"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_tan"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 100549,
+      "changed_percent": 38.35639953613281,
+      "p99_ulp": 1,
+      "max_ulp": 2,
+      "max_abs_error": 4.440892098500626e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 161595,
+        "1": 98145,
+        "2": 2404,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        213,
+        236,
+        607,
+        645,
+        934
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "tan"
+      ],
+      "worst": [
+        {
+          "index": 213,
+          "x": {
+            "value": "-0.9735721958411736",
+            "hex": "-0x1.f2780e0add912p-1"
+          },
+          "y": {
+            "value": "-0.3650227375445714",
+            "hex": "-0x1.75c8854033888p-2"
+          },
+          "none": {
+            "value": "-1.470438106691908",
+            "hex": "-0x1.786ea1bb08adfp+0"
+          },
+          "selected": {
+            "value": "-1.4704381066919077",
+            "hex": "-0x1.786ea1bb08addp+0"
+          }
+        },
+        {
+          "index": 236,
+          "x": {
+            "value": "0.9744685623047658",
+            "hex": "0x1.f2ed8b1c2880cp-1"
+          },
+          "y": {
+            "value": "-0.4202258818345346",
+            "hex": "-0x1.ae4fb18da5fa0p-2"
+          },
+          "none": {
+            "value": "1.4732763278504444",
+            "hex": "0x1.7928a32e16b0ap+0"
+          },
+          "selected": {
+            "value": "1.473276327850444",
+            "hex": "0x1.7928a32e16b08p+0"
+          }
+        },
+        {
+          "index": 607,
+          "x": {
+            "value": "-0.9400417397486445",
+            "hex": "-0x1.e14d26a230d48p-1"
+          },
+          "y": {
+            "value": "-1.8928968776911148",
+            "hex": "-0x1.e494e3c862440p+0"
+          },
+          "none": {
+            "value": "-1.3693544815031387",
+            "hex": "-0x1.5e8e03eaafe06p+0"
+          },
+          "selected": {
+            "value": "-1.3693544815031382",
+            "hex": "-0x1.5e8e03eaafe04p+0"
+          }
+        },
+        {
+          "index": 645,
+          "x": {
+            "value": "0.9918952339228919",
+            "hex": "0x1.fbd9b12d83a16p-1"
+          },
+          "y": {
+            "value": "0.9718877299580604",
+            "hex": "0x1.f19b44bf1b6acp-1"
+          },
+          "none": {
+            "value": "1.529990171604259",
+            "hex": "0x1.87ad6f963de16p+0"
+          },
+          "selected": {
+            "value": "1.5299901716042585",
+            "hex": "0x1.87ad6f963de14p+0"
+          }
+        },
+        {
+          "index": 934,
+          "x": {
+            "value": "0.997381089956074",
+            "hex": "0x1.fea8bbf605354p-1"
+          },
+          "y": {
+            "value": "-0.7171881303498377",
+            "hex": "-0x1.6f334859dd270p-1"
+          },
+          "none": {
+            "value": "1.5484730206557098",
+            "hex": "0x1.8c68ba5674611p+0"
+          },
+          "selected": {
+            "value": "1.5484730206557094",
+            "hex": "0x1.8c68ba567460fp+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tan",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "5232d9a62d4719d5ddef9b4b8af207e7fc851f5e6786551336138534e43bab0d",
+      "file": "tan_float64_wide.npz",
+      "symbols": [
+        "_ZGVdN4v_tan"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_tan"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 20539,
+      "changed_percent": 31.34002685546875,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 9.094947017729282e-13,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 44997,
+        "1": 19737,
+        "2": 798,
+        "3": 4,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        2826,
+        4591,
+        12927,
+        21481,
+        39
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "tan"
+      ],
+      "worst": [
+        {
+          "index": 2826,
+          "x": {
+            "value": "547.682880033896",
+            "hex": "0x1.11d7689cea566p+9"
+          },
+          "y": {
+            "value": "-0.19022061746034202",
+            "hex": "-0x1.8592631823030p-3"
+          },
+          "none": {
+            "value": "1.7263081514290741",
+            "hex": "0x1.b9ef54bd34c24p+0"
+          },
+          "selected": {
+            "value": "1.7263081514290748",
+            "hex": "0x1.b9ef54bd34c27p+0"
+          }
+        },
+        {
+          "index": 4591,
+          "x": {
+            "value": "-397.952552870463",
+            "hex": "-0x1.8df3da8142598p+8"
+          },
+          "y": {
+            "value": "1.7179182078094044",
+            "hex": "0x1.b7c97cd7be8c0p+0"
+          },
+          "none": {
+            "value": "1.664165928679402",
+            "hex": "0x1.aa06c73ecba5ep+0"
+          },
+          "selected": {
+            "value": "1.6641659286794026",
+            "hex": "0x1.aa06c73ecba61p+0"
+          }
+        },
+        {
+          "index": 12927,
+          "x": {
+            "value": "384.9728642144896",
+            "hex": "0x1.80f90da110ae8p+8"
+          },
+          "y": {
+            "value": "1.2656252335098457",
+            "hex": "0x1.440003eaeaca6p+0"
+          },
+          "none": {
+            "value": "-7.784287262345271",
+            "hex": "-0x1.f231c3339c4edp+2"
+          },
+          "selected": {
+            "value": "-7.7842872623452735",
+            "hex": "-0x1.f231c3339c4f0p+2"
+          }
+        },
+        {
+          "index": 21481,
+          "x": {
+            "value": "-80.91239274080397",
+            "hex": "-0x1.43a64a485b718p+6"
+          },
+          "y": {
+            "value": "0.6159548852120569",
+            "hex": "0x1.3b5e704f982d0p-1"
+          },
+          "none": {
+            "value": "0.9677614237736654",
+            "hex": "0x1.ef7e6ce2e0678p-1"
+          },
+          "selected": {
+            "value": "0.9677614237736657",
+            "hex": "0x1.ef7e6ce2e067bp-1"
+          }
+        },
+        {
+          "index": 39,
+          "x": {
+            "value": "114.18765330760107",
+            "hex": "0x1.c8c028304c880p+6"
+          },
+          "y": {
+            "value": "-1.5219812389148077",
+            "hex": "-0x1.85a08ffe43c0ep+0"
+          },
+          "none": {
+            "value": "1.9185784177806668",
+            "hex": "0x1.eb27f4872dec7p+0"
+          },
+          "selected": {
+            "value": "1.9185784177806664",
+            "hex": "0x1.eb27f4872dec5p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tan",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "bc76d3927fa8db147f70254e5acce757b847c3d5d2265869ddac87181782e4d9",
+      "file": "tan_float64_edges.npz",
+      "symbols": [
+        "_ZGVdN4v_tan"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_tan"
+      ],
+      "finite_pairs": 3280,
+      "finite_changed": 544,
+      "changed_percent": 16.585365853658537,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 0.25,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2736,
+        "1": 544,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        160,
+        161,
+        162,
+        163,
+        164
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "tan"
+      ],
+      "worst": [
+        {
+          "index": 160,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077246549023",
+            "hex": "0x1.8eb245cbee3a6p+0"
+          },
+          "selected": {
+            "value": "1.557407724654902",
+            "hex": "0x1.8eb245cbee3a5p+0"
+          }
+        },
+        {
+          "index": 161,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077246549023",
+            "hex": "0x1.8eb245cbee3a6p+0"
+          },
+          "selected": {
+            "value": "1.557407724654902",
+            "hex": "0x1.8eb245cbee3a5p+0"
+          }
+        },
+        {
+          "index": 162,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077246549023",
+            "hex": "0x1.8eb245cbee3a6p+0"
+          },
+          "selected": {
+            "value": "1.557407724654902",
+            "hex": "0x1.8eb245cbee3a5p+0"
+          }
+        },
+        {
+          "index": 163,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077246549023",
+            "hex": "0x1.8eb245cbee3a6p+0"
+          },
+          "selected": {
+            "value": "1.557407724654902",
+            "hex": "0x1.8eb245cbee3a5p+0"
+          }
+        },
+        {
+          "index": 164,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "1.5574077246549023",
+            "hex": "0x1.8eb245cbee3a6p+0"
+          },
+          "selected": {
+            "value": "1.557407724654902",
+            "hex": "0x1.8eb245cbee3a5p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "exp",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-4, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "19f22760ad02bee6f80e828834dbe6193a2dadb4683dfec4462e853188a5df99",
+      "file": "exp_float32_benchmark.npz",
+      "symbols": [
+        "_ZGVbN4v_expf",
+        "_ZGVdN8v_expf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_expf",
+        "_ZGVdN8v_expf"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 136421,
+      "changed_percent": 52.04048156738281,
+      "p99_ulp": 2,
+      "max_ulp": 2,
+      "max_abs_error": 7.62939453125e-06,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 125723,
+        "1": 120141,
+        "2": 16280,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        8,
+        31,
+        34,
+        61,
+        74
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "expf"
+      ],
+      "worst": [
+        {
+          "index": 8,
+          "x": {
+            "value": "2.5045402",
+            "hex": "0x1.4094c60000000p+1"
+          },
+          "y": {
+            "value": "0.53663605",
+            "hex": "0x1.12c1f60000000p-1"
+          },
+          "none": {
+            "value": "12.23793",
+            "hex": "0x1.879d200000000p+3"
+          },
+          "selected": {
+            "value": "12.237932",
+            "hex": "0x1.879d240000000p+3"
+          }
+        },
+        {
+          "index": 31,
+          "x": {
+            "value": "-1.0902804",
+            "hex": "-0x1.171c9e0000000p+0"
+          },
+          "y": {
+            "value": "-1.5568538",
+            "hex": "-0x1.8e8df80000000p+0"
+          },
+          "none": {
+            "value": "0.3361222",
+            "hex": "0x1.58306c0000000p-2"
+          },
+          "selected": {
+            "value": "0.33612227",
+            "hex": "0x1.5830700000000p-2"
+          }
+        },
+        {
+          "index": 34,
+          "x": {
+            "value": "2.4216485",
+            "hex": "0x1.35f8940000000p+1"
+          },
+          "y": {
+            "value": "-1.8612764",
+            "hex": "-0x1.dc7c9c0000000p+0"
+          },
+          "none": {
+            "value": "11.264414",
+            "hex": "0x1.6876140000000p+3"
+          },
+          "selected": {
+            "value": "11.264412",
+            "hex": "0x1.6876100000000p+3"
+          }
+        },
+        {
+          "index": 61,
+          "x": {
+            "value": "-0.2672018",
+            "hex": "-0x1.119d5a0000000p-2"
+          },
+          "y": {
+            "value": "0.35180977",
+            "hex": "0x1.6840d20000000p-2"
+          },
+          "none": {
+            "value": "0.76551855",
+            "hex": "0x1.87f20c0000000p-1"
+          },
+          "selected": {
+            "value": "0.76551867",
+            "hex": "0x1.87f2100000000p-1"
+          }
+        },
+        {
+          "index": 74,
+          "x": {
+            "value": "0.43048584",
+            "hex": "0x1.b8d1480000000p-2"
+          },
+          "y": {
+            "value": "-1.5281007",
+            "hex": "-0x1.87319c0000000p+0"
+          },
+          "none": {
+            "value": "1.5380045",
+            "hex": "0x1.89baaa0000000p+0"
+          },
+          "selected": {
+            "value": "1.5380048",
+            "hex": "0x1.89baae0000000p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "exp",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Uniform [log(minsub) - log(2), log(max) + log(2)]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "193df2a3af48e6d813c161a0735069e4a2639d196e6dab19eff9f833a4b95941",
+      "file": "exp_float32_wide.npz",
+      "symbols": [
+        "_ZGVbN4v_expf",
+        "_ZGVdN8v_expf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_expf",
+        "_ZGVdN8v_expf"
+      ],
+      "finite_pairs": 65287,
+      "finite_changed": 30360,
+      "changed_percent": 46.50236647418322,
+      "p99_ulp": 2,
+      "max_ulp": 2,
+      "max_abs_error": 1.0141204801825835e+31,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 34927,
+        "1": 26773,
+        "2": 3587,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        7,
+        20,
+        107,
+        177,
+        178
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "expf"
+      ],
+      "worst": [
+        {
+          "index": 7,
+          "x": {
+            "value": "40.591904",
+            "hex": "0x1.44bc380000000p+5"
+          },
+          "y": {
+            "value": "-1.0185896",
+            "hex": "-0x1.04c24a0000000p+0"
+          },
+          "none": {
+            "value": "4.2544142e+17",
+            "hex": "0x1.79de2e0000000p+58"
+          },
+          "selected": {
+            "value": "4.254415e+17",
+            "hex": "0x1.79de320000000p+58"
+          }
+        },
+        {
+          "index": 20,
+          "x": {
+            "value": "46.154583",
+            "hex": "0x1.713c960000000p+5"
+          },
+          "y": {
+            "value": "-0.24960841",
+            "hex": "-0x1.ff32b20000000p-3"
+          },
+          "none": {
+            "value": "1.1083596e+20",
+            "hex": "0x1.808a1c0000000p+66"
+          },
+          "selected": {
+            "value": "1.1083598e+20",
+            "hex": "0x1.808a200000000p+66"
+          }
+        },
+        {
+          "index": 107,
+          "x": {
+            "value": "64.187485",
+            "hex": "0x1.00bffc0000000p+6"
+          },
+          "y": {
+            "value": "-1.6110421",
+            "hex": "-0x1.9c6d420000000p+0"
+          },
+          "none": {
+            "value": "7.5209105e+27",
+            "hex": "0x1.84d26c0000000p+92"
+          },
+          "selected": {
+            "value": "7.5209117e+27",
+            "hex": "0x1.84d2700000000p+92"
+          }
+        },
+        {
+          "index": 177,
+          "x": {
+            "value": "-67.654106",
+            "hex": "-0x1.0e9dce0000000p+6"
+          },
+          "y": {
+            "value": "0.8665216",
+            "hex": "0x1.bba8b80000000p-1"
+          },
+          "none": {
+            "value": "4.151404e-30",
+            "hex": "0x1.50cd4a0000000p-98"
+          },
+          "selected": {
+            "value": "4.151405e-30",
+            "hex": "0x1.50cd4e0000000p-98"
+          }
+        },
+        {
+          "index": 178,
+          "x": {
+            "value": "72.511734",
+            "hex": "0x1.220c040000000p+6"
+          },
+          "y": {
+            "value": "-0.34533727",
+            "hex": "-0x1.61a0180000000p-2"
+          },
+          "none": {
+            "value": "3.1006014e+31",
+            "hex": "0x1.8759d60000000p+104"
+          },
+          "selected": {
+            "value": "3.100602e+31",
+            "hex": "0x1.8759da0000000p+104"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "exp",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "aa610a83c77b1b847970f8de06cc89a478712ab78aa5350261c645d05669764b",
+      "file": "exp_float32_edges.npz",
+      "symbols": [
+        "_ZGVbN4v_expf",
+        "_ZGVdN8v_expf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_expf",
+        "_ZGVdN8v_expf"
+      ],
+      "finite_pairs": 1408,
+      "finite_changed": 288,
+      "changed_percent": 20.454545454545453,
+      "p99_ulp": 2,
+      "max_ulp": 2,
+      "max_abs_error": 2.384185791015625e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 1120,
+        "1": 224,
+        "2": 64,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        320,
+        321,
+        322,
+        323,
+        324
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "expf"
+      ],
+      "worst": [
+        {
+          "index": 320,
+          "x": {
+            "value": "-1.0000001",
+            "hex": "-0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.3678794",
+            "hex": "0x1.78b5600000000p-2"
+          },
+          "selected": {
+            "value": "0.36787945",
+            "hex": "0x1.78b5640000000p-2"
+          }
+        },
+        {
+          "index": 321,
+          "x": {
+            "value": "-1.0000001",
+            "hex": "-0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.3678794",
+            "hex": "0x1.78b5600000000p-2"
+          },
+          "selected": {
+            "value": "0.36787945",
+            "hex": "0x1.78b5640000000p-2"
+          }
+        },
+        {
+          "index": 322,
+          "x": {
+            "value": "-1.0000001",
+            "hex": "-0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.3678794",
+            "hex": "0x1.78b5600000000p-2"
+          },
+          "selected": {
+            "value": "0.36787945",
+            "hex": "0x1.78b5640000000p-2"
+          }
+        },
+        {
+          "index": 323,
+          "x": {
+            "value": "-1.0000001",
+            "hex": "-0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.3678794",
+            "hex": "0x1.78b5600000000p-2"
+          },
+          "selected": {
+            "value": "0.36787945",
+            "hex": "0x1.78b5640000000p-2"
+          }
+        },
+        {
+          "index": 324,
+          "x": {
+            "value": "-1.0000001",
+            "hex": "-0x1.0000020000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "0.3678794",
+            "hex": "0x1.78b5600000000p-2"
+          },
+          "selected": {
+            "value": "0.36787945",
+            "hex": "0x1.78b5640000000p-2"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "exp",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-4, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "1f8a4ca17b8afc332f2cc2d0dd32d4e72333dd0a59657253e8d1e90f3216d83b",
+      "file": "exp_float64_benchmark.npz",
+      "symbols": [
+        "_ZGVdN4v_exp"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_exp"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 113690,
+      "changed_percent": 43.369293212890625,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 1.4210854715202004e-14,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 148454,
+        "1": 109288,
+        "2": 4396,
+        "3": 6,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        23422,
+        41567,
+        51789,
+        125696,
+        204427
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "exp"
+      ],
+      "worst": [
+        {
+          "index": 23422,
+          "x": {
+            "value": "-0.004404538187932516",
+            "hex": "-0x1.20a7e3789d800p-8"
+          },
+          "y": {
+            "value": "-0.9805484972388538",
+            "hex": "-0x1.f60a73df90ce4p-1"
+          },
+          "none": {
+            "value": "0.9956051475647515",
+            "hex": "0x1.fdbff5390a2b5p-1"
+          },
+          "selected": {
+            "value": "0.9956051475647512",
+            "hex": "0x1.fdbff5390a2b2p-1"
+          }
+        },
+        {
+          "index": 41567,
+          "x": {
+            "value": "2.004643766105418",
+            "hex": "0x1.00982abbc6ca2p+1"
+          },
+          "y": {
+            "value": "1.5752704483859197",
+            "hex": "0x1.9344ec922c3b6p+0"
+          },
+          "none": {
+            "value": "7.42344894154677",
+            "hex": "0x1.db19c996de074p+2"
+          },
+          "selected": {
+            "value": "7.423448941546767",
+            "hex": "0x1.db19c996de071p+2"
+          }
+        },
+        {
+          "index": 51789,
+          "x": {
+            "value": "-2.2205814993782482",
+            "hex": "-0x1.1c3c03baf7530p+1"
+          },
+          "y": {
+            "value": "-1.9651015538667305",
+            "hex": "-0x1.f710e53b2d27ep+0"
+          },
+          "none": {
+            "value": "0.10854597105477036",
+            "hex": "0x1.bc9ab33caf507p-4"
+          },
+          "selected": {
+            "value": "0.10854597105477032",
+            "hex": "0x1.bc9ab33caf504p-4"
+          }
+        },
+        {
+          "index": 125696,
+          "x": {
+            "value": "-3.5784424477924333",
+            "hex": "-0x1.ca0a66f1f17f0p+1"
+          },
+          "y": {
+            "value": "-0.7133187965566488",
+            "hex": "-0x1.6d381f0daa6fcp-1"
+          },
+          "none": {
+            "value": "0.02791914994095207",
+            "hex": "0x1.c96d66fb6cb30p-6"
+          },
+          "selected": {
+            "value": "0.02791914994095206",
+            "hex": "0x1.c96d66fb6cb2dp-6"
+          }
+        },
+        {
+          "index": 204427,
+          "x": {
+            "value": "1.9484487817030995",
+            "hex": "0x1.f2cd8a13588a0p+0"
+          },
+          "y": {
+            "value": "-0.7312660314366011",
+            "hex": "-0x1.76688053644e4p-1"
+          },
+          "none": {
+            "value": "7.017793003929028",
+            "hex": "0x1.c12385447e41fp+2"
+          },
+          "selected": {
+            "value": "7.017793003929025",
+            "hex": "0x1.c12385447e41cp+2"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "exp",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Uniform [log(minsub) - log(2), log(max) + log(2)]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "237e60b9ebc491ca61e0aee84436ddaa120abac0fb50b0773382ef412f2d14fd",
+      "file": "exp_float64_wide.npz",
+      "symbols": [
+        "_ZGVdN4v_exp"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_exp"
+      ],
+      "finite_pairs": 65500,
+      "finite_changed": 27715,
+      "changed_percent": 42.31297709923664,
+      "p99_ulp": 2,
+      "max_ulp": 3,
+      "max_abs_error": 4.9896007738368e+291,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 37785,
+        "1": 26582,
+        "2": 1130,
+        "3": 3,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        17950,
+        25401,
+        41583,
+        143,
+        151
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "exp"
+      ],
+      "worst": [
+        {
+          "index": 17950,
+          "x": {
+            "value": "-45.76633250231737",
+            "hex": "-0x1.6e2172ef5a850p+5"
+          },
+          "y": {
+            "value": "0.006635882038214191",
+            "hex": "0x1.b2e3a05591000p-8"
+          },
+          "none": {
+            "value": "1.3302532765018434e-20",
+            "hex": "0x1.f68e33de10ceap-67"
+          },
+          "selected": {
+            "value": "1.330253276501843e-20",
+            "hex": "0x1.f68e33de10ce7p-67"
+          }
+        },
+        {
+          "index": 25401,
+          "x": {
+            "value": "-267.6973048174527",
+            "hex": "-0x1.0bb282918a4d7p+8"
+          },
+          "y": {
+            "value": "-0.1223336033857092",
+            "hex": "-0x1.f514149be5320p-4"
+          },
+          "none": {
+            "value": "5.502216784986949e-117",
+            "hex": "0x1.bc00c9fa7505bp-387"
+          },
+          "selected": {
+            "value": "5.502216784986947e-117",
+            "hex": "0x1.bc00c9fa75058p-387"
+          }
+        },
+        {
+          "index": 41583,
+          "x": {
+            "value": "422.1141063842707",
+            "hex": "0x1.a61d361374b52p+8"
+          },
+          "y": {
+            "value": "0.31926461533753514",
+            "hex": "0x1.46ed4da694350p-2"
+          },
+          "none": {
+            "value": "2.0981046013058462e+183",
+            "hex": "0x1.f9a05b79384a0p+608"
+          },
+          "selected": {
+            "value": "2.0981046013058455e+183",
+            "hex": "0x1.f9a05b793849dp+608"
+          }
+        },
+        {
+          "index": 143,
+          "x": {
+            "value": "680.4128086858794",
+            "hex": "0x1.5434d6ea3eadbp+9"
+          },
+          "y": {
+            "value": "-0.8216981465410109",
+            "hex": "-0x1.a4b59e9527a88p-1"
+          },
+          "none": {
+            "value": "3.158844362481891e+295",
+            "hex": "0x1.8badb1deea3c7p+981"
+          },
+          "selected": {
+            "value": "3.158844362481892e+295",
+            "hex": "0x1.8badb1deea3c9p+981"
+          }
+        },
+        {
+          "index": 151,
+          "x": {
+            "value": "574.5778657566447",
+            "hex": "0x1.1f49f7814f223p+9"
+          },
+          "y": {
+            "value": "-1.1216438866442022",
+            "hex": "-0x1.1f240dc2e52a8p+0"
+          },
+          "none": {
+            "value": "3.4355519645233307e+249",
+            "hex": "0x1.eb5c3d9845061p+828"
+          },
+          "selected": {
+            "value": "3.4355519645233315e+249",
+            "hex": "0x1.eb5c3d9845063p+828"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "exp",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "8099bc74536ef8804f35435d782dd05cfa136cf93dde996c399b44ccc39b31ad",
+      "file": "exp_float64_edges.npz",
+      "symbols": [
+        "_ZGVdN4v_exp"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_exp"
+      ],
+      "finite_pairs": 1424,
+      "finite_changed": 192,
+      "changed_percent": 13.48314606741573,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 4.440892098500626e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 1232,
+        "1": 192,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        160,
+        161,
+        162,
+        163,
+        164
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "exp"
+      ],
+      "worst": [
+        {
+          "index": 160,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "2.718281828459045",
+            "hex": "0x1.5bf0a8b145769p+1"
+          },
+          "selected": {
+            "value": "2.7182818284590455",
+            "hex": "0x1.5bf0a8b14576ap+1"
+          }
+        },
+        {
+          "index": 161,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "2.718281828459045",
+            "hex": "0x1.5bf0a8b145769p+1"
+          },
+          "selected": {
+            "value": "2.7182818284590455",
+            "hex": "0x1.5bf0a8b14576ap+1"
+          }
+        },
+        {
+          "index": 162,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "2.718281828459045",
+            "hex": "0x1.5bf0a8b145769p+1"
+          },
+          "selected": {
+            "value": "2.7182818284590455",
+            "hex": "0x1.5bf0a8b14576ap+1"
+          }
+        },
+        {
+          "index": 163,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "2.718281828459045",
+            "hex": "0x1.5bf0a8b145769p+1"
+          },
+          "selected": {
+            "value": "2.7182818284590455",
+            "hex": "0x1.5bf0a8b14576ap+1"
+          }
+        },
+        {
+          "index": 164,
+          "x": {
+            "value": "1.0",
+            "hex": "0x1.0000000000000p+0"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "2.718281828459045",
+            "hex": "0x1.5bf0a8b145769p+1"
+          },
+          "selected": {
+            "value": "2.7182818284590455",
+            "hex": "0x1.5bf0a8b14576ap+1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "b12ed922b608c14c225a6154acd3166194b9f5625cefa00456fc0ba47a729709",
+      "file": "log_float32_benchmark.npz",
+      "symbols": [
+        "_ZGVbN4v_logf",
+        "_ZGVdN8v_logf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_logf",
+        "_ZGVdN8v_logf"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 75196,
+      "changed_percent": 28.68499755859375,
+      "p99_ulp": 2,
+      "max_ulp": 4,
+      "max_abs_error": 2.384185791015625e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 186948,
+        "1": 60332,
+        "2": 12461,
+        "3": 2333,
+        "4": 70,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        3499,
+        7601,
+        9136,
+        14120,
+        17963
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "logf"
+      ],
+      "worst": [
+        {
+          "index": 3499,
+          "x": {
+            "value": "0.8864819",
+            "hex": "0x1.c5e0f40000000p-1"
+          },
+          "y": {
+            "value": "-0.30490467",
+            "hex": "-0x1.3838ee0000000p-2"
+          },
+          "none": {
+            "value": "-0.12049459",
+            "hex": "-0x1.ed8bbc0000000p-4"
+          },
+          "selected": {
+            "value": "-0.12049462",
+            "hex": "-0x1.ed8bc40000000p-4"
+          }
+        },
+        {
+          "index": 7601,
+          "x": {
+            "value": "0.8828505",
+            "hex": "0x1.c404fc0000000p-1"
+          },
+          "y": {
+            "value": "-0.28031757",
+            "hex": "-0x1.1f0b920000000p-2"
+          },
+          "none": {
+            "value": "-0.12459937",
+            "hex": "-0x1.fe5be80000000p-4"
+          },
+          "selected": {
+            "value": "-0.1245994",
+            "hex": "-0x1.fe5bf00000000p-4"
+          }
+        },
+        {
+          "index": 9136,
+          "x": {
+            "value": "0.8853294",
+            "hex": "0x1.c549e60000000p-1"
+          },
+          "y": {
+            "value": "-1.3873284",
+            "hex": "-0x1.6327f40000000p+0"
+          },
+          "none": {
+            "value": "-0.12179547",
+            "hex": "-0x1.f2dfce0000000p-4"
+          },
+          "selected": {
+            "value": "-0.1217955",
+            "hex": "-0x1.f2dfd60000000p-4"
+          }
+        },
+        {
+          "index": 14120,
+          "x": {
+            "value": "0.88285846",
+            "hex": "0x1.c406060000000p-1"
+          },
+          "y": {
+            "value": "0.17623214",
+            "hex": "0x1.68ec660000000p-3"
+          },
+          "none": {
+            "value": "-0.12459039",
+            "hex": "-0x1.fe527e0000000p-4"
+          },
+          "selected": {
+            "value": "-0.12459042",
+            "hex": "-0x1.fe52860000000p-4"
+          }
+        },
+        {
+          "index": 17963,
+          "x": {
+            "value": "0.88421",
+            "hex": "0x1.c4b72c0000000p-1"
+          },
+          "y": {
+            "value": "-0.67592835",
+            "hex": "-0x1.5a13480000000p-1"
+          },
+          "none": {
+            "value": "-0.123060696",
+            "hex": "-0x1.f80e7e0000000p-4"
+          },
+          "selected": {
+            "value": "-0.123060726",
+            "hex": "-0x1.f80e860000000p-4"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "c6635fbdfc2546c930bacb0ea0aeb61c4e0b9de42f1ca4c8b177b19bbf9b1702",
+      "file": "log_float32_wide.npz",
+      "symbols": [
+        "_ZGVbN4v_logf",
+        "_ZGVdN8v_logf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_logf",
+        "_ZGVdN8v_logf"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 2926,
+      "changed_percent": 4.4647216796875,
+      "p99_ulp": 1,
+      "max_ulp": 4,
+      "max_abs_error": 7.62939453125e-06,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 62610,
+        "1": 2762,
+        "2": 129,
+        "3": 34,
+        "4": 1,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        28224,
+        1006,
+        3497,
+        4853,
+        6166
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "logf"
+      ],
+      "worst": [
+        {
+          "index": 28224,
+          "x": {
+            "value": "0.8847087",
+            "hex": "0x1.c4f88a0000000p-1"
+          },
+          "y": {
+            "value": "0.32379723",
+            "hex": "0x1.4b91800000000p-2"
+          },
+          "none": {
+            "value": "-0.122496836",
+            "hex": "-0x1.f5bf3e0000000p-4"
+          },
+          "selected": {
+            "value": "-0.122496866",
+            "hex": "-0x1.f5bf460000000p-4"
+          }
+        },
+        {
+          "index": 1006,
+          "x": {
+            "value": "0.78100306",
+            "hex": "0x1.8fdfa20000000p-1"
+          },
+          "y": {
+            "value": "-0.9030027",
+            "hex": "-0x1.ce565e0000000p-1"
+          },
+          "none": {
+            "value": "-0.24717622",
+            "hex": "-0x1.fa37860000000p-3"
+          },
+          "selected": {
+            "value": "-0.24717617",
+            "hex": "-0x1.fa37800000000p-3"
+          }
+        },
+        {
+          "index": 3497,
+          "x": {
+            "value": "0.7801832",
+            "hex": "0x1.8f742c0000000p-1"
+          },
+          "y": {
+            "value": "-1.457158",
+            "hex": "-0x1.75084e0000000p+0"
+          },
+          "none": {
+            "value": "-0.24822652",
+            "hex": "-0x1.fc5e300000000p-3"
+          },
+          "selected": {
+            "value": "-0.24822648",
+            "hex": "-0x1.fc5e2a0000000p-3"
+          }
+        },
+        {
+          "index": 4853,
+          "x": {
+            "value": "0.6891777",
+            "hex": "0x1.60dbe60000000p-1"
+          },
+          "y": {
+            "value": "0.6771911",
+            "hex": "0x1.5ab8ca0000000p-1"
+          },
+          "none": {
+            "value": "-0.37225613",
+            "hex": "-0x1.7d30b60000000p-2"
+          },
+          "selected": {
+            "value": "-0.37225622",
+            "hex": "-0x1.7d30bc0000000p-2"
+          }
+        },
+        {
+          "index": 6166,
+          "x": {
+            "value": "0.69754434",
+            "hex": "0x1.6524880000000p-1"
+          },
+          "y": {
+            "value": "0.12103242",
+            "hex": "0x1.efbfb00000000p-4"
+          },
+          "none": {
+            "value": "-0.3601892",
+            "hex": "-0x1.70d5700000000p-2"
+          },
+          "selected": {
+            "value": "-0.3601893",
+            "hex": "-0x1.70d5760000000p-2"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "log_float32_edges.npz",
+      "symbols": [
+        "_ZGVbN4v_logf",
+        "_ZGVdN8v_logf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4v_logf",
+        "_ZGVdN8v_logf"
+      ],
+      "finite_pairs": 880,
+      "finite_changed": 32,
+      "changed_percent": 3.6363636363636362,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 848,
+        "1": 32,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        192,
+        193,
+        194,
+        195,
+        196
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "logf"
+      ],
+      "worst": [
+        {
+          "index": 192,
+          "x": {
+            "value": "0.9999999",
+            "hex": "0x1.fffffc0000000p-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.1920929e-07",
+            "hex": "-0x1.0000000000000p-23"
+          },
+          "selected": {
+            "value": "-1.192093e-07",
+            "hex": "-0x1.0000020000000p-23"
+          }
+        },
+        {
+          "index": 193,
+          "x": {
+            "value": "0.9999999",
+            "hex": "0x1.fffffc0000000p-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.1920929e-07",
+            "hex": "-0x1.0000000000000p-23"
+          },
+          "selected": {
+            "value": "-1.192093e-07",
+            "hex": "-0x1.0000020000000p-23"
+          }
+        },
+        {
+          "index": 194,
+          "x": {
+            "value": "0.9999999",
+            "hex": "0x1.fffffc0000000p-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.1920929e-07",
+            "hex": "-0x1.0000000000000p-23"
+          },
+          "selected": {
+            "value": "-1.192093e-07",
+            "hex": "-0x1.0000020000000p-23"
+          }
+        },
+        {
+          "index": 195,
+          "x": {
+            "value": "0.9999999",
+            "hex": "0x1.fffffc0000000p-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.1920929e-07",
+            "hex": "-0x1.0000000000000p-23"
+          },
+          "selected": {
+            "value": "-1.192093e-07",
+            "hex": "-0x1.0000020000000p-23"
+          }
+        },
+        {
+          "index": 196,
+          "x": {
+            "value": "0.9999999",
+            "hex": "0x1.fffffc0000000p-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-1.1920929e-07",
+            "hex": "-0x1.0000000000000p-23"
+          },
+          "selected": {
+            "value": "-1.192093e-07",
+            "hex": "-0x1.0000020000000p-23"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "af80a0e02cd27ec93e8725b5191a30db17e2d61792169c1709a91aabf0f76b96",
+      "file": "log_float64_benchmark.npz",
+      "symbols": [
+        "_ZGVdN4v_log"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_log"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 63611,
+      "changed_percent": 24.265670776367188,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 4.440892098500626e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 198533,
+        "1": 63611,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        0,
+        2,
+        3,
+        4,
+        14
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "log"
+      ],
+      "worst": [
+        {
+          "index": 0,
+          "x": {
+            "value": "3.4117758221624244",
+            "hex": "0x1.b4b511f4bc4ddp+1"
+          },
+          "y": {
+            "value": "-1.8714120082148136",
+            "hex": "-0x1.df14db7c9fd2ap+0"
+          },
+          "none": {
+            "value": "1.2272329247049163",
+            "hex": "0x1.3a2befdc2e9a9p+0"
+          },
+          "selected": {
+            "value": "1.227232924704916",
+            "hex": "0x1.3a2befdc2e9a8p+0"
+          }
+        },
+        {
+          "index": 2,
+          "x": {
+            "value": "2.511187578892325",
+            "hex": "0x1.416e9836bb62ep+1"
+          },
+          "y": {
+            "value": "0.771431467142456",
+            "hex": "0x1.8af910b4f6dc0p-1"
+          },
+          "none": {
+            "value": "0.9207557802496549",
+            "hex": "0x1.d76d4d378ceb0p-1"
+          },
+          "selected": {
+            "value": "0.9207557802496548",
+            "hex": "0x1.d76d4d378ceafp-1"
+          }
+        },
+        {
+          "index": 3,
+          "x": {
+            "value": "2.721019849850083",
+            "hex": "0x1.5c4a60e16fbc6p+1"
+          },
+          "y": {
+            "value": "-0.21731529498818958",
+            "hex": "-0x1.bd0fcd2728b00p-3"
+          },
+          "none": {
+            "value": "1.0010067548314951",
+            "hex": "0x1.0041fa8b138c7p+0"
+          },
+          "selected": {
+            "value": "1.0010067548314954",
+            "hex": "0x1.0041fa8b138c8p+0"
+          }
+        },
+        {
+          "index": 4,
+          "x": {
+            "value": "1.3634199007757826",
+            "hex": "0x1.5d09162c8c2c5p+0"
+          },
+          "y": {
+            "value": "0.5893710505990084",
+            "hex": "0x1.2dc20ad710558p-1"
+          },
+          "none": {
+            "value": "0.3099961762723098",
+            "hex": "0x1.3d6fa33be6034p-2"
+          },
+          "selected": {
+            "value": "0.30999617627230974",
+            "hex": "0x1.3d6fa33be6033p-2"
+          }
+        },
+        {
+          "index": 14,
+          "x": {
+            "value": "5.650549934023628",
+            "hex": "0x1.69a29c30c2f8ep+2"
+          },
+          "y": {
+            "value": "0.4038159746278063",
+            "hex": "0x1.9d81ef5283e28p-2"
+          },
+          "none": {
+            "value": "1.7317528738772656",
+            "hex": "0x1.bb5428060e8efp+0"
+          },
+          "selected": {
+            "value": "1.7317528738772654",
+            "hex": "0x1.bb5428060e8eep+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "664528859861b1c4b61dcde463f3e50576a907cff6d70c795443278a586a2e94",
+      "file": "log_float64_wide.npz",
+      "symbols": [
+        "_ZGVdN4v_log"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_log"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 13834,
+      "changed_percent": 21.1090087890625,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 1.1368683772161603e-13,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 51702,
+        "1": 13834,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        6,
+        17,
+        23,
+        24,
+        25
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "log"
+      ],
+      "worst": [
+        {
+          "index": 6,
+          "x": {
+            "value": "3.272382660276062e+118",
+            "hex": "0x1.9f417eee4c18dp+393"
+          },
+          "y": {
+            "value": "1.0728347012663413",
+            "hex": "0x1.12a54b83f3ef0p+0"
+          },
+          "none": {
+            "value": "272.8905593351619",
+            "hex": "0x1.10e3fbb253ab0p+8"
+          },
+          "selected": {
+            "value": "272.89055933516187",
+            "hex": "0x1.10e3fbb253aafp+8"
+          }
+        },
+        {
+          "index": 17,
+          "x": {
+            "value": "2.5768737090632742e-11",
+            "hex": "0x1.c55413236af15p-36"
+          },
+          "y": {
+            "value": "-0.14821112518468516",
+            "hex": "-0x1.2f89507c929b0p-3"
+          },
+          "none": {
+            "value": "-24.38185909942547",
+            "hex": "-0x1.861c18497b660p+4"
+          },
+          "selected": {
+            "value": "-24.381859099425466",
+            "hex": "-0x1.861c18497b65fp+4"
+          }
+        },
+        {
+          "index": 23,
+          "x": {
+            "value": "1.5928396415143955e-12",
+            "hex": "0x1.c0583137ac767p-40"
+          },
+          "y": {
+            "value": "0.05855878238616263",
+            "hex": "0x1.dfb6aae7bfb00p-5"
+          },
+          "none": {
+            "value": "-27.165502754528163",
+            "hex": "-0x1.b2a5e637618acp+4"
+          },
+          "selected": {
+            "value": "-27.16550275452816",
+            "hex": "-0x1.b2a5e637618abp+4"
+          }
+        },
+        {
+          "index": 24,
+          "x": {
+            "value": "2.4124138448155745e+208",
+            "hex": "0x1.2c8fff41ffb13p+692"
+          },
+          "y": {
+            "value": "0.9556123118125202",
+            "hex": "0x1.e9460455c78a8p-1"
+          },
+          "none": {
+            "value": "479.8183271843613",
+            "hex": "0x1.dfd17de3ee427p+8"
+          },
+          "selected": {
+            "value": "479.81832718436124",
+            "hex": "0x1.dfd17de3ee426p+8"
+          }
+        },
+        {
+          "index": 25,
+          "x": {
+            "value": "1.1911284324050872e-185",
+            "hex": "0x1.9e9da7b43c7f5p-615"
+          },
+          "y": {
+            "value": "0.6527689149862863",
+            "hex": "0x1.4e37ba2b6c4a4p-1"
+          },
+          "none": {
+            "value": "-425.80334108356664",
+            "hex": "-0x1.a9cda7c2e173bp+8"
+          },
+          "selected": {
+            "value": "-425.8033410835666",
+            "hex": "-0x1.a9cda7c2e173ap+8"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "log_float64_edges.npz",
+      "symbols": [
+        "_ZGVdN4v_log"
+      ],
+      "vector_calls": [
+        "_ZGVdN4v_log"
+      ],
+      "finite_pairs": 880,
+      "finite_changed": 48,
+      "changed_percent": 5.454545454545454,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 2.220446049250313e-16,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 832,
+        "1": 48,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        192,
+        193,
+        194,
+        195,
+        196
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "log"
+      ],
+      "worst": [
+        {
+          "index": 192,
+          "x": {
+            "value": "0.9999999999999998",
+            "hex": "0x1.ffffffffffffep-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-2.2204460492503136e-16",
+            "hex": "-0x1.0000000000001p-52"
+          },
+          "selected": {
+            "value": "-2.220446049250313e-16",
+            "hex": "-0x1.0000000000000p-52"
+          }
+        },
+        {
+          "index": 193,
+          "x": {
+            "value": "0.9999999999999998",
+            "hex": "0x1.ffffffffffffep-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-2.2204460492503136e-16",
+            "hex": "-0x1.0000000000001p-52"
+          },
+          "selected": {
+            "value": "-2.220446049250313e-16",
+            "hex": "-0x1.0000000000000p-52"
+          }
+        },
+        {
+          "index": 194,
+          "x": {
+            "value": "0.9999999999999998",
+            "hex": "0x1.ffffffffffffep-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-2.2204460492503136e-16",
+            "hex": "-0x1.0000000000001p-52"
+          },
+          "selected": {
+            "value": "-2.220446049250313e-16",
+            "hex": "-0x1.0000000000000p-52"
+          }
+        },
+        {
+          "index": 195,
+          "x": {
+            "value": "0.9999999999999998",
+            "hex": "0x1.ffffffffffffep-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-2.2204460492503136e-16",
+            "hex": "-0x1.0000000000001p-52"
+          },
+          "selected": {
+            "value": "-2.220446049250313e-16",
+            "hex": "-0x1.0000000000000p-52"
+          }
+        },
+        {
+          "index": 196,
+          "x": {
+            "value": "0.9999999999999998",
+            "hex": "0x1.ffffffffffffep-1"
+          },
+          "y": {
+            "value": "0.0",
+            "hex": "0x0.0p+0"
+          },
+          "none": {
+            "value": "-2.2204460492503136e-16",
+            "hex": "-0x1.0000000000001p-52"
+          },
+          "selected": {
+            "value": "-2.220446049250313e-16",
+            "hex": "-0x1.0000000000000p-52"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log1p",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-0.75, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "9fe5fb1e85e127fc2afdcbcda70b9c2c0d4dd8cbe6c351d8a175cd7425e67c01",
+      "file": "log1p_float32_benchmark.npz",
+      "symbols": [
+        "log1pf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log1pf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log1p",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Thirds: uniform [-2^-10, 2^-10], uniform [-1, 8], positive finite bits; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "62becab458008c8877663beddce314053eb47dbcfe235326eec7e82b22346ade",
+      "file": "log1p_float32_wide.npz",
+      "symbols": [
+        "log1pf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log1pf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log1p",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "log1p_float32_edges.npz",
+      "symbols": [
+        "log1pf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 1200,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 1200,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log1pf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log1p",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-0.75, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "71fec884df7d991fa72f05d3b64912c2188fd2d71a577fb9517a2f29b826d975",
+      "file": "log1p_float64_benchmark.npz",
+      "symbols": [
+        "log1p"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log1p"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log1p",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Thirds: uniform [-2^-10, 2^-10], uniform [-1, 8], positive finite bits; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "44c3143eb9838f386bce63f9650a8f058c0fa74b1103e7bf1312082942e118f1",
+      "file": "log1p_float64_wide.npz",
+      "symbols": [
+        "log1p"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log1p"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log1p",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "log1p_float64_edges.npz",
+      "symbols": [
+        "log1p"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 1200,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 1200,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log1p"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log2",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "b12ed922b608c14c225a6154acd3166194b9f5625cefa00456fc0ba47a729709",
+      "file": "log2_float32_benchmark.npz",
+      "symbols": [
+        "log2f"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log2f"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log2",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "c6635fbdfc2546c930bacb0ea0aeb61c4e0b9de42f1ca4c8b177b19bbf9b1702",
+      "file": "log2_float32_wide.npz",
+      "symbols": [
+        "log2f"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log2f"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log2",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "log2_float32_edges.npz",
+      "symbols": [
+        "log2f"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 880,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 880,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log2f"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log2",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "af80a0e02cd27ec93e8725b5191a30db17e2d61792169c1709a91aabf0f76b96",
+      "file": "log2_float64_benchmark.npz",
+      "symbols": [
+        "log2"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log2"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log2",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "664528859861b1c4b61dcde463f3e50576a907cff6d70c795443278a586a2e94",
+      "file": "log2_float64_wide.npz",
+      "symbols": [
+        "log2"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log2"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "log2",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "log2_float64_edges.npz",
+      "symbols": [
+        "log2"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 880,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 880,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "log2"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "expm1",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "expm1_float32_benchmark.npz",
+      "symbols": [
+        "expm1f"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "expm1f"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "expm1",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half exp range, half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "90f793d25ef2def58e34f9510577a930f9aaa9438705dbffe794d68ea072aa90",
+      "file": "expm1_float32_wide.npz",
+      "symbols": [
+        "expm1f"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65416,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65416,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "expm1f"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "expm1",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "aa610a83c77b1b847970f8de06cc89a478712ab78aa5350261c645d05669764b",
+      "file": "expm1_float32_edges.npz",
+      "symbols": [
+        "expm1f"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 1408,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 1408,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "expm1f"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "expm1",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "expm1_float64_benchmark.npz",
+      "symbols": [
+        "expm1"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "expm1"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "expm1",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half exp range, half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "1d14c2625afd8c4193516b70f1f38f6a39e2863dd045964eb0b776b17ee8b8e7",
+      "file": "expm1_float64_wide.npz",
+      "symbols": [
+        "expm1"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65517,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65517,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "expm1"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "expm1",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "8099bc74536ef8804f35435d782dd05cfa136cf93dde996c399b44ccc39b31ad",
+      "file": "expm1_float64_edges.npz",
+      "symbols": [
+        "expm1"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 1424,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 1424,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "expm1"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tanh",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "tanh_float32_benchmark.npz",
+      "symbols": [
+        "tanhf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "tanhf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tanh",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "7332805b13fe0f5ef84bdc9201b8ce3d3856b6418d0c09ce27670f5d19fefd86",
+      "file": "tanh_float32_wide.npz",
+      "symbols": [
+        "tanhf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "tanhf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tanh",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "ffd5f1e072efa20cb601176f0a04d8e0ecda86f40d0536b2be4d5bc7a8ee9aef",
+      "file": "tanh_float32_edges.npz",
+      "symbols": [
+        "tanhf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 2160,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2160,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "tanhf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tanh",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "tanh_float64_benchmark.npz",
+      "symbols": [
+        "tanh"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "tanh"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tanh",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "23b9af8c017e8f9548db94adb771d2823db3cb1e17a30aee0c2601e9d6ade4a6",
+      "file": "tanh_float64_wide.npz",
+      "symbols": [
+        "tanh"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "tanh"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "tanh",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "43e5ddfeda1a98a261993e64255a0001efbbd38ceeedd7d82b433356862496bb",
+      "file": "tanh_float64_edges.npz",
+      "symbols": [
+        "tanh"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 2160,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2160,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "tanh"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sqrt",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "b12ed922b608c14c225a6154acd3166194b9f5625cefa00456fc0ba47a729709",
+      "file": "sqrt_float32_benchmark.npz",
+      "symbols": [
+        "vsqrtps"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "vsqrtps"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sqrt",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "c6635fbdfc2546c930bacb0ea0aeb61c4e0b9de42f1ca4c8b177b19bbf9b1702",
+      "file": "sqrt_float32_wide.npz",
+      "symbols": [
+        "vsqrtps"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "vsqrtps"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sqrt",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "sqrt_float32_edges.npz",
+      "symbols": [
+        "vsqrtps"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 912,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 912,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "vsqrtps"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sqrt",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "af80a0e02cd27ec93e8725b5191a30db17e2d61792169c1709a91aabf0f76b96",
+      "file": "sqrt_float64_benchmark.npz",
+      "symbols": [
+        "vsqrtpd"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "vsqrtpd"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sqrt",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "664528859861b1c4b61dcde463f3e50576a907cff6d70c795443278a586a2e94",
+      "file": "sqrt_float64_wide.npz",
+      "symbols": [
+        "vsqrtpd"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "vsqrtpd"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "sqrt",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "sqrt_float64_edges.npz",
+      "symbols": [
+        "vsqrtpd"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 912,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 912,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "vsqrtpd"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "power",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "15fcadc30f8474cba44a03a3fa9c3437a505b33732da60bc66d80f4ef7789d37",
+      "file": "power_float32_benchmark.npz",
+      "symbols": [
+        "_ZGVbN4vv_powf",
+        "_ZGVdN8vv_powf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4vv_powf",
+        "_ZGVdN8vv_powf"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 13674,
+      "changed_percent": 5.216217041015625,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 3.814697265625e-06,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 248470,
+        "1": 13674,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        7,
+        31,
+        38,
+        75,
+        113
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "powf"
+      ],
+      "worst": [
+        {
+          "index": 7,
+          "x": {
+            "value": "3.0216908",
+            "hex": "0x1.82c6c40000000p+1"
+          },
+          "y": {
+            "value": "0.4079067",
+            "hex": "0x1.a1b24c0000000p-2"
+          },
+          "none": {
+            "value": "1.5699911",
+            "hex": "0x1.91eaf00000000p+0"
+          },
+          "selected": {
+            "value": "1.5699912",
+            "hex": "0x1.91eaf20000000p+0"
+          }
+        },
+        {
+          "index": 31,
+          "x": {
+            "value": "1.5343955",
+            "hex": "0x1.88ce240000000p+0"
+          },
+          "y": {
+            "value": "-1.5568538",
+            "hex": "-0x1.8e8df80000000p+0"
+          },
+          "none": {
+            "value": "0.5134791",
+            "hex": "0x1.06e6bc0000000p-1"
+          },
+          "selected": {
+            "value": "0.5134792",
+            "hex": "0x1.06e6be0000000p-1"
+          }
+        },
+        {
+          "index": 38,
+          "x": {
+            "value": "3.0758054",
+            "hex": "0x1.89b3fe0000000p+1"
+          },
+          "y": {
+            "value": "0.18647431",
+            "hex": "0x1.7de63e0000000p-3"
+          },
+          "none": {
+            "value": "1.2330816",
+            "hex": "0x1.3bab3c0000000p+0"
+          },
+          "selected": {
+            "value": "1.2330815",
+            "hex": "0x1.3bab3a0000000p+0"
+          }
+        },
+        {
+          "index": 75,
+          "x": {
+            "value": "0.97061557",
+            "hex": "0x1.f0f4860000000p-1"
+          },
+          "y": {
+            "value": "-1.4295934",
+            "hex": "-0x1.6df9d60000000p+0"
+          },
+          "none": {
+            "value": "1.0435594",
+            "hex": "0x1.0b26b60000000p+0"
+          },
+          "selected": {
+            "value": "1.0435593",
+            "hex": "0x1.0b26b40000000p+0"
+          }
+        },
+        {
+          "index": 113,
+          "x": {
+            "value": "2.2757018",
+            "hex": "0x1.234a320000000p+1"
+          },
+          "y": {
+            "value": "-0.14635788",
+            "hex": "-0x1.2bbdae0000000p-3"
+          },
+          "none": {
+            "value": "0.88661146",
+            "hex": "0x1.c5f1f00000000p-1"
+          },
+          "selected": {
+            "value": "0.8866115",
+            "hex": "0x1.c5f1f20000000p-1"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "power",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive bases log-uniform [2^-8, 2^8]; exponents uniform [-8, 8]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "6e29c6ea931aa76da2f7001d1cbdabfde1006dbec12be2b9a391a7ecab5ec6a6",
+      "file": "power_float32_wide.npz",
+      "symbols": [
+        "_ZGVbN4vv_powf",
+        "_ZGVdN8vv_powf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4vv_powf",
+        "_ZGVdN8vv_powf"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 3438,
+      "changed_percent": 5.2459716796875,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 274877906944.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 62098,
+        "1": 3438,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        10,
+        15,
+        23,
+        24,
+        37
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "powf"
+      ],
+      "worst": [
+        {
+          "index": 10,
+          "x": {
+            "value": "0.063310295",
+            "hex": "0x1.0351a80000000p-4"
+          },
+          "y": {
+            "value": "-1.9570651",
+            "hex": "-0x1.f502380000000p+0"
+          },
+          "none": {
+            "value": "221.61172",
+            "hex": "0x1.bb39340000000p+7"
+          },
+          "selected": {
+            "value": "221.61174",
+            "hex": "0x1.bb39360000000p+7"
+          }
+        },
+        {
+          "index": 15,
+          "x": {
+            "value": "0.019644834",
+            "hex": "0x1.41dc680000000p-6"
+          },
+          "y": {
+            "value": "2.3872817",
+            "hex": "0x1.3192720000000p+1"
+          },
+          "none": {
+            "value": "8.423705e-05",
+            "hex": "0x1.6150d80000000p-14"
+          },
+          "selected": {
+            "value": "8.423704e-05",
+            "hex": "0x1.6150d60000000p-14"
+          }
+        },
+        {
+          "index": 23,
+          "x": {
+            "value": "0.8062571",
+            "hex": "0x1.9ccdbc0000000p-1"
+          },
+          "y": {
+            "value": "7.343182",
+            "hex": "0x1.d5f6b20000000p+2"
+          },
+          "none": {
+            "value": "0.20569246",
+            "hex": "0x1.a542160000000p-3"
+          },
+          "selected": {
+            "value": "0.20569247",
+            "hex": "0x1.a542180000000p-3"
+          }
+        },
+        {
+          "index": 24,
+          "x": {
+            "value": "42.41032",
+            "hex": "0x1.5348560000000p+5"
+          },
+          "y": {
+            "value": "-3.0327697",
+            "hex": "-0x1.8431cc0000000p+1"
+          },
+          "none": {
+            "value": "1.1594542e-05",
+            "hex": "0x1.850c5c0000000p-17"
+          },
+          "selected": {
+            "value": "1.1594543e-05",
+            "hex": "0x1.850c5e0000000p-17"
+          }
+        },
+        {
+          "index": 37,
+          "x": {
+            "value": "0.3239601",
+            "hex": "0x1.4bbc320000000p-2"
+          },
+          "y": {
+            "value": "0.8701576",
+            "hex": "0x1.bd854c0000000p-1"
+          },
+          "none": {
+            "value": "0.3750166",
+            "hex": "0x1.80045a0000000p-2"
+          },
+          "selected": {
+            "value": "0.37501657",
+            "hex": "0x1.8004580000000p-2"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "power",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "349 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 5632,
+      "input_sha256": "3f6dcd30690279171f0b68c0ad54b5f3ea37bc844a5827ed7075cb96c6626949",
+      "file": "power_float32_edges.npz",
+      "symbols": [
+        "_ZGVbN4vv_powf",
+        "_ZGVdN8vv_powf"
+      ],
+      "vector_calls": [
+        "_ZGVbN4vv_powf",
+        "_ZGVdN8vv_powf"
+      ],
+      "finite_pairs": 3760,
+      "finite_changed": 80,
+      "changed_percent": 2.127659574468085,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 1.1920928955078125e-07,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 3680,
+        "1": 80,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        4304,
+        4305,
+        4306,
+        4307,
+        4308
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "powf"
+      ],
+      "worst": [
+        {
+          "index": 4304,
+          "x": {
+            "value": "0.99999994",
+            "hex": "0x1.fffffe0000000p-1"
+          },
+          "y": {
+            "value": "-3.0",
+            "hex": "-0x1.8000000000000p+1"
+          },
+          "none": {
+            "value": "1.0000002",
+            "hex": "0x1.0000040000000p+0"
+          },
+          "selected": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          }
+        },
+        {
+          "index": 4305,
+          "x": {
+            "value": "0.99999994",
+            "hex": "0x1.fffffe0000000p-1"
+          },
+          "y": {
+            "value": "-3.0",
+            "hex": "-0x1.8000000000000p+1"
+          },
+          "none": {
+            "value": "1.0000002",
+            "hex": "0x1.0000040000000p+0"
+          },
+          "selected": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          }
+        },
+        {
+          "index": 4306,
+          "x": {
+            "value": "0.99999994",
+            "hex": "0x1.fffffe0000000p-1"
+          },
+          "y": {
+            "value": "-3.0",
+            "hex": "-0x1.8000000000000p+1"
+          },
+          "none": {
+            "value": "1.0000002",
+            "hex": "0x1.0000040000000p+0"
+          },
+          "selected": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          }
+        },
+        {
+          "index": 4307,
+          "x": {
+            "value": "0.99999994",
+            "hex": "0x1.fffffe0000000p-1"
+          },
+          "y": {
+            "value": "-3.0",
+            "hex": "-0x1.8000000000000p+1"
+          },
+          "none": {
+            "value": "1.0000002",
+            "hex": "0x1.0000040000000p+0"
+          },
+          "selected": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          }
+        },
+        {
+          "index": 4308,
+          "x": {
+            "value": "0.99999994",
+            "hex": "0x1.fffffe0000000p-1"
+          },
+          "y": {
+            "value": "-3.0",
+            "hex": "-0x1.8000000000000p+1"
+          },
+          "none": {
+            "value": "1.0000002",
+            "hex": "0x1.0000040000000p+0"
+          },
+          "selected": {
+            "value": "1.0000001",
+            "hex": "0x1.0000020000000p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "power",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "42450af19d60c2e9b51f2423978c32314eeb5cf9a0180bdaf944f015eda78c5b",
+      "file": "power_float64_benchmark.npz",
+      "symbols": [
+        "_ZGVdN4vv_pow"
+      ],
+      "vector_calls": [
+        "_ZGVdN4vv_pow"
+      ],
+      "finite_pairs": 262144,
+      "finite_changed": 67517,
+      "changed_percent": 25.755691528320312,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 7.105427357601002e-15,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 194627,
+        "1": 67517,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        1,
+        7,
+        19,
+        23,
+        25
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "pow"
+      ],
+      "worst": [
+        {
+          "index": 1,
+          "x": {
+            "value": "1.5455522521355678",
+            "hex": "0x1.8ba94ff92e70ep+0"
+          },
+          "y": {
+            "value": "1.4625923641503706",
+            "hex": "0x1.766c740367b8ep+0"
+          },
+          "none": {
+            "value": "1.8903941495152488",
+            "hex": "0x1.e3f0def8b7bd0p+0"
+          },
+          "selected": {
+            "value": "1.8903941495152485",
+            "hex": "0x1.e3f0def8b7bcfp+0"
+          }
+        },
+        {
+          "index": 7,
+          "x": {
+            "value": "3.0216908098855835",
+            "hex": "0x1.82c6c3b38a89fp+1"
+          },
+          "y": {
+            "value": "0.40790671920302923",
+            "hex": "0x1.a1b24c8b2ec30p-2"
+          },
+          "none": {
+            "value": "1.569991176266343",
+            "hex": "0x1.91eaf11512905p+0"
+          },
+          "selected": {
+            "value": "1.5699911762663432",
+            "hex": "0x1.91eaf11512906p+0"
+          }
+        },
+        {
+          "index": 19,
+          "x": {
+            "value": "0.8031376142385038",
+            "hex": "0x1.9b34da76af056p-1"
+          },
+          "y": {
+            "value": "-0.6129580405539916",
+            "hex": "-0x1.39d5a2e3ffd04p-1"
+          },
+          "none": {
+            "value": "1.1438254511721944",
+            "hex": "0x1.24d1bea91df50p+0"
+          },
+          "selected": {
+            "value": "1.1438254511721941",
+            "hex": "0x1.24d1bea91df4fp+0"
+          }
+        },
+        {
+          "index": 23,
+          "x": {
+            "value": "1.9872552343012857",
+            "hex": "0x1.fcbcc25020fbap+0"
+          },
+          "y": {
+            "value": "-1.110561877519344",
+            "hex": "-0x1.1c4dc8802143cp+0"
+          },
+          "none": {
+            "value": "0.4664132365537457",
+            "hex": "0x1.dd9b6e75aded1p-2"
+          },
+          "selected": {
+            "value": "0.46641323655374567",
+            "hex": "0x1.dd9b6e75aded0p-2"
+          }
+        },
+        {
+          "index": 25,
+          "x": {
+            "value": "0.8985226787311013",
+            "hex": "0x1.cc0b2a1fba91fp-1"
+          },
+          "y": {
+            "value": "-1.357232743314488",
+            "hex": "-0x1.5b739ae598994p+0"
+          },
+          "none": {
+            "value": "1.1563036703914555",
+            "hex": "0x1.2803847093790p+0"
+          },
+          "selected": {
+            "value": "1.1563036703914558",
+            "hex": "0x1.2803847093791p+0"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "power",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive bases log-uniform [2^-8, 2^8]; exponents uniform [-8, 8]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "7c7453b5f24e5930e220efa89effe4870c04fd546585c2bfeabc355a1092775b",
+      "file": "power_float64_wide.npz",
+      "symbols": [
+        "_ZGVdN4vv_pow"
+      ],
+      "vector_calls": [
+        "_ZGVdN4vv_pow"
+      ],
+      "finite_pairs": 65536,
+      "finite_changed": 16858,
+      "changed_percent": 25.7232666015625,
+      "p99_ulp": 1,
+      "max_ulp": 1,
+      "max_abs_error": 1024.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 48678,
+        "1": 16858,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        4,
+        6,
+        7,
+        13,
+        15
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "pow"
+      ],
+      "worst": [
+        {
+          "index": 4,
+          "x": {
+            "value": "0.02234591172744511",
+            "hex": "0x1.6e1d8c04653f3p-6"
+          },
+          "y": {
+            "value": "7.573462588414117",
+            "hex": "0x1.e4b39c6dadf60p+2"
+          },
+          "none": {
+            "value": "3.145671801760226e-13",
+            "hex": "0x1.622bd11118a4bp-42"
+          },
+          "selected": {
+            "value": "3.1456718017602263e-13",
+            "hex": "0x1.622bd11118a4cp-42"
+          }
+        },
+        {
+          "index": 6,
+          "x": {
+            "value": "8.413853666479573",
+            "hex": "0x1.0d3e4a0b5b80bp+3"
+          },
+          "y": {
+            "value": "6.102956677083826",
+            "hex": "0x1.8696d79a3eb62p+2"
+          },
+          "none": {
+            "value": "441778.0499895227",
+            "hex": "0x1.af6c833307415p+18"
+          },
+          "selected": {
+            "value": "441778.04998952267",
+            "hex": "0x1.af6c833307414p+18"
+          }
+        },
+        {
+          "index": 7,
+          "x": {
+            "value": "15.56819516072755",
+            "hex": "0x1.f22ea79e223fdp+3"
+          },
+          "y": {
+            "value": "-4.074358392014464",
+            "hex": "-0x1.04c249b378a84p+2"
+          },
+          "none": {
+            "value": "1.388014524495639e-05",
+            "hex": "0x1.d1bd8a2f21163p-17"
+          },
+          "selected": {
+            "value": "1.3880145244956391e-05",
+            "hex": "0x1.d1bd8a2f21164p-17"
+          }
+        },
+        {
+          "index": 13,
+          "x": {
+            "value": "0.0361985641356305",
+            "hex": "0x1.2889e423fd791p-5"
+          },
+          "y": {
+            "value": "6.953360243201745",
+            "hex": "0x1.bd03daae76eb2p+2"
+          },
+          "none": {
+            "value": "9.507398403509968e-11",
+            "hex": "0x1.a223ca2e40f43p-34"
+          },
+          "selected": {
+            "value": "9.507398403509966e-11",
+            "hex": "0x1.a223ca2e40f42p-34"
+          }
+        },
+        {
+          "index": 15,
+          "x": {
+            "value": "0.01964483417150819",
+            "hex": "0x1.41dc6813537dep-6"
+          },
+          "y": {
+            "value": "2.3872817177155152",
+            "hex": "0x1.31927283f6a2cp+1"
+          },
+          "none": {
+            "value": "8.423702688721863e-05",
+            "hex": "0x1.6150d1a3504e2p-14"
+          },
+          "selected": {
+            "value": "8.423702688721865e-05",
+            "hex": "0x1.6150d1a3504e3p-14"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "power",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "349 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 5632,
+      "input_sha256": "80b65cf85b39c59416e7eb7d54d3021ed1dc849bc8470fbd7a69ecd1227390ec",
+      "file": "power_float64_edges.npz",
+      "symbols": [
+        "_ZGVdN4vv_pow"
+      ],
+      "vector_calls": [
+        "_ZGVdN4vv_pow"
+      ],
+      "finite_pairs": 3760,
+      "finite_changed": 32,
+      "changed_percent": 0.851063829787234,
+      "p99_ulp": 0,
+      "max_ulp": 1,
+      "max_abs_error": 1.488565707357403e+138,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 3728,
+        "1": 32,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [
+        1776,
+        1777,
+        1778,
+        1779,
+        1780
+      ],
+      "vectorized": true,
+      "baseline_symbols": [
+        "pow"
+      ],
+      "worst": [
+        {
+          "index": 1776,
+          "x": {
+            "value": "1.7976931348623157e+308",
+            "hex": "0x1.fffffffffffffp+1023"
+          },
+          "y": {
+            "value": "0.5",
+            "hex": "0x1.0000000000000p-1"
+          },
+          "none": {
+            "value": "1.3407807929942596e+154",
+            "hex": "0x1.fffffffffffffp+511"
+          },
+          "selected": {
+            "value": "1.3407807929942597e+154",
+            "hex": "0x1.0000000000000p+512"
+          }
+        },
+        {
+          "index": 1777,
+          "x": {
+            "value": "1.7976931348623157e+308",
+            "hex": "0x1.fffffffffffffp+1023"
+          },
+          "y": {
+            "value": "0.5",
+            "hex": "0x1.0000000000000p-1"
+          },
+          "none": {
+            "value": "1.3407807929942596e+154",
+            "hex": "0x1.fffffffffffffp+511"
+          },
+          "selected": {
+            "value": "1.3407807929942597e+154",
+            "hex": "0x1.0000000000000p+512"
+          }
+        },
+        {
+          "index": 1778,
+          "x": {
+            "value": "1.7976931348623157e+308",
+            "hex": "0x1.fffffffffffffp+1023"
+          },
+          "y": {
+            "value": "0.5",
+            "hex": "0x1.0000000000000p-1"
+          },
+          "none": {
+            "value": "1.3407807929942596e+154",
+            "hex": "0x1.fffffffffffffp+511"
+          },
+          "selected": {
+            "value": "1.3407807929942597e+154",
+            "hex": "0x1.0000000000000p+512"
+          }
+        },
+        {
+          "index": 1779,
+          "x": {
+            "value": "1.7976931348623157e+308",
+            "hex": "0x1.fffffffffffffp+1023"
+          },
+          "y": {
+            "value": "0.5",
+            "hex": "0x1.0000000000000p-1"
+          },
+          "none": {
+            "value": "1.3407807929942596e+154",
+            "hex": "0x1.fffffffffffffp+511"
+          },
+          "selected": {
+            "value": "1.3407807929942597e+154",
+            "hex": "0x1.0000000000000p+512"
+          }
+        },
+        {
+          "index": 1780,
+          "x": {
+            "value": "1.7976931348623157e+308",
+            "hex": "0x1.fffffffffffffp+1023"
+          },
+          "y": {
+            "value": "0.5",
+            "hex": "0x1.0000000000000p-1"
+          },
+          "none": {
+            "value": "1.3407807929942596e+154",
+            "hex": "0x1.fffffffffffffp+511"
+          },
+          "selected": {
+            "value": "1.3407807929942597e+154",
+            "hex": "0x1.0000000000000p+512"
+          }
+        }
+      ],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "erf",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "erf_float32_benchmark.npz",
+      "symbols": [
+        "erff"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "erff"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "erf",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "7332805b13fe0f5ef84bdc9201b8ce3d3856b6418d0c09ce27670f5d19fefd86",
+      "file": "erf_float32_wide.npz",
+      "symbols": [
+        "erff"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "erff"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "erf",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "ffd5f1e072efa20cb601176f0a04d8e0ecda86f40d0536b2be4d5bc7a8ee9aef",
+      "file": "erf_float32_edges.npz",
+      "symbols": [
+        "erff"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 2160,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2160,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "erff"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "erf",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "erf_float64_benchmark.npz",
+      "symbols": [
+        "erf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 262144,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 262144,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "erf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "erf",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "23b9af8c017e8f9548db94adb771d2823db3cb1e17a30aee0c2601e9d6ade4a6",
+      "file": "erf_float64_wide.npz",
+      "symbols": [
+        "erf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 65536,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 65536,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "erf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    },
+    {
+      "provider": "libmvec",
+      "operation": "erf",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "43e5ddfeda1a98a261993e64255a0001efbbd38ceeedd7d82b433356862496bb",
+      "file": "erf_float64_edges.npz",
+      "symbols": [
+        "erf"
+      ],
+      "vector_calls": [],
+      "finite_pairs": 2160,
+      "finite_changed": 0,
+      "changed_percent": 0.0,
+      "p99_ulp": 0,
+      "max_ulp": 0,
+      "max_abs_error": 0.0,
+      "max_abs_error_overflow": false,
+      "histogram": {
+        "0": 2160,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        ">4": 0
+      },
+      "nan_mismatch": 0,
+      "infinity_mismatch": 0,
+      "special_mismatch": 0,
+      "signed_zero_differences": 0,
+      "worst_indices": [],
+      "vectorized": false,
+      "baseline_symbols": [
+        "erf"
+      ],
+      "worst": [],
+      "special_examples": [],
+      "zero_sign_examples": []
+    }
+  ]
+}

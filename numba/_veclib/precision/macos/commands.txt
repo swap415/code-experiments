@@ -1,0 +1,8 @@
+cd /Users/USER/dev/numba/issues/_veclib
+env PYTHONPATH=/path/to/llvmlite-vector-library-wiring:/Users/USER/dev/numba /Users/USER/miniconda3/envs/numba-capstone/bin/python precision.py --output precision/macos --providers none accelerate darwin_libsystem_m
+
+Isolated llvmlite build:
+git clone --shared --single-branch --branch vector-library-wiring /Users/USER/dev/llvmlite /path/to/llvmlite-vector-library-wiring
+cmake -S ffi -B ffi/build -G Ninja -DCMAKE_BUILD_TYPE=Release -DLLVMLITE_LTO=OFF -DLLVM_DIR=/Users/USER/miniconda3/envs/numba_main/lib/cmake/llvm
+cmake --build ffi/build --parallel 4
+cp ffi/build/libllvmlite.dylib llvmlite/binding/libllvmlite.dylib

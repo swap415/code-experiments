@@ -33,3 +33,13 @@ reports from macOS and Linux. Python bytecode was omitted. Local user paths and
 hostnames in saved records were replaced with placeholders; measurements and
 library basenames were preserved. The summary table heading was corrected to
 match the comparison its generator computes.
+
+## Precision update (2026-10-01)
+
+The vector math precision study adds code, 216 compact comparison records,
+provider manifests, 240 LLVM IR and assembly files, and regenerable reports.
+The 360 compressed output-array snapshots (about 397 MB) and one scratch
+array remain in the original ignored checkout. Manifests retain their file
+names and input hashes. Local user and temporary paths in published records
+were replaced with placeholders. `PRECISION.md` regenerates from the compact
+comparison JSON; `RESULTS.md` also uses the previously saved benchmark runs.

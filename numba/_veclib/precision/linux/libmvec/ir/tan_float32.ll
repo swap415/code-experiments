@@ -1,0 +1,397 @@
+; ModuleID = 'kernel_for.<locals>.kernel'
+source_filename = "<string>"
+target datalayout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"
+target triple = "x86_64-unknown-linux-gnu"
+
+@".const.kernel_for.<locals>.kernel" = internal constant [27 x i8] c"kernel_for.<locals>.kernel\00"
+@_ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE = common local_unnamed_addr global ptr null
+@".const.missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE" = internal constant [216 x i8] c"missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE\00"
+@PyExc_TypeError = external global i8
+@".const.can't unbox array from PyObject into native value.  The object maybe of a different type" = internal constant [89 x i8] c"can't unbox array from PyObject into native value.  The object maybe of a different type\00"
+@_Py_NoneStruct = external global i8
+@PyExc_RuntimeError = external global i8
+@llvm.compiler.used = appending global [2 x ptr] [ptr @_ZGVbN4v_tanf, ptr @_ZGVdN8v_tanf], section "llvm.metadata"
+
+; Function Attrs: nofree norecurse nosync nounwind memory(argmem: readwrite)
+define noundef i32 @_ZN8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE(ptr noalias writeonly captures(none) %retptr, ptr noalias readnone captures(none) %excinfo, ptr readnone captures(none) %arg.x.0, ptr readnone captures(none) %arg.x.1, i64 %arg.x.2, i64 %arg.x.3, ptr readonly captures(none) %arg.x.4, i64 %arg.x.5.0, i64 %arg.x.6.0, ptr readnone captures(none) %arg.y.0, ptr readnone captures(none) %arg.y.1, i64 %arg.y.2, i64 %arg.y.3, ptr readnone captures(none) %arg.y.4, i64 %arg.y.5.0, i64 %arg.y.6.0, ptr readnone captures(none) %arg.out.0, ptr readnone captures(none) %arg.out.1, i64 %arg.out.2, i64 %arg.out.3, ptr writeonly captures(none) %arg.out.4, i64 %arg.out.5.0, i64 %arg.out.6.0) local_unnamed_addr #0 {
+B0.endif:
+  %.13591.not = icmp slt i64 %arg.x.2, 1
+  br i1 %.13591.not, label %B84, label %iter.check
+
+iter.check:                                       ; preds = %B0.endif
+  %arg.out.41 = ptrtoint ptr %arg.out.4 to i64
+  %arg.x.42 = ptrtoint ptr %arg.x.4 to i64
+  %min.iters.check = icmp ult i64 %arg.x.2, 4
+  %0 = sub i64 %arg.out.41, %arg.x.42
+  %diff.check = icmp ult i64 %0, 128
+  %or.cond = select i1 %min.iters.check, i1 true, i1 %diff.check
+  br i1 %or.cond, label %B52.preheader, label %vector.main.loop.iter.check
+
+vector.main.loop.iter.check:                      ; preds = %iter.check
+  %const179 = bitcast i64 9223372036854775776 to i64
+  %min.iters.check3 = icmp ult i64 %arg.x.2, 32
+  br i1 %min.iters.check3, label %vec.epilog.ph, label %vector.ph
+
+vector.ph:                                        ; preds = %vector.main.loop.iter.check
+  %1 = bitcast i64 %const179 to i64
+  %n.vec = and i64 %arg.x.2, %1
+  br label %vector.body
+
+vector.body:                                      ; preds = %vector.body, %vector.ph
+  %index = phi i64 [ 0, %vector.ph ], [ %index.next, %vector.body ]
+  %sunkaddr = mul i64 %index, 4
+  %sunkaddr294 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr
+  %wide.load = load <8 x float>, ptr %sunkaddr294, align 4
+  %sunkaddr295 = mul i64 %index, 4
+  %sunkaddr296 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr295
+  %sunkaddr297 = getelementptr i8, ptr %sunkaddr296, i64 32
+  %wide.load4 = load <8 x float>, ptr %sunkaddr297, align 4
+  %sunkaddr298 = mul i64 %index, 4
+  %sunkaddr299 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr298
+  %sunkaddr300 = getelementptr i8, ptr %sunkaddr299, i64 64
+  %wide.load5 = load <8 x float>, ptr %sunkaddr300, align 4
+  %sunkaddr301 = mul i64 %index, 4
+  %sunkaddr302 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr301
+  %sunkaddr303 = getelementptr i8, ptr %sunkaddr302, i64 96
+  %wide.load6 = load <8 x float>, ptr %sunkaddr303, align 4
+  %2 = tail call <8 x float> @_ZGVdN8v_tanf(<8 x float> %wide.load)
+  %3 = tail call <8 x float> @_ZGVdN8v_tanf(<8 x float> %wide.load4)
+  %4 = tail call <8 x float> @_ZGVdN8v_tanf(<8 x float> %wide.load5)
+  %5 = tail call <8 x float> @_ZGVdN8v_tanf(<8 x float> %wide.load6)
+  %sunkaddr304 = mul i64 %index, 4
+  %sunkaddr305 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr304
+  store <8 x float> %2, ptr %sunkaddr305, align 4
+  %sunkaddr306 = mul i64 %index, 4
+  %sunkaddr307 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr306
+  %sunkaddr308 = getelementptr i8, ptr %sunkaddr307, i64 32
+  store <8 x float> %3, ptr %sunkaddr308, align 4
+  %sunkaddr309 = mul i64 %index, 4
+  %sunkaddr310 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr309
+  %sunkaddr311 = getelementptr i8, ptr %sunkaddr310, i64 64
+  store <8 x float> %4, ptr %sunkaddr311, align 4
+  %sunkaddr312 = mul i64 %index, 4
+  %sunkaddr313 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr312
+  %sunkaddr314 = getelementptr i8, ptr %sunkaddr313, i64 96
+  store <8 x float> %5, ptr %sunkaddr314, align 4
+  %index.next = add nuw i64 %index, 32
+  %6 = icmp eq i64 %n.vec, %index.next
+  br i1 %6, label %middle.block, label %vector.body, !llvm.loop !0
+
+middle.block:                                     ; preds = %vector.body
+  %cmp.n = icmp eq i64 %arg.x.2, %n.vec
+  br i1 %cmp.n, label %B84, label %vec.epilog.iter.check
+
+vec.epilog.iter.check:                            ; preds = %middle.block
+  %7 = and i64 %arg.x.2, 28
+  %min.epilog.iters.check = icmp eq i64 %7, 0
+  br i1 %min.epilog.iters.check, label %B52.preheader, label %vec.epilog.ph, !prof !3
+
+vec.epilog.ph:                                    ; preds = %vector.main.loop.iter.check, %vec.epilog.iter.check
+  %vec.epilog.resume.val = phi i64 [ %n.vec, %vec.epilog.iter.check ], [ 0, %vector.main.loop.iter.check ]
+  %8 = bitcast i64 %const179 to i64
+  %const_mat = add i64 %8, 28
+  %n.vec8 = and i64 %arg.x.2, %const_mat
+  br label %vec.epilog.vector.body
+
+vec.epilog.vector.body:                           ; preds = %vec.epilog.vector.body, %vec.epilog.ph
+  %index9 = phi i64 [ %vec.epilog.resume.val, %vec.epilog.ph ], [ %index.next11, %vec.epilog.vector.body ]
+  %9 = shl i64 %index9, 2
+  %scevgep48 = getelementptr i8, ptr %arg.x.4, i64 %9
+  %wide.load10 = load <4 x float>, ptr %scevgep48, align 4
+  %10 = tail call <4 x float> @_ZGVbN4v_tanf(<4 x float> %wide.load10)
+  %11 = shl i64 %index9, 2
+  %scevgep47 = getelementptr i8, ptr %arg.out.4, i64 %11
+  store <4 x float> %10, ptr %scevgep47, align 4
+  %index.next11 = add nuw i64 %index9, 4
+  %12 = icmp eq i64 %n.vec8, %index.next11
+  br i1 %12, label %vec.epilog.middle.block, label %vec.epilog.vector.body, !llvm.loop !4
+
+vec.epilog.middle.block:                          ; preds = %vec.epilog.vector.body
+  %cmp.n12 = icmp eq i64 %arg.x.2, %n.vec8
+  br i1 %cmp.n12, label %B84, label %B52.preheader
+
+B52.preheader:                                    ; preds = %vec.epilog.middle.block, %vec.epilog.iter.check, %iter.check
+  %.1419092.ph = phi i64 [ 0, %iter.check ], [ %n.vec, %vec.epilog.iter.check ], [ %n.vec8, %vec.epilog.middle.block ]
+  %13 = sub nsw i64 %arg.x.2, %.1419092.ph
+  %xtraiter = and i64 %13, 7
+  %lcmp.mod.not = icmp eq i64 %xtraiter, 0
+  br i1 %lcmp.mod.not, label %B52.prol.loopexit, label %B52.prol.preheader
+
+B52.prol.preheader:                               ; preds = %B52.preheader
+  br label %B52.prol
+
+B52.prol:                                         ; preds = %B52.prol.preheader, %B52.prol
+  %lsr.iv = phi i64 [ %xtraiter, %B52.prol.preheader ], [ %lsr.iv.next, %B52.prol ]
+  %.1419092.prol = phi i64 [ %.148.prol, %B52.prol ], [ %.1419092.ph, %B52.prol.preheader ]
+  %.148.prol = add nuw i64 %.1419092.prol, 1
+  %14 = shl i64 %.1419092.prol, 2
+  %scevgep46 = getelementptr i8, ptr %arg.x.4, i64 %14
+  %.202.prol = load float, ptr %scevgep46, align 4
+  %.210.prol = tail call float @tanf(float %.202.prol) #6
+  %15 = shl i64 %.1419092.prol, 2
+  %scevgep45 = getelementptr i8, ptr %arg.out.4, i64 %15
+  store float %.210.prol, ptr %scevgep45, align 4
+  %lsr.iv.next = add nsw i64 %lsr.iv, -1
+  %prol.iter.cmp.not = icmp eq i64 %lsr.iv.next, 0
+  br i1 %prol.iter.cmp.not, label %B52.prol.loopexit, label %B52.prol, !llvm.loop !5
+
+B52.prol.loopexit:                                ; preds = %B52.prol, %B52.preheader
+  %.1419092.unr = phi i64 [ %.1419092.ph, %B52.preheader ], [ %.148.prol, %B52.prol ]
+  %16 = sub nsw i64 %.1419092.ph, %arg.x.2
+  %17 = icmp ugt i64 %16, -8
+  br i1 %17, label %B84, label %B52.preheader13
+
+B52.preheader13:                                  ; preds = %B52.prol.loopexit
+  br label %B52
+
+B52:                                              ; preds = %B52.preheader13, %B52
+  %.1419092 = phi i64 [ %.148.7, %B52 ], [ %.1419092.unr, %B52.preheader13 ]
+  %sunkaddr315 = mul i64 %.1419092, 4
+  %sunkaddr316 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr315
+  %.202 = load float, ptr %sunkaddr316, align 4
+  %.210 = tail call float @tanf(float %.202) #6
+  %sunkaddr317 = mul i64 %.1419092, 4
+  %sunkaddr318 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr317
+  store float %.210, ptr %sunkaddr318, align 4
+  %sunkaddr319 = mul i64 %.1419092, 4
+  %sunkaddr320 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr319
+  %sunkaddr321 = getelementptr i8, ptr %sunkaddr320, i64 4
+  %.202.1 = load float, ptr %sunkaddr321, align 4
+  %.210.1 = tail call float @tanf(float %.202.1) #6
+  %sunkaddr322 = mul i64 %.1419092, 4
+  %sunkaddr323 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr322
+  %sunkaddr324 = getelementptr i8, ptr %sunkaddr323, i64 4
+  store float %.210.1, ptr %sunkaddr324, align 4
+  %sunkaddr325 = mul i64 %.1419092, 4
+  %sunkaddr326 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr325
+  %sunkaddr327 = getelementptr i8, ptr %sunkaddr326, i64 8
+  %.202.2 = load float, ptr %sunkaddr327, align 4
+  %.210.2 = tail call float @tanf(float %.202.2) #6
+  %sunkaddr328 = mul i64 %.1419092, 4
+  %sunkaddr329 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr328
+  %sunkaddr330 = getelementptr i8, ptr %sunkaddr329, i64 8
+  store float %.210.2, ptr %sunkaddr330, align 4
+  %sunkaddr331 = mul i64 %.1419092, 4
+  %sunkaddr332 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr331
+  %sunkaddr333 = getelementptr i8, ptr %sunkaddr332, i64 12
+  %.202.3 = load float, ptr %sunkaddr333, align 4
+  %.210.3 = tail call float @tanf(float %.202.3) #6
+  %sunkaddr334 = mul i64 %.1419092, 4
+  %sunkaddr335 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr334
+  %sunkaddr336 = getelementptr i8, ptr %sunkaddr335, i64 12
+  store float %.210.3, ptr %sunkaddr336, align 4
+  %sunkaddr337 = mul i64 %.1419092, 4
+  %sunkaddr338 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr337
+  %sunkaddr339 = getelementptr i8, ptr %sunkaddr338, i64 16
+  %.202.4 = load float, ptr %sunkaddr339, align 4
+  %.210.4 = tail call float @tanf(float %.202.4) #6
+  %sunkaddr340 = mul i64 %.1419092, 4
+  %sunkaddr341 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr340
+  %sunkaddr342 = getelementptr i8, ptr %sunkaddr341, i64 16
+  store float %.210.4, ptr %sunkaddr342, align 4
+  %sunkaddr343 = mul i64 %.1419092, 4
+  %sunkaddr344 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr343
+  %sunkaddr345 = getelementptr i8, ptr %sunkaddr344, i64 20
+  %.202.5 = load float, ptr %sunkaddr345, align 4
+  %.210.5 = tail call float @tanf(float %.202.5) #6
+  %sunkaddr346 = mul i64 %.1419092, 4
+  %sunkaddr347 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr346
+  %sunkaddr348 = getelementptr i8, ptr %sunkaddr347, i64 20
+  store float %.210.5, ptr %sunkaddr348, align 4
+  %sunkaddr349 = mul i64 %.1419092, 4
+  %sunkaddr350 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr349
+  %sunkaddr351 = getelementptr i8, ptr %sunkaddr350, i64 24
+  %.202.6 = load float, ptr %sunkaddr351, align 4
+  %.210.6 = tail call float @tanf(float %.202.6) #6
+  %sunkaddr352 = mul i64 %.1419092, 4
+  %sunkaddr353 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr352
+  %sunkaddr354 = getelementptr i8, ptr %sunkaddr353, i64 24
+  store float %.210.6, ptr %sunkaddr354, align 4
+  %.148.7 = add nuw nsw i64 %.1419092, 8
+  %sunkaddr355 = mul i64 %.1419092, 4
+  %sunkaddr356 = getelementptr i8, ptr %arg.x.4, i64 %sunkaddr355
+  %sunkaddr357 = getelementptr i8, ptr %sunkaddr356, i64 28
+  %.202.7 = load float, ptr %sunkaddr357, align 4
+  %.210.7 = tail call float @tanf(float %.202.7) #6
+  %sunkaddr358 = mul i64 %.1419092, 4
+  %sunkaddr359 = getelementptr i8, ptr %arg.out.4, i64 %sunkaddr358
+  %sunkaddr360 = getelementptr i8, ptr %sunkaddr359, i64 28
+  store float %.210.7, ptr %sunkaddr360, align 4
+  %exitcond.not.7 = icmp eq i64 %arg.x.2, %.148.7
+  br i1 %exitcond.not.7, label %B84, label %B52, !llvm.loop !7
+
+B84:                                              ; preds = %B52, %B52.prol.loopexit, %middle.block, %vec.epilog.middle.block, %B0.endif
+  store ptr null, ptr %retptr, align 8
+  ret i32 0
+}
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare float @tanf(float) local_unnamed_addr #1
+
+define noundef ptr @_ZN7cpython8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE(ptr readnone captures(none) %py_closure, ptr %py_args, ptr readnone captures(none) %py_kws) local_unnamed_addr {
+entry:
+  %.5 = alloca ptr, align 8
+  %.6 = alloca ptr, align 8
+  %.7 = alloca ptr, align 8
+  %.8 = call i32 (ptr, ptr, i64, i64, ...) @PyArg_UnpackTuple(ptr %py_args, ptr nonnull @".const.kernel_for.<locals>.kernel", i64 3, i64 3, ptr nonnull %.5, ptr nonnull %.6, ptr nonnull %.7)
+  %.9 = icmp eq i32 %.8, 0
+  %.21 = alloca { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] }, align 8
+  %.44 = alloca { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] }, align 8
+  %.67 = alloca { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] }, align 8
+  %.89 = alloca ptr, align 8
+  br i1 %.9, label %common.ret, label %entry.endif, !prof !8
+
+common.ret:                                       ; preds = %entry.endif.endif.endif.thread, %arg0.err, %entry, %entry.endif.endif.endif.endif.endif.endif.endif.endif, %entry.endif.if
+  %common.ret.op = phi ptr [ null, %arg0.err ], [ null, %entry ], [ null, %entry.endif.if ], [ null, %entry.endif.endif.endif.thread ], [ @_Py_NoneStruct, %entry.endif.endif.endif.endif.endif.endif.endif.endif ]
+  ret ptr %common.ret.op
+
+entry.endif:                                      ; preds = %entry
+  %.13 = load ptr, ptr @_ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE, align 8
+  %.16 = icmp eq ptr %.13, null
+  br i1 %.16, label %entry.endif.if, label %entry.endif.endif, !prof !8
+
+entry.endif.if:                                   ; preds = %entry.endif
+  call void @PyErr_SetString(ptr nonnull @PyExc_RuntimeError, ptr nonnull @".const.missing Environment: _ZN08NumbaEnv8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE")
+  br label %common.ret
+
+entry.endif.endif:                                ; preds = %entry.endif
+  %.20 = load ptr, ptr %.5, align 8
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(56) %.21, i8 0, i64 56, i1 false)
+  %.25 = call i32 @NRT_adapt_ndarray_from_python(ptr %.20, ptr nonnull %.21)
+  %sunkaddr = getelementptr inbounds i8, ptr %.21, i64 24
+  %.29 = load i64, ptr %sunkaddr, align 8
+  %.30 = icmp ne i64 %.29, 4
+  %.31 = icmp ne i32 %.25, 0
+  %.32 = or i1 %.31, %.30
+  br i1 %.32, label %entry.endif.endif.endif.thread, label %entry.endif.endif.endif.endif, !prof !8
+
+entry.endif.endif.endif.thread:                   ; preds = %entry.endif.endif
+  call void @PyErr_SetString(ptr nonnull @PyExc_TypeError, ptr nonnull @".const.can't unbox array from PyObject into native value.  The object maybe of a different type")
+  br label %common.ret
+
+entry.endif.endif.endif.endif:                    ; preds = %entry.endif.endif
+  %.36.fca.0.load = load ptr, ptr %.21, align 8
+  %sunkaddr1 = getelementptr inbounds i8, ptr %.21, i64 16
+  %.36.fca.2.load = load i64, ptr %sunkaddr1, align 8
+  %sunkaddr2 = getelementptr inbounds i8, ptr %.21, i64 32
+  %.36.fca.4.load = load ptr, ptr %sunkaddr2, align 8
+  %.43 = load ptr, ptr %.6, align 8
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(56) %.44, i8 0, i64 56, i1 false)
+  %.48 = call i32 @NRT_adapt_ndarray_from_python(ptr %.43, ptr nonnull %.44)
+  %sunkaddr3 = getelementptr inbounds i8, ptr %.44, i64 24
+  %.52 = load i64, ptr %sunkaddr3, align 8
+  %.53 = icmp ne i64 %.52, 4
+  %.54 = icmp ne i32 %.48, 0
+  %.55 = or i1 %.54, %.53
+  br i1 %.55, label %entry.endif.endif.endif.endif.endif.thread, label %entry.endif.endif.endif.endif.endif.endif, !prof !8
+
+arg0.err:                                         ; preds = %entry.endif.endif.endif.endif.endif.thread, %entry.endif.endif.endif.endif.endif.endif.if
+  call void @NRT_decref(ptr %.36.fca.0.load)
+  br label %common.ret
+
+entry.endif.endif.endif.endif.endif.thread:       ; preds = %entry.endif.endif.endif.endif
+  call void @PyErr_SetString(ptr nonnull @PyExc_TypeError, ptr nonnull @".const.can't unbox array from PyObject into native value.  The object maybe of a different type")
+  br label %arg0.err
+
+entry.endif.endif.endif.endif.endif.endif:        ; preds = %entry.endif.endif.endif.endif
+  %.59.fca.0.load = load ptr, ptr %.44, align 8
+  %.66 = load ptr, ptr %.7, align 8
+  call void @llvm.memset.p0.i64(ptr noundef nonnull align 8 dereferenceable(56) %.67, i8 0, i64 56, i1 false)
+  %.71 = call i32 @NRT_adapt_ndarray_from_python(ptr %.66, ptr nonnull %.67)
+  %sunkaddr4 = getelementptr inbounds i8, ptr %.67, i64 24
+  %.75 = load i64, ptr %sunkaddr4, align 8
+  %.76 = icmp ne i64 %.75, 4
+  %.77 = icmp ne i32 %.71, 0
+  %.78 = or i1 %.77, %.76
+  br i1 %.78, label %entry.endif.endif.endif.endif.endif.endif.if, label %entry.endif.endif.endif.endif.endif.endif.endif.endif, !prof !8
+
+entry.endif.endif.endif.endif.endif.endif.if:     ; preds = %entry.endif.endif.endif.endif.endif.endif
+  call void @PyErr_SetString(ptr nonnull @PyExc_TypeError, ptr nonnull @".const.can't unbox array from PyObject into native value.  The object maybe of a different type")
+  call void @NRT_decref(ptr %.59.fca.0.load)
+  br label %arg0.err
+
+entry.endif.endif.endif.endif.endif.endif.endif.endif: ; preds = %entry.endif.endif.endif.endif.endif.endif
+  %.82.fca.0.load = load ptr, ptr %.67, align 8
+  %sunkaddr5 = getelementptr inbounds i8, ptr %.67, i64 32
+  %.82.fca.4.load = load ptr, ptr %sunkaddr5, align 8
+  %.99 = call i32 @_ZN8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE(ptr nonnull %.89, ptr nonnull poison, ptr poison, ptr poison, i64 %.36.fca.2.load, i64 poison, ptr %.36.fca.4.load, i64 poison, i64 poison, ptr poison, ptr poison, i64 poison, i64 poison, ptr poison, i64 poison, i64 poison, ptr poison, ptr poison, i64 poison, i64 poison, ptr %.82.fca.4.load, i64 poison, i64 poison) #4
+  call void @NRT_decref(ptr %.36.fca.0.load)
+  call void @NRT_decref(ptr %.59.fca.0.load)
+  call void @NRT_decref(ptr %.82.fca.0.load)
+  call void @Py_IncRef(ptr nonnull @_Py_NoneStruct)
+  br label %common.ret
+}
+
+declare i32 @PyArg_UnpackTuple(ptr, ptr, i64, i64, ...) local_unnamed_addr
+
+declare void @PyErr_SetString(ptr, ptr) local_unnamed_addr
+
+; Function Attrs: mustprogress nocallback nofree nounwind willreturn memory(argmem: write)
+declare void @llvm.memset.p0.i64(ptr writeonly captures(none), i8, i64, i1 immarg) #2
+
+declare i32 @NRT_adapt_ndarray_from_python(ptr captures(none), ptr captures(none)) local_unnamed_addr
+
+declare void @Py_IncRef(ptr) local_unnamed_addr
+
+; Function Attrs: nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none, target_mem0: none, target_mem1: none)
+define ptr @cfunc._ZN8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE({ ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] } %.1, { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] } %.2, { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] } %.3) local_unnamed_addr #3 {
+entry:
+  %.5 = alloca ptr, align 8
+  store ptr null, ptr %.5, align 8
+  %extracted.nitems = extractvalue { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] } %.1, 2
+  %extracted.data = extractvalue { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] } %.1, 4
+  %extracted.data.2 = extractvalue { ptr, ptr, i64, i64, ptr, [1 x i64], [1 x i64] } %.3, 4
+  %.15 = call i32 @_ZN8__main__10kernel_for12_3clocals_3e6kernelB2v5B38c8tJTIeFIjxB2IKSgI4CrvQClQZ6FczSBAA_3dE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE5ArrayIfLi1E1C7mutable7alignedE(ptr nonnull %.5, ptr nonnull poison, ptr poison, ptr poison, i64 %extracted.nitems, i64 poison, ptr %extracted.data, i64 poison, i64 poison, ptr poison, ptr poison, i64 poison, i64 poison, ptr poison, i64 poison, i64 poison, ptr poison, ptr poison, i64 poison, i64 poison, ptr %extracted.data.2, i64 poison, i64 poison) #4
+  %.25 = load ptr, ptr %.5, align 8
+  ret ptr %.25
+}
+
+; Function Attrs: noinline
+define linkonce_odr void @NRT_decref(ptr %.1) local_unnamed_addr #4 {
+.3:
+  %.4 = icmp eq ptr %.1, null
+  br i1 %.4, label %common.ret1, label %.3.endif, !prof !8
+
+common.ret1:                                      ; preds = %.3, %.3.endif
+  ret void
+
+.3.endif:                                         ; preds = %.3
+  fence release
+  %0 = tail call i8 @llvm.x86.atomic.sub.cc.i64(ptr nonnull %.1, i64 1, i32 4)
+  %1 = trunc i8 %0 to i1
+  br i1 %1, label %.3.endif.if, label %common.ret1, !prof !8
+
+.3.endif.if:                                      ; preds = %.3.endif
+  fence acquire
+  tail call void @NRT_MemInfo_call_dtor(ptr nonnull %.1)
+  ret void
+}
+
+; Function Attrs: nounwind
+declare i8 @llvm.x86.atomic.sub.cc.i64(ptr, i64, i32 immarg) #5
+
+declare void @NRT_MemInfo_call_dtor(ptr) local_unnamed_addr
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare <4 x float> @_ZGVbN4v_tanf(<4 x float>) local_unnamed_addr #1
+
+; Function Attrs: mustprogress nocallback nofree nosync nounwind willreturn memory(none)
+declare <8 x float> @_ZGVdN8v_tanf(<8 x float>) local_unnamed_addr #1
+
+attributes #0 = { nofree norecurse nosync nounwind memory(argmem: readwrite) }
+attributes #1 = { mustprogress nocallback nofree nosync nounwind willreturn memory(none) }
+attributes #2 = { mustprogress nocallback nofree nounwind willreturn memory(argmem: write) }
+attributes #3 = { nofree norecurse nosync nounwind memory(readwrite, inaccessiblemem: none, target_mem0: none, target_mem1: none) }
+attributes #4 = { noinline }
+attributes #5 = { nounwind }
+attributes #6 = { "vector-function-abi-variant"="_ZGV_LLVM_N4v_tanf(_ZGVbN4v_tanf),_ZGV_LLVM_N8v_tanf(_ZGVdN8v_tanf)" }
+
+!0 = distinct !{!0, !1, !2}
+!1 = !{!"llvm.loop.isvectorized", i32 1}
+!2 = !{!"llvm.loop.unroll.runtime.disable"}
+!3 = !{!"branch_weights", i32 4, i32 28}
+!4 = distinct !{!4, !1, !2}
+!5 = distinct !{!5, !6}
+!6 = !{!"llvm.loop.unroll.disable"}
+!7 = distinct !{!7, !1}
+!8 = !{!"branch_weights", i32 1, i32 99}

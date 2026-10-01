@@ -1,0 +1,24 @@
+{
+  "python": "3.12.3",
+  "platform": "Linux-6.8.0-139-generic-x86_64-with-glibc2.39",
+  "numpy": "2.4.2",
+  "numba": "0.69.0dev0+8097.g09483a43",
+  "llvmlite": "0.51.0dev0-6-g2352785",
+  "llvm": [
+    22,
+    1,
+    0
+  ],
+  "cpu": "raptorlake",
+  "mvec": "libmvec.so.1",
+  "repositories": {
+    "numba": {
+      "head": "09483a43d3dc31ad19a0bcfca85297ade43f0416",
+      "status": ""
+    },
+    "llvmlite": {
+      "head": "2352785c6244cfe095b54abe46d126c2545733fe",
+      "status": ""
+    }
+  }
+}

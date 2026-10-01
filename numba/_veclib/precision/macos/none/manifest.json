@@ -1,0 +1,968 @@
+{
+  "metadata": {
+    "provider": "none",
+    "started_utc": "2026-10-01T05:07:55.424583+00:00",
+    "platform": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "cpu": "apple-m4",
+    "llvm": [
+      22,
+      1,
+      0
+    ],
+    "numpy": "2.5.2",
+    "python": "3.13.15",
+    "numba": "0.69.0dev0+43.g09483a43d3.dirty",
+    "llvmlite": "0.51.0dev0-5-g2352785c",
+    "fastmath": false,
+    "sources": {
+      "numba": {
+        "path": "/Users/USER/dev/numba",
+        "commit": "09483a43d3dc31ad19a0bcfca85297ade43f0416",
+        "diff_sha256": "a6231af2cf99702fe1e0fce158fbb6ba48993fee1b9c6030da53fe388711f7d2"
+      },
+      "llvmlite": {
+        "path": "/path/to/llvmlite-vector-library-wiring",
+        "commit": "2352785c6244cfe095b54abe46d126c2545733fe",
+        "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  "cases": [
+    {
+      "operation": "sin",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "sin_float32_benchmark.npz",
+      "symbols": [
+        "sinf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sin",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "15e39276411a57025c42b6370d74d7addd67073c6e9f3506f7e24b23f4d8a5d5",
+      "file": "sin_float32_wide.npz",
+      "symbols": [
+        "sinf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sin",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "d292c17e385f67dbe99295804746cdd8cbdb461f201d82d5c793517c12ee419d",
+      "file": "sin_float32_edges.npz",
+      "symbols": [
+        "sinf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sin",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "sin_float64_benchmark.npz",
+      "symbols": [
+        "sin"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sin",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "cc1c81d518450a53a4f312b38fe08179818c5e23be5e688479bfd7beb915b99f",
+      "file": "sin_float64_wide.npz",
+      "symbols": [
+        "sin"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sin",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "bc76d3927fa8db147f70254e5acce757b847c3d5d2265869ddac87181782e4d9",
+      "file": "sin_float64_edges.npz",
+      "symbols": [
+        "sin"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "cos",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "cos_float32_benchmark.npz",
+      "symbols": [
+        "cosf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "cos",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "15e39276411a57025c42b6370d74d7addd67073c6e9f3506f7e24b23f4d8a5d5",
+      "file": "cos_float32_wide.npz",
+      "symbols": [
+        "cosf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "cos",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "d292c17e385f67dbe99295804746cdd8cbdb461f201d82d5c793517c12ee419d",
+      "file": "cos_float32_edges.npz",
+      "symbols": [
+        "cosf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "cos",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "cos_float64_benchmark.npz",
+      "symbols": [
+        "cos"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "cos",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "cc1c81d518450a53a4f312b38fe08179818c5e23be5e688479bfd7beb915b99f",
+      "file": "cos_float64_wide.npz",
+      "symbols": [
+        "cos"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "cos",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "bc76d3927fa8db147f70254e5acce757b847c3d5d2265869ddac87181782e4d9",
+      "file": "cos_float64_edges.npz",
+      "symbols": [
+        "cos"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tan",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-1, 1], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "8eedeac1982d28576d3579740f2a0f4fc663ac99362fd4ca5fd7991f8f403c42",
+      "file": "tan_float32_benchmark.npz",
+      "symbols": [
+        "tanf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tan",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "15e39276411a57025c42b6370d74d7addd67073c6e9f3506f7e24b23f4d8a5d5",
+      "file": "tan_float32_wide.npz",
+      "symbols": [
+        "tanf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tan",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "d292c17e385f67dbe99295804746cdd8cbdb461f201d82d5c793517c12ee419d",
+      "file": "tan_float32_edges.npz",
+      "symbols": [
+        "tanf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tan",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-1, 1], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "0fd76c6e426718b4826af9732c66c9017f998dc28420a868b735183421fd3681",
+      "file": "tan_float64_benchmark.npz",
+      "symbols": [
+        "tan"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tan",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-1000, 1000], half signed finite bit patterns; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "cc1c81d518450a53a4f312b38fe08179818c5e23be5e688479bfd7beb915b99f",
+      "file": "tan_float64_wide.npz",
+      "symbols": [
+        "tan"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tan",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "205 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 3328,
+      "input_sha256": "bc76d3927fa8db147f70254e5acce757b847c3d5d2265869ddac87181782e4d9",
+      "file": "tan_float64_edges.npz",
+      "symbols": [
+        "tan"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "exp",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-4, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "19f22760ad02bee6f80e828834dbe6193a2dadb4683dfec4462e853188a5df99",
+      "file": "exp_float32_benchmark.npz",
+      "symbols": [
+        "expf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "exp",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Uniform [log(minsub) - log(2), log(max) + log(2)]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "193df2a3af48e6d813c161a0735069e4a2639d196e6dab19eff9f833a4b95941",
+      "file": "exp_float32_wide.npz",
+      "symbols": [
+        "expf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "exp",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "aa610a83c77b1b847970f8de06cc89a478712ab78aa5350261c645d05669764b",
+      "file": "exp_float32_edges.npz",
+      "symbols": [
+        "expf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "exp",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-4, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "1f8a4ca17b8afc332f2cc2d0dd32d4e72333dd0a59657253e8d1e90f3216d83b",
+      "file": "exp_float64_benchmark.npz",
+      "symbols": [
+        "exp"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "exp",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Uniform [log(minsub) - log(2), log(max) + log(2)]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "18dee2a669573044e916349c7b36aee5d89d2a85039ad48d322505cbc080054e",
+      "file": "exp_float64_wide.npz",
+      "symbols": [
+        "exp"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "exp",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "8099bc74536ef8804f35435d782dd05cfa136cf93dde996c399b44ccc39b31ad",
+      "file": "exp_float64_edges.npz",
+      "symbols": [
+        "exp"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "b12ed922b608c14c225a6154acd3166194b9f5625cefa00456fc0ba47a729709",
+      "file": "log_float32_benchmark.npz",
+      "symbols": [
+        "logf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "c6635fbdfc2546c930bacb0ea0aeb61c4e0b9de42f1ca4c8b177b19bbf9b1702",
+      "file": "log_float32_wide.npz",
+      "symbols": [
+        "logf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "log_float32_edges.npz",
+      "symbols": [
+        "logf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "f4c1c6c332a573fbc6b0c6f8721f6d235d9fc0862e0c4897ada1518761907f1d",
+      "file": "log_float64_benchmark.npz",
+      "symbols": [
+        "log"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "664528859861b1c4b61dcde463f3e50576a907cff6d70c795443278a586a2e94",
+      "file": "log_float64_wide.npz",
+      "symbols": [
+        "log"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "log_float64_edges.npz",
+      "symbols": [
+        "log"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log1p",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-0.75, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "9fe5fb1e85e127fc2afdcbcda70b9c2c0d4dd8cbe6c351d8a175cd7425e67c01",
+      "file": "log1p_float32_benchmark.npz",
+      "symbols": [
+        "log1pf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log1p",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Thirds: uniform [-2^-10, 2^-10], uniform [-1, 8], positive finite bits; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "62becab458008c8877663beddce314053eb47dbcfe235326eec7e82b22346ade",
+      "file": "log1p_float32_wide.npz",
+      "symbols": [
+        "log1pf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log1p",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "log1p_float32_edges.npz",
+      "symbols": [
+        "log1pf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log1p",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-0.75, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "cf10d8afb14fecdbdd592a0a5ae980546cedc0712cd8b6ec463d49a38aeda11b",
+      "file": "log1p_float64_benchmark.npz",
+      "symbols": [
+        "log1p"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log1p",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Thirds: uniform [-2^-10, 2^-10], uniform [-1, 8], positive finite bits; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "1c4816a6685ba19930cc0385b50eb771249ca54dd34bbd3201d2da19c9f51704",
+      "file": "log1p_float64_wide.npz",
+      "symbols": [
+        "log1p"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log1p",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "log1p_float64_edges.npz",
+      "symbols": [
+        "log1p"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log2",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "b12ed922b608c14c225a6154acd3166194b9f5625cefa00456fc0ba47a729709",
+      "file": "log2_float32_benchmark.npz",
+      "symbols": [
+        "log2f"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log2",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "c6635fbdfc2546c930bacb0ea0aeb61c4e0b9de42f1ca4c8b177b19bbf9b1702",
+      "file": "log2_float32_wide.npz",
+      "symbols": [
+        "log2f"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log2",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "log2_float32_edges.npz",
+      "symbols": [
+        "log2f"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log2",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "f4c1c6c332a573fbc6b0c6f8721f6d235d9fc0862e0c4897ada1518761907f1d",
+      "file": "log2_float64_benchmark.npz",
+      "symbols": [
+        "log2"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log2",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "664528859861b1c4b61dcde463f3e50576a907cff6d70c795443278a586a2e94",
+      "file": "log2_float64_wide.npz",
+      "symbols": [
+        "log2"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "log2",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "log2_float64_edges.npz",
+      "symbols": [
+        "log2"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "expm1",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "expm1_float32_benchmark.npz",
+      "symbols": [
+        "expm1f"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "expm1",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half exp range, half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "90f793d25ef2def58e34f9510577a930f9aaa9438705dbffe794d68ea072aa90",
+      "file": "expm1_float32_wide.npz",
+      "symbols": [
+        "expm1f"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "expm1",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "aa610a83c77b1b847970f8de06cc89a478712ab78aa5350261c645d05669764b",
+      "file": "expm1_float32_edges.npz",
+      "symbols": [
+        "expm1f"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "expm1",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "expm1_float64_benchmark.npz",
+      "symbols": [
+        "expm1"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "expm1",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half exp range, half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "699153aa28d300c9c9a9ee7ceb74ac9f70f907c9953543d7cbbccd795cd77b98",
+      "file": "expm1_float64_wide.npz",
+      "symbols": [
+        "expm1"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "expm1",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "97 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1600,
+      "input_sha256": "8099bc74536ef8804f35435d782dd05cfa136cf93dde996c399b44ccc39b31ad",
+      "file": "expm1_float64_edges.npz",
+      "symbols": [
+        "expm1"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tanh",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "tanh_float32_benchmark.npz",
+      "symbols": [
+        "tanhf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tanh",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "7332805b13fe0f5ef84bdc9201b8ce3d3856b6418d0c09ce27670f5d19fefd86",
+      "file": "tanh_float32_wide.npz",
+      "symbols": [
+        "tanhf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tanh",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "ffd5f1e072efa20cb601176f0a04d8e0ecda86f40d0536b2be4d5bc7a8ee9aef",
+      "file": "tanh_float32_edges.npz",
+      "symbols": [
+        "tanhf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tanh",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "tanh_float64_benchmark.npz",
+      "symbols": [
+        "tanh"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tanh",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "23b9af8c017e8f9548db94adb771d2823db3cb1e17a30aee0c2601e9d6ade4a6",
+      "file": "tanh_float64_wide.npz",
+      "symbols": [
+        "tanh"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "tanh",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "43e5ddfeda1a98a261993e64255a0001efbbd38ceeedd7d82b433356862496bb",
+      "file": "tanh_float64_edges.npz",
+      "symbols": [
+        "tanh"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sqrt",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "b12ed922b608c14c225a6154acd3166194b9f5625cefa00456fc0ba47a729709",
+      "file": "sqrt_float32_benchmark.npz",
+      "symbols": [
+        "fsqrt.4s"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sqrt",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "c6635fbdfc2546c930bacb0ea0aeb61c4e0b9de42f1ca4c8b177b19bbf9b1702",
+      "file": "sqrt_float32_wide.npz",
+      "symbols": [
+        "fsqrt.4s"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sqrt",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "e4c45eaf156b08c11d98bd3ebf9cd4fa0eea13c25ba9a302cf0c3c81c8750fd0",
+      "file": "sqrt_float32_edges.npz",
+      "symbols": [
+        "fsqrt.4s"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sqrt",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 8], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "f4c1c6c332a573fbc6b0c6f8721f6d235d9fc0862e0c4897ada1518761907f1d",
+      "file": "sqrt_float64_benchmark.npz",
+      "symbols": [
+        "fsqrt.2d"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sqrt",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive finite bit patterns across the representable range; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "664528859861b1c4b61dcde463f3e50576a907cff6d70c795443278a586a2e94",
+      "file": "sqrt_float64_wide.npz",
+      "symbols": [
+        "fsqrt.2d"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "sqrt",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "88 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 1408,
+      "input_sha256": "35bf3e32ff8591a5a6e68b3d80e0c870c88f77dc2b477bfba806fed2403c3dc1",
+      "file": "sqrt_float64_edges.npz",
+      "symbols": [
+        "fsqrt.2d"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "power",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "15fcadc30f8474cba44a03a3fa9c3437a505b33732da60bc66d80f4ef7789d37",
+      "file": "power_float32_benchmark.npz",
+      "symbols": [
+        "powf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "power",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Positive bases log-uniform [2^-8, 2^8]; exponents uniform [-8, 8]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "6e29c6ea931aa76da2f7001d1cbdabfde1006dbec12be2b9a391a7ecab5ec6a6",
+      "file": "power_float32_wide.npz",
+      "symbols": [
+        "powf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "power",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "349 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 5632,
+      "input_sha256": "3f6dcd30690279171f0b68c0ad54b5f3ea37bc844a5827ed7075cb96c6626949",
+      "file": "power_float32_edges.npz",
+      "symbols": [
+        "powf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "power",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [0.125, 4], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "fbce3b27d43ff397fdbd404ce2a9ff77024a99f6c5002a731d14d243fcd53c1c",
+      "file": "power_float64_benchmark.npz",
+      "symbols": [
+        "pow"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "power",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Positive bases log-uniform [2^-8, 2^8]; exponents uniform [-8, 8]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "4486e641c1f31af20a6b721d736acbb8ffbcd8367e314ea52f7833a05cc03f5b",
+      "file": "power_float64_wide.npz",
+      "symbols": [
+        "pow"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "power",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "349 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 5632,
+      "input_sha256": "80b65cf85b39c59416e7eb7d54d3021ed1dc849bc8470fbd7a69ecd1227390ec",
+      "file": "power_float64_edges.npz",
+      "symbols": [
+        "pow"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "erf",
+      "dtype": "float32",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "602a9e3d8d4bbe0072ba1cbc5a92b533572c24e33f0f98c28599372fc2aa687c",
+      "file": "erf_float32_benchmark.npz",
+      "symbols": [
+        "erff"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "erf",
+      "dtype": "float32",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "7332805b13fe0f5ef84bdc9201b8ce3d3856b6418d0c09ce27670f5d19fefd86",
+      "file": "erf_float32_wide.npz",
+      "symbols": [
+        "erff"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "erf",
+      "dtype": "float32",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "ffd5f1e072efa20cb601176f0a04d8e0ecda86f40d0536b2be4d5bc7a8ee9aef",
+      "file": "erf_float32_edges.npz",
+      "symbols": [
+        "erff"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "erf",
+      "dtype": "float64",
+      "profile": "benchmark",
+      "description": "Original benchmark inputs; uniform [-2, 2], seed 20260930.",
+      "size": 262144,
+      "input_sha256": "5abe77f68908e52e384f821547df9221680d2b9c96136b9bf93c55a9b13ad742",
+      "file": "erf_float64_benchmark.npz",
+      "symbols": [
+        "erf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "erf",
+      "dtype": "float64",
+      "profile": "wide",
+      "description": "Half uniform [-16, 16], half uniform [-2^-10, 2^-10]; seed 20260930.",
+      "size": 65536,
+      "input_sha256": "23b9af8c017e8f9548db94adb771d2823db3cb1e17a30aee0c2601e9d6ade4a6",
+      "file": "erf_float64_wide.npz",
+      "symbols": [
+        "erf"
+      ],
+      "vector_calls": []
+    },
+    {
+      "operation": "erf",
+      "dtype": "float64",
+      "profile": "edges",
+      "description": "133 unique input pairs, including invalid domains and nonfinite values; each repeated 16 times, padded to a multiple of 64.",
+      "size": 2176,
+      "input_sha256": "43e5ddfeda1a98a261993e64255a0001efbbd38ceeedd7d82b433356862496bb",
+      "file": "erf_float64_edges.npz",
+      "symbols": [
+        "erf"
+      ],
+      "vector_calls": []
+    }
+  ]
+}
